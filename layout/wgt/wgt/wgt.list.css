@@ -1,0 +1,39 @@
+/*//////////////////////////////////////////////////////////////////////////////
+// Wgt list classes
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+ul.wgt-list.inline
+{
+	list-style:none;
+}
+
+ul.wgt-list.inline li
+{
+	display:inline;
+	float:left;
+  padding:3px;
+  width:75px;
+  text-align:center;
+}
+
+
+ul.wgt-assign-block
+{
+  list-style-type: none; 
+  margin: 0; 
+  padding: 0;
+  width:170px;
+  height:200px;
+  overflow:auto;
+  border:1px solid black;
+}
+
+ul.wgt-assign-block>li
+{
+  padding: 5px;
+  width: 135px;
+  white-space:nowrap;
+}
+
+

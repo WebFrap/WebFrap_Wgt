@@ -1,0 +1,41 @@
+.wgt-modal-container
+{
+  display:none;
+}
+
+/* Overlay */
+#simplemodal-overlay 
+{
+  background-color:#000; 
+  cursor:pointer;
+}
+
+/* Container */
+#simplemodal-container 
+{
+  min-height:360px; 
+  min-width:600px; 
+  color:#000000; 
+  background-color:#F2F2F2; 
+  border:2px solid #444; 
+  padding:12px;
+}
+
+#simplemodal-container .simplemodal-data 
+{
+  padding:8px;
+}
+
+
+#simplemodal-container a.modalCloseImg 
+{
+  background:url(<?php echo $images ?>wgt/close_modal.png) no-repeat; 
+  width:25px; 
+  height:29px; 
+  display:inline; 
+  z-index:3200; 
+  position:absolute; 
+  top:-10px; 
+  right:-11px; 
+  cursor:pointer;
+}

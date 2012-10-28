@@ -1,0 +1,67 @@
+/*//////////////////////////////////////////////////////////////////////////////
+// WGT Process Form classes
+//////////////////////////////////////////////////////////////////////////////*/
+
+div.wgt-process-form
+{
+
+}
+
+div.wgt-process-form div.description
+{
+  width:185px;
+  margin:5px;
+  float:left;
+}
+
+div.wgt-process-form div.action
+{
+  width:235px;
+  margin:5px;
+  float:left;
+}
+
+div.wgt-process-form div.action button
+{
+  width:200px;
+  text-align:left;
+}
+
+div.wgt-process-form div.action button.info
+{
+  width:35px;
+  text-align:left;
+}
+
+div.wgt-process-form div.action ul.actions li
+{
+  padding:2px;
+}
+
+div.wgt-process-form div.comment
+{
+  width:420px;
+  margin:5px;
+  float:left;
+}
+
+div.wgt-process-form textarea
+{
+  width:420px;
+}
+
+
+div.wgt-process-form div.slices
+{
+  width:430px;
+  float:left;
+}
+
+div.wgt-process-form div.slice
+{
+  width:420px;
+  margin:5px;
+  float:left;
+}
+
+

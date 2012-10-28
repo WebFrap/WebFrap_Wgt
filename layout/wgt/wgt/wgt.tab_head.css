@@ -1,0 +1,73 @@
+/*//////////////////////////////////////////////////////////////////////////////
+// tabs and button bar
+//////////////////////////////////////////////////////////////////////////////*/
+
+div.wgt-tab-head
+{
+  height:28px;
+  border:1px solid silver;
+}
+
+div.wgt-tab-head  div.tab_head
+{
+  width:auto;
+  height:auto;
+  height:28px;
+  padding-top:5px;
+  padding-left:5px;
+  overflow: hidden;
+  padding-right:5px;  
+}
+
+div.wgt-tab-head.trans,
+div.wgt-tab-head.trans  div.tab_head
+{
+  background: transparent;
+}
+
+div.wgt-tab-head  div.tab_overflow
+{
+  height:28px;
+  padding-top:5px;
+  width:30px;
+  display: none;
+}
+
+div.wgt-tab-head.al div.tab_head
+{
+  float:left;
+  text-align:left;  
+}
+
+div.wgt-tab-head.ar div.tab_head
+{
+  float:right;
+  text-align:right;
+}
+
+div.wgt-tab-head.al div.tab_head>a
+{
+}
+
+div.wgt-tab-head.ar div.tab_head>a
+{
+}
+
+div.wgt-tab-head  div.tab_head>a
+{
+  display:inline-block;
+  line-height:1;
+  vertical-align:middle;
+  padding:4px 6px 4px 6px;
+  border: 1px solid silver;
+  cursor:pointer;
+  max-width:120px;
+  overflow:hidden;
+  white-space: nowrap;
+  margin-right:-3px;
+}
+
+div.wgt-tab-head  div.tab_head>a.hidden
+{
+  display:none;
+}

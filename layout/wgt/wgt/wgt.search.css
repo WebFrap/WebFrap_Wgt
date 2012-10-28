@@ -1,0 +1,31 @@
+/*//////////////////////////////////////////////////////////////////////////////
+// Search
+//////////////////////////////////////////////////////////////////////////////*/
+
+.wgt_search_list
+{
+  width:98%;
+}
+
+ul.wgt_search_list li
+{
+  border-bottom: 1px dotted silver;
+  padding:3px;	
+	margin-bottom:8px;
+	background-color:#fefefe;
+}
+
+ul.wgt_search_list li>a
+{
+  color:#333333;
+  border-bottom: 1px solid #333333;
+}
+
+ul.wgt_search_list li>span
+{
+  color:#333333;
+  font-style:italic;
+  margin-top:3px;	
+  margin-bottom:3px;	
+  display:block;
+}

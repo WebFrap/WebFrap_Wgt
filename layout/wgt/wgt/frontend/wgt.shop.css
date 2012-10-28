@@ -1,0 +1,106 @@
+/*//////////////////////////////////////////////////////////////////////////////
+// CMS
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+div.wgt-box-article
+{
+  width:750px;
+}
+
+div.wgt-box-article.list
+{
+  margin-bottom:15px;
+  margin-left:10px;
+}
+
+div.wgt-box-article div.head
+{
+  width:748px;
+  clear:both; 
+  border-bottom:1px dotted #585858;  
+}
+ 
+div.wgt-box-article div.head label
+{
+  display:block;
+  width:500px;
+  float:left;
+}
+
+div.wgt-box-article div.head div.tags
+{
+  float:right;
+  margin-right:10px;
+}
+
+div.wgt-box-article div.head div.art_num
+{
+  clear:both;
+  color: #585858;
+  font-size: 10px;
+}
+
+
+div.wgt-box-article div.price
+{
+  font-size:22px;
+  font-weight:bold;
+}
+
+div.wgt-box-article div.image
+{
+  width:120px;
+  float:left;
+}
+
+div.wgt-box-article div.content
+{
+  width:378px;
+  float:left;
+}
+
+div.wgt-box-article div.menu
+{
+  width:248px;
+  float:right;  
+}
+
+
+div.wgt-box-article div.menu li
+{
+  margin-top:5px;
+}
+
+
+div.wgt-box-article div.foot
+{
+  width:748px;
+  clear:both; 
+}
+
+div.wgt-box-article div.gallery
+{
+  height:75px;
+  overflow:auto;
+  clear:both; 
+}
+
+div.wgt-box-article div.gallery img
+{
+  vertical-align:middle;
+}
+
+div.wgt-box-article div.details
+{
+  width:740px;
+  clear:both; 
+}
+
+
+
+
+
+
+
+

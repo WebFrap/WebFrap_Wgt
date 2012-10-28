@@ -1,0 +1,80 @@
+div.ui-toaster-area-br,
+div.ui-toaster-area-bl,
+div.ui-toaster-area-tr,
+div.ui-toaster-area-tl {
+  z-index:5000;
+}
+
+div.ui-toaster-area-br {
+  position:fixed;
+  width:20%;
+  right:5px;
+  bottom:30px;
+}
+div.ui-toaster-area-bl {
+  position:fixed;
+  width:20%;
+  left:5px;
+  bottom:30px;
+}
+div.ui-toaster-area-tr {
+  position:fixed;
+  width:20%;
+  right:5px;
+  top:30px;
+  overflow:hidden;
+}
+div.ui-toaster-area-tl {
+  position:fixed;
+  width:20%;
+  left:5px;
+  top:30px;
+  overflow:hidden;
+}
+
+div.ui-toaster-area-br div.ui-toaster,
+div.ui-toaster-area-bl div.ui-toaster,
+div.ui-toaster-area-tr div.ui-toaster,
+div.ui-toaster-area-tl div.ui-toaster {
+  width:90%;
+  border:1px solid #ffffff;
+  margin:4px;
+  background-color:#7FB2FF;
+  font-size:1em;
+  display:none;
+}
+
+div.ui-toaster-area-br div.ui-toaster h4.ui-toaster-title,
+div.ui-toaster-area-bl div.ui-toaster h4.ui-toaster-title,
+div.ui-toaster-area-tr div.ui-toaster h4.ui-toaster-title,
+div.ui-toaster-area-tl div.ui-toaster h4.ui-toaster-title {
+  font-weight:bold;
+  font-size: small;
+  display:block;
+  margin:0px;
+  padding:0px;
+  color:#ffffff;
+  background-color:#334C7F;
+}
+
+div.ui-toaster-area-br div.ui-toaster p.ui-toaster-content,
+div.ui-toaster-area-bl div.ui-toaster p.ui-toaster-content,
+div.ui-toaster-area-tr div.ui-toaster p.ui-toaster-content,
+div.ui-toaster-area-tl div.ui-toaster p.ui-toaster-content {
+  display:block;
+  margin:0px;
+  padding:0px;
+  font-size: small;
+}
+
+div.ui-toaster-area-br div.ui-toaster span.ui-toaster-close,
+div.ui-toaster-area-bl div.ui-toaster span.ui-toaster-close,
+div.ui-toaster-area-tr div.ui-toaster span.ui-toaster-close,
+div.ui-toaster-area-tl div.ui-toaster span.ui-toaster-close {
+  float:right;
+  border:2px solid #99CCFF;
+  background-color:#DD6000;
+  color:#ffffff;
+  font-size:0.8em;
+  cursor:pointer;
+}

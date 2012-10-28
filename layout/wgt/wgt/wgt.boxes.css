@@ -1,0 +1,247 @@
+/*//////////////////////////////////////////////////////////////////////////////
+// Error , Warning and Message Boxes
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+
+.wgt-box.full
+{
+  padding:7px;
+}
+
+
+.wgt-box.space,
+div.space
+{
+  padding:4px;
+}
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Error , Warning and Message Boxes
+//////////////////////////////////////////////////////////////////////////////*/
+
+div.wgt-box.info,
+div.wgt-box.message
+{
+  border:5px solid white;
+  background-color:#C2DDA4;
+  padding:4px;
+  margin-bottom:5px;
+  color:#530000;
+  border-radius: 10px;
+}
+
+div.wgt-box.warning
+{
+  width:98%;
+  margin:3px;
+  padding:4px;
+  border-radius: 10px;
+}
+
+div.wgt-box.error
+{
+  border:5px solid #003466;
+  background-color:#C00000;
+  padding:4px;
+  margin-bottom:5px;
+  color:white;
+  border-radius: 10px;
+}
+
+
+div.wgt-box.maintenance
+{
+  width:1024px;
+  height:90%;
+  margin:0px auto;
+  background-image: url(<?php echo $icons ?>wgt/maintenance.jpg);
+  background-repeat:no-repeat;
+/*  background-position:100px 50%; */
+}
+
+/* Cell grid Boxes */
+
+table.wgt-cell_grid
+{
+	border: 1px solid black;
+}
+
+table.wgt-cell_grid td
+{
+	border:1px dotted silver;
+	padding:2px;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Content Boxes
+//////////////////////////////////////////////////////////////////////////////*/
+
+div.wgt-content_box,
+div.wgt-news-box
+{
+  height:auto;
+  padding:5px;
+  margin-top:5px;
+  border:1px solid #ccc;
+  border-radius:5px 5px 0px 0px;
+  background-color:#eee;
+}
+
+div.wgt-content_box>div.head,
+div.wgt-news-box>div.head
+{
+  border-bottom:1px solid #ddd;
+  padding:5px;
+  padding-bottom:10px;
+  height:33px;
+}
+
+div.wgt-content_box>div.head h2,
+div.wgt-news-box>div.head h2
+{
+  width:190px;
+  display:block;
+  float:left;
+  margin:0px;
+  padding:0px;
+}
+
+div.wgt-content_box>div.head div.search
+{
+  width:170px;
+  float:right;
+  margin:0px;
+  padding:0px;
+}
+
+div.wgt-content_box>div.content
+{
+  padding:3px;
+  padding-top:6px;  
+  padding-bottom:6px; 
+  overflow: auto;
+}
+
+div.wgt-content_box>div.head button.wgt-button.append
+{
+  
+  padding:0px;
+  margin-left:-5px;
+}
+
+/* Widget */
+
+div.wgt-content_box.wgt-widget
+{
+  width:380px;
+}
+
+div.wgt-content_box.wgt-widget>div.content,
+div.wgt-content_box.wgt-tag_cloud>div.content
+{
+  height:180px;
+}
+
+/* Tag Cloud specific */
+
+div.wgt-content_box.wgt-tag_cloud>div.content span.tag
+{
+  line-height:20px;
+  display: block;
+  float: left;
+  padding-right:11px;
+  padding-left:12px;
+  margin-top:5px;
+  margin-bottom:5px;
+  border-right:1px solid #ddd;
+}
+
+
+div.wgt-content_box.wgt-tag_cloud>div.content span:hover
+{
+  /*font-size:14px;*/
+  padding-right:11px;
+  padding-left:12px;
+  background-color: #ddd;
+  cursor: default;
+}
+
+div.wgt-content_box.wgt-tag_cloud>div.content button 
+{
+  padding:0 !important;
+  margin:0 !important;
+  width:65px;
+  height:35px;
+  position:absolute;
+  display:inherit;
+  margin-top:-50px !important;
+  margin-left: -5px !important;
+  z-index:5000;
+  border:none;
+  background: transparent url('<?php echo $icons ?>/xsmall/control/delete_hover.png') no-repeat center top !important;
+}
+
+div.wgt-content_box.wgt-tag_cloud>div.content button img
+{
+  display:none;
+}
+
+div.wgt-content_box.wgt-tag_cloud>div.head div.search
+{
+  position:relative;
+  padding-bottom:25px;
+	padding-right:10px;
+}
+
+/* Comment Tree specific */
+
+div.wgt-content_box.wgt-comment_tree div.editor
+{
+  border-top:1px solid #ddd;
+  padding:5px;
+  padding-top:10px;
+}
+
+div.wgt-content_box.wgt-comment_tree div.content
+{
+  background-color:white;
+}
+
+div.wgt-content_box.wgt-comment_tree div.wgt-comment
+{
+  padding-bottom:2px;
+  margin-bottom:8px;
+  border-bottom: 1px dashed silver;
+}
+
+div.wgt-content_box.wgt-comment_tree div.wgt-comment>h3
+{
+  margin-bottom:3px;
+  background-color:#EEEEEE;
+}
+
+div.wgt-content_box.wgt-comment_tree div.wgt-comment>p
+{
+  border-bottom:1px dotted silver;
+  padding:0px;
+  padding-left:3px;
+}
+
+div.wgt-content_box.wgt-comment_tree div.wgt-comment span.user
+{
+  border-bottom:1px dotted silver;
+}
+
+div.wgt-content_box.wgt-comment_tree div.wgt-comment span.date
+{
+  font-size:10px;
+  font-style:italic;
+}
+
+div.wgt-content_box.wgt-comment_tree div.wgt-comment div.content
+{
+  background-color:white;
+  padding-bottom:5px;
+}

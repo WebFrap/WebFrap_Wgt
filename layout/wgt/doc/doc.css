@@ -1,0 +1,78 @@
+
+
+/*
+ green:  #64b824;
+ grey:   #4D4D4D;
+ bggrey: #f3f3f3;
+ hell blau: #39aecf;
+*/
+
+
+div.code
+{
+  background-color:#f3f3f3;
+  border:1px solid #39aecf;
+  padding:4px;
+  font-family:courier;
+  margin-bottom:7px;
+}
+
+fieldset.code
+{
+  background-color:#f3f3f3;
+  border:1px solid #39aecf;
+  padding:4px;
+  font-family:courier;
+  margin-bottom:7px;
+}
+
+fieldset.code > legend
+{
+  color:#64b824;
+  font-weight:bold;
+}
+
+.docMenu > ol{}
+
+ol.docMenu {
+  margin-left:20px;
+}
+
+ol.docMenu > li > ul {
+  margin-left:10px;
+}
+
+ul > li > ul {
+  margin-left:10px;
+}
+
+.docMenu li{
+  color:#39aecf;
+}
+
+.docMenu a{
+  color:#64b824;
+}
+
+
+.docTree {
+  margin-bottom:8px;
+  margin-left:25px;
+}
+
+ul.docTree li>p , ol.docTree li>p
+{
+  width:160px;
+  float:left;
+  padding:0px;
+  padding-bottom:0px;
+  margin:0px;
+}
+
+.docTree li{
+  color:#39aecf;
+}
+
+.docTree a{
+  color:#64b824;
+}

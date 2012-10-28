@@ -1,0 +1,132 @@
+.wgt-tree_list,
+.wgt-tree_list ul
+{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.wgt-tree_list ul
+{
+	background-color: transparent;
+	margin-top: 4px;
+}
+
+.wgt-tree_list .hitarea
+{
+	background: url(<?php echo $images ?>wgt/wgt-tree_list-default.gif) -64px -25px no-repeat;
+	height: 16px;
+	width: 16px;
+	margin-left: -16px;
+	float: left;
+	cursor: pointer;
+}
+
+
+.wgt-tree_list li
+{
+	margin: 0;
+	padding: 3px 0pt 3px 16px;
+}
+
+.wgt-tree_list a.selected
+{
+	background-color: #eee;
+}
+
+#treecontrol 
+{ 
+  margin: 1em 0; 
+  display: none; 
+}
+
+/*
+.wgt-tree_list .hover 
+{ 
+  color: #530000; 
+  cursor: pointer; 
+}
+*/
+
+.wgt-tree_list li 
+{ 
+  background: url(<?php echo $images ?>wgt/wgt-tree_list-default-line.gif) 0 0 no-repeat; 
+}
+
+.wgt-tree_list li.collapsable,
+.wgt-tree_list li.expandable
+{
+	background-position: 0 -176px;
+}
+
+.wgt-tree_list .expandable-hitarea 
+{ 
+  background-position: -80px -3px;
+}
+
+.wgt-tree_list li.last 
+{ 
+	background-position: 0 -1766px
+}
+
+.wgt-tree_list li.lastCollapsable, 
+.wgt-tree_list li.lastExpandable 
+{ 
+	background-image: url(<?php echo $images ?>wgt/wgt-tree_list-default.gif);
+}
+.wgt-tree_list li.lastCollapsable 
+{ 
+	background-position: 0 -111px
+}
+.wgt-tree_list li.lastExpandable 
+{ 
+	background-position: -32px -67px
+}
+
+.wgt-tree_list div.lastCollapsable-hitarea, 
+.wgt-tree_list div.lastExpandable-hitarea 
+{ 
+	background-position: 0;
+}
+
+
+.wgt-tree_list li 
+{ 
+	background-image: url(<?php echo $images ?>wgt/wgt-tree_list-red-line.gif);
+}
+.wgt-tree_list .hitarea, 
+.wgt-tree_list li.lastCollapsable, 
+.wgt-tree_list li.lastExpandable 
+{ 
+	background-image: url(<?php echo $images ?>wgt/wgt-tree_list-famfamfam.gif);
+}
+
+.wgt-tree_list .placeholder 
+{
+	background: url(<?php echo $images ?>wgt/ajax-loader.gif) 0 0 no-repeat;
+	height: 16px;
+	width: 16px;
+	display: block;
+}
+
+
+/*Whatever*/
+.wgt-tree_list-red li 
+{ 
+  background-image: url(<?php echo $images ?>wgt/wgt-tree_list-red-line.gif);
+}
+
+.wgt-tree_list-red .hitarea, 
+.wgt-tree_list-red li.lastCollapsable, 
+.wgt-tree_list-red li.lastExpandable 
+{ 
+  background-image: url(<?php echo $images ?>wgt/wgt-tree_list-red.gif);
+}
+
+.wgt-tree_list-black li { background-image: url(<?php echo $images ?>wgt/wgt-tree_list-black-line.gif); }
+.wgt-tree_list-black .hitarea, .wgt-tree_list-black li.lastCollapsable, .wgt-tree_list-black li.lastExpandable { background-image: url(<?php echo $images ?>wgt/wgt-tree_list-black.gif); }
+
+.wgt-tree_list-gray li { background-image: url(<?php echo $images ?>wgt/wgt-tree_list-gray-line.gif); }
+.wgt-tree_list-gray .hitarea, .wgt-tree_list-gray li.lastCollapsable, .wgt-tree_list-gray li.lastExpandable { background-image: url(<?php echo $images ?>wgt/wgt-tree_list-gray.gif); }
+
+

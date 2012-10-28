@@ -1,0 +1,58 @@
+/*//////////////////////////////////////////////////////////////////////////////
+// Panel
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+.wgt-panel
+{
+  height:32px;
+  padding:3px;
+  margin:0px !important;
+  /*width:100%;*/
+  overflow:hidden;
+}
+
+div.wgt-panel div.inner
+{
+  height:33px;
+}
+
+.wgt-panel .buttons
+{
+  float:left;
+  padding-top:5px;
+}
+
+.wgt-panel.head
+{
+  padding-top:6px;
+  height:32px;
+  border-bottom: 1px solid black !important;
+}
+
+div.wgt-panel.menu
+{
+  padding:3px;
+  padding-left:6px;
+  height:32px;
+  border: 1px solid black;
+	border-radius: 3px;
+}
+
+.wgt-panel.title h2
+{
+  white-space: nowrap;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  display:block;
+}
+
+.wgt-panel-control
+{
+	clear:none;
+  display:inline;
+  float:left;
+  zoom: 1; /* FU IE */  
+	margin-left:5px;
+}
+
+

@@ -1,0 +1,42 @@
+/*//////////////////////////////////////////////////////////////////////////////
+// Blockliste
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+ul.wgt-blocklist
+{
+  padding:0px;
+  margin:0px;
+  width:100%;
+  clear:both;
+  list-style-type:none;
+}
+
+ul.wgt-blocklist>li
+{
+  padding-top:5px;
+  padding-bottom:5px;
+}
+
+ul.wgt-blocklist .row1
+{
+}
+
+ul.wgt-blocklist .row2
+{
+}
+
+ul.wgt-blocklist .row3
+{
+}
+
+ul.wgt-blocklist .row4
+{
+}
+
+
+ul.wgt-blocklist label
+{
+  font-weight:bold;
+}
+

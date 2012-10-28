@@ -1,0 +1,49 @@
+/*//////////////////////////////////////////////////////////////////////////////
+// List Selector
+//////////////////////////////////////////////////////////////////////////////*/
+
+.wgt-dbl_list_selector
+{
+  border:1px solid silver;
+  margin: 3px;
+}
+
+.wgt-dbl_list_selector ul.out,
+.wgt-dbl_list_selector ul.in
+{
+  margin:5px;
+  border:1px solid silver;
+  max-height: 250px;
+  overflow:auto;
+}
+
+.wgt-dbl_list_selector ul.out
+{
+  float:left;
+}
+
+.wgt-dbl_list_selector ul.in
+{
+  float:right;
+}
+
+.wgt-dbl_list_selector div.menu
+{
+  float:left;
+  margin:5px;
+  /*
+  margin-top:10px;
+  text-align: center;*/
+}
+
+.wgt-dbl_list_selector div.menu .entry
+{
+  padding:2px;
+  /*margin-left:38px;*/
+}
+
+.wgt-dbl_list_selector ul li
+{
+  border:1px solid silver;  
+  padding:3px;
+}

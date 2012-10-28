@@ -1,0 +1,111 @@
+.wgt-tree,
+.wgt-tree ul
+{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.wgt-tree ul
+{
+  background-color: transparent;
+  margin-top: 4px;
+}
+
+.wgt-tree .hitarea
+{
+  background: url(<?php echo $images ?>wgt/wgt-tree-default.gif) -64px -25px no-repeat;
+  height: 16px;
+  width: 16px;
+  margin-left: -16px;
+  float: left;
+  cursor: pointer;
+}
+
+/* fix for IE6 */
+* html .hitarea
+{
+  display: inline;
+  float:none;
+}
+
+.wgt-tree li
+{
+  margin: 0;
+  padding: 3px 0pt 3px 16px;
+}
+
+.wgt-tree a.selected
+{
+  background-color: #eee;
+}
+
+#treecontrol 
+{ 
+  margin: 1em 0; 
+  display: none; 
+}
+
+/*
+.wgt-tree .hover 
+{ 
+  color: #530000; 
+  cursor: pointer; 
+}
+*/
+
+.wgt-tree li 
+{ 
+  background: url(<?php echo $images ?>wgt/wgt-tree-default-line.gif) 0 0 no-repeat; 
+}
+
+.wgt-tree li.collapsable,
+.wgt-tree li.expandable
+{
+  background-position: 0 -176px;
+}
+
+.wgt-tree .expandable-hitarea { background-position: -80px -3px; }
+
+.wgt-tree li.last { background-position: 0 -1766px }
+.wgt-tree li.lastCollapsable, .wgt-tree li.lastExpandable { background-image: url(<?php echo $images ?>wgt/wgt-tree-default.gif); }
+.wgt-tree li.lastCollapsable { background-position: 0 -111px }
+.wgt-tree li.lastExpandable { background-position: -32px -67px }
+
+.wgt-tree div.lastCollapsable-hitarea, .wgt-tree div.lastExpandable-hitarea { background-position: 0; }
+
+.wgt-tree-red li { background-image: url(<?php echo $images ?>wgt/wgt-tree-red-line.gif); }
+.wgt-tree-red .hitarea, .wgt-tree-red li.lastCollapsable, .wgt-tree-red li.lastExpandable { background-image: url(<?php echo $images ?>wgt/wgt-tree-red.gif); }
+
+.wgt-tree-black li { background-image: url(<?php echo $images ?>wgt/wgt-tree-black-line.gif); }
+.wgt-tree-black .hitarea, .wgt-tree-black li.lastCollapsable, .wgt-tree-black li.lastExpandable { background-image: url(<?php echo $images ?>wgt/wgt-tree-black.gif); }
+
+.wgt-tree-gray li { background-image: url(<?php echo $images ?>wgt/wgt-tree-gray-line.gif); }
+.wgt-tree-gray .hitarea, .wgt-tree-gray li.lastCollapsable, .wgt-tree-gray li.lastExpandable { background-image: url(<?php echo $images ?>wgt/wgt-tree-gray.gif); }
+
+.wgt-tree li { background-image: url(<?php echo $images ?>wgt/wgt-tree-red-line.gif); }
+.wgt-tree .hitarea, .wgt-tree li.lastCollapsable, .wgt-tree li.lastExpandable { background-image: url(<?php echo $images ?>wgt/wgt-tree-famfamfam.gif); }
+
+.wgt-tree .placeholder {
+  background: url(<?php echo $images ?>wgt/ajax-loader.gif) 0 0 no-repeat;
+  height: 16px;
+  width: 16px;
+  display: block;
+}
+
+.filetree li { padding: 3px 0 2px 16px; }
+.filetree span.folder, .filetree span.file { padding: 1px 0 1px 16px; display: block; }
+.filetree span.folder { background: url(<?php echo $images ?>wgt/folder.gif) 0 0 no-repeat; }
+.filetree li.expandable span.folder { background: url(<?php echo $images ?>wgt/folder-closed.gif) 0 0 no-repeat; }
+.filetree span.file { background: url(<?php echo $images ?>wgt/file.gif) 0 0 no-repeat; }
+
+.wgt-tree a,
+.treeview a,
+.wgt-tree p,
+.treeview p,
+.wgt-tree span,
+.treeview span
+{
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+

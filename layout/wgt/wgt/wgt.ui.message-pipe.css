@@ -1,0 +1,125 @@
+/**
+ * Newsbox
+ *
+ */
+
+div.wgt-news-box
+{
+  height:98%;
+  width:98%;	
+}
+
+div.wgt-news-box div.wgt-content
+{
+  height:100%;
+  padding:3px;
+  padding-top:6px;  
+  padding-bottom:6px;
+}
+
+div.wgt-news-box li.entry
+{
+  margin:3px;
+  margin-top:8px; 
+}
+
+div.wgt-news-box li.entry>h3
+{
+  clear:both;
+  background-color:#DDDDDD;
+  border-bottom:1px #ccc;  
+  margin-bottom:0px;  
+}
+
+div.wgt-news-box li.entry>div
+{
+  margin-bottom:10px;
+  border:1px #ccc;  
+  border-top:0px;  
+  background-color:white;
+}
+
+
+/**
+ * Message Pipe 
+ *
+ */
+
+ul.wgt-message-pipe
+{ 
+  width:750px;
+  padding:4px;
+}
+
+ul.wgt-message-pipe li
+{
+  width:746px;
+  margin-bottom:7px;
+  border:1px solid silver;
+}
+
+
+ul.wgt-message-pipe li div.title
+{
+  height:20px;
+  padding:4px;
+  border-bottom:1px dotted silver;
+  background-color:#DFEFFC;
+}
+
+ul.wgt-message-pipe li div.title div.title_text
+{
+  float:left;
+  width: 720px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+ul.wgt-message-pipe li div.title div.title_menu
+{
+  float:right;
+  width: 22px;
+  margin-top:-16px;
+  margin-right:5px;
+}
+
+ul.wgt-message-pipe li div.title div.title_menu button
+{
+}
+
+ul.wgt-message-pipe li div.content
+{
+  border-bottom:1px dotted silver;  
+  padding-bottom:10px;
+  padding:4px;  
+}
+
+ul.wgt-message-pipe li div.footer
+{
+  padding:4px;
+  background-color:#F2F2F2;    
+}
+
+ul.wgt-message-pipe li div.footer span
+{
+  color:grey;
+  size:10px;
+}
+
+div.box-message 
+{
+  min-height:20px;
+}
+
+div.box-message a
+{
+	border-bottom:1px dotted silver;
+}
+
+div.box-message pre
+{
+  border:0px;
+	color:black;
+	padding-top:3px;
+	padding-bottom:5px;
+	font-family:inherit;
+}

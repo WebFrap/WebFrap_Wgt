@@ -1,0 +1,228 @@
+/*//////////////////////////////////////////////////////////////////////////////
+// headings
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+h1
+{
+  margin-bottom:15px;
+  font-size:2.5em;
+  letter-spacing: 0.1em;
+}
+
+h1 a
+{
+  margin-bottom:15px;
+  font-size:1em;
+  letter-spacing: 0.1em;
+}
+
+
+h2
+{
+  font-size:1.5em;
+  margin-bottom:9px;
+}
+
+h2 a.head
+{
+  font-size: 1.5em;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+
+h3
+{
+  font-size:1.2em;
+  margin-bottom:9px;
+}
+
+h4
+{
+  font-size:1.1em;
+  margin-bottom:9px;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Links
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+a img,
+a.icon
+{
+  border:0px;
+  border-bottom:0px;
+}
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// text layout
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+.border
+{
+}
+
+.text
+{
+}
+
+.emphasized
+{
+   margin-top:20px;
+   font-size:10px;
+}
+
+.important
+{
+}
+
+.selected
+{
+}
+
+.god
+{
+  background-color:#8bff38;
+  font-weight:bolder;
+}
+
+.average
+{
+  background-color:#fcff36;
+  font-weight:bolder;
+}
+
+.warn
+{
+  background-color:#ffb342;
+  font-weight:bolder;
+}
+
+.bad
+{
+  background-color:#db0000;
+  color:#fffb04;
+  font-weight:bolder;
+}
+
+
+.code
+{
+  margin:10px 3px 10px 3px;
+  padding:4px;
+}
+
+
+
+pre, blockquote
+{
+  padding:5px;
+}
+
+
+
+p
+{
+  padding-bottom:8px;
+  margin: 3px 0;
+  padding-left:4px;
+}
+
+b,strong
+{
+  font-weight:bold;
+}
+
+hr
+{
+  clear:both;
+}
+
+div.text
+{
+  /*width:100%;*/
+  border:0px;
+  margin-bottom:20px;
+}
+
+div.text ul
+{
+  font-weight:normal;
+  text-decoration:none;
+  margin-left:20px;
+}
+
+div.text p
+{
+  margin:10px 0px 10px 0px;
+}
+
+div.text blockquote
+{
+  font-style:italic;
+  margin:10px 0px 10px 0px;
+}
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Slice & Entry Elements for Text Layouts
+//////////////////////////////////////////////////////////////////////////////*/
+
+.slice .title a:hover
+{
+}
+
+.slice .info
+{
+  text-align: left;
+  width:98%;
+}
+
+.slice > .entry
+{
+  padding: 10px 0 20px 0;
+  text-align: justify;
+}
+
+.slice > .entry p
+{
+  text-align: justify;
+}
+
+
+.slice ul
+{
+  margin-left:20px;
+}
+
+
+.entry ul
+{
+  padding-bottom:8px;
+}
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Text Box
+//////////////////////////////////////////////////////////////////////////////*/
+                                                                              
+div.wgt-text-container
+{
+
+}
+
+div.wgt-text-container h3
+{
+  padding:3px;
+	margin:0px;
+}
+
+div.wgt-text-container div.content
+{
+  padding:3px;
+	min-height:120px;
+}

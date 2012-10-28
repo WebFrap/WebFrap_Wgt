@@ -1,0 +1,108 @@
+/*//////////////////////////////////////////////////////////////////////////////
+// CMS
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+div.cms-body
+{
+  padding:0px;
+  margin:0px auto;
+  width:1000px;
+  clear:both;
+  list-style-type:none;
+  border:1px solid black;
+}
+
+div.cms-menu
+{
+  width:200px;
+  float:left;
+  border-right:1px solid #0066A5;
+}
+
+
+div.cms-menu h3
+{
+  font-size:16px;
+  font-weight:bold;
+  margin-bottom:7px;
+  background-color:#DCDCDC;
+}
+
+div.cms-menu ul.wgt-tree
+{
+  margin-left:5px;
+  margin-bottom:7px;  
+}
+
+
+#cms-logo
+{
+  width:300px;
+}
+
+#cms-logo h1
+{
+  size:28px;
+  color:white;
+  margin-top:-10px;
+  font-weight:bold;
+}
+
+div.cms-content
+{
+  width:795px;
+  float:right;  
+}
+
+div.cms-header
+{
+  height:30px;
+  width:980px;
+  background-color:#0066A5;
+  color:white;  
+  padding:10px;
+  text-align:center;
+}
+
+div.cms-header h1
+{
+  width:300px;
+}
+
+div.cms-header a
+{
+  color:white;
+  border-bottom:1px dotted white;
+}
+
+div.cms-header ul li
+{
+  display:inline;
+}
+
+div.cms-footer
+{
+  height:30px;
+  width:980px;
+  background-color:#0066A5;
+  color:white;
+  padding:10px;
+  text-align:center;
+}
+
+div.cms-footer a
+{
+  color:white;  
+  border-bottom:1px dotted white;  
+}
+
+div.cms-footer ul li
+{
+  display:inline;
+}
+
+div.wgt-box .slide
+{
+  
+}

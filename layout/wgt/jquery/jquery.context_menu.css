@@ -1,0 +1,63 @@
+/* Generic context menu styles */
+.wgt-context_menu {
+	position: absolute;
+	width: 120px;
+	z-index: 99999;
+	border: solid 1px #CCC;
+	background: #EEE;
+	padding: 0px;
+	margin: 0px;
+	display: none;
+}
+
+.wgt-context_menu li {
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+.wgt-context_menu img {
+  display: block;
+  line-height: 20px;
+  text-decoration: none;
+  border:0px;
+  height: 20px;
+  width:18px;
+  float:left;
+  padding: 1px 5px;
+  outline: none;
+}
+
+
+.wgt-context_menu a {
+  float:inline;  
+	color: #333;
+	text-decoration: none;
+	display: block;
+	line-height: 20px;
+	height: 20px;
+	background-position: 6px center;
+	background-repeat: no-repeat;
+	outline: none;
+	padding: 1px 5px;
+}
+
+.wgt-context_menu li.hover a {
+	color: #FFF;
+	background-color: #3399FF;
+}
+
+.wgt-context_menu li.disabled a {
+	color: #AAA;
+	cursor: default;
+}
+
+.wgt-context_menu li.hover.disabled a {
+	background-color: transparent;
+}
+
+.wgt-context_menu li.separator {
+	border-top: solid 1px #CCC;
+}
+
+

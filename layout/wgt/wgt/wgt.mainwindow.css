@@ -1,0 +1,101 @@
+/*//////////////////////////////////////////////////////////////////////////////
+// main window
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+div.wgt_mwin
+{
+	height:100%;
+	width:100%;
+	position:absolute;
+	top:0px;
+	left:0px;
+	overflow:hidden;
+}
+
+div.wgt_mwin div.mwin_body
+{
+  width:100%;
+  position:absolute;
+  top:35px;
+  bottom:30px;
+  left:0px;
+  overflow:auto;
+}
+
+div.wgt_mwin div.mwin_panel
+{
+  width:100%;
+  height:35px;
+  position:absolute;
+  top:0px;
+  left:0px;
+  
+  /* theme */
+  border-bottom:1px solid black;
+}
+
+
+/*div.wgt_mwin div.mwin_footer*/
+#mwin_footer
+{
+  width:100%;
+  height:21px;
+  position:absolute;
+  bottom:1px;
+  left:0px;
+  
+  /* theme */
+  border-top:1px solid #ccc;
+  
+  /* added */
+  text-align: center;
+  background-color: #ddd;
+  
+  color: #fff;
+}
+
+#mwin_footer table
+{
+	text-align: center;
+	width: 100%;
+}
+
+#mwin_footer_history{
+      position: absolute;
+      bottom: 22px;
+      left: 0px;
+      border-top: 1px solid #ccc;
+      width: 100%;
+      text-align: center;
+      background-color: #ddd;
+      height: 30%;
+      z-index: 2;
+}
+    
+#mwin_footer_history table{
+  width: 100%;
+  text-align: center;
+}
+/* end */
+
+
+
+div.wgt_mwin div.mwin_pcont_menu
+{
+  height:35px;
+  position:absolute;
+  top:0px;
+  left:0px;
+  max-width:29%;
+  padding:5px;
+}
+
+div.wgt_mwin div.mwin_pcont_tabs
+{
+  height:35px;
+  position:absolute;
+  top:0px;
+  right:20px;
+  max-width:66%
+}

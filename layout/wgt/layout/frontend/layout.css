@@ -1,0 +1,164 @@
+/*******************************************************************************
+* Layout Boxes Mainpage
+*******************************************************************************/
+
+/*
+div#wbf-body
+{
+  height:    100%;
+  width:     100%;
+}
+*/
+
+div#wbf-ui-panel
+{
+  position:absolute;
+  top:0px;
+  left:0px;
+  right:0px;
+  height:35px;
+  border:0px !important;
+}
+
+#wbf-maintab_bar
+{
+  height:27px;
+  left:600px;
+  padding-top:8px;
+  position:absolute;
+  right:0;
+}
+
+
+div#wbf-menu
+{
+  overflow:hidden;
+  position:absolute;
+  top:36px;
+  left:0px;
+  bottom:20px;
+  width:222px;
+  padding:10px;
+  padding-top:0px;
+  padding-bottom:0px;
+  /*
+  overflow-x:hidden;
+  overflow-y:auto;
+  */
+}
+
+/* ie7 fix 
+* + html div#wbf-menu {
+   height : 93%;
+}*/
+
+div#wbf-menu-panel
+{
+  height:4%;
+  position:absolute;
+  left:210px;
+}
+
+div#wbf-inner-menu
+{
+  width:220px;
+  height:95%;
+  top:4%;
+  position:absolute;
+}
+
+
+div#wbf-content
+{
+  position:absolute;
+  left:243px;
+  top:36px;
+  bottom:0px;
+  right:0px;
+  overflow:hidden;
+}
+
+div#wbf-content div.wgt-panel.maintab
+{
+  position:static;
+  top:0px;
+  left:0px;
+  right:0px;
+  height:35px;
+  padding:0px !important;
+  /*padding-top:7px;*/
+  z-index:2;
+}
+
+div#wbf-content div.wgt-content.maintab
+{
+  position:absolute;
+  top:62px;
+  left:0px;
+  right:0px;
+  bottom:0px;
+  /*bottom:20px;*/
+  padding:0px;
+  overflow:auto;
+  z-index:0;
+}
+
+div#wbf-content div.wgt_tab_head
+{
+   position:relative;
+   z-index:2;
+}
+div#wbf-content div.wgt_footer.maintab
+{
+  position:absolute;
+  overflow:hidden;
+  left:0px;
+  bottom:0px;
+  right:0px;
+  height:20px;
+  padding-left:5px;
+  padding-right:5px;
+}
+
+div#wbf-content-full
+{
+  position:absolute;
+  left:0px;
+  top:36px;
+  bottom:0px;
+  right:0px;
+  overflow-x:auto;
+  overflow-y:auto;
+}
+
+
+#wbf-cont-workarea{ /*Contains toolbar and horizontal splitter*/
+  position: absolute;
+  top: 0px;
+  bottom: 1px;
+  left:243px;
+  right:0px;
+  overflow: auto;
+  height:100%;
+}
+
+
+#wbf-footer
+{ /*Contains toolbar and horizontal splitter*/
+  position: absolute;
+  left:0px;
+  bottom: 0px;
+  right:0px;
+  overflow: auto;
+  height:20px;
+  width:242px;
+}
+
+#wbf-footer-history
+{
+  position: absolute;
+  max-height:80%;
+  bottom: 20px;
+  left: 0px;
+  right:0px;
+}

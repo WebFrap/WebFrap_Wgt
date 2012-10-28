@@ -1,0 +1,912 @@
+/*******************************************************************************
+* WebFrap Layout Template
+*******************************************************************************/
+
+/* clean all */
+*
+{
+  margin:   0;
+  padding:  0;
+  font-size:12px;
+  text-decoration:none;	
+}
+
+ul,li,ol
+{	
+  list-style:  none;	
+}
+
+
+body, html
+{
+  height:    100%;
+  width:     100%;
+  margin:    0px;
+  padding:   0px;
+}
+
+a
+{
+  cursor:pointer;
+}
+
+a.plain
+{
+  cursor:default;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Meta elements
+//////////////////////////////////////////////////////////////////////////////*/
+
+/* @imutable */
+.template,
+.meta,
+.hidden,
+.settings,
+var
+{
+  /* Markierungsklasse für Vorlagen, wir vor dem Anzeigen gelöscht */
+  display: none;
+}
+
+/*
+Template welches für absolut positinierte Boxen verwendet wird
+*/
+.box_template
+{
+  display: none;
+  position:absolute;
+  z-index:5000;
+  background-color:white;
+  border:2px solid blue;
+}
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Layouting and positioning
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+/* @imutable */
+.clear
+{
+  clear: both;
+}
+
+/* @imutable */
+div.left,
+fieldset.left,
+ul.left,
+span.left
+{
+	display:block;
+  clear: both;
+  float: left;
+	zoom: 1; /* FU IE */
+}
+
+/* @imutable */
+div.inline,
+fieldset.inline,
+ul.inline
+{
+  clear:none;
+  display:inline-block; /* sicher ? */
+  float:left;
+  zoom: 1; /* FU IE */	
+}
+
+/* @imutable */
+div.right,
+fieldset.right,
+ul.right,
+span.right
+{
+  display:block;
+  float:right;
+  display:block;
+  zoom: 1; /* FU IE */	
+}
+
+/* @imutable */
+div.rightline,
+ul.rightline
+{
+  float:right;
+  display:inline-block;
+  zoom: 1; /* FU IE */	
+}
+
+/* @imutable */
+div.width-auto,
+ul.width-auto
+{
+  width:auto !important;
+}
+
+/* @imutable */
+div.height-auto,
+ul.height-auto
+{
+  height:auto !important;
+}
+
+/* @imutable */
+div.auto
+{
+  width:auto !important;
+  height:auto !important;
+}
+
+/* @imutable */
+.full
+{
+  clear: both;
+  width:auto;
+  display:block;
+}
+
+table.full,
+ul.full
+{
+	display:table;
+  width:100%;
+}
+
+/* blockelemente auf 100% enforcen, aber sicher stellen, dass padding
+keinen strich durch die rechnung macht. */
+.forcefull
+{
+	padding:0px;
+	witdh:100%;
+}
+
+/* @imutable */
+.clear_line
+{
+  clear: both;
+  height:1px;
+}
+
+/* @imutable */
+.center
+{
+  margin: 0px auto;
+}
+
+/* @imutable */
+.text_center
+{
+  text-align: center;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Layouting and positioning
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+.pointer,
+.wgt-clickable,
+.cursor
+{
+  cursor:pointer;
+}
+
+
+.wgt-dyn-center
+{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* width und margin müssen selbst gesetzt werden
+  width: 200px;
+  height: 150px;
+  margin-top: -75px;
+  margin-left: -100px;
+  */
+}
+
+/*
+  klasse zum erstellen von ausenabständen in box elementen
+  default margin sind 5px;
+  Änderungen nur in theme.css
+*/
+.wgt-space
+{
+  margin:5px !important;
+}
+
+.wgt-space p
+{
+  margin-left:0px;
+	padding-left:0px;
+}
+
+.wgt-bspace
+{
+  margin-bottom:9px;
+}
+
+.wgt-bspace-s
+{
+  margin-bottom:5px;
+}
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Fix sizes
+//////////////////////////////////////////////////////////////////////////////*/
+
+/*
+.xsmall
+{
+  width:50px;
+}
+
+.small
+{
+  width:100px;
+}
+
+.medium
+{
+  width:150px;
+}
+
+.big
+{
+  width:250px;
+}
+*/
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Icons
+//////////////////////////////////////////////////////////////////////////////*/
+
+img.icon,
+img.wgt-icon
+{
+  border-width:0px;
+  cursor:pointer;
+}
+
+img.icon.point,
+img.wgt-icon.point,
+img.wgt-icon.xxsmall
+{
+  width:8px;
+  height:8px;
+}
+
+img.icon.xsmall,
+img.wgt-icon.xsmall
+{
+  width:16px;
+  height:16px;
+}
+
+img.icon.small,
+img.wgt-icon.small
+{
+  width:22px;
+  height:22px;
+}
+
+img.icon.medium,
+img.wgt-icon.medium
+{
+  width:32px;
+  height:32px;
+}
+
+img.icon.large,
+img.wgt-icon.large
+{
+  width:48px;
+  height:48px;
+}
+
+img.icon.xlarge,
+img.wgt-icon.xlarge
+{
+  width:64px;
+  height:64px;
+}
+
+img.icon.xxlarge,
+img.wgt-icon.xxlarge
+{
+  width:128px;
+  height:128px;
+}
+
+
+.wgt_icon_close_tab
+{
+  padding-bottom:2px;
+  margin-right:-7px; /*2px*/
+  width:16px;
+  height:16px;
+  background:url("<?php echo $icons ?>xsmall/control/close_tab.png");
+  background-repeat:no-repeat;
+}
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Relativ sizes
+//////////////////////////////////////////////////////////////////////////////*/
+
+.nearly_full
+{
+  width:99%;
+  margin:0 auto;
+}
+
+.content .nearly_full
+{
+  width:98%;
+  margin:0 auto;
+}
+
+.behind
+{
+  position:absolute;
+  top:0px;
+  left:0px;
+  right:0px;
+  bottom:0px;
+}
+
+.half
+{
+  width:49.9%;
+}
+
+.half-b
+{
+  width:49%;
+}
+
+.third
+{
+  width:33.2%;
+}
+
+.two_third
+{
+  width:66.5%;
+}
+
+.fourth
+{
+  width:24.9%;
+}
+
+.tree_fourth
+{
+  width:74.9%;
+}
+
+.fith
+{
+  width:19.9%;
+}
+
+.two_fith
+{
+  width:39.8%;
+}
+
+.tree_fith
+{
+  width:59.7%;
+}
+
+.four_fith
+{
+  width:79.6%;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Absolute Größen
+//////////////////////////////////////////////////////////////////////////////*/
+                                                                              
+                                                                              
+.bw02
+{
+  width:25px !important;
+}
+
+.bw04
+{
+  width:50px !important;
+}
+
+.bw05
+{
+  width:62px !important;
+}
+
+.bw06
+{
+  width:75px !important;
+}
+
+.bw08
+{
+  width:100px !important;
+}
+
+.bw1
+{
+  width:125px !important;
+}
+
+.bw2
+{
+  width:250px !important;
+}
+
+.bw3
+{
+  width:375px !important;
+}
+
+.bw32
+{
+  width:400px !important;
+}
+
+.bw39
+{
+  width:490px !important;
+}
+
+.bw4
+{
+  width:500px !important;
+}
+
+.bw5
+{
+  width:625px !important;
+}
+
+.bw6
+{
+  width:750px !important;
+}
+
+.bw61
+{
+  width:762px !important;
+}
+
+.bw62
+{
+  width:770px !important;
+}
+
+.bw63
+{
+  width:800px !important;
+}
+
+.bw7
+{
+  width:875px !important;
+}
+
+.bw71
+{
+  width:887px !important;
+}
+
+.bw72
+{
+  width:893px !important;
+}
+
+.bw8
+{
+  width:1000px !important;
+}
+
+.bw81
+{
+  width:1012px !important;
+}
+
+.bw82
+{
+  width:1020px !important;
+}
+
+.bw9
+{
+  width:1125px !important;
+}
+
+.bh1
+{
+  height:125px !important;
+}
+
+.bh2
+{
+  height:250px !important;
+}
+
+.bh3
+{
+  height:375px !important;
+}
+
+.bh4
+{
+  height:500px !important;
+}
+
+.bh42
+{
+  height:520px !important;
+}
+
+.bh5
+{
+  height:625px !important;
+}
+
+.bh6
+{
+  height:750px !important;
+}
+
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Elemente zum erzeugen von Abständen
+//////////////////////////////////////////////////////////////////////////////*/
+
+div.indention.small
+{
+  clear:both;
+  width:100%;
+  margin-right:-10px;
+}
+
+div.wgt-clear,
+div.wgt-clear.xxsmall
+{
+  clear:both;
+  width:100%;
+  height:1px;
+  line-height:0;
+}
+
+div.wgt-clear.small
+{
+  height:1em;
+}
+
+div.wgt-clear.medium
+{
+  height:1.5em;
+}
+
+div.wgt-clear.big,
+div.wgt-clear.large
+{
+  height:2em;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Boxes for layouting
+//////////////////////////////////////////////////////////////////////////////*/
+
+.wgt-box
+{
+  padding-top:4px;
+  padding-bottom:4px;
+  padding-right:4px;
+  height:100%;
+}
+
+/*
+  Einfacher Container zum platzieren von bestimmten inhalten,
+  zb container info
+  container video... etc.
+  Kann beliebig erweitert werden.
+*/
+div.wgt-container
+{
+  padding-top:4px;
+  padding-bottom:4px;
+  padding-right:4px;
+  float:left;
+}
+
+/*
+  Spezieller Container der die ganze zur verfügung stehende Breite
+  reserviert.
+  Ist fast identisch zu full, hat aber etwas mehr semantic.
+  Im Gegensatz zu full darf wgt-slice customized werden
+*/
+div.wgt-slice
+{
+  width:100%;
+  clear:both;
+}
+
+.wgt-center
+{
+  margin: 0px auto;
+}
+
+div.wgt-container.center
+{
+  position: absolute;
+  top: 50%; 
+  left: 50%;
+  /* width und margin müssen selbst gesetzt werden
+  width: 200px;
+  height: 150px;
+  margin-top: -75px;
+  margin-left: -100px;
+  */
+}
+
+.wgt-box.center.small
+{
+  width: 200px;
+  height: 200px;
+  margin-top: -100px;
+  margin-left: -100px;
+}
+
+.wgt-box.center.medium
+{
+  width: 400px;
+  height: 400px;
+  margin-top: -200px;
+  margin-left: -200px;
+}
+
+.wgt-box.center.large
+{
+  width: 600px;
+  height: 600px;
+  margin-top: -300px;
+  margin-left: -300px;
+}
+
+
+div.wgt-seperator.vertical
+{
+  width:1px;
+  border-right:1px solid black;
+  height:98%;
+  float:left;
+}
+
+
+/* is only a piece, has no borders an nothing, can be used to structure elements
+* with no spaces togehter
+*/
+.wgt-piece
+{
+  height:100%;
+}
+
+table.fix_layout
+{
+  width:100%;
+  height:100%;
+  empty-cells:show;
+  border-collapse:collapse;
+  border-spacing:0px;
+}
+
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// border
+//////////////////////////////////////////////////////////////////////////////*/
+
+/* @imutable */
+.wgt-border
+{
+  border:1px solid silver;
+}
+
+.wgt-border-light
+{
+  border:2px groove silver;
+}
+
+
+.wgt-bg-light
+{
+  background-color:#F2F2F2;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// rounded corners
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+.wgt-corner
+{
+  border: 1px solid black;
+  border-radius: 3px;
+}
+ 
+.wgt-corner-top
+{
+  border: 1px solid black;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;	
+}
+ 
+.wgt-corner-bottom
+{
+  border: 1px solid black;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;	
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Backgrounds
+//////////////////////////////////////////////////////////////////////////////*/
+
+.wgt-bg-head,
+.wgt-bg-foot
+{
+	/* Wird im Theme befüllt */
+	background-color:silver;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Scrolling
+//////////////////////////////////////////////////////////////////////////////*/
+
+.wgt-scroll
+{
+   overflow-y:auto;
+   overflow-x:auto;
+}
+
+.wgt-no-scroll
+{
+   overflow-y:hidden;
+   overflow-x:hidden;
+}
+
+.wgt-scroll-y
+{
+   overflow-y:auto;
+   overflow-x:hidden;
+}
+
+.wgt-scroll-x
+{
+   overflow-y:hidden;
+   overflow-x:auto;
+}
+
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Pointers
+//////////////////////////////////////////////////////////////////////////////*/
+
+.wgt-cursor-pointer
+{
+	cursor:pointer;
+}
+
+.wgt-cursor-wait
+{
+  cursor:wait;
+}
+
+.wgt-cursor-info
+{
+  cursor:help;
+}
+
+.wgt-cursor-crosshair
+{
+  cursor:crosshair;
+}
+
+.wgt-cursor-text
+{
+  cursor:text;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// opacity
+//////////////////////////////////////////////////////////////////////////////*/
+
+.wgt-opacity-10
+{
+  filter:alpha(opacity=10);
+  -khtml-opacity: 0.1;
+  opacity: 0.1;  
+}
+
+.wgt-opacity-20
+{
+  filter:alpha(opacity=20);
+  -khtml-opacity: 0.2;
+  opacity: 0.2;  
+}
+
+.wgt-opacity-30
+{
+  filter:alpha(opacity=30);
+  -khtml-opacity: 0.3;
+  opacity: 0.3;  
+}
+
+.wgt-opacity-40
+{
+  filter:alpha(opacity=40);
+  -khtml-opacity: 0.4;
+  opacity: 0.4;  
+}
+
+.wgt-opacity-50
+{
+  filter:alpha(opacity=50);
+  -khtml-opacity: 0.5;
+  opacity: 0.5;  
+}
+
+.wgt-opacity-60
+{
+  filter:alpha(opacity=60);
+  -khtml-opacity: 0.6;
+  opacity: 0.6;  
+}
+
+.wgt-opacity-70
+{
+  filter:alpha(opacity=70);
+  -khtml-opacity: 0.7;
+  opacity: 0.7;  
+}
+
+.wgt-opacity-80
+{
+  filter:alpha(opacity=80);
+  -khtml-opacity: 0.8;
+  opacity: 0.8;  
+}
+
+.wgt-opacity-90
+{
+  filter:alpha(opacity=90);
+  -khtml-opacity: 0.9;
+  opacity: 0.9;  
+}
+
+.wgt-opacity-100
+{
+  filter:alpha(opacity=100);
+  -khtml-opacity: 1;
+  opacity: 1;  
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// scrollable elements
+//////////////////////////////////////////////////////////////////////////////*/
+
+.w_scrollh
+{
+  overflow-y:auto;
+  overflow-x:hidden;
+}
+

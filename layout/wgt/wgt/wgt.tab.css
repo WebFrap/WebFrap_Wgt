@@ -1,0 +1,214 @@
+/*//////////////////////////////////////////////////////////////////////////////
+// tabs and button bar
+//////////////////////////////////////////////////////////////////////////////*/
+
+div.wgt_tab_head 
+{
+  /*border-bottom:1px solid #A8B8C7;*/
+  /*width:100%;*/
+  float:right;
+  height:22px;
+  padding-top:7px;
+  z-index:2;
+}
+
+div.wgt_tab_body
+{
+  clear:both;
+  height:auto;
+  /*width:100%;*/
+}
+
+
+div.wgt_tab.medium
+{
+  width:99%;
+  height:350px;
+  overflow:auto;
+}
+
+div.wgt_tab.full
+{
+  width:auto;
+  height:700px;
+  overflow:auto;
+}
+
+div.wgt-container-controls
+{
+  text-align: right;
+  white-space: nowrap;
+  vertical-align: bottom;
+  /*width:100%;*/
+}
+
+div.wgt-container-controls div.tab_outer_container
+{
+  float: left;
+  padding-left: 5px;
+}
+
+div.wgt-container-controls div.tab_scroll
+{
+  padding: 8px 0 5px 0 !important;
+	margin-top:-4px;
+  overflow: hidden;
+  float: left;
+  position:absolute;
+  left:0;
+  right:50px;
+}
+
+div.wgt-container-controls .tab_left,
+div.wgt-container-controls .tab_right
+{
+  float: left;
+  margin: 2px 0 0;
+  cursor: pointer;
+}
+
+div.wgt-container-controls div.tab_container
+{
+  padding: 0;
+}
+
+div.tab_extender
+{
+  background-position: center bottom;
+  background-repeat: repeat-x;
+  height: 6px;
+  padding: 0px;
+  border-width: 0px;
+  clear: left;
+}
+
+div.tab_container a
+{
+  text-decoration: none;
+  cursor: pointer;
+  border:0px !important;
+}
+
+
+
+div.tab_container span.active_tab  a
+{
+  cursor: default;
+}
+
+div.tab_container span.active_tab  a:hover
+{
+  text-decoration: none;
+}
+
+div.tab_container span.label
+{
+  /*margin-right:-4px;*/
+}
+
+div.tab_container span span
+{
+  padding: 3px 5px 3px 5px;
+  height: 24px;
+}
+
+
+div.tab_container>span
+{
+  padding: 3px 2px 3px 0px;
+  height: 24px;
+}
+
+div.tab_container a,
+div.tab_container span.active_tab  a,
+div.tab_container span.active_tab  a:hover,
+div.tab_container span.label,
+div.tab_container span span,
+div.tab_container>span
+{
+	/*
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  */
+}
+
+
+/* IE7 specific
+* See http://www.thestyleworks.de/tut-art/ie7.shtml#ie7-hacks
+*/
+*+html div.tab_container>span
+{
+  padding: 0px;
+  padding-right: 1px;
+}
+
+div.tab_container > span:first-child
+{
+  margin-left: -11px;
+}
+
+div.tab_container > span:last-child
+{
+  margin-right:0px !important;
+}
+
+
+div.tab_container span.active_tab
+{
+  z-index: 1;
+}
+
+div.tab_container span.active_tab span
+{
+  padding-bottom: 5px;
+  margin-right:-5px;
+}
+
+
+div.wgt-container-controls > div.wgt-container-buttons
+{
+  float: left;
+  /*margin-top: 3px;*/
+  margin-right:50px;
+  height: 26px;
+}
+
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Button Container
+//////////////////////////////////////////////////////////////////////////////*/
+
+div.wgt-container-buttons .wgt-dropmenu,
+.wgt-panel .wgt-dropmenu
+{
+	margin-top:-3px;
+}
+
+div.wgt-container-buttons button
+{
+  white-space: nowrap;
+  cursor: pointer;
+  margin-right: 6px;
+  min-width: 18px;
+}
+
+div.wgt-container-buttons button.img
+{
+  white-space: nowrap;
+  margin-right: 6px;
+  min-width: 10px;
+  height:23px;
+  margin-bottom: 2px;
+}
+
+
+div.wgt-container-buttons button.icon
+{
+  background-position:right center;
+  background-repeat:no-repeat;
+  padding-right: 16px;
+}
+

@@ -1,0 +1,47 @@
+/*//////////////////////////////////////////////////////////////////////////////
+// WebFrap Developer Classes
+//////////////////////////////////////////////////////////////////////////////*/
+
+/*
+#wgt_debug_console
+{
+  clear:both;
+  background-color:white;
+  position:absolute;
+  bottom:0px;
+  height:200px;
+  width:50%;
+  z-index:5002;
+  padding:5px;
+  border:1px solid red;
+}
+
+#wgt_debug_console .ui-resizable-helper
+{
+  border: 4px solid black;
+  height:100%;
+  overflow:auto;
+}
+  height:200px;
+  width:400px;
+
+*/
+
+
+#wgt_debug_console
+{
+  z-index:4999;
+}
+
+
+/*
+#wgt_debug_console div.content
+{
+	height:220px;
+	overflow:auto;
+}
+*/
+
+
+
+

@@ -1,0 +1,150 @@
+
+/* Vertical Mega Menu Styles */
+.wgt-vert-mega-menu
+{
+  line-height: 16px; 
+  background: #EAEAEA;
+  border-left: 1px solid #1B1B1B; 
+  position: relative; /* Required */
+}
+
+.wgt-vert-mega-menu li a 
+{
+  display: block; 
+  color: #fff; 
+  padding: 10px 38px 10px 25px;
+  text-shadow: 1px 1px 1px #000; 
+  text-decoration: none;  
+  border-top: 1px solid #555; 
+  border-bottom: 1px solid #222; 
+  border-right: 1px solid #1B1B1B;
+}
+
+.wgt-vert-mega-menu li a:hover, 
+.wgt-vert-mega-menu li.mega-hover a 
+{
+  background: #0068A5;
+  color: #fff; 
+  border-right: 1px solid #0068A5;
+}
+
+.wgt-vert-mega-menu li a.wgt-mega 
+{
+  position: relative;
+}
+
+/* Add arrow icon to parent links */
+.wgt-vert-mega-menu li a .wgt-mega-icon 
+{
+  display: block; 
+  position: absolute; 
+  top: 18px; 
+  right: 15px; 
+  width: 6px; 
+  height: 8px; 
+  background: url(<?php echo $images ?>wgt/arrow_right.png) no-repeat 0 0;
+}
+
+/* Mega menu container */
+.wgt-vert-mega-menu li .sub-container 
+{
+  position: absolute; /* Required */
+  background: #EAEAEA;
+  padding: 10px 10px 0 10px; 
+  border: 1px solid #4b4b4b; 
+  border-left: none;
+}
+
+.wgt-vert-mega-menu li .sub-container .sub {}
+
+.wgt-vert-mega-menu li .sub .row 
+{
+  width: 100%; overflow: hidden; /* Clear floats */
+}
+
+.wgt-vert-mega-menu li .sub li 
+{
+  float: none; 
+  width: 150px; 
+  font-size: 1em; 
+  font-weight: normal;
+}
+
+.wgt-vert-mega-menu li .sub li.mega-hdr 
+{
+  float: left; /* Required */
+  margin: 0 5px 10px 5px;
+}
+
+.wgt-vert-mega-menu li .sub a, .wgt-vert-mega-menu.left li .sub a 
+{
+  background: none; 
+  border: none; 
+  text-shadow: none;
+  float: none;
+  color: #000;
+  padding: 7px 10px; 
+  display: block;
+  text-decoration: none; 
+  font-size: 0.9em;
+}
+
+.wgt-vert-mega-menu li .sub li.mega-hdr a.mega-hdr-a 
+{
+  padding: 5px 5px 5px 15px; 
+  margin-bottom: 5px; 
+  background: #0068A5;
+  text-transform: uppercase; 
+  font-weight: bold; 
+  color: #fff; 
+  text-shadow: 1px 1px 1px #333;
+}
+
+.wgt-vert-mega-menu li .sub li.mega-hdr a.mega-hdr-a:hover 
+{
+  color: #000; 
+  text-shadow: none;
+}
+
+.wgt-vert-mega-menu .sub li.mega-hdr li a 
+{
+  padding: 4px 5px 4px 20px; 
+  background: url(<?php echo $images ?>wgt/arrow_white.png) no-repeat 5px 8px; 
+  font-weight: normal;
+}
+
+.wgt-vert-mega-menu .sub li.mega-hdr li a:hover 
+{
+  color: #a32403; 
+  background: #efefef url(<?php echo $images ?>wgt/arrow_on.png) no-repeat 5px 8px;
+}
+
+.wgt-vert-mega-menu .sub ul li 
+{
+  padding-right: 0;
+}
+
+/* Styling for menu items with only 2 levels */
+.wgt-vert-mega-menu li .sub-container.non-mega .sub 
+{
+  padding: 10px;
+}
+
+.wgt-vert-mega-menu li .sub-container.non-mega li 
+{
+  padding: 0; 
+  margin: 0;
+  width: 150px;
+}
+
+.wgt-vert-mega-menu li .sub-container.non-mega li a 
+{
+  padding: 7px 5px 7px 22px; 
+  background: url(<?php echo $images ?>wgt/arrow_white.png) no-repeat 7px 10px;
+}
+
+.wgt-vert-mega-menu li .sub-container.non-mega li a:hover 
+{
+  color: #a32403; 
+  background: #efefef url(<?php echo $images ?>wgt/arrow_on.png) no-repeat 7px 10px;
+}

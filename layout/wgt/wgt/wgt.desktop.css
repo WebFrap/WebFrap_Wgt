@@ -1,0 +1,56 @@
+/*******************************************************************************
+* Layout Boxes Mainpage
+*******************************************************************************/
+
+div#wbf-body
+{
+  height:    100%;
+  width:     100%;
+}
+
+div#wbf-ui-panel
+{
+  z-index:20;
+  width: 100%;
+  position:fixed;
+  height: 35px;
+  padding 2px;
+}
+
+div#wbf-ui-panel h1
+{
+  font-size:20px;
+  float:left;
+  clear:none;
+  margin-left:30px;
+  padding:3px;
+  letter-spacing:0.2em;
+}
+
+
+div#wbf-menu
+{
+  position:fixed;
+  top:35px;
+  bottom:0px;
+  left:0px;
+  clear:left;
+  float:left;
+  width: 220px;
+  
+  overflow-x:hidden;
+  overflow-y:auto;
+}
+
+div#wbf-main_content
+{
+  position:absolute;
+  left:222px;
+  top:35px;
+  bottom:0px;
+  right:0px;
+  float:left;
+  padding:5px;
+  overflow-x:auto;
+  overflow-y:hidden;
+}

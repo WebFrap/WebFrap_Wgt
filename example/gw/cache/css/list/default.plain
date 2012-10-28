@@ -1,0 +1,7038 @@
+@charset "utf-8";
+/*******************************************************************************
+* WebFrap Layout Template
+*******************************************************************************/
+
+/* clean all */
+*
+{
+  margin:   0;
+  padding:  0;
+  font-size:12px;
+  text-decoration:none;	
+}
+
+ul,li,ol
+{	
+  list-style:  none;	
+}
+
+
+body, html
+{
+  height:    100%;
+  width:     100%;
+  margin:    0px;
+  padding:   0px;
+}
+
+a
+{
+  cursor:pointer;
+}
+
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Meta elements
+//////////////////////////////////////////////////////////////////////////////*/
+
+/* @imutable */
+.template,
+.meta,
+.hidden,
+.settings,
+var
+{
+  /* Markierungsklasse für Vorlagen, wir vor dem Anzeigen gelöscht */
+  display: none;
+}
+
+/*
+Template welches für absolut positinierte Boxen verwendet wird
+*/
+.box_template
+{
+  display: none;
+  position:absolute;
+  z-index:5000;
+  background-color:white;
+  border:2px solid blue;
+}
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Layouting and positioning
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+/* @imutable */
+.clear
+{
+  clear: both;
+}
+
+/* @imutable */
+div.left,
+fieldset.left,
+ul.left,
+span.left
+{
+	display:block;
+  clear: both;
+  float: left;
+	zoom: 1; /* FU IE */
+}
+
+/* @imutable */
+div.inline,
+fieldset.inline,
+ul.inline
+{
+  clear:none;
+  display:inline-block; /* sicher ? */
+  float:left;
+  zoom: 1; /* FU IE */	
+}
+
+/* @imutable */
+div.right,
+fieldset.right,
+ul.right,
+span.right
+{
+  display:block;
+  float:right;
+  display:block;
+  zoom: 1; /* FU IE */	
+}
+
+/* @imutable */
+div.rightline,
+ul.rightline
+{
+  float:right;
+  display:inline-block;
+  zoom: 1; /* FU IE */	
+}
+
+/* @imutable */
+div.width-auto,
+ul.width-auto
+{
+  width:auto !important;
+}
+
+/* @imutable */
+div.height-auto,
+ul.height-auto
+{
+  height:auto !important;
+}
+
+/* @imutable */
+div.auto
+{
+  width:auto !important;
+  height:auto !important;
+}
+
+/* @imutable */
+.full
+{
+  clear: both;
+  width:auto;
+  display:block;
+}
+
+table.full,
+ul.full
+{
+  width:100%;
+}
+
+/* blockelemente auf 100% enforcen, aber sicher stellen, dass padding
+keinen strich durch die rechnung macht. */
+.forcefull
+{
+	padding:0px;
+	witdh:100%;
+}
+
+/* @imutable */
+.clear_line
+{
+  clear: both;
+  height:1px;
+}
+
+/* @imutable */
+.center
+{
+  margin: 0px auto;
+}
+
+/* @imutable */
+.text_center
+{
+  text-align: center;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Layouting and positioning
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+.pointer,
+.wgt-clickable,
+.cursor
+{
+  cursor:pointer;
+}
+
+
+.wgt-dyn-center
+{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* width und margin müssen selbst gesetzt werden
+  width: 200px;
+  height: 150px;
+  margin-top: -75px;
+  margin-left: -100px;
+  */
+}
+
+/*
+  klasse zum erstellen von ausenabständen in box elementen
+  default margin sind 5px;
+  Änderungen nur in theme.css
+*/
+.wgt-space
+{
+  margin:5px !important;
+}
+
+.wgt-space p
+{
+  margin-left:0px;
+	padding-left:0px;
+}
+
+.wgt-bspace
+{
+  margin-bottom:9px;
+}
+
+.wgt-bspace-s
+{
+  margin-bottom:5px;
+}
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Fix sizes
+//////////////////////////////////////////////////////////////////////////////*/
+
+/*
+.xsmall
+{
+  width:50px;
+}
+
+.small
+{
+  width:100px;
+}
+
+.medium
+{
+  width:150px;
+}
+
+.big
+{
+  width:250px;
+}
+*/
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Icons
+//////////////////////////////////////////////////////////////////////////////*/
+
+img.icon,
+img.wgt-icon
+{
+  border-width:0px;
+  cursor:pointer;
+}
+
+img.icon.point,
+img.wgt-icon.point,
+img.wgt-icon.xxsmall
+{
+  width:8px;
+  height:8px;
+}
+
+img.icon.xsmall,
+img.wgt-icon.xsmall
+{
+  width:16px;
+  height:16px;
+}
+
+img.icon.small,
+img.wgt-icon.small
+{
+  width:22px;
+  height:22px;
+}
+
+img.icon.medium,
+img.wgt-icon.medium
+{
+  width:32px;
+  height:32px;
+}
+
+img.icon.large,
+img.wgt-icon.large
+{
+  width:48px;
+  height:48px;
+}
+
+img.icon.xlarge,
+img.wgt-icon.xlarge
+{
+  width:64px;
+  height:64px;
+}
+
+img.icon.xxlarge,
+img.wgt-icon.xxlarge
+{
+  width:128px;
+  height:128px;
+}
+
+
+.wgt_icon_close_tab
+{
+  padding-bottom:2px;
+  margin-right:-7px; /*2px*/
+  width:16px;
+  height:16px;
+  background:url("http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../icons/default/xsmall/control/close_tab.png");
+  background-repeat:no-repeat;
+}
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Relativ sizes
+//////////////////////////////////////////////////////////////////////////////*/
+
+.nearly_full
+{
+  width:99%;
+  margin:0 auto;
+}
+
+.content .nearly_full
+{
+  width:98%;
+  margin:0 auto;
+}
+
+.behind
+{
+  position:absolute;
+  top:0px;
+  left:0px;
+  right:0px;
+  bottom:0px;
+}
+
+.half
+{
+  width:49.9%;
+}
+
+.half-b
+{
+  width:49%;
+}
+
+.third
+{
+  width:33.2%;
+}
+
+.two_third
+{
+  width:66.5%;
+}
+
+.fourth
+{
+  width:24.9%;
+}
+
+.tree_fourth
+{
+  width:74.9%;
+}
+
+.fith
+{
+  width:19.9%;
+}
+
+.two_fith
+{
+  width:39.8%;
+}
+
+.tree_fith
+{
+  width:59.7%;
+}
+
+.four_fith
+{
+  width:79.6%;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Absolute Größen
+//////////////////////////////////////////////////////////////////////////////*/
+                                                                              
+                                                                              
+.bw02
+{
+  width:25px !important;
+}
+
+.bw04
+{
+  width:50px !important;
+}
+
+.bw05
+{
+  width:62px !important;
+}
+
+.bw06
+{
+  width:75px !important;
+}
+
+.bw08
+{
+  width:100px !important;
+}
+
+.bw1
+{
+  width:125px !important;
+}
+
+.bw2
+{
+  width:250px !important;
+}
+
+.bw3
+{
+  width:375px !important;
+}
+
+.bw32
+{
+  width:400px !important;
+}
+
+.bw39
+{
+  width:490px !important;
+}
+
+.bw4
+{
+  width:500px !important;
+}
+
+.bw5
+{
+  width:625px !important;
+}
+
+.bw6
+{
+  width:750px !important;
+}
+
+.bw61
+{
+  width:762px !important;
+}
+
+.bw62
+{
+  width:770px !important;
+}
+
+.bw63
+{
+  width:800px !important;
+}
+
+.bw7
+{
+  width:875px !important;
+}
+
+.bw71
+{
+  width:887px !important;
+}
+
+.bw72
+{
+  width:893px !important;
+}
+
+.bw8
+{
+  width:1000px !important;
+}
+
+.bw81
+{
+  width:1012px !important;
+}
+
+.bw82
+{
+  width:1020px !important;
+}
+
+.bw9
+{
+  width:1125px !important;
+}
+
+.bh1
+{
+  height:125px !important;
+}
+
+.bh2
+{
+  height:250px !important;
+}
+
+.bh3
+{
+  height:375px !important;
+}
+
+.bh4
+{
+  height:500px !important;
+}
+
+.bh42
+{
+  height:520px !important;
+}
+
+.bh5
+{
+  height:625px !important;
+}
+
+.bh6
+{
+  height:750px !important;
+}
+
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Elemente zum erzeugen von Abständen
+//////////////////////////////////////////////////////////////////////////////*/
+
+div.indention.small
+{
+  clear:both;
+  width:100%;
+  margin-right:-10px;
+}
+
+div.wgt-clear,
+div.wgt-clear.xxsmall
+{
+  clear:both;
+  width:100%;
+  height:1px;
+  line-height:0;
+}
+
+div.wgt-clear.small
+{
+  height:1em;
+}
+
+div.wgt-clear.medium
+{
+  height:1.5em;
+}
+
+div.wgt-clear.big,
+div.wgt-clear.large
+{
+  height:2em;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Boxes for layouting
+//////////////////////////////////////////////////////////////////////////////*/
+
+.wgt-box
+{
+  padding-top:4px;
+  padding-bottom:4px;
+  padding-right:4px;
+  height:100%;
+}
+
+/*
+  Einfacher Container zum platzieren von bestimmten inhalten,
+  zb container info
+  container video... etc.
+  Kann beliebig erweitert werden.
+*/
+div.wgt-container
+{
+  padding-top:4px;
+  padding-bottom:4px;
+  padding-right:4px;
+  float:left;
+}
+
+/*
+  Spezieller Container der die ganze zur verfügung stehende Breite
+  reserviert.
+  Ist fast identisch zu full, hat aber etwas mehr semantic.
+  Im Gegensatz zu full darf wgt-slice customized werden
+*/
+div.wgt-slice
+{
+  width:100%;
+  clear:both;
+}
+
+.wgt-center
+{
+  margin: 0px auto;
+}
+
+div.wgt-container.center
+{
+  position: absolute;
+  top: 50%; 
+  left: 50%;
+  /* width und margin müssen selbst gesetzt werden
+  width: 200px;
+  height: 150px;
+  margin-top: -75px;
+  margin-left: -100px;
+  */
+}
+
+.wgt-box.center.small
+{
+  width: 200px;
+  height: 200px;
+  margin-top: -100px;
+  margin-left: -100px;
+}
+
+.wgt-box.center.medium
+{
+  width: 400px;
+  height: 400px;
+  margin-top: -200px;
+  margin-left: -200px;
+}
+
+.wgt-box.center.large
+{
+  width: 600px;
+  height: 600px;
+  margin-top: -300px;
+  margin-left: -300px;
+}
+
+
+div.wgt-seperator.vertical
+{
+  width:1px;
+  border-right:1px solid black;
+  height:98%;
+  float:left;
+}
+
+
+/* is only a piece, has no borders an nothing, can be used to structure elements
+* with no spaces togehter
+*/
+.wgt-piece
+{
+  height:100%;
+}
+
+table.fix_layout
+{
+  width:100%;
+  height:100%;
+  empty-cells:show;
+  border-collapse:collapse;
+  border-spacing:0px;
+}
+
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// border
+//////////////////////////////////////////////////////////////////////////////*/
+
+/* @imutable */
+.wgt-border
+{
+  border:1px solid silver;
+}
+
+.wgt-border-light
+{
+  border:2px groove silver;
+}
+
+
+.wgt-bg-light
+{
+  background-color:#F2F2F2;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// rounded corners
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+.wgt-corner
+{
+  border: 1px solid black;
+  border-radius: 3px;
+}
+ 
+.wgt-corner-top
+{
+  border: 1px solid black;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;	
+}
+ 
+.wgt-corner-bottom
+{
+  border: 1px solid black;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;	
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Backgrounds
+//////////////////////////////////////////////////////////////////////////////*/
+
+.wgt-bg-head,
+.wgt-bg-foot
+{
+	/* Wird im Theme befüllt */
+	background-color:silver;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Scrolling
+//////////////////////////////////////////////////////////////////////////////*/
+
+.wgt-scroll
+{
+   overflow-y:auto;
+   overflow-x:auto;
+}
+
+.wgt-no-scroll
+{
+   overflow-y:hidden;
+   overflow-x:hidden;
+}
+
+.wgt-scroll-y
+{
+   overflow-y:auto;
+   overflow-x:hidden;
+}
+
+.wgt-scroll-x
+{
+   overflow-y:hidden;
+   overflow-x:auto;
+}
+
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Pointers
+//////////////////////////////////////////////////////////////////////////////*/
+
+.wgt-cursor-pointer
+{
+	cursor:pointer;
+}
+
+.wgt-cursor-wait
+{
+  cursor:wait;
+}
+
+.wgt-cursor-info
+{
+  cursor:help;
+}
+
+.wgt-cursor-crosshair
+{
+  cursor:crosshair;
+}
+
+.wgt-cursor-text
+{
+  cursor:text;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// opacity
+//////////////////////////////////////////////////////////////////////////////*/
+
+.wgt-opacity-10
+{
+  filter:alpha(opacity=10);
+  -khtml-opacity: 0.1;
+  opacity: 0.1;  
+}
+
+.wgt-opacity-20
+{
+  filter:alpha(opacity=20);
+  -khtml-opacity: 0.2;
+  opacity: 0.2;  
+}
+
+.wgt-opacity-30
+{
+  filter:alpha(opacity=30);
+  -khtml-opacity: 0.3;
+  opacity: 0.3;  
+}
+
+.wgt-opacity-40
+{
+  filter:alpha(opacity=40);
+  -khtml-opacity: 0.4;
+  opacity: 0.4;  
+}
+
+.wgt-opacity-50
+{
+  filter:alpha(opacity=50);
+  -khtml-opacity: 0.5;
+  opacity: 0.5;  
+}
+
+.wgt-opacity-60
+{
+  filter:alpha(opacity=60);
+  -khtml-opacity: 0.6;
+  opacity: 0.6;  
+}
+
+.wgt-opacity-70
+{
+  filter:alpha(opacity=70);
+  -khtml-opacity: 0.7;
+  opacity: 0.7;  
+}
+
+.wgt-opacity-80
+{
+  filter:alpha(opacity=80);
+  -khtml-opacity: 0.8;
+  opacity: 0.8;  
+}
+
+.wgt-opacity-90
+{
+  filter:alpha(opacity=90);
+  -khtml-opacity: 0.9;
+  opacity: 0.9;  
+}
+
+.wgt-opacity-100
+{
+  filter:alpha(opacity=100);
+  -khtml-opacity: 1;
+  opacity: 1;  
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// scrollable elements
+//////////////////////////////////////////////////////////////////////////////*/
+
+.w_scrollh
+{
+  overflow-y:auto;
+  overflow-x:hidden;
+}
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Error , Warning and Message Boxes
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+
+.wgt-box.full
+{
+  padding:7px;
+}
+
+
+.wgt-box.space,
+div.space
+{
+  padding:4px;
+}
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Error , Warning and Message Boxes
+//////////////////////////////////////////////////////////////////////////////*/
+
+div.wgt-box.info,
+div.wgt-box.message
+{
+  border:5px solid white;
+  background-color:#C2DDA4;
+  padding:4px;
+  margin-bottom:5px;
+  color:#530000;
+  border-radius: 10px;
+}
+
+div.wgt-box.warning
+{
+  width:98%;
+  margin:3px;
+  padding:4px;
+  border-radius: 10px;
+}
+
+div.wgt-box.error
+{
+  border:5px solid #003466;
+  background-color:#C00000;
+  padding:4px;
+  margin-bottom:5px;
+  color:white;
+  border-radius: 10px;
+}
+
+
+div.wgt-box.maintenance
+{
+  width:1024px;
+  height:90%;
+  margin:0px auto;
+  background-image: url(http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../icons/default/wgt/maintenance.jpg);
+  background-repeat:no-repeat;
+/*  background-position:100px 50%; */
+}
+
+/* Cell grid Boxes */
+
+table.wgt-cell_grid
+{
+	border: 1px solid black;
+}
+
+table.wgt-cell_grid td
+{
+	border:1px dotted silver;
+	padding:2px;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Content Boxes
+//////////////////////////////////////////////////////////////////////////////*/
+
+div.wgt-content_box,
+div.wgt-news-box
+{
+  height:auto;
+  padding:5px;
+  margin-top:5px;
+  border:1px solid #ccc;
+  border-radius:5px 5px 0px 0px;
+  background-color:#eee;
+}
+
+div.wgt-content_box>div.head,
+div.wgt-news-box>div.head
+{
+  border-bottom:1px solid #ddd;
+  padding:5px;
+  padding-bottom:10px;
+  height:33px;
+}
+
+div.wgt-content_box>div.head h2,
+div.wgt-news-box>div.head h2
+{
+  width:190px;
+  display:block;
+  float:left;
+  margin:0px;
+  padding:0px;
+}
+
+div.wgt-content_box>div.head div.search
+{
+  width:170px;
+  float:right;
+  margin:0px;
+  padding:0px;
+}
+
+div.wgt-content_box>div.content
+{
+  padding:3px;
+  padding-top:6px;  
+  padding-bottom:6px; 
+  overflow: auto;
+}
+
+div.wgt-content_box>div.head button.wgt-button.append
+{
+  
+  padding:0px;
+  margin-left:-5px;
+}
+
+/* Widget */
+
+div.wgt-content_box.wgt-widget
+{
+  width:380px;
+}
+
+div.wgt-content_box.wgt-widget>div.content,
+div.wgt-content_box.wgt-tag_cloud>div.content
+{
+  height:180px;
+}
+
+/* Tag Cloud specific */
+
+div.wgt-content_box.wgt-tag_cloud>div.content span.tag
+{
+  line-height:20px;
+  display: block;
+  float: left;
+  padding-right:11px;
+  padding-left:12px;
+  margin-top:5px;
+  margin-bottom:5px;
+  border-right:1px solid #ddd;
+}
+
+
+div.wgt-content_box.wgt-tag_cloud>div.content span:hover
+{
+  /*font-size:14px;*/
+  padding-right:11px;
+  padding-left:12px;
+  background-color: #ddd;
+  cursor: default;
+}
+
+div.wgt-content_box.wgt-tag_cloud>div.content button 
+{
+  padding:0 !important;
+  margin:0 !important;
+  width:65px;
+  height:35px;
+  position:absolute;
+  display:inherit;
+  margin-top:-50px !important;
+  margin-left: -5px !important;
+  z-index:5000;
+  border:none;
+  background: transparent url('http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../icons/default//xsmall/control/delete_hover.png') no-repeat center top !important;
+}
+
+div.wgt-content_box.wgt-tag_cloud>div.content button img
+{
+  display:none;
+}
+
+div.wgt-content_box.wgt-tag_cloud>div.head div.search
+{
+  position:relative;
+  padding-bottom:25px;
+	padding-right:10px;
+}
+
+/* Comment Tree specific */
+
+div.wgt-content_box.wgt-comment_tree div.editor
+{
+  border-top:1px solid #ddd;
+  padding:5px;
+  padding-top:10px;
+}
+
+div.wgt-content_box.wgt-comment_tree div.content
+{
+  background-color:white;
+}
+
+div.wgt-content_box.wgt-comment_tree div.wgt-comment
+{
+  padding-bottom:2px;
+  margin-bottom:8px;
+  border-bottom: 1px dashed silver;
+}
+
+div.wgt-content_box.wgt-comment_tree div.wgt-comment>h3
+{
+  margin-bottom:3px;
+  background-color:#EEEEEE;
+}
+
+div.wgt-content_box.wgt-comment_tree div.wgt-comment>p
+{
+  border-bottom:1px dotted silver;
+  padding:0px;
+  padding-left:3px;
+}
+
+div.wgt-content_box.wgt-comment_tree div.wgt-comment span.user
+{
+  border-bottom:1px dotted silver;
+}
+
+div.wgt-content_box.wgt-comment_tree div.wgt-comment span.date
+{
+  font-size:10px;
+  font-style:italic;
+}
+
+div.wgt-content_box.wgt-comment_tree div.wgt-comment div.content
+{
+  background-color:white;
+  padding-bottom:5px;
+}
+/*//////////////////////////////////////////////////////////////////////////////
+// Blockliste
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+ul.wgt-blocklist
+{
+  padding:0px;
+  margin:0px;
+  width:100%;
+  clear:both;
+  list-style-type:none;
+}
+
+ul.wgt-blocklist>li
+{
+  padding-top:5px;
+  padding-bottom:5px;
+}
+
+ul.wgt-blocklist .row1
+{
+}
+
+ul.wgt-blocklist .row2
+{
+}
+
+ul.wgt-blocklist .row3
+{
+}
+
+ul.wgt-blocklist .row4
+{
+}
+
+
+ul.wgt-blocklist label
+{
+  font-weight:bold;
+}
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// creator
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+#wgt-dropform-overlay,
+.wgt-dropform-overlay 
+{
+  /*width: 150px;*/
+  font-size: .9em;
+  position: absolute;
+  z-index: 1000;
+  display: none;
+}
+
+
+#wgt-dropform-overlay .ui-widget,
+.wgt-dropform-overlay .ui-widget
+{
+  padding: .2em;
+}
+
+#wgt-dropform-overlay .ui-widget-header,
+.wgt-dropform-overlay .ui-widget-header 
+{
+  padding: .2em;
+}
+
+#wgt-dropform-overlay .ui-widget-content,
+.wgt-dropform-overlay .ui-widget-content 
+{
+   margin-top: .2em;
+   margin-bottom: .1em;
+   padding: .2em;
+}
+
+#wgt-dropform-overlay .ui-widget.ui-widget-content,
+.wgt-dropform-overlay .ui-widget.ui-widget-content
+{
+  margin-top: 0;
+}
+
+#wgt-dropform-overlay .ptTimeSelectLeftPane.ui-widget-content,
+.wgt-dropform-overlay .ptTimeSelectLeftPane.ui-widget-content
+{
+  border-top:none;
+  border-bottom:none;
+  border-left:none;
+  border-right-width: 2px;
+}
+
+#wgt-dropform-overlay .button-close,
+.wgt-dropform-overlay .button-close 
+{
+  padding-top: .2em;
+  padding-bottom: .2em;
+  float: right;
+}
+
+#wgt-dropform-overlay .button-close a,
+.wgt-dropform-overlay .button-close a 
+{
+  display: block;
+  padding: .2em;
+  width: 50px;
+  text-align: center;
+  float: right;
+}
+
+#wgt-dropform-overlay .bottom,
+.wgt-dropform-overlay .bottom 
+{
+  float: left;
+  padding-top: .2em;
+  padding-bottom: .4em;
+}
+
+#wgt-dropform-overlay .miniMenuMenuButton,
+.wgt-dropform-overlay .miniMenuMenuButton
+{
+  padding-top:    .1em;
+  padding-bottom: .0em;
+
+}
+
+#wgt-dropform-overlay .miniMenuMenuButton a,
+.wgt-dropform-overlay .miniMenuMenuButton a
+{
+  display: block;
+  width: 100%;
+  text-align: left;
+  float: left;
+  padding: .0em;
+  border: none;
+}
+
+#wgt-dropform-overlay .miniMenuMenuButton .default,
+.wgt-dropform-overlay .miniMenuMenuButton .default
+{
+  text-decoration: none;
+  outline: none;
+}
+
+#wgt-dropform-overlay hr,
+.wgt-dropform-overlay hr
+{
+  margin-top    :2px;
+  margin-bottom :2px;
+  border:1px outset silver;
+}
+#wbf-footer
+{
+  height:20px;
+  z-index: 4002;
+}
+
+#wbf-footer table
+{
+  text-align: center;
+  width: 100%;
+}
+
+#wbf-footer-history
+{
+  text-align: center;
+  max-height: 80%;
+  padding-bottom: 0px;
+  margin-bottom: 3px;
+  overflow: auto;
+  z-index:4001;
+  display:none;
+}
+    
+#wbf-footer-history table{
+  width: 100%;
+  text-align: center;
+}
+
+
+#wbf-footer-history table td{
+  padding: 5px;
+  margin: 5px;
+}
+
+#footer_status
+{
+  height:15px;
+}
+
+#footer_status tbody
+{
+  overflow:auto;
+}
+
+#footer_status td
+{
+  text-align:left;
+}
+
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Buttons
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+.wgt-button,
+.wgt-button2
+{
+	cursor:pointer;
+	vertical-align: baseline;
+	white-space: nowrap;
+	margin-bottom:0;
+	margin-left:0;
+	margin-top:0;
+	margin-right:0 !important;
+  padding:2px;
+  padding-top:0 !important;
+  height:22px;
+}
+
+.wgt-button.append,
+.wgt-button.right,
+.wgt-button2.append,
+.wgt-button2.right
+{
+  margin-left:-5px;
+  border:1px solid black;
+  min-width:19px;
+  
+  /* clear borders */
+  border-radius: 0px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.wgt-button.inline,
+.wgt-button2.inline
+{
+  margin-left:-5px;
+  border:1px solid black;
+  
+  /* clear borders */
+  border-radius: 0px;
+}
+
+.wgt-button.right,
+.wgt-button2.right
+{
+  margin-left:-4px !important;
+}
+
+button.wgt-button>img,
+button.wgt-button2>img
+{
+  /*margin-bottom:-5px;*/
+  vertical-align:middle;  
+}
+
+.wgt-button a,
+.wgt-button2 a
+{
+  display:inline;
+  vertical-align:middle;
+}
+
+a.wgt-button,
+a.wgt-button2 
+{
+  height:22px;
+  padding-top:4px !important;
+  color:white !important;
+}
+
+a.wgt-button img,
+a.wgt-button2 img
+{
+  vertical-align:middle;
+  /*
+  float:left;
+  text-align:left;
+  */
+}
+
+.wgt-button.icon
+{
+	height:22px;
+ 	padding:2px 7px 2px 20px;
+}
+
+.wgt-button.reset
+{
+  cursor:pointer;
+}
+
+span.wgt-button,
+span.wgt-button2
+{
+  padding:26px;  
+  padding:3px;
+}
+
+span.wgt-button span,
+span.wgt-button2 span,
+span.wgt-button input,
+span.wgt-button2 input,
+span.wgt-button img,
+span.wgt-button2 img
+{
+  vertical-align:middle;
+	border:0px;
+}
+
+span.wgt-button input,
+span.wgt-button2 input
+{
+	margin-left:3px;
+	margin-right:0px;
+}
+
+ul.wgt-button-list
+{
+  width:245px;
+  padding:4px;
+  background-color:silver;
+}
+
+ul.wgt-button-list li
+{
+  margin-bottom:2px;
+}
+
+ul.wgt-button-list button
+{
+  width:245px;
+  text-align:center;
+  height:22px;
+  size:16px;
+}
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Formular Settings
+//////////////////////////////////////////////////////////////////////////////*/
+
+fieldset
+{
+  padding:8px 3px 8px 3px;
+  margin-bottom:13px;
+}
+
+legend
+{
+  padding:0px 3px 0px 3px;
+}
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Boxes for layouting
+//////////////////////////////////////////////////////////////////////////////*/
+
+label.wgt-label,
+div.wgt-label
+{
+  clear:both;
+  float:left;
+  width:110px;
+  padding:3px 2px 3px 2px;
+  margin:1px;
+  text-align:right;
+}
+
+label.wgt-label.xsmall,
+div.wgt-label.xsmall
+{
+  width:55px;
+}
+
+label.wgt-label.small,
+div.wgt-label.small
+{
+  width:75px;
+}
+
+label.wgt-label.medium,
+div.wgt-label.medium
+{
+  width:110px;
+}
+
+label.wgt-label.large,
+div.wgt-label.large
+{
+  width:220px;
+}
+
+div.wgt-box.input
+{
+  padding:1px;	
+}
+
+div.wgt-input
+{
+  width:155px;
+  padding:3px 2px 3px 2px;
+  float:left;
+  margin:1px;
+}
+
+div.wgt-input.newline
+{
+  clear:both;
+  width:330px;
+}
+
+div.wgt-input.small
+{
+  width:133px;
+  margin:1px;
+}
+
+div.wgt-input.medium
+{
+  width:200px;
+  margin:1px;
+}
+
+div.wgt-input.large
+{
+  width:273px;
+  margin:1px;
+}
+
+div.wgt-input.xlarge
+{
+  width:350px;
+  margin:1px;
+}
+
+div.wgt-input.xxlarge
+{
+  width:450px;
+  margin:1px;
+}
+
+
+div.wgt-input.large.newline
+{
+  clear:both;
+  width:355px;
+}
+
+div.wgt-input.full
+{
+	width:100%;
+  clear:both;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Formatierung der Formulare mit Tabellen
+//////////////////////////////////////////////////////////////////////////////*/
+
+table.wgt-form
+{
+  border-spacing:3px;
+}
+
+table.wgt-form td
+{
+  padding:3px;
+  padding-right:5px;
+  vertical-align:top;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Userinput Fields
+//////////////////////////////////////////////////////////////////////////////*/
+
+/* Standard Abstände */
+input, 
+select,
+div.wgt-fake-input
+{
+  height:22px;
+	padding:2px;
+}
+
+textarea
+{
+  height:100px;
+  width:250px;
+  padding:2px;
+}
+
+input.ar
+{
+  text-align:right;
+}
+
+/* 
+Wird in den Listenelementen verwedent um die Elemente dezent
+als editierbar zu markieren 
+*/
+input.emphasize, 
+textarea.emphasize, 
+select.emphasize,
+div.wgt-fake-input.emphasize
+{
+  border:1px dotted silver !important;
+}
+
+/* 
+Standard Selectbox
+*/
+select.multi
+{
+  height:80px !important;
+}
+  
+option
+{
+  border:1px solid white;
+  padding:2px;
+}
+
+option:hover
+{
+  color:#530000;
+  border:1px dotted #530000;
+}
+
+/* 
+ Breite der Form Elemente
+*/
+
+textarea.full_edit, 
+input.full_edit 
+{
+	margin:0px !important;
+	padding:0px !important;
+	border:0px !important;
+	width:100%;
+	overflow:visible;
+}
+
+input.xxsmall, 
+select.xxsmall,
+div.wgt-fake-input.xxsmall
+{
+  width:50px;
+}
+
+input.xsmall, 
+select.xsmall,
+div.wgt-fake-input.xsmall
+{
+  width:75px;
+}
+
+input.small,
+select.small,
+textarea.small,
+div.wgt-fake-input.small
+{
+  width:90px;
+}
+
+input.medium, 
+textarea.medium,
+div.wgt-fake-input.medium
+{
+  width:150px;
+}
+
+select.medium.wgt-behind
+{
+  width:180px;
+}
+
+select.medium
+{
+  width:156px;
+}
+
+input.large, 
+select.large, 
+textarea.large,
+div.wgt-fake-input.large
+{
+  width:220px;
+}
+
+input.xlarge, 
+select.xlarge, 
+textarea.xlarge,
+div.wgt-fake-input.xlarge
+{
+  width:400px;
+}
+
+input.xxlarge, 
+select.xxlarge, 
+textarea.xxlarge,
+div.wgt-fake-input.xxlarge
+{
+  width:600px;
+}
+
+input.full, 
+select.full, 
+textarea.full,
+div.wgt-fake-input.full
+{
+  width:98%;
+}
+
+
+/* Höhe von Textareas */
+
+
+textarea.input
+{
+  height: 1em;
+}
+
+textarea.small-height
+{
+  height: 3em;
+}
+
+textarea.medium-height
+{
+  height: 150px;
+}
+
+textarea.large-height
+{
+  height: 250px;
+}
+
+textarea.xlarge-height
+{
+  height: 450px;
+}
+
+textarea.xxlarge-height
+{
+  height: 600px;
+}
+
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Fancy Selectboxes and Upload Elements
+//////////////////////////////////////////////////////////////////////////////*/
+
+input.wgt-overlay,
+select.wgt-overlay
+{
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  z-index: 1;
+  cursor:pointer;
+}
+
+input.wgt-overlay.embed,
+select.wgt-overlay.embed
+{
+  top: 0px;
+  left: 0px;
+}
+
+button.wgt-overlay.append
+{
+  position: absolute;
+  top: 3px;
+  left: 150px;
+  margin-left:0px;
+  z-index: 1;
+  cursor:pointer;
+}
+
+button.wgt-overlay.append.large
+{
+  left: 222px;
+}
+
+button.wgt-overlay.append.xlarge
+{
+  left: 222px;
+}
+
+button.wgt-overlay.append.embed
+{
+  top: 0px;
+  left: 150px;
+}
+
+input.wgt-behind,
+select.wgt-behind
+{
+  position: relative;
+  filter:alpha(opacity: 0);
+  opacity: 0;
+  width:185px;
+  z-index: 2;
+  cursor:pointer;
+}
+
+input.wgt-behind.small,
+select.wgt-behind.small
+{
+  width:185px;  
+}
+
+input.wgt-behind.large,
+select.wgt-behind.large
+{
+  width:225px;  
+}
+
+input.wgt-behind.medium,
+select.wgt-behind.medium
+{
+  width:165px;  
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Hintergrund Icons in Inputelementen und Selectbox options
+//////////////////////////////////////////////////////////////////////////////*/
+
+input.icon, 
+select.icon
+{
+  background-repeat:no-repeat;
+  padding-left:16px;
+}
+
+select.icon option
+{
+  background-repeat:no-repeat;
+  padding-left:16px;
+}
+
+select option.missing
+{
+  background-color:#C00000;
+	color:white;
+}
+
+select option.inactive
+{
+  background-color:#FFA858;
+  color:white;
+}
+
+select option.active
+{
+  background-color:#C0FFC0;
+  color:#585858;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Userinput Fields
+//////////////////////////////////////////////////////////////////////////////*/
+
+/* Standard Abstände */
+input.search, 
+div.wgt-fake-input.search,
+select.search
+{
+  background-repeat:no-repeat;
+	background-image:url('http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../icons/default/xsmall/control/search.png'); 
+  background-position:right center;	
+}
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Element Status klassen
+//////////////////////////////////////////////////////////////////////////////*/
+
+/* Readonly und disabled */
+
+input.wgt-readonly, 
+textarea.wgt-readonly, 
+select.wgt-readonly,
+div.wgt-fake-input.wgt-readonly,
+input.readonly, 
+select.readonly, 
+textarea.readonly,
+div.wgt-fake-input.readonly
+{
+  background-color:#DCDCDC;
+  border: 1px solid black !important;	
+  cursor: not-allowed !important;  
+}
+
+input.state-ok, 
+textarea.state-ok, 
+select.state-ok,
+div.wgt-fake-input.state-ok
+{
+  border: 1px solid #00C000 !important;
+}
+
+input.state-invalid, 
+textarea.state-invalid, 
+select.state-invalid,
+div.wgt-fake-input.state-invalid
+{
+  border: 1px dashed red !important;
+}
+
+input.state-warn, 
+textarea.state-warn, 
+select.state-warn,
+div.wgt-fake-input.state-warn
+{
+  border: 1px dashed #FF8000 !important;
+}
+
+input.wgt-negativ
+{
+  color:red;
+}
+
+
+.wgt-combobox 
+{
+  position: relative;
+  display: inline-block;
+}
+
+.wgt-combobox-toggle.append
+{
+  margin:0px;
+  height:22px;
+  padding:2px 0px 2px 0px !important;
+  display:inline;
+}
+
+.wgt-combobox-input 
+{
+  margin: 0;
+}
+
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Table
+//////////////////////////////////////////////////////////////////////////////*/
+
+div.wgt-grid
+{
+  position:relative;
+  overflow:hidden;
+}
+
+div.wgt-grid div.body-scroll
+{
+  position:relative;
+  overflow:hidden;
+}
+
+
+div.wgt-grid table.hide-head thead
+{
+  line-height:0px;
+  height:1px;
+}
+
+table.wgt-grid.categorized td:first-child
+{
+  padding-left:20px;
+}
+
+div.wgt-grid div.resize
+{
+  display:block;
+}
+
+div.wgt-grid div.resize>div
+{
+  position:absolute;
+}
+
+div.wgt-grid,
+div.wgt-grid-head,
+div.wgt-grid-body
+{
+}
+
+div.wgt-grid-body
+{
+  height:450px;
+  background-color:#F2F2F2;
+  overflow:auto;
+  clear:both;
+}
+
+div.wgt-grid-body.xxsmall
+{
+  height:100px;
+}
+
+div.wgt-grid-body.xsmall
+{
+  height:150px;
+}
+
+div.wgt-grid-body.small
+{
+  height:200px;
+}
+
+div.wgt-grid-body.medium
+{
+  height:300px;
+}
+
+div.wgt-grid-body.large
+{
+  height:450px;
+}
+
+div.wgt-grid-body.huge
+{
+  height:600px;
+}
+
+div.wgt-grid-body.xlarge
+{
+  height:600px;
+}
+
+div.wgt-grid-body.xxlarge
+{
+  height:700px;
+}
+
+div.wgt-grid-body td
+{
+  border-bottom:1px solid silver;
+  padding-left:3px;
+  padding-right:2px;
+}
+
+div.wgt-grid-body td.pos
+{
+  background-color:silver;
+  font-weight: bold;
+  color: black;
+  text-align:left;
+  border-bottom:1px solid black;
+}
+
+div.wgt-grid-body td.pos.checked
+{
+  background-color:#585858;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-align:left;
+  border-bottom:1px solid #FFFFFF;
+}
+
+div.wgt-grid-body td.date,
+div.wgt-grid-body td.time,
+div.wgt-grid-body td.number,
+div.wgt-grid-body td.money,
+div.wgt-grid-body td.rtext
+{
+  text-align:right;
+}
+
+/* Head */
+
+div.wgt-grid-head
+{
+  height:20px;
+  background-color:silver;
+}
+
+.wgt-grid .label
+{
+  float:left;
+  height:18px;
+  padding:0px;
+  margin:0px;
+}
+
+.wgt-grid .order
+{
+  float:right;
+  height:18px;
+  width:20px;
+  padding:0px;  
+  margin:0px; 
+  text-align:center;
+}
+
+
+div.wgt-grid-head>div
+{
+  float:left;
+}
+
+div.wgt-grid-head table
+{
+  border-spacing:0px;
+}
+
+div.wgt-grid-head table thead th
+{
+  margin:0px;
+  height:20px;
+}
+
+div.wgt-grid-head th div
+{
+  text-align:left;
+  padding:0px 0px 0px 5px;
+  cursor: default;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+div.wgt-grid-head table tbody tr td
+{
+  border-bottom:1px solid silver;
+}
+
+div.wgt-grid-head td input
+{
+  margin:0px;
+}
+
+/* Drag & Drop for Resize */
+
+div.wgt-grid div.wgt-drag
+{
+  position:absolute;
+  top:1px;
+  z-index:3;
+  overflow:visible;
+}
+
+div.wgt-grid div.wgt-drag>div
+{
+  position:absolute;
+  float:left;
+  width:5px;
+  cursor: col-resize;
+}
+
+div.wgt-grid div.wgt-drag>div.dissabled
+{
+  position:absolute;
+  float:left;
+  width:5px;
+  cursor: default !important;
+  background:none !important;
+}
+
+div.wgt-grid div.wgt-drag>div:hover,
+div.wgt-grid div.wgt-drag>div.dragged,
+div.wgt-grid div.wgt-drag>div.helper
+{
+  background: url(http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/wgt/line.gif) repeat-y 2px center;
+}
+
+
+table.wgt-grid
+{
+  padding:0px;
+  margin:0px;
+  clear:both;
+  border-spacing:0px;
+  display:table;
+  border-bottom:1px solid silver;
+}
+
+div.wgt-grid-body table tbody
+{
+}
+
+div.wgt-grid-body table tbody td,
+div.wgt-grid-body table thead th,
+div.wgt-grid-head table thead th
+{
+  overflow: hidden;
+  border-right:1px solid white;
+  padding:0px;
+}
+
+
+div.wgt-grid-body table tbody td
+{
+  padding:2px !important;
+}
+
+div.wgt-grid-body table thead th,
+div.wgt-grid-head table thead th
+{
+  white-space: nowrap;
+}
+
+table.wgt-grid-body td ul
+{
+  margin-left:15px;
+}
+
+table.wgt-grid-body td ul.wgt-list
+{
+  list-style-type:decimal;
+}
+
+table.wgt-grid-body td ul.wgt-list li
+{
+  border-bottom: 1px dotted silver;
+}
+
+
+table.wgt-grid input,
+table.wgt-grid select,
+table.wgt-grid textarea
+{
+  margin:0px !important;
+  padding:0px;
+  border:0px;
+  background-color:inherit;
+  height:21px;
+}
+
+div.wgt-grid-body table.wgt-grid option
+{
+  background-color:white;
+}
+
+div.wgt-grid-body table.wgt-grid input.show,
+div.wgt-grid-body table.wgt-grid select.show,
+div.wgt-grid-body table.wgt-grid textarea.show
+{
+  margin:0px;
+  padding:1px;
+  margin-right:3px;
+  border:1px dotted silver;
+}
+
+div.wgt-grid-body table.wgt-grid input.show:hover,
+div.wgt-grid-body table.wgt-grid select.show:hover,
+div.wgt-grid-body table.wgt-grid textarea.show:hover
+{
+  background-color:#EBEFF2;
+  border:1px ridge silver;
+}
+
+div.wgt-grid-body table.wgt-grid tfoot input,
+div.wgt-grid-body table.wgt-grid tfoot select,
+div.wgt-grid-body table.wgt-grid tfoot textarea
+{
+  border:1px solid black;
+  background-color:white;
+}
+
+
+table.wgt-grid-body thead input,
+table.wgt-grid-body thead select,
+table.wgt-grid-body thead textarea
+{
+  padding:0px !important;
+  margin:2px !important;
+  width:98%;
+  border:0px;
+  background-color:white;
+  border:1px solid black;
+}
+
+td.ind1
+{
+  padding-left:10px !important;
+}
+
+td.ind2
+{
+  padding-left:20px  !important;
+}
+
+td.ind3
+{
+  padding-left:30px  !important;
+}
+
+/* Col Styles */
+
+td.type_text,
+td.type_select,
+td.type_splitb
+{
+  text-align: left;
+}
+
+td.type_date,
+td.type_time,
+td.type_timestamp,
+td.type_number
+{
+  text-align: right;
+}
+
+td.type_buttonset,
+td.type_check
+{
+  text-align: center;
+}
+
+td.edit_mode
+{
+  border:2px solid #0000FF;
+}
+
+td.no_oflw
+{
+  white-space: nowrap;
+}
+
+/* menu */
+
+.wgt-grid_menu
+{
+  height:20px;
+}
+
+
+div.wgt-grid-body table tbody td.nav
+{
+  padding-top:0px !important;
+  padding-bottom:0px !important;
+}
+
+.wgt-grid_menu button.wgt-button
+{
+  height:20px;
+  margin:0px;
+  padding:0px;
+  width:35px;
+}
+/**/
+
+
+/* THEME STYLES */
+
+table.wgt-grid tbody tr.title,
+table.wgt-table tbody tr.title
+{
+  background-color:#004574 !important;
+  color:white;
+  font-weight:bold;
+}
+
+table.wgt-grid tbody tr td.child,
+table.wgt-table tbody tr td.child
+{
+  padding-left:12px;
+}
+
+table.wgt-grid tbody tr.subtitle,
+table.wgt-table tbody tr.subtitle
+{
+  background-color:#C3C3C3 !important;
+  color:white;
+}
+
+table.wgt-grid tbody tr.subtitle td.child,
+table.wgt-table tbody tr.subtitle td.child
+{
+  padding-left:6px;
+}
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Wgt list classes
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+ul.wgt-list.inline
+{
+	list-style:none;
+}
+
+ul.wgt-list.inline li
+{
+	display:inline;
+	float:left;
+  padding:3px;
+  width:75px;
+  text-align:center;
+}
+
+
+ul.wgt-assign-block
+{
+  list-style-type: none; 
+  margin: 0; 
+  padding: 0;
+  width:170px;
+  height:200px;
+  overflow:auto;
+  border:1px solid black;
+}
+
+ul.wgt-assign-block>li
+{
+  padding: 5px;
+  width: 135px;
+  white-space:nowrap;
+}
+
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Wgt Menu
+//////////////////////////////////////////////////////////////////////////////*/
+
+.wgt-menu
+{
+
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Folder Menu
+//////////////////////////////////////////////////////////////////////////////*/
+
+div.wgt-menu.folder
+{
+  width:100%;
+  margin:3px;
+  padding:3px;
+}
+
+div.wgt-menu p
+{
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+
+div.wgt-menu.folder>div.wgt-entry,
+div.wgt-block
+{
+  text-align:center;
+  padding:4px;
+  float:left;
+  width:90px;
+  height:90px;
+  margin-bottom:30px;
+  border:2px solid white !important;
+  border-radius: 4px;
+}
+
+div.wgt-menu.folder>div.wgt-entry:hover,
+div.wgt-block:hover
+{
+  border:2px solid silver !important;
+  border-radius: 3px;
+  background-color:#DFEFFC;
+}
+
+div.wgt-menu.folder>div.wgt-entry p,
+div.wgt-block p
+{
+  text-align:center;
+  vertical-align:bottom;
+  height:28px;
+}
+
+div.wgt-block.small
+{
+  width:90px;
+  height:90px;
+}
+
+div.wgt-menu.folder>div.wgt-menu a
+{
+  display:block;
+  text-decoration:none;
+}
+
+div.wgt-menu.folder>div.wgt-menu img
+{
+  border:none;
+  margin:4px 0px 4px 0px;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// List Menu
+//////////////////////////////////////////////////////////////////////////////*/
+
+ul.wgt-menu.list
+{
+  border:none;
+  margin:4px 0px 4px 0px;
+}
+
+ul.wgt-menu.list li
+{
+  padding:3px;
+}
+
+ul.wgt-menu.list a
+{
+  display:block;
+}
+
+ul.wgt-menu.list img 
+{
+  border:0px;
+  margin-right:5px;
+  display:block;
+  float:left;
+}
+
+ul.wgt-menu.list span 
+{
+  display:inline-block;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Menubar
+//////////////////////////////////////////////////////////////////////////////*/
+
+/*div.wgt-menu.bar,*/
+div.wgt-menu.bar  ul
+{
+  width:100%;
+}
+
+div.wgt-menu.bar li
+{
+	padding-top:8px;
+  padding-left:3px;
+  list-style:none;
+  display:inline;
+  float:left;
+}
+
+div.wgt-menu.bar .icon_bar
+{
+  height:33px;
+  padding-left:5px;
+  padding-right:5px;
+}
+
+div.wgt-menu.bar .entry
+{
+  padding-top:8px;
+  padding-left:3px;
+  float:left;
+  font-weight:bold;
+}
+
+div.wgt-menu.bar .entry a
+{
+  border-bottom:0px;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Crumb Menu
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+ul.wgt-menu.crumb
+{
+  border:1px solid black;
+  background-color:white;
+  padding:2px 3px 2px 3px;
+  min-width:450px;
+  text-align:left;
+}
+
+ul.wgt-menu.crumb li
+{
+  list-style:none;
+  display:inline;
+  padding:1px 3px 1px 3px;
+  text-align:left;
+}
+
+ul.wgt-menu.crumb li img
+{
+  margin-bottom:-2px;
+}
+
+ul.wgt-menu.crumb a:hover
+{
+  background-color:silver;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Splitbutton Dropdown
+//////////////////////////////////////////////////////////////////////////////*/
+
+div.wgt-split-button
+{
+  position:relative;
+}
+
+ul.wgt-split-drop
+{
+  padding:3px;
+}
+
+button.wgt-button.splitted
+{
+  float:left;
+}
+
+div.wgt-split-button.listnav .wgt-button.append
+{
+  margin-left:-58px;
+}
+
+
+ul.wgt-split-drop .wgt-button
+{
+  width:99%;
+  margin-bottom:1px;
+  text-align:left;
+}
+
+
+ul.wgt-split-drop a.wgt-button
+{
+  display:block;
+	padding:0px 2px 2px 2px;
+  width:95% !important;	
+}
+
+
+.miniMenuCloseButton
+{
+  padding:7px 4px 5px 4px ;
+}
+
+#menuSelectorOverlay {
+	width: 120px;
+	position: absolute;
+	z-index: 1000;
+	display: none;
+}
+
+
+#menuSelectorOverlay .ui-widget{
+	padding: .2em;
+}
+#menuSelectorOverlay .ui-widget-header {
+	padding: .2em;
+}
+#menuSelectorOverlay .ui-widget-content {
+  padding:5px;
+  /*
+	 margin-top: .1em;
+	 margin-bottom: .1em;
+	 padding: .2em;
+  */
+}
+#menuSelectorOverlay .ui-widget.ui-widget-content {
+	margin-top: 0;
+}
+#menuSelectorOverlay .ptTimeSelectLeftPane.ui-widget-content {
+	border-top:none;
+	border-bottom:none;
+	border-left:none;
+	border-right-width: 2px;
+}
+#menuSelectorOverlay .menuSelectorCloseButton {
+	padding-top: .2em;
+	padding-bottom: .2em;
+}
+#menuSelectorOverlay .menuSelectorCloseButton a {
+ 	display: block;
+	padding: .2em;
+	width: 40%;
+	text-align: center;
+	float: right;
+}
+
+#menuSelectorOverlay .menuSelectorMenuButton {
+	padding-top: .0em;
+	padding-bottom: .0em;
+
+}
+#menuSelectorOverlay .menuSelectorMenuButton a {
+ 	display: block;
+	width: 100%;
+	text-align: left;
+	float: left;
+	padding: .0em;
+
+}
+#menuSelectorOverlay .menuSelectorMenuButton .default
+{
+
+text-decoration: none;
+outline: none;
+}
+
+
+#menuSelectorOverlay .menuSelectorMenuButton {
+  padding:3px;
+}
+
+#menuSelectorOverlay .menuSelectorMenuButton a {
+  display: block;
+  width: 100%;
+  text-align: left;
+  float: left;
+  padding: .0em;
+
+}
+
+#menuSelectorOverlay .menuSelectorMenuButton .default{
+  text-decoration: none;
+  outline: none;
+}
+
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Panel
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+.wgt-panel
+{
+  height:32px;
+  padding:3px;
+  margin:0px !important;
+  /*width:100%;*/
+  overflow:hidden;
+}
+
+div.wgt-panel div.inner
+{
+  height:33px;
+}
+
+.wgt-panel .buttons
+{
+  float:left;
+  padding-top:5px;
+}
+
+.wgt-panel.head
+{
+  padding-top:6px;
+  height:32px;
+  border-bottom: 1px solid black !important;
+}
+
+div.wgt-panel.menu
+{
+  padding:3px;
+  padding-left:6px;
+  height:32px;
+  border: 1px solid black;
+	border-radius: 3px;
+}
+
+.wgt-panel.title h2
+{
+  white-space: nowrap;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  display:block;
+}
+
+.wgt-panel-control
+{
+	clear:none;
+  display:inline;
+  float:left;
+  zoom: 1; /* FU IE */  
+	margin-left:5px;
+}
+
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// WGT Process Form classes
+//////////////////////////////////////////////////////////////////////////////*/
+
+div.wgt-process-form
+{
+
+}
+
+div.wgt-process-form div.description
+{
+  width:185px;
+  margin:5px;
+  float:left;
+}
+
+div.wgt-process-form div.action
+{
+  width:235px;
+  margin:5px;
+  float:left;
+}
+
+div.wgt-process-form div.action button
+{
+  width:200px;
+  text-align:left;
+}
+
+div.wgt-process-form div.action button.info
+{
+  width:35px;
+  text-align:left;
+}
+
+div.wgt-process-form div.action ul.actions li
+{
+  padding:2px;
+}
+
+div.wgt-process-form div.comment
+{
+  width:420px;
+  margin:5px;
+  float:left;
+}
+
+div.wgt-process-form textarea
+{
+  width:420px;
+}
+
+
+div.wgt-process-form div.slices
+{
+  width:430px;
+  float:left;
+}
+
+div.wgt-process-form div.slice
+{
+  width:420px;
+  margin:5px;
+  float:left;
+}
+
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// tabs and button bar
+//////////////////////////////////////////////////////////////////////////////*/
+
+div.wgt_tab_head 
+{
+  /*border-bottom:1px solid #A8B8C7;*/
+  /*width:100%;*/
+  float:right;
+  height:22px;
+  padding-top:7px;
+  z-index:2;
+}
+
+div.wgt_tab_body
+{
+  clear:both;
+  height:auto;
+  /*width:100%;*/
+}
+
+
+div.wgt_tab.medium
+{
+  width:99%;
+  height:350px;
+  overflow:auto;
+}
+
+div.wgt_tab.full
+{
+  width:auto;
+  height:700px;
+  overflow:auto;
+}
+
+div.wgt-container-controls
+{
+  text-align: right;
+  white-space: nowrap;
+  vertical-align: bottom;
+  /*width:100%;*/
+}
+
+div.wgt-container-controls div.tab_outer_container
+{
+  float: left;
+  padding-left: 5px;
+}
+
+div.wgt-container-controls div.tab_scroll
+{
+  padding: 8px 0 5px 0 !important;
+	margin-top:-4px;
+  overflow: hidden;
+  float: left;
+  position:absolute;
+  left:0;
+  right:50px;
+}
+
+div.wgt-container-controls .tab_left,
+div.wgt-container-controls .tab_right
+{
+  float: left;
+  margin: 2px 0 0;
+  cursor: pointer;
+}
+
+div.wgt-container-controls div.tab_container
+{
+  padding: 0;
+}
+
+div.tab_extender
+{
+  background-position: center bottom;
+  background-repeat: repeat-x;
+  height: 6px;
+  padding: 0px;
+  border-width: 0px;
+  clear: left;
+}
+
+div.tab_container a
+{
+  text-decoration: none;
+  cursor: pointer;
+  border:0px !important;
+}
+
+
+
+div.tab_container span.active_tab  a
+{
+  cursor: default;
+}
+
+div.tab_container span.active_tab  a:hover
+{
+  text-decoration: none;
+}
+
+div.tab_container span.label
+{
+  /*margin-right:-4px;*/
+}
+
+div.tab_container span span
+{
+  padding: 3px 5px 3px 5px;
+  height: 24px;
+}
+
+
+div.tab_container>span
+{
+  padding: 3px 2px 3px 0px;
+  height: 24px;
+}
+
+div.tab_container a,
+div.tab_container span.active_tab  a,
+div.tab_container span.active_tab  a:hover,
+div.tab_container span.label,
+div.tab_container span span,
+div.tab_container>span
+{
+	/*
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  */
+}
+
+
+/* IE7 specific
+* See http://www.thestyleworks.de/tut-art/ie7.shtml#ie7-hacks
+*/
+*+html div.tab_container>span
+{
+  padding: 0px;
+  padding-right: 1px;
+}
+
+div.tab_container > span:first-child
+{
+  margin-left: -11px;
+}
+
+div.tab_container > span:last-child
+{
+  margin-right:0px !important;
+}
+
+
+div.tab_container span.active_tab
+{
+  z-index: 1;
+}
+
+div.tab_container span.active_tab span
+{
+  padding-bottom: 5px;
+  margin-right:-5px;
+}
+
+
+div.wgt-container-controls > div.wgt-container-buttons
+{
+  float: left;
+  /*margin-top: 3px;*/
+  margin-right:50px;
+  height: 26px;
+}
+
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Button Container
+//////////////////////////////////////////////////////////////////////////////*/
+
+div.wgt-container-buttons .wgt-dropmenu,
+.wgt-panel .wgt-dropmenu
+{
+	margin-top:-3px;
+}
+
+div.wgt-container-buttons button
+{
+  white-space: nowrap;
+  cursor: pointer;
+  margin-right: 6px;
+  min-width: 18px;
+}
+
+div.wgt-container-buttons button.img
+{
+  white-space: nowrap;
+  margin-right: 6px;
+  min-width: 10px;
+  height:23px;
+  margin-bottom: 2px;
+}
+
+
+div.wgt-container-buttons button.icon
+{
+  background-position:right center;
+  background-repeat:no-repeat;
+  padding-right: 16px;
+}
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// tabs and button bar
+//////////////////////////////////////////////////////////////////////////////*/
+
+div.wgt-tab-head
+{
+  height:28px;
+  border:1px solid silver;
+}
+
+div.wgt-tab-head  div.tab_head
+{
+  width:auto;
+  height:auto;
+  height:28px;
+  padding-top:5px;
+  padding-left:5px;
+  overflow: hidden;
+  padding-right:5px;  
+}
+
+div.wgt-tab-head.trans,
+div.wgt-tab-head.trans  div.tab_head
+{
+  background: transparent;
+}
+
+div.wgt-tab-head  div.tab_overflow
+{
+  height:28px;
+  padding-top:5px;
+  width:30px;
+  display: none;
+}
+
+div.wgt-tab-head.al div.tab_head
+{
+  float:left;
+  text-align:left;  
+}
+
+div.wgt-tab-head.ar div.tab_head
+{
+  float:right;
+  text-align:right;
+}
+
+div.wgt-tab-head.al div.tab_head>a
+{
+}
+
+div.wgt-tab-head.ar div.tab_head>a
+{
+}
+
+div.wgt-tab-head  div.tab_head>a
+{
+  display:inline-block;
+  line-height:1;
+  vertical-align:middle;
+  padding:4px 6px 4px 6px;
+  border: 1px solid silver;
+  cursor:pointer;
+  max-width:120px;
+  overflow:hidden;
+  white-space: nowrap;
+  margin-right:-3px;
+}
+
+div.wgt-tab-head  div.tab_head>a.hidden
+{
+  display:none;
+}
+/*//////////////////////////////////////////////////////////////////////////////
+// Table
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+table.wgt-table
+{
+  padding:0px;
+  margin:0px;
+  clear:both;
+}
+
+table.wgt-table.categorized td:first-child
+{
+  padding-left:20px;
+}
+
+
+table.wgt-table thead th,
+table.wgt-table thead th span,
+table.wgt-table thead th a,
+table.wgt-table tbody td,
+table.wgt-table tfoot div
+{
+  padding-left:2px;
+}
+
+table.wgt-table thead th.pos,
+table.wgt-table td.pos
+{
+  background-color:silver;
+  font-weight: bold;
+  color: black;
+  text-align:left;
+  border-bottom:1px solid black;
+}
+
+table.wgt-table td.pos.checked
+{
+  background-color:#585858;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-align:left;
+  border-bottom:1px solid #FFFFFF;
+}
+
+table.wgt-table td.date,
+table.wgt-table td.time,
+table.wgt-table td.number,
+table.wgt-table td.money,
+table.wgt-table td.rtext
+{
+  text-align:right;
+}
+
+table.wgt-table td ul
+{
+  margin-left:15px;
+}
+
+table.wgt-table td ul.wgt-list li
+{
+  list-style-type:decimal;
+}
+
+
+
+table.wgt-table tbody.scrollable
+{
+  overflow-y:scroll;
+  overflow-x:hidden;
+  height:450px;
+}
+
+table.wgt-table input,
+table.wgt-table select,
+table.wgt-table textarea
+{
+  margin:0px;
+  padding:0px;
+  border:0px;
+  background-color:inherit;
+}
+
+table.wgt-table option
+{
+  background-color:white;
+}
+
+table.wgt-table input.show,
+table.wgt-table select.show,
+table.wgt-table textarea.show
+{
+  margin:0px;
+  padding:1px;
+  margin-right:3px;
+  border:1px dotted silver;
+}
+
+table.wgt-table input.show:hover,
+table.wgt-table select.show:hover,
+table.wgt-table textarea.show:hover
+{
+  background-color:#EBEFF2;
+  border:1px ridge silver;
+}
+
+table.wgt-table tfoot input,
+table.wgt-table tfoot select,
+table.wgt-table tfoot textarea
+{
+  border:1px solid black;
+  background-color:white;
+}
+
+
+table.wgt-table thead input,
+table.wgt-table thead select,
+table.wgt-table thead textarea
+{
+  border:1px solid black;
+  padding:0px !important;
+  margin:2px !important;
+  width:98%;
+  border:0px;
+  background-color:white;
+}
+
+
+table.wgt-table tr.category td
+{
+  background-color:silver;
+  font-weight:bold;
+  color:navy;
+  padding-left:4px !important;
+}
+
+table.hide-head thead th
+{
+  border: 1px solid white !important;
+  color: white !important;
+  background-color: white !important;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// headings
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+h1
+{
+  margin-bottom:15px;
+  font-size:2.5em;
+  letter-spacing: 0.1em;
+}
+
+h1 a
+{
+  margin-bottom:15px;
+  font-size:1em;
+  letter-spacing: 0.1em;
+}
+
+
+h2
+{
+  font-size:1.5em;
+  margin-bottom:9px;
+}
+
+h2 a.head
+{
+  font-size: 1.5em;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+
+h3
+{
+  font-size:1.2em;
+  margin-bottom:9px;
+}
+
+h4
+{
+  font-size:1.1em;
+  margin-bottom:9px;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Links
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+a img,
+a.icon
+{
+  border:0px;
+  border-bottom:0px;
+}
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// text layout
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+.border
+{
+}
+
+.text
+{
+}
+
+.emphasized
+{
+   margin-top:20px;
+   font-size:10px;
+}
+
+.important
+{
+}
+
+.selected
+{
+}
+
+.god
+{
+  background-color:#8bff38;
+  font-weight:bolder;
+}
+
+.average
+{
+  background-color:#fcff36;
+  font-weight:bolder;
+}
+
+.warn
+{
+  background-color:#ffb342;
+  font-weight:bolder;
+}
+
+.bad
+{
+  background-color:#db0000;
+  color:#fffb04;
+  font-weight:bolder;
+}
+
+
+.code
+{
+  margin:10px 3px 10px 3px;
+  padding:4px;
+}
+
+
+
+pre, blockquote
+{
+  padding:5px;
+}
+
+
+
+p
+{
+  padding-bottom:8px;
+  margin: 3px 0;
+  padding-left:4px;
+}
+
+b,strong
+{
+  font-weight:bold;
+}
+
+hr
+{
+  clear:both;
+}
+
+div.text
+{
+  /*width:100%;*/
+  border:0px;
+  margin-bottom:20px;
+}
+
+div.text ul
+{
+  font-weight:normal;
+  text-decoration:none;
+  margin-left:20px;
+}
+
+div.text p
+{
+  margin:10px 0px 10px 0px;
+}
+
+div.text blockquote
+{
+  font-style:italic;
+  margin:10px 0px 10px 0px;
+}
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Slice & Entry Elements for Text Layouts
+//////////////////////////////////////////////////////////////////////////////*/
+
+.slice .title a:hover
+{
+}
+
+.slice .info
+{
+  text-align: left;
+  width:98%;
+}
+
+.slice > .entry
+{
+  padding: 10px 0 20px 0;
+  text-align: justify;
+}
+
+.slice > .entry p
+{
+  text-align: justify;
+}
+
+
+.slice ul
+{
+  margin-left:20px;
+}
+
+
+.entry ul
+{
+  padding-bottom:8px;
+}
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Text Box
+//////////////////////////////////////////////////////////////////////////////*/
+                                                                              
+div.wgt-text-container
+{
+
+}
+
+div.wgt-text-container h3
+{
+  padding:3px;
+	margin:0px;
+}
+
+div.wgt-text-container div.content
+{
+  padding:3px;
+	min-height:120px;
+}
+
+ul.wgt-tree,
+div.wgt-tree ul
+{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+div.wgt-tree ul
+{
+  background-color: transparent;
+  margin-top: 4px;
+}
+
+ul.wgt-tree>li,
+div.wgt-tree ul>li
+{
+  padding: 3px 0pt 3px 0px;
+}
+
+.wgt-tree li
+{
+  margin: 0;
+  padding: 3px 0pt 3px 16px;
+}
+
+.wgt-tree a.selected
+{
+  background-color: #eee;
+}
+
+.wgt-tree a,
+.wgt-tree p,
+.wgt-tree span
+{
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+
+<br />
+<font size='1'><table class='xdebug-error' dir='ltr' border='1' cellspacing='0' cellpadding='1'>
+<tr><th align='left' bgcolor='#f57900' colspan="5"><span style='background-color: #cc0000; color: #fce94f; font-size: x-large;'>( ! )</span> Warning: include(../../layout/wgt/wgt/wgt.window.css) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /var/www/WorkspaceWebFrap/WebFrap_Wgt/example/gw/conf/include/css/default.list.php on line <i>98</i></th></tr>
+<tr><th align='left' bgcolor='#e9b96e' colspan='5'>Call Stack</th></tr>
+<tr><th align='center' bgcolor='#eeeeec'>#</th><th align='left' bgcolor='#eeeeec'>Time</th><th align='left' bgcolor='#eeeeec'>Memory</th><th align='left' bgcolor='#eeeeec'>Function</th><th align='left' bgcolor='#eeeeec'>Location</th></tr>
+<tr><td bgcolor='#eeeeec' align='center'>1</td><td bgcolor='#eeeeec' align='center'>0.0005</td><td bgcolor='#eeeeec' align='right'>654016</td><td bgcolor='#eeeeec'>{main}(  )</td><td title='/var/www/WorkspaceWebFrap/WebFrap_Wgt/example/gw/css.php' bgcolor='#eeeeec'>../css.php<b>:</b>0</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>2</td><td bgcolor='#eeeeec' align='center'>0.0136</td><td bgcolor='#eeeeec' align='right'>1684592</td><td bgcolor='#eeeeec'>LibCacheRequestCss->publishList(  )</td><td title='/var/www/WorkspaceWebFrap/WebFrap_Wgt/example/gw/css.php' bgcolor='#eeeeec'>../css.php<b>:</b>64</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>3</td><td bgcolor='#eeeeec' align='center'>0.0244</td><td bgcolor='#eeeeec' align='right'>2443224</td><td bgcolor='#eeeeec'>include( <font color='#00bb00'>'/var/www/WorkspaceWebFrap/WebFrap_Wgt/example/gw/conf/include/css/default.list.php'</font> )</td><td title='/var/www/WorkspaceWebFrap/WebFrap_Wgt/example/gw/src/lib/cache/request/LibCacheRequestCss.php' bgcolor='#eeeeec'>../LibCacheRequestCss.php<b>:</b>182</td></tr>
+</table></font>
+<br />
+<font size='1'><table class='xdebug-error' dir='ltr' border='1' cellspacing='0' cellpadding='1'>
+<tr><th align='left' bgcolor='#f57900' colspan="5"><span style='background-color: #cc0000; color: #fce94f; font-size: x-large;'>( ! )</span> Warning: include() [<a href='function.include'>function.include</a>]: Failed opening '../../layout/wgt/wgt/wgt.window.css' for inclusion (include_path='.:/usr/share/php:/usr/share/pear') in /var/www/WorkspaceWebFrap/WebFrap_Wgt/example/gw/conf/include/css/default.list.php on line <i>98</i></th></tr>
+<tr><th align='left' bgcolor='#e9b96e' colspan='5'>Call Stack</th></tr>
+<tr><th align='center' bgcolor='#eeeeec'>#</th><th align='left' bgcolor='#eeeeec'>Time</th><th align='left' bgcolor='#eeeeec'>Memory</th><th align='left' bgcolor='#eeeeec'>Function</th><th align='left' bgcolor='#eeeeec'>Location</th></tr>
+<tr><td bgcolor='#eeeeec' align='center'>1</td><td bgcolor='#eeeeec' align='center'>0.0005</td><td bgcolor='#eeeeec' align='right'>654016</td><td bgcolor='#eeeeec'>{main}(  )</td><td title='/var/www/WorkspaceWebFrap/WebFrap_Wgt/example/gw/css.php' bgcolor='#eeeeec'>../css.php<b>:</b>0</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>2</td><td bgcolor='#eeeeec' align='center'>0.0136</td><td bgcolor='#eeeeec' align='right'>1684592</td><td bgcolor='#eeeeec'>LibCacheRequestCss->publishList(  )</td><td title='/var/www/WorkspaceWebFrap/WebFrap_Wgt/example/gw/css.php' bgcolor='#eeeeec'>../css.php<b>:</b>64</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>3</td><td bgcolor='#eeeeec' align='center'>0.0244</td><td bgcolor='#eeeeec' align='right'>2443224</td><td bgcolor='#eeeeec'>include( <font color='#00bb00'>'/var/www/WorkspaceWebFrap/WebFrap_Wgt/example/gw/conf/include/css/default.list.php'</font> )</td><td title='/var/www/WorkspaceWebFrap/WebFrap_Wgt/example/gw/src/lib/cache/request/LibCacheRequestCss.php' bgcolor='#eeeeec'>../LibCacheRequestCss.php<b>:</b>182</td></tr>
+</table></font>
+
+/* bg icons für controls */
+
+.wgt-bgi
+{   
+  background-position: 6px center;	
+	background-repeat:no-repeat;
+  padding-left: 28px;	
+}
+
+.wgt-bgi.edit
+{   
+  background-image:url('http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../icons/default/xsmall/control/edit.png'); 
+}
+
+.wgt-bgi.add
+{   
+  background-image:url('http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../icons/default/xsmall/control/add.png'); 
+}
+
+.wgt-bgi.delete
+{   
+  background-image:url('http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../icons/default/xsmall/control/delete.png'); 
+}
+
+.wgt-bgi.search
+{   
+  background-image:url('http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../icons/default/xsmall/control/search.png'); 
+}
+
+.wgt-bgi.rights
+{   
+  background-image:url('http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../icons/default/xsmall/control/rights.png'); 
+}
+/*//////////////////////////////////////////////////////////////////////////////
+// Editor
+//////////////////////////////////////////////////////////////////////////////*/
+
+/* Fenster für den Body */
+div.wgt-editor_container
+{
+  width:720px;
+  height:750px;
+  position:relative;
+  border:1px solid silver;
+  background-color:#F7F7F7; 
+  overflow:hidden;
+  float: left;
+}
+
+/* Sicher stellen, dass die Pfade hinter den elementen verlaufen */
+div.wgt-editor_container svg{
+  z-index:1;
+}
+
+/* Body welcher im Container zentriert platziert wird */
+div.wgt-graph_body
+{
+  width:10000px;
+  height:10000px;
+  margin-top:-4625px;
+  margin-left:-4625px;  
+  position:relative;
+  border:1px solid silver;
+  background-color:#F7F7F7; 
+  overflow:hidden;
+}
+
+div.wgt-editor_container .node
+{
+  min-width:120px;
+  min-height:30px;
+  position:absolute;
+  border:1px solid silver;
+  background-color:#A0A0A0; 
+  color:white;
+  white-space:nowrap;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  overflow:hidden;
+  text-align:center;
+  z-index:1000;
+  padding:5px;
+  cursor:pointer;
+}
+
+
+div.wgt-editor_container .node:hover
+{
+  background-color:#303030 !important; 
+  color:white !important;
+}
+
+div.wgt-editor_container .node.active
+{
+  background-color:#FFFFFF;
+  border:2px dotted #FF00FF;
+  color:#FF00FF;
+  font-weight: bold;
+}
+
+div.wgt-editor_container .node.start
+{
+  background-color:#B4EEB2; 
+  color:black;
+}
+
+div.wgt-editor_container .node.end
+{
+  background-color:#008000; 
+  color:white;
+}
+
+div.wgt-editor_container .node.aborted
+{
+  background-color:#C00000; 
+  color:white;
+}
+
+div.wgt-editor_container .node.gateway
+{
+  background-color:#000080; 
+  color:white;
+}
+
+div.wgt-editor_container .node.waring
+{
+  background-color:#FF8000; 
+  color:white;
+}
+
+div.wgt-editor_container .node.archive
+{
+  background-color:#303030; 
+  color:white;
+}
+
+div.wgt-editor_container .node.checked
+{
+  background-color:#800080; 
+  color:white;
+}
+
+div.wgt-editor_container .node label
+{
+  vertical-align:middle;
+}
+
+div.wgt-editor_form
+{
+  width:280px;
+  height:750px;
+  border:1px solid silver;
+  clear:both;  
+  float: left;
+}
+
+
+div.wgt-editor_form ul li
+{
+  color:#303030;
+  padding-left:5px;
+}
+
+div.wgt-editor_form h2.name
+{
+  color:#000080;
+  margin-bottom:2px;
+}
+
+div.wgt-editor_form label.phase
+{
+  color:#000080;
+  display: block;
+}
+
+
+div.wgt-editor_form label
+{
+  color:#000080;
+  font-weight:bold;
+}
+
+div.wgt-editor_form .ui-accordion-content
+{
+  padding:5px !important;
+}
+
+div.wgt-editor_form li.role
+{
+  color:#004000;
+}
+
+.wgt_path_label
+{
+  color:#A0A0A0;
+}
+
+.wgt_path_label_high
+{
+  color:#000000;
+}
+.wgt-tip 
+{ 
+	padding: 5px; 
+	font-size: 10px; 
+	position: absolute; 
+	z-index: 100000;
+}
+.wgt-tip-inner 
+{ 
+	padding: 5px 8px 4px 8px; 
+	background-color: black; 
+	color: white; 
+	max-width: 200px; 
+	text-align: center;
+}
+.wgt-tip-inner 
+{ 
+	border-radius: 3px;
+}
+
+.wgt-tip-arrow 
+{ 
+	position: absolute; 
+	background: url(http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/wgt/wgt-tip.gif) no-repeat top left; 
+	width: 9px; 
+	height: 5px;
+}
+
+.wgt-tip-n .wgt-tip-arrow 
+{ 
+  top: 0; 
+  left: 50%; 
+  margin-left: -4px;
+}
+.wgt-tip-nw .wgt-tip-arrow 
+{ 
+	top: 0; 
+	left: 10px;
+}
+.wgt-tip-ne .wgt-tip-arrow 
+{ 
+	top: 0; 
+	right: 10px;
+}
+.wgt-tip-s .wgt-tip-arrow 
+{ 
+	bottom: 0; 
+	left: 50%; 
+	margin-left: -4px; 
+	background-position: bottom left;
+}
+.wgt-tip-sw .wgt-tip-arrow 
+{ 
+	bottom: 0; 
+	left: 10px; 
+	background-position: bottom left;
+}
+.wgt-tip-se .wgt-tip-arrow 
+{ 
+	bottom: 0; 
+	right: 10px; 
+	background-position: bottom left;
+}
+.wgt-tip-e .wgt-tip-arrow 
+{ 
+	top: 50%; 
+	margin-top: -4px; 
+	right: 0; 
+	width: 5px; 
+	height: 9px; 
+	background-position: top right;
+}
+.wgt-tip-w .wgt-tip-arrow 
+{ 
+	top: 50%; 
+	margin-top: -4px; 
+	left: 0; 
+	width: 5px; 
+	height: 9px;
+}
+
+
+#menuSelectorOverlay {
+	width: 120px;
+	position: absolute;
+	z-index: 1000;
+	display: none;
+}
+
+
+#menuSelectorOverlay .ui-widget{
+	padding: .2em;
+}
+#menuSelectorOverlay .ui-widget-header {
+	padding: .2em;
+}
+#menuSelectorOverlay .ui-widget-content {
+  padding:5px;
+  /*
+	 margin-top: .1em;
+	 margin-bottom: .1em;
+	 padding: .2em;
+  */
+}
+#menuSelectorOverlay .ui-widget.ui-widget-content {
+	margin-top: 0;
+}
+#menuSelectorOverlay .ptTimeSelectLeftPane.ui-widget-content {
+	border-top:none;
+	border-bottom:none;
+	border-left:none;
+	border-right-width: 2px;
+}
+#menuSelectorOverlay .menuSelectorCloseButton {
+	padding-top: .2em;
+	padding-bottom: .2em;
+}
+#menuSelectorOverlay .menuSelectorCloseButton a {
+ 	display: block;
+	padding: .2em;
+	width: 40%;
+	text-align: center;
+	float: right;
+}
+
+#menuSelectorOverlay .menuSelectorMenuButton {
+	padding-top: .0em;
+	padding-bottom: .0em;
+
+}
+#menuSelectorOverlay .menuSelectorMenuButton a {
+ 	display: block;
+	width: 100%;
+	text-align: left;
+	float: left;
+	padding: .0em;
+
+}
+#menuSelectorOverlay .menuSelectorMenuButton .default
+{
+
+text-decoration: none;
+outline: none;
+}
+
+
+#menuSelectorOverlay .menuSelectorMenuButton {
+  padding:3px;
+}
+
+#menuSelectorOverlay .menuSelectorMenuButton a {
+  display: block;
+  width: 100%;
+  text-align: left;
+  float: left;
+  padding: .0em;
+
+}
+
+#menuSelectorOverlay .menuSelectorMenuButton .default{
+  text-decoration: none;
+  outline: none;
+}
+
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// List Selector
+//////////////////////////////////////////////////////////////////////////////*/
+
+.wgt-dbl_list_selector
+{
+  border:1px solid silver;
+  margin: 3px;
+}
+
+.wgt-dbl_list_selector ul.out,
+.wgt-dbl_list_selector ul.in
+{
+  margin:5px;
+  border:1px solid silver;
+  max-height: 250px;
+  overflow:auto;
+}
+
+.wgt-dbl_list_selector ul.out
+{
+  float:left;
+}
+
+.wgt-dbl_list_selector ul.in
+{
+  float:right;
+}
+
+.wgt-dbl_list_selector div.menu
+{
+  float:left;
+  margin:5px;
+  /*
+  margin-top:10px;
+  text-align: center;*/
+}
+
+.wgt-dbl_list_selector div.menu .entry
+{
+  padding:2px;
+  /*margin-left:38px;*/
+}
+
+.wgt-dbl_list_selector ul li
+{
+  border:1px solid silver;  
+  padding:3px;
+}
+.wgt-dropdownbox 
+{
+  width:200px;
+  height:auto;
+  background-color:#eee;
+  border:1px solid #ccc;
+  display:none;
+}
+
+.wgt-dropdownbox ul 
+{
+  border-top:1px solid #ddd;
+  margin-left:30px;
+  border-left:1px solid #ddd;
+  padding-top:3px;
+  padding-bottom:3px;
+}
+
+.wgt-dropdownbox ul li a img,
+.wgt-dropdownbox ul li a input, 
+.wgt-dropdownbox ul li img,
+.wgt-dropdownbox ul li input 
+{
+  position:absolute;
+  margin-left:-30px;
+}
+
+.wgt-dropdownbox ul li a
+{
+  display:block;
+  padding:4px;
+  padding-left:6px;
+  color:#222;
+  cursor:pointer;
+}
+
+.wgt-dropdownbox ul li label,
+.wgt-dropdownbox label
+{
+  display:block;
+  padding:4px;
+  padding-left:6px;
+  color:#222;
+  font-weight:bold;
+  cursor:default;
+}
+
+/*.wgt-dropdownbox ul li>a:hover,*/
+.wgt-dropdownbox ul li.hover>a 
+{
+  background-color:#ee9;
+  border:1px solid #ddf;
+  margin-left:-29px;
+  margin-right:2px;
+  padding:3px;
+  padding-left:30px;
+  text-indent:4px;
+  border-radius:4px;
+}
+
+.wgt-dropdownbox ul li span
+{
+  position:absolute;
+  width:180px;
+  margin-left:137px;
+  margin-top:-26px;
+  display:none;
+}
+
+.wgt-dropdownbox.al_right ul li span
+{
+  margin-left:-290px;
+}
+
+.wgt-dropdownbox ul li span ul 
+{
+  background-color:#eee;
+  border:1px solid #ccc;
+  padding-left:30px;
+  width:200px;  
+}
+
+.wgt-dropdownbox ul li span ul li 
+{
+  padding:4px;
+  padding-left:6px;
+  color:#222;
+  border-left:1px solid #ddd;
+}
+
+/*.wgt-dropdownbox ul li span ul li:hover,*/
+.wgt-dropdownbox ul li span ul li.hover
+{
+  cursor:pointer;
+  margin-left:-30px;
+  padding-left:36px;
+}
+
+/*.wgt-dropdownbox ul li span ul li:hover a,*/
+.wgt-dropdownbox ul li span ul li.hover a
+{
+  background-color:#ee9;
+}
+
+
+.wgt-dropdownbox ul li.hover span
+{
+  display:block;
+}
+
+.wgt-dropdownbox .deeplink
+{
+  background: transparent url('http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/wgt/menu_arrow.png') no-repeat right center;
+}
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Calendar
+//////////////////////////////////////////////////////////////////////////////*/
+
+.wgt-calendar.big
+{ 
+  width:600px;
+  height:500px;
+}
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Value Box
+//////////////////////////////////////////////////////////////////////////////*/
+
+ul.wgt-value-box
+{
+  margin-top:7px;
+  width:400px;
+}
+
+ul.wgt-value-box li,
+ul.wgt-value-box li:hover
+{
+  padding:2px;
+}
+
+ul.wgt-value-box li:hover
+{
+  background-color:silver;
+}
+
+
+
+  
+   
+.wgt-tip 
+{ 
+	padding: 5px; 
+	font-size: 10px; 
+	position: absolute; 
+	z-index: 100000;
+}
+.wgt-tip-inner 
+{ 
+	padding: 5px 8px 4px 8px; 
+	background-color: black; 
+	color: white; 
+	max-width: 200px; 
+	text-align: center;
+}
+.wgt-tip-inner 
+{ 
+	border-radius: 3px;
+}
+
+.wgt-tip-arrow 
+{ 
+	position: absolute; 
+	background: url(http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/wgt/wgt-tip.gif) no-repeat top left; 
+	width: 9px; 
+	height: 5px;
+}
+
+.wgt-tip-n .wgt-tip-arrow 
+{ 
+  top: 0; 
+  left: 50%; 
+  margin-left: -4px;
+}
+.wgt-tip-nw .wgt-tip-arrow 
+{ 
+	top: 0; 
+	left: 10px;
+}
+.wgt-tip-ne .wgt-tip-arrow 
+{ 
+	top: 0; 
+	right: 10px;
+}
+.wgt-tip-s .wgt-tip-arrow 
+{ 
+	bottom: 0; 
+	left: 50%; 
+	margin-left: -4px; 
+	background-position: bottom left;
+}
+.wgt-tip-sw .wgt-tip-arrow 
+{ 
+	bottom: 0; 
+	left: 10px; 
+	background-position: bottom left;
+}
+.wgt-tip-se .wgt-tip-arrow 
+{ 
+	bottom: 0; 
+	right: 10px; 
+	background-position: bottom left;
+}
+.wgt-tip-e .wgt-tip-arrow 
+{ 
+	top: 50%; 
+	margin-top: -4px; 
+	right: 0; 
+	width: 5px; 
+	height: 9px; 
+	background-position: top right;
+}
+.wgt-tip-w .wgt-tip-arrow 
+{ 
+	top: 50%; 
+	margin-top: -4px; 
+	left: 0; 
+	width: 5px; 
+	height: 9px;
+}
+
+
+<br />
+<font size='1'><table class='xdebug-error' dir='ltr' border='1' cellspacing='0' cellpadding='1'>
+<tr><th align='left' bgcolor='#f57900' colspan="5"><span style='background-color: #cc0000; color: #fce94f; font-size: x-large;'>( ! )</span> Warning: include(../../layout/wgt/jquery.ui/jquery.ui.slider.css) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /var/www/WorkspaceWebFrap/WebFrap_Wgt/example/gw/conf/include/css/default.list.php on line <i>98</i></th></tr>
+<tr><th align='left' bgcolor='#e9b96e' colspan='5'>Call Stack</th></tr>
+<tr><th align='center' bgcolor='#eeeeec'>#</th><th align='left' bgcolor='#eeeeec'>Time</th><th align='left' bgcolor='#eeeeec'>Memory</th><th align='left' bgcolor='#eeeeec'>Function</th><th align='left' bgcolor='#eeeeec'>Location</th></tr>
+<tr><td bgcolor='#eeeeec' align='center'>1</td><td bgcolor='#eeeeec' align='center'>0.0005</td><td bgcolor='#eeeeec' align='right'>654016</td><td bgcolor='#eeeeec'>{main}(  )</td><td title='/var/www/WorkspaceWebFrap/WebFrap_Wgt/example/gw/css.php' bgcolor='#eeeeec'>../css.php<b>:</b>0</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>2</td><td bgcolor='#eeeeec' align='center'>0.0136</td><td bgcolor='#eeeeec' align='right'>1684592</td><td bgcolor='#eeeeec'>LibCacheRequestCss->publishList(  )</td><td title='/var/www/WorkspaceWebFrap/WebFrap_Wgt/example/gw/css.php' bgcolor='#eeeeec'>../css.php<b>:</b>64</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>3</td><td bgcolor='#eeeeec' align='center'>0.0244</td><td bgcolor='#eeeeec' align='right'>2443224</td><td bgcolor='#eeeeec'>include( <font color='#00bb00'>'/var/www/WorkspaceWebFrap/WebFrap_Wgt/example/gw/conf/include/css/default.list.php'</font> )</td><td title='/var/www/WorkspaceWebFrap/WebFrap_Wgt/example/gw/src/lib/cache/request/LibCacheRequestCss.php' bgcolor='#eeeeec'>../LibCacheRequestCss.php<b>:</b>182</td></tr>
+</table></font>
+<br />
+<font size='1'><table class='xdebug-error' dir='ltr' border='1' cellspacing='0' cellpadding='1'>
+<tr><th align='left' bgcolor='#f57900' colspan="5"><span style='background-color: #cc0000; color: #fce94f; font-size: x-large;'>( ! )</span> Warning: include() [<a href='function.include'>function.include</a>]: Failed opening '../../layout/wgt/jquery.ui/jquery.ui.slider.css' for inclusion (include_path='.:/usr/share/php:/usr/share/pear') in /var/www/WorkspaceWebFrap/WebFrap_Wgt/example/gw/conf/include/css/default.list.php on line <i>98</i></th></tr>
+<tr><th align='left' bgcolor='#e9b96e' colspan='5'>Call Stack</th></tr>
+<tr><th align='center' bgcolor='#eeeeec'>#</th><th align='left' bgcolor='#eeeeec'>Time</th><th align='left' bgcolor='#eeeeec'>Memory</th><th align='left' bgcolor='#eeeeec'>Function</th><th align='left' bgcolor='#eeeeec'>Location</th></tr>
+<tr><td bgcolor='#eeeeec' align='center'>1</td><td bgcolor='#eeeeec' align='center'>0.0005</td><td bgcolor='#eeeeec' align='right'>654016</td><td bgcolor='#eeeeec'>{main}(  )</td><td title='/var/www/WorkspaceWebFrap/WebFrap_Wgt/example/gw/css.php' bgcolor='#eeeeec'>../css.php<b>:</b>0</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>2</td><td bgcolor='#eeeeec' align='center'>0.0136</td><td bgcolor='#eeeeec' align='right'>1684592</td><td bgcolor='#eeeeec'>LibCacheRequestCss->publishList(  )</td><td title='/var/www/WorkspaceWebFrap/WebFrap_Wgt/example/gw/css.php' bgcolor='#eeeeec'>../css.php<b>:</b>64</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>3</td><td bgcolor='#eeeeec' align='center'>0.0244</td><td bgcolor='#eeeeec' align='right'>2443224</td><td bgcolor='#eeeeec'>include( <font color='#00bb00'>'/var/www/WorkspaceWebFrap/WebFrap_Wgt/example/gw/conf/include/css/default.list.php'</font> )</td><td title='/var/www/WorkspaceWebFrap/WebFrap_Wgt/example/gw/src/lib/cache/request/LibCacheRequestCss.php' bgcolor='#eeeeec'>../LibCacheRequestCss.php<b>:</b>182</td></tr>
+</table></font>
+
+/*
+ * jQuery UI CSS Framework 1.8.6
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Theming/API
+ */
+
+/* Layout helpers
+----------------------------------*/
+.ui-helper-hidden { display: none; }
+.ui-helper-hidden-accessible { position: absolute; left: -99999999px; }
+.ui-helper-reset { margin: 0; padding: 0; border: 0; outline: 0; line-height: 1.3; text-decoration: none; font-size: 100%; list-style: none; }
+.ui-helper-clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.ui-helper-clearfix { display: inline-block; }
+/* required comment for clearfix to work in Opera \*/
+* html .ui-helper-clearfix { height:1%; }
+.ui-helper-clearfix { display:block; }
+/* end clearfix */
+.ui-helper-zfix { width: 100%; height: 100%; top: 0; left: 0; position: absolute; opacity: 0; filter:Alpha(Opacity=0); }
+
+
+/* Interaction Cues
+----------------------------------*/
+.ui-state-disabled { cursor: default !important; }
+
+
+/* Icons
+----------------------------------*/
+
+/* states and images */
+.ui-icon { display: block; text-indent: -99999px; overflow: hidden; background-repeat: no-repeat; }
+
+
+/* Misc visuals
+----------------------------------*/
+
+/* Overlays */
+.ui-widget-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+/*
+ * jQuery UI Accordion 1.8.6
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Accordion#theming
+ */
+/* IE/Win - Fix animation bug - #4615 */
+.ui-accordion 
+{ 
+  width: 100%; 
+  height:100%;
+}
+
+.ui-accordion .ui-accordion-header 
+{ 
+  cursor: pointer; 
+  position: relative; 
+  margin-top: 1px; 
+  zoom: 1;
+}
+
+.ui-accordion .ui-accordion-li-fix 
+{ 
+	display: inline;
+}
+
+.ui-accordion .ui-accordion-header-active 
+{ 
+	border-bottom: 0 !important;
+}
+
+.ui-accordion .ui-accordion-header a 
+{ 
+	display: block; 
+	font-size: 1em; 
+	position:relative; 
+	margin-top:-0.1em; 
+	top:50%; 
+	outline:none;
+}
+
+.ui-accordion-icons .ui-accordion-header a 
+{ 
+	padding-left: 2.2em;
+}
+.ui-accordion .ui-accordion-header .ui-icon 
+{ 
+	position: absolute; 
+	left: .5em; 
+	top: 50%; 
+	margin-top: -8px;
+}
+.ui-accordion .ui-accordion-content 
+{ 
+	padding: 0.8em 0.8em; 
+	border-top: 0; 
+	margin-top: -1%; 
+	position: relative; 
+	overflow: auto; 
+	display: none; 
+	zoom: 1;
+}
+.ui-accordion .ui-accordion-content-active 
+{ 
+	display: block;
+}
+
+/* mihajlo */
+.ui-accordion-button 
+{
+  cursor:pointer; 
+  padding:2px; 
+  text-align:center; 
+  margin-top:14px;
+}
+
+.close-accordion, 
+.open-accordion 
+{ 
+  position:relative; 
+  top:5px; 
+  color: #2E6E9E; 
+  font-weight: bold; 
+  cursor:pointer; 
+  padding:5px; 
+  width:20px;
+}
+
+.ui-accordion-button-active 
+{
+  color:orange;
+}
+/*
+ * jQuery UI Button 1.8.6
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Button#theming
+ */
+.ui-button { display: inline-block; position: relative; padding: 0; margin-right: .1em; text-decoration: none !important; cursor: pointer; text-align: center; zoom: 1; overflow: visible; } /* the overflow property removes extra width in IE */
+.ui-button-icon-only { width: 2.2em; } /* to make room for the icon, a width needs to be set here */
+button.ui-button-icon-only { width: 2.4em; } /* button elements seem to need a little more width */
+.ui-button-icons-only { width: 3.4em; } 
+button.ui-button-icons-only { width: 3.7em; } 
+
+/*button text element */
+.ui-button .ui-button-text { display: block; line-height: 1.4;  }
+.ui-button-text-only .ui-button-text { padding: .4em 1em; }
+.ui-button-icon-only .ui-button-text, .ui-button-icons-only .ui-button-text { padding: .4em; text-indent: -9999999px; }
+.ui-button-text-icon-primary .ui-button-text, .ui-button-text-icons .ui-button-text { padding: .4em 1em .4em 2.1em; }
+.ui-button-text-icon-secondary .ui-button-text, .ui-button-text-icons .ui-button-text { padding: .4em 2.1em .4em 1em; }
+.ui-button-text-icons .ui-button-text { padding-left: 2.1em; padding-right: 2.1em; }
+/* no icon support for input elements, provide padding by default */
+input.ui-button { padding: .4em 1em; }
+
+/*button icon element(s) */
+.ui-button-icon-only .ui-icon, .ui-button-text-icon-primary .ui-icon, .ui-button-text-icon-secondary .ui-icon, .ui-button-text-icons .ui-icon, .ui-button-icons-only .ui-icon { position: absolute; top: 50%; margin-top: -8px; }
+.ui-button-icon-only .ui-icon { left: 50%; margin-left: -8px; }
+.ui-button-text-icon-primary .ui-button-icon-primary, .ui-button-text-icons .ui-button-icon-primary, .ui-button-icons-only .ui-button-icon-primary { left: .5em; }
+.ui-button-text-icon-secondary .ui-button-icon-secondary, .ui-button-text-icons .ui-button-icon-secondary, .ui-button-icons-only .ui-button-icon-secondary { right: .5em; }
+.ui-button-text-icons .ui-button-icon-secondary, .ui-button-icons-only .ui-button-icon-secondary { right: .5em; }
+
+/*button sets*/
+.ui-buttonset { margin-right: 7px; }
+.ui-buttonset .ui-button { margin-left: 0; margin-right: -.3em; }
+
+/* workarounds */
+button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra padding in Firefox */
+
+/*
+ * jQuery UI Progressbar 1.8.6
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Progressbar#theming
+ */
+.ui-progressbar { height:2em; text-align: left; }
+.ui-progressbar .ui-progressbar-value {margin: -1px; height:100%; }
+/*
+ * jQuery UI Selectable 1.8.6
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Selectable#theming
+ */
+.ui-selectable-helper { position: absolute; z-index: 100; border:1px dotted black; }
+
+/*
+ * jQuery UI Dialog 1.8.6
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Dialog#theming
+ */
+.ui-dialog { position: absolute; padding: .2em; width: 300px; overflow: hidden; }
+.ui-dialog .ui-dialog-titlebar { padding: .5em 1em .3em; position: relative;  }
+.ui-dialog .ui-dialog-title { float: left; margin: .1em 16px .2em 0; } 
+.ui-dialog .ui-dialog-titlebar-close { position: absolute; right: .3em; top: 50%; width: 19px; margin: -10px 0 0 0; padding: 1px; height: 18px; }
+.ui-dialog .ui-dialog-titlebar-close span { display: block; margin: 1px; }
+.ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus { padding: 0; }
+.ui-dialog .ui-dialog-content 
+{ 
+  position: relative; 
+  border: 0; 
+  /*padding: .5em 1em;*/
+  background: none; 
+  overflow: auto; 
+  zoom: 1; 
+}
+.ui-dialog .ui-dialog-buttonpane { text-align: left; border-width: 1px 0 0 0; background-image: none; margin: .5em 0 0 0; padding: .3em 1em .5em .4em; }
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset { float: right; }
+.ui-dialog .ui-dialog-buttonpane button { margin: .5em .4em .5em 0; cursor: pointer; }
+.ui-dialog .ui-resizable-se { width: 14px; height: 14px; right: 3px; bottom: 3px; }
+.ui-draggable .ui-dialog-titlebar { cursor: move; }
+
+/*
+ * jQuery UI Resizable 1.8.6
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Resizable#theming
+ */
+.ui-resizable { position: relative;}
+.ui-resizable-handle { position: absolute;font-size: 0.1px;z-index: 99999; display: block;}
+.ui-resizable-disabled .ui-resizable-handle, .ui-resizable-autohide .ui-resizable-handle { display: none; }
+.ui-resizable-n { cursor: n-resize; height: 7px; width: 100%; top: -5px; left: 0; }
+.ui-resizable-s { cursor: s-resize; height: 7px; width: 100%; bottom: -5px; left: 0; }
+.ui-resizable-e { cursor: e-resize; width: 7px; right: -5px; top: 0; height: 100%; }
+.ui-resizable-w { cursor: w-resize; width: 7px; left: -5px; top: 0; height: 100%; }
+.ui-resizable-se { cursor: se-resize; width: 12px; height: 12px; right: 1px; bottom: 1px; }
+.ui-resizable-sw { cursor: sw-resize; width: 9px; height: 9px; left: -5px; bottom: -5px; }
+.ui-resizable-nw { cursor: nw-resize; width: 9px; height: 9px; left: -5px; top: -5px; }
+.ui-resizable-ne { cursor: ne-resize; width: 9px; height: 9px; right: -5px; top: -5px;}
+/*
+ * jQuery UI Slider 1.8.6
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Slider#theming
+ */
+.ui-slider { position: relative; text-align: left; }
+.ui-slider .ui-slider-handle { position: absolute; z-index: 2; width: 1.2em; height: 1.2em; cursor: default; }
+.ui-slider .ui-slider-range { position: absolute; z-index: 1; font-size: .7em; display: block; border: 0; background-position: 0 0; }
+
+.ui-slider-horizontal { height: .8em; }
+.ui-slider-horizontal .ui-slider-handle { top: -.3em; margin-left: -.6em; }
+.ui-slider-horizontal .ui-slider-range { top: 0; height: 100%; }
+.ui-slider-horizontal .ui-slider-range-min { left: 0; }
+.ui-slider-horizontal .ui-slider-range-max { right: 0; }
+
+.ui-slider-vertical { width: .8em; height: 100px; }
+.ui-slider-vertical .ui-slider-handle { left: -.3em; margin-left: 0; margin-bottom: -.6em; }
+.ui-slider-vertical .ui-slider-range { left: 0; width: 100%; }
+.ui-slider-vertical .ui-slider-range-min { bottom: 0; }
+.ui-slider-vertical .ui-slider-range-max { top: 0; }
+/*
+ * jQuery UI Tabs 1.8.6
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Tabs#theming
+ */
+.ui-tabs { position: relative; padding: .2em; zoom: 1; } /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+.ui-tabs .ui-tabs-nav { margin: 0; padding: .2em .2em 0; }
+.ui-tabs .ui-tabs-nav li { list-style: none; float: left; position: relative; top: 1px; margin: 0 .2em 1px 0; border-bottom: 0 !important; padding: 0; white-space: nowrap; }
+.ui-tabs .ui-tabs-nav li a { float: left; padding: .5em 1em; text-decoration: none; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected { margin-bottom: 0; padding-bottom: 1px; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; }
+.ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a { cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+.ui-tabs .ui-tabs-panel { display: block; border-width: 0; padding: 1em 1.4em; background: none; }
+.ui-tabs .ui-tabs-hide { display: none !important; }
+
+/*
+ * jQuery UI Datepicker 1.8.6
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Datepicker#theming
+ */
+.ui-datepicker { padding: .3em .3em 0; }
+.ui-datepicker .ui-datepicker-header { position:relative; padding:.2em 0; }
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next { position:absolute; top: 2px; width: 1.8em; height: 1.8em; }
+.ui-datepicker .ui-datepicker-prev-hover, .ui-datepicker .ui-datepicker-next-hover { top: 1px; }
+.ui-datepicker .ui-datepicker-prev { left:2px; }
+.ui-datepicker .ui-datepicker-next { right:2px; }
+.ui-datepicker .ui-datepicker-prev-hover { left:1px; }
+.ui-datepicker .ui-datepicker-next-hover { right:1px; }
+
+.ui-datepicker .ui-datepicker-prev span, 
+.ui-datepicker .ui-datepicker-next span 
+{ 
+    display: block; 
+    position: absolute; 
+    left: 50%; 
+    margin-left: -8px; 
+    top: 50%; 
+    margin-top: -8px;  
+}
+
+.ui-datepicker .ui-datepicker-title { margin: 0 2.3em; line-height: 1.8em; text-align: center; }
+.ui-datepicker .ui-datepicker-title select { font-size:1em; margin:1px 0; }
+.ui-datepicker select.ui-datepicker-month-year {width: 100%;}
+.ui-datepicker select.ui-datepicker-month, 
+.ui-datepicker select.ui-datepicker-year { width: 49%;}
+.ui-datepicker table {width: 100%; font-size: .9em; border-collapse: collapse; margin:0 0 .4em; padding:3px; }
+.ui-datepicker th { padding: .7em .3em; text-align: center; font-weight: bold; border: 0;  }
+.ui-datepicker td { border: 0; padding: 1px; }
+.ui-datepicker td span, .ui-datepicker td a { display: block; padding: .2em; text-align: right; text-decoration: none; }
+.ui-datepicker .ui-datepicker-buttonpane { background-image: none; margin: .7em 0 0 0; padding:0 .2em; border-left: 0; border-right: 0; border-bottom: 0; }
+.ui-datepicker .ui-datepicker-buttonpane button { float: right; margin: .5em .2em .4em; cursor: pointer; padding: .2em .6em .3em .6em; width:auto; overflow:visible; }
+.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current { float:left; }
+
+/* with multiple calendars */
+.ui-datepicker.ui-datepicker-multi { width:auto; }
+.ui-datepicker-multi .ui-datepicker-group { float:left; }
+.ui-datepicker-multi .ui-datepicker-group table { width:95%; margin:0 auto .4em; }
+.ui-datepicker-multi-2 .ui-datepicker-group { width:50%; }
+.ui-datepicker-multi-3 .ui-datepicker-group { width:33.3%; }
+.ui-datepicker-multi-4 .ui-datepicker-group { width:25%; }
+.ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header { border-left-width:0; }
+.ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header { border-left-width:0; }
+.ui-datepicker-multi .ui-datepicker-buttonpane { clear:left; }
+.ui-datepicker-row-break { clear:both; width:100%; }
+
+/* RTL support */
+.ui-datepicker-rtl { direction: rtl; }
+.ui-datepicker-rtl .ui-datepicker-prev { right: 2px; left: auto; }
+.ui-datepicker-rtl .ui-datepicker-next { left: 2px; right: auto; }
+.ui-datepicker-rtl .ui-datepicker-prev:hover { right: 1px; left: auto; }
+.ui-datepicker-rtl .ui-datepicker-next:hover { left: 1px; right: auto; }
+.ui-datepicker-rtl .ui-datepicker-buttonpane { clear:right; }
+.ui-datepicker-rtl .ui-datepicker-buttonpane button { float: left; }
+.ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current { float:right; }
+.ui-datepicker-rtl .ui-datepicker-group { float:right; }
+.ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header { border-right-width:0; border-left-width:1px; }
+.ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header { border-right-width:0; border-left-width:1px; }
+
+/* IE6 IFRAME FIX (taken from datepicker 1.5.3 */
+.ui-datepicker-cover {
+    display: none; /*sorry for IE5*/
+    display/**/: block; /*sorry for IE5*/
+    position: absolute; /*must have*/
+    z-index: -1; /*must have*/
+    filter: mask(); /*must have*/
+    top: -4px; /*must have*/
+    left: -4px; /*must have*/
+    width: 200px; /*must have*/
+    height: 200px; /*must have*/
+}
+/*
+ * jQuery UI Autocomplete 1.8.6
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Autocomplete#theming
+ */
+.ui-autocomplete { position: absolute; cursor: default; }	
+
+/* workarounds */
+* html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
+
+/*
+ * jQuery UI Menu 1.8.6
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Menu#theming
+ */
+.ui-menu {
+	list-style:none;
+	padding: 2px;
+	margin: 0;
+	display:block;
+	float: left;
+}
+.ui-menu .ui-menu {
+	margin-top: -3px;
+}
+.ui-menu .ui-menu-item {
+	margin:0;
+	padding: 0;
+	zoom: 1;
+	float: left;
+	clear: left;
+	width: 100%;
+}
+.ui-menu .ui-menu-item a {
+	text-decoration:none;
+	display:block;
+	padding:.2em .4em;
+	line-height:1.5;
+	zoom:1;
+}
+.ui-menu .ui-menu-item a.ui-state-hover,
+.ui-menu .ui-menu-item a.ui-state-active {
+	font-weight: normal;
+	margin: -1px;
+}
+
+/*******************************************************************************
+ * Tree container
+ */
+ul.dynatree-container
+{
+	font-family: tahoma, arial, helvetica;
+	font-size: 10pt; /* font size should not be too big */
+	white-space: nowrap;
+	padding: 3px;
+	margin: 0; /* issue 201 */
+	background-color: white;
+	border: 1px dotted gray;
+	overflow: auto;
+	height: 100%; /* issue 263 */
+}
+
+ul.dynatree-container ul
+{
+	padding: 0 0 0 16px;
+	margin: 0;
+}
+
+ul.dynatree-container li
+{
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+	-moz-background-clip:border;
+	-moz-background-inline-policy: continuous;
+	-moz-background-origin: padding;
+	background-attachment: scroll;
+	background-color: transparent;
+	background-position: 0 0;
+	background-repeat: repeat-y;
+	background-image: none;  /* no v-lines */
+
+	margin:0;
+	padding:1px 0 0 0;
+}
+/* Suppress lines for last child node */
+ul.dynatree-container li.dynatree-lastsib
+{
+	background-image: none;
+}
+/* Suppress lines if level is fixed expanded (option minExpandLevel) */
+ul.dynatree-no-connector > li
+{
+	background-image: none;
+}
+
+/* Style, when control is disabled */
+.ui-dynatree-disabled ul.dynatree-container
+{
+	opacity: 0.5;
+/*	filter: alpha(opacity=50); /* Yields a css warning */
+	background-color: silver;
+}
+
+
+/*******************************************************************************
+ * Common icon definitions
+ */
+span.dynatree-empty,
+span.dynatree-vline,
+span.dynatree-connector,
+span.dynatree-expander,
+span.dynatree-icon,
+span.dynatree-checkbox,
+span.dynatree-radio,
+span.dynatree-drag-helper-img,
+#dynatree-drop-marker
+{
+	width: 16px;
+	height: 16px;
+/*	display: -moz-inline-box; /* @ FF 1+2 removed for issue 221*/
+/*	-moz-box-align: start; /* issue 221 */
+	display: inline-block; /* Required to make a span sizeable */
+	vertical-align: top;
+	background-repeat: no-repeat;
+	background-position: left;
+	background-image: url("http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images//tree/icons.gif");
+	background-position: 0 0;
+}
+
+/** Used by 'icon' node option: */
+ul.dynatree-container img
+{
+	width: 16px;
+	height: 16px;
+	margin-left: 3px;
+	vertical-align: top;
+	border-style: none;
+}
+
+
+/*******************************************************************************
+ * Lines and connectors
+ */
+
+/*
+span.dynatree-empty
+{
+}
+span.dynatree-vline
+{
+}
+*/
+span.dynatree-connector
+{
+	background-image: none;
+}
+/*
+.dynatree-lastsib span.dynatree-connector
+{
+}
+*/
+/*******************************************************************************
+ * Expander icon
+ * Note: IE6 doesn't correctly evaluate multiples class names,
+ *		 so we create combined class names that can be used in the CSS.
+ *
+ * Prefix: dynatree-exp-
+ * 1st character: 'e': expanded, 'c': collapsed
+ * 2nd character (optional): 'd': lazy (Delayed)
+ * 3rd character (optional): 'l': Last sibling
+ */
+
+span.dynatree-expander
+{
+	background-position: 0px -80px;
+	cursor: pointer;
+}
+span.dynatree-expander:hover
+{
+	background-position: -16px -80px;
+}
+.dynatree-exp-cl span.dynatree-expander /* Collapsed, not delayed, last sibling */
+{
+}
+.dynatree-exp-cd span.dynatree-expander /* Collapsed, delayed, not last sibling */
+{
+}
+.dynatree-exp-cdl span.dynatree-expander /* Collapsed, delayed, last sibling */
+{
+}
+.dynatree-exp-e span.dynatree-expander,  /* Expanded, not delayed, not last sibling */
+.dynatree-exp-ed span.dynatree-expander,  /* Expanded, delayed, not last sibling */
+.dynatree-exp-el span.dynatree-expander,  /* Expanded, not delayed, last sibling */
+.dynatree-exp-edl span.dynatree-expander  /* Expanded, delayed, last sibling */
+{
+	background-position: -32px -80px;
+}
+.dynatree-exp-e span.dynatree-expander:hover,  /* Expanded, not delayed, not last sibling */
+.dynatree-exp-ed span.dynatree-expander:hover,  /* Expanded, delayed, not last sibling */
+.dynatree-exp-el span.dynatree-expander:hover,  /* Expanded, not delayed, last sibling */
+.dynatree-exp-edl span.dynatree-expander:hover  /* Expanded, delayed, last sibling */
+{
+	background-position: -48px -80px;
+}
+.dynatree-loading span.dynatree-expander  /* 'Loading' status overrides all others */
+{
+	background-position: 0 0;
+	background-image: url("http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images//tree/loading.gif");
+}
+
+
+/*******************************************************************************
+ * Checkbox icon
+ */
+span.dynatree-checkbox
+{
+	margin-left: 3px;
+	background-position: 0px -32px;
+}
+span.dynatree-checkbox:hover
+{
+	background-position: -16px -32px;
+}
+
+.dynatree-partsel span.dynatree-checkbox
+{
+	background-position: -64px -32px;
+}
+.dynatree-partsel span.dynatree-checkbox:hover
+{
+	background-position: -80px -32px;
+}
+
+.dynatree-selected span.dynatree-checkbox
+{
+	background-position: -32px -32px;
+}
+.dynatree-selected span.dynatree-checkbox:hover
+{
+	background-position: -48px -32px;
+}
+
+/*******************************************************************************
+ * Radiobutton icon
+ * This is a customization, that may be activated by overriding the 'checkbox'
+ * class name as 'dynatree-radio' in the tree options.
+ */
+span.dynatree-radio
+{
+	margin-left: 3px;
+	background-position: 0px -48px;
+}
+span.dynatree-radio:hover
+{
+	background-position: -16px -48px;
+}
+
+.dynatree-partsel span.dynatree-radio
+{
+	background-position: -64px -48px;
+}
+.dynatree-partsel span.dynatree-radio:hover
+{
+	background-position: -80px -48px;
+}
+
+.dynatree-selected span.dynatree-radio
+{
+	background-position: -32px -48px;
+}
+.dynatree-selected span.dynatree-radio:hover
+{
+	background-position: -48px -48px;
+}
+
+/*******************************************************************************
+ * Node type icon
+ * Note: IE6 doesn't correctly evaluate multiples class names,
+ *		 so we create combined class names that can be used in the CSS.
+ *
+ * Prefix: dynatree-ico-
+ * 1st character: 'e': expanded, 'c': collapsed
+ * 2nd character (optional): 'f': folder
+ */
+
+span.dynatree-icon /* Default icon */
+{
+	margin-left: 3px;
+	background-position: 0px 0px;
+}
+
+.dynatree-has-children span.dynatree-icon /* Default icon */
+{
+/*    background-position: 0px -16px; */
+}
+
+.dynatree-ico-cf span.dynatree-icon  /* Collapsed Folder */
+{
+	background-position: 0px -16px;
+}
+
+.dynatree-ico-ef span.dynatree-icon  /* Expanded Folder */
+{
+	background-position: -64px -16px;
+}
+
+/* Status node icons */
+
+.dynatree-statusnode-wait span.dynatree-icon
+{
+	background-image: url("http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images//tree/loading.gif");
+}
+
+.dynatree-statusnode-error span.dynatree-icon
+{
+	background-position: 0px -112px;
+/*	background-image: url("ltError.gif");*/
+}
+
+/*******************************************************************************
+ * Node titles
+ */
+
+/* @Chrome: otherwise hit area of node titles is broken (issue 133)
+   Removed again for issue 165; (133 couldn't be reproduced) */
+span.dynatree-node
+{
+/*	display: -moz-inline-box; /* issue 133, 165, 172, 192. removed for issue 221 */
+/*	-moz-box-align: start; /* issue 221 */
+/*  display: inline-block; /* Required to make a span sizeable */
+}
+
+
+/* Remove blue color and underline from title links */
+ul.dynatree-container a
+/*, ul.dynatree-container a:visited*/
+{
+	color: black; /* inherit doesn't work on IE */
+	text-decoration: none;
+	vertical-align: top;
+	margin: 0px;
+	margin-left: 3px;
+/*	outline: 0; /* @ Firefox, prevent dotted border after click */
+	/* Set transparent border to prevent jumping when active node gets a border
+	   (we can do this, because this theme doesn't use vertical lines)
+	   */
+	border: 1px solid white; /* Note: 'transparent' would not work in IE6 */
+
+}
+
+ul.dynatree-container a:hover
+{
+/*	text-decoration: underline; */
+	background: #F2F7FD; /* light blue */
+	border-color: #B8D6FB; /* darker light blue */
+}
+
+span.dynatree-node a
+{
+	display: inline-block; /* Better alignment, when title contains <br> */
+/*	vertical-align: top;*/
+	padding-left: 3px;
+	padding-right: 3px; /* Otherwise italic font will be outside bounds */
+	/*	line-height: 16px; /* should be the same as img height, in case 16 px */
+}
+span.dynatree-folder a
+{
+/*	font-weight: bold; */ /* custom */
+}
+
+ul.dynatree-container a:focus,
+span.dynatree-focused a:link  /* @IE */
+{
+	background-color: #EFEBDE; /* gray */
+}
+
+span.dynatree-has-children a
+{
+/*	font-style: oblique; /* custom: */
+}
+
+span.dynatree-expanded a
+{
+}
+
+span.dynatree-selected a
+{
+/*	color: green; */
+	font-style: italic;
+}
+
+span.dynatree-active a
+{
+	border: 1px solid #99DEFD;
+	background-color: #D8F0FA;
+}
+
+/*******************************************************************************
+ * Drag'n'drop support
+ */
+
+/*** Helper object ************************************************************/
+div.dynatree-drag-helper
+{
+}
+div.dynatree-drag-helper a
+{
+	border: 1px solid gray;
+	background-color: white;
+	padding-left: 5px;
+	padding-right: 5px;
+	opacity: 0.8;
+}
+span.dynatree-drag-helper-img
+{
+	/*
+	position: relative;
+	left: -16px;
+	*/
+}
+div.dynatree-drag-helper /*.dynatree-drop-accept*/
+{
+/*    border-color: green;
+	background-color: red;*/
+}
+div.dynatree-drop-accept span.dynatree-drag-helper-img
+{
+	background-position: -32px -112px;
+}
+div.dynatree-drag-helper.dynatree-drop-reject
+{
+	border-color: red;
+}
+div.dynatree-drop-reject span.dynatree-drag-helper-img
+{
+	background-position: -16px -112px;
+}
+
+/*** Drop marker icon *********************************************************/
+
+#dynatree-drop-marker
+{
+	width: 24px;
+	position: absolute;
+	background-position: 0 -128px;
+	margin: 0;
+}
+#dynatree-drop-marker.dynatree-drop-after,
+#dynatree-drop-marker.dynatree-drop-before
+{
+	width:64px;
+	background-position: 0 -144px;
+}
+#dynatree-drop-marker.dynatree-drop-copy
+{
+	background-position: -64px -128px;
+}
+#dynatree-drop-marker.dynatree-drop-move
+{
+	background-position: -64px -128px;
+}
+
+/*** Source node while dragging ***********************************************/
+
+span.dynatree-drag-source
+{
+	/* border: 1px dotted gray; */
+	background-color: #e0e0e0;
+}
+span.dynatree-drag-source a
+{
+	color: gray;
+}
+
+/*** Target node while dragging cursor is over it *****************************/
+
+span.dynatree-drop-target
+{
+	/*border: 1px solid gray;*/
+}
+span.dynatree-drop-target a
+{
+}
+span.dynatree-drop-target.dynatree-drop-accept a
+{
+	/*border: 1px solid green;*/
+	background-color: #3169C6 !important;
+	color: white !important; /* @ IE6 */
+	text-decoration: none;
+}
+span.dynatree-drop-target.dynatree-drop-reject
+{
+	/*border: 1px solid red;*/
+}
+span.dynatree-drop-target.dynatree-drop-after a
+{
+}
+
+/*
+jQuery.ganttView v.0.8.0
+Copyright (c) 2010 JC Grubbs - jc.grubbs@devmynd.com
+MIT License Applies
+*/
+
+div.ganttview-hzheader-month,
+div.ganttview-hzheader-day,
+div.ganttview-vtheader,
+div.ganttview-vtheader-item-name,
+div.ganttview-vtheader-series,
+div.ganttview-grid,
+div.ganttview-grid-row-cell {
+	float: left;
+}
+
+div.ganttview-hzheader-month,
+div.ganttview-hzheader-day {
+	text-align: center;
+}
+
+div.ganttview-grid-row-cell.last,
+div.ganttview-hzheader-day.last,
+div.ganttview-hzheader-month.last {
+	border-right: none;
+}
+
+div.ganttview {
+	border: 1px solid #999;
+}
+
+
+/* Horizontal Header */
+
+div.ganttview-hzheader-month {
+	width: 60px;
+	height: 20px;
+	border-right: 1px solid #d0d0d0;
+	line-height: 20px;
+}
+
+div.ganttview-hzheader-day {
+	width: 20px;
+	height: 20px;
+	border-right: 1px solid #f0f0f0;
+	border-top: 1px solid #d0d0d0;
+	line-height: 20px;
+	color: #777;
+}
+
+
+/* Vertical Header */
+
+div.ganttview-vtheader {
+	margin-top: 41px;
+	width: 240px;
+	overflow: hidden;
+	background-color: #fff;
+}
+
+div.ganttview-vtheader-item {
+	overflow: hidden;
+	color: #666;
+}
+
+div.ganttview-vtheader-item-name {
+	width: 100px;
+	padding-left: 5px;
+	border-top: 1px solid #d0d0d0;
+	line-height: 16px;
+}
+
+div.ganttview-vtheader-series-name {
+	width: 130px;
+	height: 31px;
+	border-top: 1px solid #d0d0d0;
+	line-height: 16px;
+	padding-left: 5px;
+}
+
+
+/* Slider */
+
+div.ganttview-slide-container {
+	overflow: auto;
+	border-left: 1px solid #999;
+}
+
+
+/* Grid */
+
+div.ganttview-grid-row-cell {
+	width: 20px;
+	height: 31px;
+	border-right: 1px solid #f0f0f0;
+	border-top: 1px solid #f0f0f0;
+}
+
+div.ganttview-grid-row-cell.ganttview-weekend {
+	background-color: #fafafa;
+}
+
+
+/* Blocks */
+
+div.ganttview-blocks {
+	margin-top: 40px;
+}
+
+div.ganttview-block-container {
+	height: 28px;
+	padding-top: 4px;
+}
+
+div.ganttview-block {
+	position: relative;
+	height: 25px;
+	background-color: #E5ECF9;
+	border: 1px solid #c0c0c0;
+	border-radius: 3px;
+}
+
+div.ganttview-block-text {
+	position: absolute;
+	height: 12px;
+	font-size: 0.8em;
+	color: #999;
+	padding: 2px 3px;
+}
+
+
+/* Adjustments for jQuery UI Styling */
+
+div.ganttview-block div.ui-resizable-handle.ui-resizable-s {
+	bottom: -0;
+}
+/*
+ * FullCalendar v1.5.2 Stylesheet
+ *
+ * Copyright (c) 2011 Adam Shaw
+ * Dual licensed under the MIT and GPL licenses, located in
+ * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
+ *
+ * Date: Sun Aug 21 22:06:09 2011 -0700
+ *
+ */
+
+
+.fc {
+	direction: ltr;
+	text-align: left;
+	}
+	
+.fc table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	}
+	
+html .fc,
+.fc table {
+	font-size: 1em;
+	}
+	
+.fc td,
+.fc th {
+	padding: 0;
+	vertical-align: top;
+	}
+
+
+
+/* Header
+------------------------------------------------------------------------*/
+
+.fc-header td {
+	white-space: nowrap;
+	}
+
+.fc-header-left {
+	width: 25%;
+	text-align: left;
+	}
+	
+.fc-header-center {
+	text-align: center;
+	}
+	
+.fc-header-right {
+	width: 25%;
+	text-align: right;
+	}
+	
+.fc-header-title {
+	display: inline-block;
+	vertical-align: top;
+	}
+	
+.fc-header-title h2 {
+	margin-top: 0;
+	white-space: nowrap;
+	}
+	
+.fc .fc-header-space {
+	padding-left: 10px;
+	}
+	
+.fc-header .fc-button {
+	margin-bottom: 1em;
+	vertical-align: top;
+	}
+	
+/* buttons edges butting together */
+
+.fc-header .fc-button {
+	margin-right: -1px;
+	}
+	
+.fc-header .fc-corner-right {
+	margin-right: 1px; /* back to normal */
+	}
+	
+.fc-header .ui-corner-right {
+	margin-right: 0; /* back to normal */
+	}
+	
+/* button layering (for border precedence) */
+	
+.fc-header .fc-state-hover,
+.fc-header .ui-state-hover {
+	z-index: 2;
+	}
+	
+.fc-header .fc-state-down {
+	z-index: 3;
+	}
+
+.fc-header .fc-state-active,
+.fc-header .ui-state-active {
+	z-index: 4;
+	}
+	
+	
+	
+/* Content
+------------------------------------------------------------------------*/
+	
+.fc-content {
+	clear: both;
+	}
+	
+.fc-view {
+	width: 100%; /* needed for view switching (when view is absolute) */
+	overflow: hidden;
+	}
+	
+	
+
+/* Cell Styles
+------------------------------------------------------------------------*/
+
+.fc-widget-header,    /* <th>, usually */
+.fc-widget-content {  /* <td>, usually */
+	border: 1px solid #ccc;
+	}
+	
+.fc-state-highlight { /* <td> today cell */ /* TODO: add .fc-today to <th> */
+	background: #ffc;
+	}
+	
+.fc-cell-overlay { /* semi-transparent rectangle while dragging */
+	background: #9cf;
+	opacity: .2;
+	filter: alpha(opacity=20); /* for IE */
+	}
+	
+
+
+/* Buttons
+------------------------------------------------------------------------*/
+
+.fc-button {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	}
+	
+.fc-state-default { /* non-theme */
+	border-style: solid;
+	border-width: 1px 0;
+	}
+	
+.fc-button-inner {
+	position: relative;
+	float: left;
+	overflow: hidden;
+	}
+	
+.fc-state-default .fc-button-inner { /* non-theme */
+	border-style: solid;
+	border-width: 0 1px;
+	}
+	
+.fc-button-content {
+	position: relative;
+	float: left;
+	height: 1.9em;
+	line-height: 1.9em;
+	padding: 0 .6em;
+	white-space: nowrap;
+	}
+	
+/* icon (for jquery ui) */
+	
+.fc-button-content .fc-icon-wrap {
+	position: relative;
+	float: left;
+	top: 50%;
+	}
+	
+.fc-button-content .ui-icon {
+	position: relative;
+	float: left;
+	margin-top: -50%;
+	*margin-top: 0;
+	*top: -50%;
+	}
+	
+/* gloss effect */
+	
+.fc-state-default .fc-button-effect {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	}
+	
+.fc-state-default .fc-button-effect span {
+	position: absolute;
+	top: -100px;
+	left: 0;
+	width: 500px;
+	height: 100px;
+	border-width: 100px 0 0 1px;
+	border-style: solid;
+	border-color: #fff;
+	background: #444;
+	opacity: .09;
+	filter: alpha(opacity=9);
+	}
+	
+/* button states (determines colors)  */
+	
+.fc-state-default,
+.fc-state-default .fc-button-inner {
+	border-style: solid;
+	border-color: #ccc #bbb #aaa;
+	background: #F3F3F3;
+	color: #000;
+	}
+	
+.fc-state-hover,
+.fc-state-hover .fc-button-inner {
+	border-color: #999;
+	}
+	
+.fc-state-down,
+.fc-state-down .fc-button-inner {
+	border-color: #555;
+	background: #777;
+	}
+	
+.fc-state-active,
+.fc-state-active .fc-button-inner {
+	border-color: #555;
+	background: #777;
+	color: #fff;
+	}
+	
+.fc-state-disabled,
+.fc-state-disabled .fc-button-inner {
+	color: #999;
+	border-color: #ddd;
+	}
+	
+.fc-state-disabled {
+	cursor: default;
+	}
+	
+.fc-state-disabled .fc-button-effect {
+	display: none;
+	}
+	
+	
+
+/* Global Event Styles
+------------------------------------------------------------------------*/
+	 
+.fc-event {
+	border-style: solid;
+	border-width: 0;
+	font-size: .85em;
+	cursor: default;
+	}
+	
+a.fc-event,
+.fc-event-draggable {
+	cursor: pointer;
+	}
+	
+a.fc-event {
+	text-decoration: none;
+	}
+	
+.fc-rtl .fc-event {
+	text-align: right;
+	}
+	
+.fc-event-skin {
+	border-color: #36c;     /* default BORDER color */
+	background-color: #36c; /* default BACKGROUND color */
+	color: #fff;            /* default TEXT color */
+	}
+	
+.fc-event-inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border-style: solid;
+	border-width: 0;
+	overflow: hidden;
+	}
+	
+.fc-event-time,
+.fc-event-title {
+	padding: 0 1px;
+	}
+	
+.fc .ui-resizable-handle { /*** TODO: don't use ui-resizable anymore, change class ***/
+	display: block;
+	position: absolute;
+	z-index: 99999;
+	overflow: hidden; /* hacky spaces (IE6/7) */
+	font-size: 300%;  /* */
+	line-height: 50%; /* */
+	}
+	
+	
+	
+/* Horizontal Events
+------------------------------------------------------------------------*/
+
+.fc-event-hori {
+	border-width: 1px 0;
+	margin-bottom: 1px;
+	}
+	
+/* resizable */
+	
+.fc-event-hori .ui-resizable-e {
+	top: 0           !important; /* importants override pre jquery ui 1.7 styles */
+	right: -3px      !important;
+	width: 7px       !important;
+	height: 100%     !important;
+	cursor: e-resize;
+	}
+	
+.fc-event-hori .ui-resizable-w {
+	top: 0           !important;
+	left: -3px       !important;
+	width: 7px       !important;
+	height: 100%     !important;
+	cursor: w-resize;
+	}
+	
+.fc-event-hori .ui-resizable-handle {
+	_padding-bottom: 14px; /* IE6 had 0 height */
+	}
+	
+	
+	
+/* Fake Rounded Corners (for buttons and events)
+------------------------------------------------------------*/
+	
+.fc-corner-left {
+	margin-left: 1px;
+	}
+	
+.fc-corner-left .fc-button-inner,
+.fc-corner-left .fc-event-inner {
+	margin-left: -1px;
+	}
+	
+.fc-corner-right {
+	margin-right: 1px;
+	}
+	
+.fc-corner-right .fc-button-inner,
+.fc-corner-right .fc-event-inner {
+	margin-right: -1px;
+	}
+	
+.fc-corner-top {
+	margin-top: 1px;
+	}
+	
+.fc-corner-top .fc-event-inner {
+	margin-top: -1px;
+	}
+	
+.fc-corner-bottom {
+	margin-bottom: 1px;
+	}
+	
+.fc-corner-bottom .fc-event-inner {
+	margin-bottom: -1px;
+	}
+	
+	
+	
+/* Fake Rounded Corners SPECIFICALLY FOR EVENTS
+-----------------------------------------------------------------*/
+	
+.fc-corner-left .fc-event-inner {
+	border-left-width: 1px;
+	}
+	
+.fc-corner-right .fc-event-inner {
+	border-right-width: 1px;
+	}
+	
+.fc-corner-top .fc-event-inner {
+	border-top-width: 1px;
+	}
+	
+.fc-corner-bottom .fc-event-inner {
+	border-bottom-width: 1px;
+	}
+	
+	
+	
+/* Reusable Separate-border Table
+------------------------------------------------------------*/
+
+table.fc-border-separate {
+	border-collapse: separate;
+	}
+	
+.fc-border-separate th,
+.fc-border-separate td {
+	border-width: 1px 0 0 1px;
+	}
+	
+.fc-border-separate th.fc-last,
+.fc-border-separate td.fc-last {
+	border-right-width: 1px;
+	}
+	
+.fc-border-separate tr.fc-last th,
+.fc-border-separate tr.fc-last td {
+	border-bottom-width: 1px;
+	}
+	
+.fc-border-separate tbody tr.fc-first td,
+.fc-border-separate tbody tr.fc-first th {
+	border-top-width: 0;
+	}
+	
+	
+
+/* Month View, Basic Week View, Basic Day View
+------------------------------------------------------------------------*/
+
+.fc-grid th {
+	text-align: center;
+	}
+	
+.fc-grid .fc-day-number {
+	float: right;
+	padding: 0 2px;
+	}
+	
+.fc-grid .fc-other-month .fc-day-number {
+	opacity: 0.3;
+	filter: alpha(opacity=30); /* for IE */
+	/* opacity with small font can sometimes look too faded
+	   might want to set the 'color' property instead
+	   making day-numbers bold also fixes the problem */
+	}
+	
+.fc-grid .fc-day-content {
+	clear: both;
+	padding: 2px 2px 1px; /* distance between events and day edges */
+	}
+	
+/* event styles */
+	
+.fc-grid .fc-event-time {
+	font-weight: bold;
+	}
+	
+/* right-to-left */
+	
+.fc-rtl .fc-grid .fc-day-number {
+	float: left;
+	}
+	
+.fc-rtl .fc-grid .fc-event-time {
+	float: right;
+	}
+	
+	
+
+/* Agenda Week View, Agenda Day View
+------------------------------------------------------------------------*/
+
+.fc-agenda table {
+	border-collapse: separate;
+	}
+	
+.fc-agenda-days th {
+	text-align: center;
+	}
+	
+.fc-agenda .fc-agenda-axis {
+	width: 50px;
+	padding: 0 4px;
+	vertical-align: middle;
+	text-align: right;
+	white-space: nowrap;
+	font-weight: normal;
+	}
+	
+.fc-agenda .fc-day-content {
+	padding: 2px 2px 1px;
+	}
+	
+/* make axis border take precedence */
+	
+.fc-agenda-days .fc-agenda-axis {
+	border-right-width: 1px;
+	}
+	
+.fc-agenda-days .fc-col0 {
+	border-left-width: 0;
+	}
+	
+/* all-day area */
+	
+.fc-agenda-allday th {
+	border-width: 0 1px;
+	}
+	
+.fc-agenda-allday .fc-day-content {
+	min-height: 34px; /* TODO: doesnt work well in quirksmode */
+	_height: 34px;
+	}
+	
+/* divider (between all-day and slots) */
+	
+.fc-agenda-divider-inner {
+	height: 2px;
+	overflow: hidden;
+	}
+	
+.fc-widget-header .fc-agenda-divider-inner {
+	background: #eee;
+	}
+	
+/* slot rows */
+	
+.fc-agenda-slots th {
+	border-width: 1px 1px 0;
+	}
+	
+.fc-agenda-slots td {
+	border-width: 1px 0 0;
+	background: none;
+	}
+	
+.fc-agenda-slots td div {
+	height: 20px;
+	}
+	
+.fc-agenda-slots tr.fc-slot0 th,
+.fc-agenda-slots tr.fc-slot0 td {
+	border-top-width: 0;
+	}
+
+.fc-agenda-slots tr.fc-minor th,
+.fc-agenda-slots tr.fc-minor td {
+	border-top-style: dotted;
+	}
+	
+.fc-agenda-slots tr.fc-minor th.ui-widget-header {
+	*border-top-style: solid; /* doesn't work with background in IE6/7 */
+	}
+	
+
+
+/* Vertical Events
+------------------------------------------------------------------------*/
+
+.fc-event-vert {
+	border-width: 0 1px;
+	}
+	
+.fc-event-vert .fc-event-head,
+.fc-event-vert .fc-event-content {
+	position: relative;
+	z-index: 2;
+	width: 100%;
+	overflow: hidden;
+	}
+	
+.fc-event-vert .fc-event-time {
+	white-space: nowrap;
+	font-size: 10px;
+	}
+	
+.fc-event-vert .fc-event-bg { /* makes the event lighter w/ a semi-transparent overlay  */
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	opacity: .3;
+	filter: alpha(opacity=30);
+	}
+	
+.fc .ui-draggable-dragging .fc-event-bg, /* TODO: something nicer like .fc-opacity */
+.fc-select-helper .fc-event-bg {
+	display: none\9; /* for IE6/7/8. nested opacity filters while dragging don't work */
+	}
+	
+/* resizable */
+	
+.fc-event-vert .ui-resizable-s {
+	bottom: 0        !important; /* importants override pre jquery ui 1.7 styles */
+	width: 100%      !important;
+	height: 8px      !important;
+	overflow: hidden !important;
+	line-height: 8px !important;
+	font-size: 11px  !important;
+	font-family: monospace;
+	text-align: center;
+	cursor: s-resize;
+	}
+	
+.fc-agenda .ui-resizable-resizing { /* TODO: better selector */
+	_overflow: hidden;
+	}
+	
+	
+
+div.wgt-gallery.small
+{
+  width: 850px; 
+}
+
+div.wgt-gallery.medium
+{
+  width: 950px; 
+}
+
+div.wgt-gallery.large
+{
+  width: 100%;
+}
+
+div.wgt-gallery div.content 
+{
+  /* The display of content is enabled using jQuery so that the slideshow content won't display unless javascript is enabled. */
+  float: left;
+  width: 350px; 
+}
+
+div.wgt-gallery.small div.content 
+{
+  width: 350px; 
+}
+
+div.wgt-gallery.medium div.content 
+{
+  width: 450px; 
+}
+
+div.wgt-gallery.large div.content 
+{
+  width: 550px; 
+}
+
+div.wgt-gallery div.content a, 
+div.wgt-gallery div.navigation a 
+{
+  text-decoration: none;
+  color: #777;
+}
+
+div.wgt-gallery div.content a:focus, 
+div.wgt-gallery div.content a:hover, 
+div.wgt-gallery div.content a:active 
+{
+  text-decoration: underline;
+}
+
+div.wgt-gallery div.controls 
+{
+  margin-top: 5px;
+  height: 23px;
+}
+
+div.wgt-gallery div.controls a 
+{
+  padding: 5px;
+}
+
+div.wgt-gallery div.ss-controls 
+{
+  float: left;
+}
+
+div.wgt-gallery div.nav-controls 
+{
+  float: right;
+}
+
+
+div.wgt-gallery div.slideshow-container 
+{
+  position: relative;
+  clear: both;
+  height: 302px; /* This should be set to be at least the height of the largest image in the slideshow */
+}
+
+div.wgt-gallery.small div.slideshow-container
+{
+  height: 302px;
+}
+
+div.wgt-gallery.medium div.slideshow-container
+{
+  height: 402px;
+}
+
+div.wgt-gallery.large div.slideshow-container
+{
+  height: 502px;
+}
+
+
+div.wgt-gallery div.loader 
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url('loader.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 350px;
+  height: 302px; /* This should be set to be at least the height of the largest image in the slideshow */
+}
+
+div.wgt-gallery.small div.loader
+{
+  width: 350px;
+  height: 302px;
+}
+
+div.wgt-gallery.medium div.loader
+{
+  width: 450px;
+  height: 402px;
+}
+
+div.wgt-gallery.large div.loader
+{
+  width: 550px;
+  height: 502px;
+}
+
+div.wgt-gallery div.slideshow 
+{
+
+}
+
+div.wgt-gallery div.slideshow span.image-wrapper 
+{
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+div.wgt-gallery div.slideshow a.advance-link 
+{
+  display: block;
+  width: 350px;
+  height: 302px; /* This should be set to be at least the height of the largest image in the slideshow */
+  line-height: 302px; /* This should be set to be at least the height of the largest image in the slideshow */
+  text-align: center;
+}
+
+div.wgt-gallery.small div.slideshow a.advance-link
+{
+  width: 350px;
+  height: 302px; 
+  line-height: 302px; 
+}
+
+div.wgt-gallery.medium div.slideshow a.advance-link
+{
+  width: 450px;
+  height: 402px; 
+  line-height: 402px; 
+}
+
+div.wgt-gallery.large div.slideshow a.advance-link
+{
+  width: 550px;
+  height: 502px; 
+  line-height: 502px; 
+}
+
+div.wgt-gallery div.slideshow a.advance-link:hover, 
+div.wgt-gallery div.slideshow a.advance-link:active, 
+div.wgt-gallery div.slideshow a.advance-link:visited 
+{
+  text-decoration: none;
+}
+
+div.wgt-gallery div.slideshow img 
+{
+  vertical-align: middle;
+  border: 1px solid #ccc;
+  max-height: 292px;
+  max-width: 340px;
+}
+
+div.wgt-gallery.small div.slideshow img 
+{
+  max-height: 292px;
+  max-width: 340px;
+}
+
+div.wgt-gallery.medium div.slideshow img 
+{
+  max-height: 392px;
+  max-width: 440px;
+}
+
+div.wgt-gallery.large div.slideshow img 
+{
+  max-height: 492px;
+  max-width: 540px;
+}
+
+
+div.wgt-gallery div.download 
+{
+  float: right;
+}
+
+div.wgt-gallery div.caption-container 
+{
+  display: block;
+  position: absolute;
+}
+
+div.wgt-gallery span.image-caption 
+{
+  display: block;
+  position: absolute;
+}
+
+
+div.wgt-gallery div.caption
+{
+  background-color: #000;
+  padding: 12px;
+  color: #ccc;
+}
+
+div.wgt-gallery div.caption a 
+{
+  color: #fff;
+}
+
+div.wgt-gallery div.image-title 
+{
+  font-weight: bold;
+  font-size: 1.4em;
+}
+
+div.wgt-gallery div.image-desc 
+{
+  line-height: 1.3em;
+  padding-top: 12px;
+}
+
+div.wgt-gallery div.navigation 
+{
+  width:300px;
+  float:left;
+}
+
+div.wgt-gallery ul.thumbs 
+{
+  clear: both;
+  margin: 0;
+  padding: 0;
+}
+
+div.wgt-gallery ul.thumbs li 
+{
+  float: left;
+  padding: 0;
+  margin: 5px 10px 5px 0;
+  list-style: none;
+}
+
+div.wgt-gallery a.thumb 
+{
+  padding: 2px;
+  display: block;
+  border: 1px solid #ccc;
+}
+
+div.wgt-gallery ul.thumbs li.selected a.thumb 
+{
+  background: #000;
+}
+
+div.wgt-gallery a.thumb:focus 
+{
+  outline: none;
+}
+
+div.wgt-gallery ul.thumbs img 
+{
+  border: none;
+  display: block;
+}
+
+div.wgt-gallery div.pagination 
+{
+  clear: both;
+}
+
+div.wgt-gallery div.navigation div.top 
+{
+  margin-bottom: 12px;
+  height: 11px;
+}
+
+div.wgt-gallery div.navigation div.bottom 
+{
+  margin-top: 12px;
+}
+
+div.wgt-gallery div.pagination a, 
+div.wgt-gallery div.pagination span.current, 
+div.wgt-gallery div.pagination span.ellipsis 
+{
+  display: block;
+  float: left;
+  margin-right: 2px;
+  padding: 4px 7px 2px 7px;
+  border: 1px solid #ccc;
+}
+
+div.wgt-gallery div.pagination a:hover 
+{
+  background-color: #eee;
+  text-decoration: none;
+}
+
+div.wgt-gallery div.pagination span.current 
+{
+  font-weight: bold;
+  background-color: #000;
+  border-color: #000;
+  color: #fff;
+}
+
+div.wgt-gallery div.pagination span.ellipsis 
+{
+  border: none;
+  padding: 5px 0 3px 2px;
+}
+
+div.wgt-gallery div.menu
+{
+  float:left;
+  width:200px;
+  margin-top:20px;
+}
+/* Generic context menu styles */
+.wgt-context_menu {
+	position: absolute;
+	width: 120px;
+	z-index: 99999;
+	border: solid 1px #CCC;
+	background: #EEE;
+	padding: 0px;
+	margin: 0px;
+	display: none;
+}
+
+.wgt-context_menu li {
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+.wgt-context_menu img {
+  display: block;
+  line-height: 20px;
+  text-decoration: none;
+  border:0px;
+  height: 20px;
+  width:18px;
+  float:left;
+  padding: 1px 5px;
+  outline: none;
+}
+
+
+.wgt-context_menu a {
+  float:inline;  
+	color: #333;
+	text-decoration: none;
+	display: block;
+	line-height: 20px;
+	height: 20px;
+	background-position: 6px center;
+	background-repeat: no-repeat;
+	outline: none;
+	padding: 1px 5px;
+}
+
+.wgt-context_menu li.hover a {
+	color: #FFF;
+	background-color: #3399FF;
+}
+
+.wgt-context_menu li.disabled a {
+	color: #AAA;
+	cursor: default;
+}
+
+.wgt-context_menu li.hover.disabled a {
+	background-color: transparent;
+}
+
+.wgt-context_menu li.separator {
+	border-top: solid 1px #CCC;
+}
+
+
+
+.wgt-modal-container
+{
+  display:none;
+}
+
+/* Overlay */
+#simplemodal-overlay 
+{
+  background-color:#000; 
+  cursor:wait;
+}
+
+/* Container */
+#simplemodal-container 
+{
+  min-height:360px; 
+  min-width:600px; 
+  color:#000000; 
+  background-color:#F2F2F2; 
+  border:2px solid #444; 
+  padding:12px;
+}
+
+#simplemodal-container .simplemodal-data 
+{
+  padding:8px;
+}
+
+
+#simplemodal-container a.modalCloseImg 
+{
+  background:url(http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/wgt/close_modal.png) no-repeat; 
+  width:25px; 
+  height:29px; 
+  display:inline; 
+  z-index:3200; 
+  position:absolute; 
+  top:-10px; 
+  right:-11px; 
+  cursor:pointer;
+}
+
+/* jQuery.Rating Plugin CSS - http://www.fyneworks.com/jquery/wgt-rating/ */
+
+div.rating-cancel,
+div.wgt-rating
+{
+	 float:left;
+	 width:17px;
+	 height:15px;
+	 text-indent:-999em;
+	 cursor:pointer;
+	 display:block;
+	 background:transparent;
+	 overflow:hidden;
+}
+
+div.rating-cancel,
+div.rating-cancel a
+{
+	background:url(http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/wgt/delete.gif) no-repeat 0 -16px;
+}
+
+div.wgt-rating,
+div.wgt-rating a
+{
+  background:url(http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/wgt/star.gif) no-repeat 0 0px;
+}
+
+div.rating-cancel a,
+div.wgt-rating a
+{
+	display:block;
+	width:16px;
+	height:100%;
+	background-position:0 0px;
+	border:0;
+}
+	
+div.wgt-rating-on a
+{
+	background-position:0 -16px!important;
+}
+
+div.wgt-rating-hover a
+{
+	background-position:0 -32px;
+}
+
+/* Read Only CSS */
+div.wgt-rating-readonly a
+{
+	cursor:default !important
+}
+
+/* Partial Star CSS */
+div.wgt-rating
+{
+	background:transparent!important;
+	overflow:hidden!important
+}
+
+.colorpicker {
+	width: 356px;
+	height: 176px;
+	overflow: hidden;
+	position: absolute;
+	background: url('http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/wgt/colorpicker_background.png');
+	
+	font-family: Arial, Helvetica, sans-serif;
+	display: none;
+}
+.colorpicker_color {
+	width: 150px;
+	height: 150px;
+	left: 14px;
+	top: 13px;
+	position: absolute;
+	background: #f00;
+	overflow: hidden;
+	cursor: crosshair;
+}
+.colorpicker_color div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 150px;
+	height: 150px;
+	background: url('http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/wgt/colorpicker_overlay.png');
+}
+.colorpicker_color div div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 11px;
+	height: 11px;
+	overflow: hidden;
+	background: url('http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/wgt/colorpicker_select.gif');
+	margin: -5px 0 0 -5px;
+}
+.colorpicker_hue {
+	position: absolute;
+	top: 13px;
+	left: 171px;
+	width: 35px;
+	height: 150px;
+	cursor: n-resize;
+}
+.colorpicker_hue div {
+	position: absolute;
+	width: 35px;
+	height: 9px;
+	overflow: hidden;
+	background: url('http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/wgt/colorpicker_indic.gif') left top;
+	margin: -4px 0 0 0;
+	left: 0px;
+}
+.colorpicker_new_color {
+	position: absolute;
+	width: 60px;
+	height: 30px;
+	left: 213px;
+	top: 13px;
+	background: #f00;
+}
+.colorpicker_current_color {
+	position: absolute;
+	width: 60px;
+	height: 30px;
+	left: 283px;
+	top: 13px;
+	background: #f00;
+}
+.colorpicker input {
+	background-color: transparent;
+	border: 1px solid transparent;
+	position: absolute;
+	font-size: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #898989;
+	top: 4px;
+	right: 11px;
+	text-align: right;
+	margin: 0;
+	padding: 0;
+	height: 11px;
+}
+.colorpicker_hex {
+	position: absolute;
+	width: 72px;
+	height: 22px;
+	background: url('http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/wgt/colorpicker_hex.png') top;
+	left: 212px;
+	top: 142px;
+}
+.colorpicker_hex input {
+	right: 6px;
+}
+.colorpicker_field {
+	height: 22px;
+	width: 62px;
+	background-position: top;
+	position: absolute;
+}
+.colorpicker_field span {
+	position: absolute;
+	width: 12px;
+	height: 22px;
+	overflow: hidden;
+	top: 0;
+	right: 0;
+	cursor: n-resize;
+}
+.colorpicker_rgb_r {
+	background-image: url('http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/wgt/images/colorpicker_rgb_r.png');
+	top: 52px;
+	left: 212px;
+}
+.colorpicker_rgb_g {
+	background-image: url('http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/wgt/colorpicker_rgb_g.png');
+	top: 82px;
+	left: 212px;
+}
+.colorpicker_rgb_b {
+	background-image: url('http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/wgt/colorpicker_rgb_b.png');
+	top: 112px;
+	left: 212px;
+}
+.colorpicker_hsb_h {
+	background-image: url('http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/wgt/colorpicker_hsb_h.png');
+	top: 52px;
+	left: 282px;
+}
+.colorpicker_hsb_s {
+	background-image: url('http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/wgt/colorpicker_hsb_s.png');
+	top: 82px;
+	left: 282px;
+}
+.colorpicker_hsb_b {
+	background-image: url('http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/wgt/colorpicker_hsb_b.png');
+	top: 112px;
+	left: 282px;
+}
+.colorpicker_submit {
+	position: absolute;
+	width: 22px;
+	height: 22px;
+	background: url('http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/wgt/colorpicker_submit.png') top;
+	left: 322px;
+	top: 142px;
+	overflow: hidden;
+}
+.colorpicker_focus {
+	background-position: center;
+}
+.colorpicker_hex.colorpicker_focus {
+	background-position: bottom;
+}
+.colorpicker_submit.colorpicker_focus {
+	background-position: bottom;
+}
+.colorpicker_slider {
+	background-position: bottom;
+}
+
+ul.wgt-mega-menu
+{ 
+	line-height: 16px;
+}
+
+ul.wgt-mega-menu ul, 
+.wgt-mega-menu ul li 
+{
+	list-style: none;
+}
+
+ul.wgt-mega-menu ul 
+{
+	position: relative;
+	padding: 0; 
+	margin: 0;
+}
+
+ul.wgt-mega-menu ul li ul 
+{
+	display: none;
+}
+
+ul.wgt-mega-menu .sub 
+{
+	display: none;
+}
+
+ul.wgt-mega-menu .sub ul 
+{
+	display: block;
+}
+
+
+ul.wgt-mega-menu, 
+ul.wgt-mega-menu li 
+{
+	margin: 0; 
+	padding: 0; 
+	border: none;
+}
+
+ul.wgt-mega-menu 
+{
+	/*background: #222 url(http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/mega_menu/bg_light_blue.png) repeat-x 0 -80px; */
+	width: 100%; 
+	height: 40px; 
+	border-right: 1px solid #44B3FF; 
+	border-left: 1px solid #44B3FF; 
+	position: relative;
+}
+
+ul.wgt-mega-menu li 
+{
+	float: left; 
+	margin: 0; 
+	padding: 0; 
+	font-size: 13px; 
+	font-weight: bold;
+}
+
+ul.wgt-mega-menu li>a,
+ul.wgt-mega-menu li>p
+{
+	float: left; 
+	display: block; 
+	color: #000; 
+	padding: 12px 17px 12px 15px; 
+	/*background: url(http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/mega_menu/bg_light_blue.png) repeat-x 100% 0;*/
+	text-shadow: 1px 1px 1px #fff; 
+	text-decoration: none;
+}
+
+ul.wgt-mega-menu li a.wgt-mega,
+ul.wgt-mega-menu li p.wgt-mega
+{
+	position: relative;
+}
+
+ul.wgt-mega-menu li a .wgt-mega-icon 
+{
+	display: block; 
+	position: absolute;  
+	top: 18px; 
+	right: 15px; 
+	width: 8px; 
+	height: 6px; 
+	background: url(http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/mega_menu/arrow.png) no-repeat 0 100%;
+}
+
+ul.wgt-mega-menu li.mega-hover a, 
+ul.wgt-mega-menu li>a:hover,
+ul.wgt-mega-menu li.mega-hover p, 
+ul.wgt-mega-menu li>p:hover 
+{
+	background-position: 100% -40px; 
+	color: #000; 
+	text-shadow: none;
+}
+
+ul.wgt-mega-menu li.mega-hover a .wgt-mega-icon 
+{
+	background-position: 0 100%;
+}
+
+ul.wgt-mega-menu li .sub-container 
+{
+	position: absolute; 
+	background: url(http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/mega_menu/bg_sub_left.png) no-repeat 0 100%; 
+	padding-left: 20px; 
+	margin-left: -3px;
+}
+
+ul.wgt-mega-menu li .sub 
+{
+	background: url(http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/mega_menu/bg_sub.png) no-repeat 100% 100%; 
+	padding: 20px 20px 20px 10px;
+}
+
+ul.wgt-mega-menu li .sub-container.mega .sub 
+{
+	padding: 20px 20px 10px 0;
+}
+
+ul.wgt-mega-menu li .sub .row 
+{
+	width: 100%; 
+	overflow: hidden; 
+	clear: both;
+}
+
+ul.wgt-mega-menu li .sub li 
+{
+	list-style: none; 
+	float: none; 
+	width: 170px; 
+	font-size: 1em; 
+	font-weight: normal;
+}
+
+ul.wgt-mega-menu li .sub li.mega-hdr 
+{
+	margin: 0 10px 10px 0; 
+	float: left;
+}
+
+ul.wgt-mega-menu li .sub li.mega-hdr.last 
+{
+	margin-right: 0;
+}
+
+ul.wgt-mega-menu li .sub a,
+ul.wgt-mega-menu li .sub p
+{
+	background: none; 
+	border: none; 
+	text-shadow: none; 
+	color: #000000; 
+	padding: 7px 10px; 
+	display: block; 
+	float: none; 
+	text-decoration: none; 
+	font-size: 0.9em;
+}
+
+ul.wgt-mega-menu li .sub li.mega-hdr a.mega-hdr-a,
+ul.wgt-mega-menu li .sub li.mega-hdr p.mega-hdr-a 
+{
+	padding: 5px 5px 5px 15px; 
+	margin-bottom: 5px; 
+	background: #4EC3F3 url(http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/mega_menu/bg_mega_hdr.png) no-repeat 0 0; 
+	text-transform: uppercase; 
+	font-weight: bold; 
+	color: #000000; 
+	text-shadow: 1px 1px 1px #fff;
+}
+
+ul.wgt-mega-menu li .sub li.mega-hdr a.mega-hdr-a:hover,
+ul.wgt-mega-menu li .sub li.mega-hdr p.mega-hdr-a:hover 
+{
+	color: #fff; 
+	text-shadow: none;
+}
+
+ul.wgt-mega-menu .sub li.mega-hdr li a,
+ul.wgt-mega-menu .sub li.mega-hdr li p
+{
+	padding: 4px 5px 4px 20px; 
+	background: url(http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/mega_menu/arrow_off.png) no-repeat 5px 8px; 
+	font-weight: normal;
+}
+
+ul.wgt-mega-menu .sub li.mega-hdr li a:hover,
+ul.wgt-mega-menu .sub li.mega-hdr li p:hover
+{
+	color: #a32403; 
+	background: #efefef url(http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/mega_menu/arrow_on.png) no-repeat 5px 8px;
+}
+
+ul.wgt-mega-menu .sub ul li 
+{
+	padding-right: 0;
+}
+
+ul.wgt-mega-menu li .sub-container.non-mega .sub 
+{
+	padding: 20px 20px 20px 0;
+}
+
+ul.wgt-mega-menu li .sub-container.non-mega li 
+{
+	padding: 0; 
+	width: 190px; 
+	margin: 0;
+}
+
+ul.wgt-mega-menu li .sub-container.non-mega li a,
+ul.wgt-mega-menu li .sub-container.non-mega li p 
+{
+	padding: 7px 5px 7px 22px; 
+	background: url(http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/mega_menu/arrow_off.png) no-repeat 7px 10px;
+}
+
+ul.wgt-mega-menu li .sub-container.non-mega li a:hover,
+ul.wgt-mega-menu li .sub-container.non-mega li p:hover
+{
+	color: #a32403; 
+	background: #efefef url(http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/mega_menu/arrow_on.png) no-repeat 7px 10px;
+}
+
+/* Vertical Mega Menu Styles */
+.wgt-vert-mega-menu
+{
+  line-height: 16px; 
+  background: #EAEAEA;
+  border-left: 1px solid #1B1B1B; 
+  position: relative; /* Required */
+}
+
+.wgt-vert-mega-menu li a 
+{
+  display: block; 
+  color: #fff; 
+  padding: 10px 38px 10px 25px;
+  text-shadow: 1px 1px 1px #000; 
+  text-decoration: none;  
+  border-top: 1px solid #555; 
+  border-bottom: 1px solid #222; 
+  border-right: 1px solid #1B1B1B;
+}
+
+.wgt-vert-mega-menu li a:hover, 
+.wgt-vert-mega-menu li.mega-hover a 
+{
+  background: #0068A5;
+  color: #fff; 
+  border-right: 1px solid #0068A5;
+}
+
+.wgt-vert-mega-menu li a.wgt-mega 
+{
+  position: relative;
+}
+
+/* Add arrow icon to parent links */
+.wgt-vert-mega-menu li a .wgt-mega-icon 
+{
+  display: block; 
+  position: absolute; 
+  top: 18px; 
+  right: 15px; 
+  width: 6px; 
+  height: 8px; 
+  background: url(http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/wgt/arrow_right.png) no-repeat 0 0;
+}
+
+/* Mega menu container */
+.wgt-vert-mega-menu li .sub-container 
+{
+  position: absolute; /* Required */
+  background: #EAEAEA;
+  padding: 10px 10px 0 10px; 
+  border: 1px solid #4b4b4b; 
+  border-left: none;
+}
+
+.wgt-vert-mega-menu li .sub-container .sub {}
+
+.wgt-vert-mega-menu li .sub .row 
+{
+  width: 100%; overflow: hidden; /* Clear floats */
+}
+
+.wgt-vert-mega-menu li .sub li 
+{
+  float: none; 
+  width: 150px; 
+  font-size: 1em; 
+  font-weight: normal;
+}
+
+.wgt-vert-mega-menu li .sub li.mega-hdr 
+{
+  float: left; /* Required */
+  margin: 0 5px 10px 5px;
+}
+
+.wgt-vert-mega-menu li .sub a, .wgt-vert-mega-menu.left li .sub a 
+{
+  background: none; 
+  border: none; 
+  text-shadow: none;
+  float: none;
+  color: #000;
+  padding: 7px 10px; 
+  display: block;
+  text-decoration: none; 
+  font-size: 0.9em;
+}
+
+.wgt-vert-mega-menu li .sub li.mega-hdr a.mega-hdr-a 
+{
+  padding: 5px 5px 5px 15px; 
+  margin-bottom: 5px; 
+  background: #0068A5;
+  text-transform: uppercase; 
+  font-weight: bold; 
+  color: #fff; 
+  text-shadow: 1px 1px 1px #333;
+}
+
+.wgt-vert-mega-menu li .sub li.mega-hdr a.mega-hdr-a:hover 
+{
+  color: #000; 
+  text-shadow: none;
+}
+
+.wgt-vert-mega-menu .sub li.mega-hdr li a 
+{
+  padding: 4px 5px 4px 20px; 
+  background: url(http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/wgt/arrow_white.png) no-repeat 5px 8px; 
+  font-weight: normal;
+}
+
+.wgt-vert-mega-menu .sub li.mega-hdr li a:hover 
+{
+  color: #a32403; 
+  background: #efefef url(http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/wgt/arrow_on.png) no-repeat 5px 8px;
+}
+
+.wgt-vert-mega-menu .sub ul li 
+{
+  padding-right: 0;
+}
+
+/* Styling for menu items with only 2 levels */
+.wgt-vert-mega-menu li .sub-container.non-mega .sub 
+{
+  padding: 10px;
+}
+
+.wgt-vert-mega-menu li .sub-container.non-mega li 
+{
+  padding: 0; 
+  margin: 0;
+  width: 150px;
+}
+
+.wgt-vert-mega-menu li .sub-container.non-mega li a 
+{
+  padding: 7px 5px 7px 22px; 
+  background: url(http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/wgt/arrow_white.png) no-repeat 7px 10px;
+}
+
+.wgt-vert-mega-menu li .sub-container.non-mega li a:hover 
+{
+  color: #a32403; 
+  background: #efefef url(http://127.0.0.1//WorkspaceWebFrap/WebFrap_Wgt/example/gw/../../themes/default/images/wgt/arrow_on.png) no-repeat 7px 10px;
+}
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+/*//////////////////////////////////////////////////////////////////////////////
+// WebFrap Developer Classes
+//////////////////////////////////////////////////////////////////////////////*/
+
+/*
+#wgt_debug_console
+{
+  clear:both;
+  background-color:white;
+  position:absolute;
+  bottom:0px;
+  height:200px;
+  width:50%;
+  z-index:5002;
+  padding:5px;
+  border:1px solid red;
+}
+
+#wgt_debug_console .ui-resizable-helper
+{
+  border: 4px solid black;
+  height:100%;
+  overflow:auto;
+}
+  height:200px;
+  width:400px;
+
+*/
+
+
+#wgt_debug_console
+{
+  z-index:4999;
+}
+
+
+/*
+#wgt_debug_console div.content
+{
+	height:220px;
+	overflow:auto;
+}
+*/
+
+
+
+
+

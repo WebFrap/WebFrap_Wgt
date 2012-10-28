@@ -1,0 +1,50 @@
+#wbf-footer
+{
+  height:20px;
+  z-index: 4002;
+}
+
+#wbf-footer table
+{
+  text-align: center;
+  width: 100%;
+}
+
+#wbf-footer-history
+{
+  text-align: center;
+  max-height: 80%;
+  padding-bottom: 0px;
+  margin-bottom: 3px;
+  overflow: auto;
+  z-index:4001;
+  display:none;
+}
+    
+#wbf-footer-history table{
+  width: 100%;
+  text-align: center;
+}
+
+
+#wbf-footer-history table td{
+  padding: 5px;
+  margin: 5px;
+}
+
+#footer_status
+{
+  height:15px;
+}
+
+#footer_status tbody
+{
+  overflow:auto;
+}
+
+#footer_status td
+{
+  text-align:left;
+}
+
+

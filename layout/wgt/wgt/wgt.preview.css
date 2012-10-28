@@ -1,0 +1,72 @@
+#wgt-preview-container
+{
+    position:absolute;
+    left:0;
+    top:0;
+    display:none;
+    z-index: 20000;
+}
+
+.wgt-preview-popup
+{
+}
+
+#wgt-preview-content
+{
+    background-color: #FFF;
+    min-width: 175px;
+    min-height: 50px;
+}
+
+.wgt-preview-popup .wgt-preview-image
+{
+    margin: 5px;
+    margin-right: 15px;
+}
+
+.wgt-preview-popup .corner 
+{
+    width: 19px;
+    height: 15px;
+}
+    
+.wgt-preview-popup .top-left 
+{
+    background: url(<?php echo $images ?>preview_border/top_left.png) no-repeat;
+}
+    
+.wgt-preview-popup .bottom-left 
+{
+    background: url(<?php echo $images ?>preview_border/bottom_left.png) no-repeat;
+}
+    
+.wgt-preview-popup .left 
+{
+    background: url(<?php echo $images ?>preview_border/left.png) repeat-y;
+}
+    
+.wgt-preview-popup .right 
+{
+    background: url(<?php echo $images ?>preview_border/right.png) repeat-y;
+}
+    
+.wgt-preview-popup .top-right 
+{
+    background: url(<?php echo $images ?>preview_border/top_right.png) no-repeat;
+}
+    
+.wgt-preview-popup .bottom-right 
+{
+    background: url(<?php echo $images ?>preview_border/bottom_right.png) no-repeat;
+}
+    
+.wgt-preview-popup .top 
+{
+    background: url(<?php echo $images ?>preview_border/top.png) repeat-x;
+}
+    
+.wgt-preview-popup .bottom 
+{
+    background: url(<?php echo $images ?>preview_border/bottom.png) repeat-x;
+    text-align: center;
+}

@@ -1,0 +1,430 @@
+/*//////////////////////////////////////////////////////////////////////////////
+// Table
+//////////////////////////////////////////////////////////////////////////////*/
+
+div.wgt-grid
+{
+  position:relative;
+  overflow:hidden;
+}
+
+div.wgt-grid div.body-scroll
+{
+  position:relative;
+  overflow:hidden;
+}
+
+
+div.wgt-grid table.hide-head thead
+{
+  line-height:0px;
+  height:1px;
+}
+
+table.wgt-grid.categorized td:first-child
+{
+  padding-left:20px;
+}
+
+div.wgt-grid div.resize
+{
+  display:block;
+}
+
+div.wgt-grid div.resize>div
+{
+  position:absolute;
+}
+
+div.wgt-grid,
+div.wgt-grid-head,
+div.wgt-grid-body
+{
+}
+
+div.wgt-grid-body
+{
+  height:450px;
+  background-color:#F2F2F2;
+  overflow:auto;
+  clear:both;
+}
+
+div.wgt-grid-body.xxsmall
+{
+  height:100px;
+}
+
+div.wgt-grid-body.xsmall
+{
+  height:150px;
+}
+
+div.wgt-grid-body.small
+{
+  height:200px;
+}
+
+div.wgt-grid-body.medium
+{
+  height:300px;
+}
+
+div.wgt-grid-body.large
+{
+  height:450px;
+}
+
+div.wgt-grid-body.huge
+{
+  height:600px;
+}
+
+div.wgt-grid-body.xlarge
+{
+  height:600px;
+}
+
+div.wgt-grid-body.xxlarge
+{
+  height:700px;
+}
+
+div.wgt-grid-body td
+{
+  border-bottom:1px solid silver;
+  padding-left:3px;
+  padding-right:2px;
+}
+
+div.wgt-grid-body td.pos
+{
+  background-color:silver;
+  font-weight: bold;
+  color: black;
+  text-align:left;
+  border-bottom:1px solid black;
+}
+
+div.wgt-grid-body td.pos.checked
+{
+  background-color:#585858;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-align:left;
+  border-bottom:1px solid #FFFFFF;
+}
+
+div.wgt-grid-body td.date,
+div.wgt-grid-body td.time,
+div.wgt-grid-body td.number,
+div.wgt-grid-body td.money,
+div.wgt-grid-body td.rtext
+{
+  text-align:right;
+}
+
+/* Head */
+
+div.wgt-grid-head
+{
+  height:20px;
+  background-color:silver;
+}
+
+.wgt-grid .label
+{
+  float:left;
+  height:18px;
+  padding:0px;
+  margin:0px;
+}
+
+.wgt-grid .order
+{
+  float:right;
+  height:18px;
+  width:20px;
+  padding:0px;  
+  margin:0px; 
+  text-align:center;
+}
+
+
+div.wgt-grid-head>div
+{
+  float:left;
+}
+
+div.wgt-grid-head table
+{
+  border-spacing:0px;
+}
+
+div.wgt-grid-head table thead th
+{
+  margin:0px;
+  height:20px;
+}
+
+div.wgt-grid-head th div
+{
+  text-align:left;
+  padding:0px 0px 0px 5px;
+  cursor: default;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+div.wgt-grid-head table tbody tr td
+{
+  border-bottom:1px solid silver;
+}
+
+div.wgt-grid-head td input
+{
+  margin:0px;
+}
+
+/* Drag & Drop for Resize */
+
+div.wgt-grid div.wgt-drag
+{
+  position:absolute;
+  top:1px;
+  z-index:3;
+  overflow:visible;
+}
+
+div.wgt-grid div.wgt-drag>div
+{
+  position:absolute;
+  float:left;
+  width:5px;
+  cursor: col-resize;
+}
+
+div.wgt-grid div.wgt-drag>div.dissabled
+{
+  position:absolute;
+  float:left;
+  width:5px;
+  cursor: default !important;
+  background:none !important;
+}
+
+div.wgt-grid div.wgt-drag>div:hover,
+div.wgt-grid div.wgt-drag>div.dragged,
+div.wgt-grid div.wgt-drag>div.helper
+{
+  background: url(<?php echo $images ?>wgt/line.gif) repeat-y 2px center;
+}
+
+
+table.wgt-grid
+{
+  padding:0px;
+  margin:0px;
+  clear:both;
+  border-spacing:0px;
+  display:table;
+  border-bottom:1px solid silver;
+}
+
+div.wgt-grid-body table tbody
+{
+}
+
+div.wgt-grid-body table tbody td,
+div.wgt-grid-body table thead th,
+div.wgt-grid-head table thead th
+{
+  overflow: hidden;
+  border-right:1px solid white;
+  padding:0px;
+}
+
+
+div.wgt-grid-body table tbody td
+{
+  padding:2px !important;
+}
+
+div.wgt-grid-body table thead th,
+div.wgt-grid-head table thead th
+{
+  white-space: nowrap;
+}
+
+table.wgt-grid-body td ul
+{
+  margin-left:15px;
+}
+
+table.wgt-grid-body td ul.wgt-list
+{
+  list-style-type:decimal;
+}
+
+table.wgt-grid-body td ul.wgt-list li
+{
+  border-bottom: 1px dotted silver;
+}
+
+
+table.wgt-grid input,
+table.wgt-grid select,
+table.wgt-grid textarea
+{
+  margin:0px !important;
+  padding:0px;
+  border:0px;
+  background-color:inherit;
+  height:21px;
+}
+
+div.wgt-grid-body table.wgt-grid option
+{
+  background-color:white;
+}
+
+div.wgt-grid-body table.wgt-grid input.show,
+div.wgt-grid-body table.wgt-grid select.show,
+div.wgt-grid-body table.wgt-grid textarea.show
+{
+  margin:0px;
+  padding:1px;
+  margin-right:3px;
+  border:1px dotted silver;
+}
+
+div.wgt-grid-body table.wgt-grid input.show:hover,
+div.wgt-grid-body table.wgt-grid select.show:hover,
+div.wgt-grid-body table.wgt-grid textarea.show:hover
+{
+  background-color:#EBEFF2;
+  border:1px ridge silver;
+}
+
+div.wgt-grid-body table.wgt-grid tfoot input,
+div.wgt-grid-body table.wgt-grid tfoot select,
+div.wgt-grid-body table.wgt-grid tfoot textarea
+{
+  border:1px solid black;
+  background-color:white;
+}
+
+
+table.wgt-grid-body thead input,
+table.wgt-grid-body thead select,
+table.wgt-grid-body thead textarea
+{
+  padding:0px !important;
+  margin:2px !important;
+  width:98%;
+  border:0px;
+  background-color:white;
+  border:1px solid black;
+}
+
+td.ind1
+{
+  padding-left:10px !important;
+}
+
+td.ind2
+{
+  padding-left:20px  !important;
+}
+
+td.ind3
+{
+  padding-left:30px  !important;
+}
+
+/* Col Styles */
+
+td.type_text,
+td.type_select,
+td.type_splitb
+{
+  text-align: left;
+}
+
+td.type_date,
+td.type_time,
+td.type_timestamp,
+td.type_number
+{
+  text-align: right;
+}
+
+td.type_buttonset,
+td.type_check
+{
+  text-align: center;
+}
+
+td.edit_mode
+{
+  border:2px solid #0000FF;
+}
+
+td.no_oflw
+{
+  white-space: nowrap;
+}
+
+/* menu */
+
+.wgt-grid_menu
+{
+  height:20px;
+}
+
+
+div.wgt-grid-body table tbody td.nav
+{
+  padding-top:0px !important;
+  padding-bottom:0px !important;
+}
+
+.wgt-grid_menu button.wgt-button
+{
+  height:20px;
+  margin:0px;
+  padding:0px;
+  width:35px;
+}
+/**/
+
+
+/* THEME STYLES */
+
+table.wgt-grid tbody tr.title,
+table.wgt-table tbody tr.title
+{
+  background-color:#004574 !important;
+  color:white;
+  font-weight:bold;
+}
+
+table.wgt-grid tbody tr td.child,
+table.wgt-table tbody tr td.child
+{
+  padding-left:12px;
+}
+
+table.wgt-grid tbody tr.subtitle,
+table.wgt-table tbody tr.subtitle
+{
+  background-color:#C3C3C3 !important;
+  color:white;
+}
+
+table.wgt-grid tbody tr.subtitle td.child,
+table.wgt-table tbody tr.subtitle td.child
+{
+  padding-left:6px;
+}
+

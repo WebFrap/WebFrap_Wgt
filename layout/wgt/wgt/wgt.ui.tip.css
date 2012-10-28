@@ -1,0 +1,81 @@
+.wgt-tip 
+{ 
+	padding: 5px; 
+	font-size: 10px; 
+	position: absolute; 
+	z-index: 100000;
+}
+.wgt-tip-inner 
+{ 
+	padding: 5px 8px 4px 8px; 
+	background-color: black; 
+	color: white; 
+	max-width: 200px; 
+	text-align: center;
+}
+.wgt-tip-inner 
+{ 
+	border-radius: 3px;
+}
+
+.wgt-tip-arrow 
+{ 
+	position: absolute; 
+	background: url(<?php echo $images ?>wgt/wgt-tip.gif) no-repeat top left; 
+	width: 9px; 
+	height: 5px;
+}
+
+.wgt-tip-n .wgt-tip-arrow 
+{ 
+  top: 0; 
+  left: 50%; 
+  margin-left: -4px;
+}
+.wgt-tip-nw .wgt-tip-arrow 
+{ 
+	top: 0; 
+	left: 10px;
+}
+.wgt-tip-ne .wgt-tip-arrow 
+{ 
+	top: 0; 
+	right: 10px;
+}
+.wgt-tip-s .wgt-tip-arrow 
+{ 
+	bottom: 0; 
+	left: 50%; 
+	margin-left: -4px; 
+	background-position: bottom left;
+}
+.wgt-tip-sw .wgt-tip-arrow 
+{ 
+	bottom: 0; 
+	left: 10px; 
+	background-position: bottom left;
+}
+.wgt-tip-se .wgt-tip-arrow 
+{ 
+	bottom: 0; 
+	right: 10px; 
+	background-position: bottom left;
+}
+.wgt-tip-e .wgt-tip-arrow 
+{ 
+	top: 50%; 
+	margin-top: -4px; 
+	right: 0; 
+	width: 5px; 
+	height: 9px; 
+	background-position: top right;
+}
+.wgt-tip-w .wgt-tip-arrow 
+{ 
+	top: 50%; 
+	margin-top: -4px; 
+	left: 0; 
+	width: 5px; 
+	height: 9px;
+}
+

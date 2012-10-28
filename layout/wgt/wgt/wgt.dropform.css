@@ -1,0 +1,110 @@
+/*//////////////////////////////////////////////////////////////////////////////
+// creator
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+#wgt-dropform-overlay,
+.wgt-dropform-overlay 
+{
+  /*width: 150px;*/
+  font-size: .9em;
+  position: absolute;
+  z-index: 1000;
+  display: none;
+}
+
+
+#wgt-dropform-overlay .ui-widget,
+.wgt-dropform-overlay .ui-widget
+{
+  padding: .2em;
+}
+
+#wgt-dropform-overlay .ui-widget-header,
+.wgt-dropform-overlay .ui-widget-header 
+{
+  padding: .2em;
+}
+
+#wgt-dropform-overlay .ui-widget-content,
+.wgt-dropform-overlay .ui-widget-content 
+{
+   margin-top: .2em;
+   margin-bottom: .1em;
+   padding: .2em;
+}
+
+#wgt-dropform-overlay .ui-widget.ui-widget-content,
+.wgt-dropform-overlay .ui-widget.ui-widget-content
+{
+  margin-top: 0;
+}
+
+#wgt-dropform-overlay .ptTimeSelectLeftPane.ui-widget-content,
+.wgt-dropform-overlay .ptTimeSelectLeftPane.ui-widget-content
+{
+  border-top:none;
+  border-bottom:none;
+  border-left:none;
+  border-right-width: 2px;
+}
+
+#wgt-dropform-overlay .button-close,
+.wgt-dropform-overlay .button-close 
+{
+  padding-top: .2em;
+  padding-bottom: .2em;
+  float: right;
+}
+
+#wgt-dropform-overlay .button-close a,
+.wgt-dropform-overlay .button-close a 
+{
+  display: block;
+  padding: .2em;
+  width: 50px;
+  text-align: center;
+  float: right;
+}
+
+#wgt-dropform-overlay .bottom,
+.wgt-dropform-overlay .bottom 
+{
+  float: left;
+  padding-top: .2em;
+  padding-bottom: .4em;
+}
+
+#wgt-dropform-overlay .miniMenuMenuButton,
+.wgt-dropform-overlay .miniMenuMenuButton
+{
+  padding-top:    .1em;
+  padding-bottom: .0em;
+
+}
+
+#wgt-dropform-overlay .miniMenuMenuButton a,
+.wgt-dropform-overlay .miniMenuMenuButton a
+{
+  display: block;
+  width: 100%;
+  text-align: left;
+  float: left;
+  padding: .0em;
+  border: none;
+}
+
+#wgt-dropform-overlay .miniMenuMenuButton .default,
+.wgt-dropform-overlay .miniMenuMenuButton .default
+{
+  text-decoration: none;
+  outline: none;
+}
+
+#wgt-dropform-overlay hr,
+.wgt-dropform-overlay hr
+{
+  margin-top    :2px;
+  margin-bottom :2px;
+  border:1px outset silver;
+}

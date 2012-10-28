@@ -1,0 +1,38 @@
+ul.wgt-tree,
+div.wgt-tree ul
+{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+div.wgt-tree ul
+{
+  background-color: transparent;
+  margin-top: 4px;
+}
+
+ul.wgt-tree>li,
+div.wgt-tree ul>li
+{
+  padding: 3px 0pt 3px 0px;
+}
+
+.wgt-tree li
+{
+  margin: 0;
+  padding: 3px 0pt 3px 16px;
+}
+
+.wgt-tree a.selected
+{
+  background-color: #eee;
+}
+
+.wgt-tree a,
+.wgt-tree p,
+.wgt-tree span
+{
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+

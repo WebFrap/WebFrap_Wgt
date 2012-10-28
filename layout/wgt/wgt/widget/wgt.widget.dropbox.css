@@ -1,0 +1,115 @@
+.wgt-dropdownbox 
+{
+  width:200px;
+  height:auto;
+  background-color:#eee;
+  border:1px solid #ccc;
+  display:none;
+}
+
+.wgt-dropdownbox ul 
+{
+  border-top:1px solid #ddd;
+  margin-left:30px;
+  border-left:1px solid #ddd;
+  padding-top:3px;
+  padding-bottom:3px;
+}
+
+.wgt-dropdownbox ul li a img,
+.wgt-dropdownbox ul li a input, 
+.wgt-dropdownbox ul li img,
+.wgt-dropdownbox ul li input 
+{
+  position:absolute;
+  margin-left:-30px;
+}
+
+.wgt-dropdownbox ul li a
+{
+  display:block;
+  padding:4px;
+  padding-left:6px;
+  color:#222;
+  cursor:pointer;
+}
+
+.wgt-dropdownbox ul li label,
+.wgt-dropdownbox label
+{
+  display:block;
+  padding:4px;
+  padding-left:6px;
+  color:#222;
+  font-weight:bold;
+  cursor:default;
+}
+
+/*.wgt-dropdownbox ul li>a:hover,*/
+.wgt-dropdownbox ul li.hover>a 
+{
+  background-color:#ee9;
+  border:1px solid #ddf;
+  margin-left:-29px;
+  margin-right:2px;
+  padding:3px;
+  padding-left:30px;
+  text-indent:4px;
+  border-radius:4px;
+}
+
+.wgt-dropdownbox ul li span
+{
+  position:absolute;
+  width:180px;
+  margin-left:137px;
+  margin-top:-26px;
+  display:none;
+}
+
+.wgt-dropdownbox.al_right ul li span
+{
+  margin-left:-290px;
+}
+
+.wgt-dropdownbox ul li span ul 
+{
+  background-color:#eee;
+  border:1px solid #ccc;
+  padding-left:30px;
+  width:200px;  
+}
+
+.wgt-dropdownbox ul li span ul li 
+{
+  padding:4px;
+  padding-left:6px;
+  color:#222;
+  border-left:1px solid #ddd;
+}
+
+/*.wgt-dropdownbox ul li span ul li:hover,*/
+.wgt-dropdownbox ul li span ul li.hover
+{
+  cursor:pointer;
+  margin-left:-30px;
+  padding-left:36px;
+}
+
+/*.wgt-dropdownbox ul li span ul li:hover a,*/
+.wgt-dropdownbox ul li span ul li.hover a
+{
+  background-color:#ee9;
+}
+
+
+.wgt-dropdownbox ul li.hover span
+{
+  display:block;
+}
+
+.wgt-dropdownbox .deeplink
+{
+  background: transparent url('<?php echo $images ?>wgt/menu_arrow.png') no-repeat right center;
+}
+

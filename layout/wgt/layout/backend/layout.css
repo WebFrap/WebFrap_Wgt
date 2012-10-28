@@ -1,0 +1,200 @@
+/*******************************************************************************
+* Layout Boxes Mainpage
+*******************************************************************************/
+
+div,
+p,
+textarea,
+input,
+select
+{
+  /* see http://css-tricks.com/box-sizing/ */
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+/**/
+div#wbf-body
+{
+  /*
+	position:relative;
+  height:    100%;
+  */
+	margin:0px;
+	padding:0px;
+  height:auto;
+}
+
+
+div#wbf-ui-panel
+{
+  position:absolute;
+  height:29px;	
+  top:0px;
+  left:0px;
+  right:0px;
+  border:0px !important;
+}
+
+
+div#wbf-content
+{
+  position:absolute;
+  top:29px;
+  right:0px;
+	left:0px;
+	bottom:26px;
+  overflow:hidden;	
+}
+
+div#wgt-maintab 
+{
+	position:absolute;
+  margin:0px;
+  top:0px;	
+  right:0px;
+  left:0px;	
+  bottom:0px;
+  overflow:auto;	
+}
+
+div#wgt-maintab div.wgt_tab_head
+{
+   position:relative;
+   z-index:2;
+}
+
+div#wgt-maintab div.wgt-panel.maintab
+{
+  position:static;
+  top:0px;
+  left:0px;
+  right:0px;
+  height:62px;
+  padding:0px !important;
+  / *padding-top:7px;* /
+  z-index:2;
+}
+
+div#wgt-maintab-body,
+div#wgt-maintab-body .wgt_tab_content.wgt-maintab
+{
+  padding:0px !important;
+  /*height:100%;*/
+}
+
+div#wgt-maintab div.wgt-content.maintab
+{
+  position:absolute;
+  top:62px;
+  left:0px;
+  right:0px;
+  bottom:0px;
+  padding:0px;
+  overflow:auto;
+  z-index:0;
+}
+
+#wbf-footer
+{ /*Contains toolbar and horizontal splitter*/
+  position: absolute;
+  left:0px;
+  bottom: 0px;
+  right:0px;
+  overflow: hide;
+  height:25px;
+  border-right:0px !important;
+}
+
+.wgt-dashboard-header
+{
+  padding:5px;
+  margin:5px;
+  margin-left:10px;
+  margin-right:10px;
+  display:block;
+  border:1px solid #ccc;
+  border-radius:5px 5px 0px 0px;
+  background-color:#eee;
+  color: #5C5C5C;
+  font-family:Arial Black;
+}
+
+
+div#wgt-maintab-head div.wgt-container-controls
+{
+	text-align:left !important;
+}
+
+div#wgt-maintab-head div.wgt-container-controls .wgt-container-buttons
+{
+  width:3px !important;
+	margin-right:0px;
+}
+
+
+/*
+
+
+
+div#wbf-content div.wgt-content.maintab
+{
+  position:absolute;
+  top:62px;
+  left:0px;
+  right:0px;
+  bottom:30px;
+  padding:0px;
+  overflow:auto;
+  z-index:0;
+}
+
+
+div#wbf-content div.wgt_footer.maintab
+{
+  position:absolute;
+  overflow:hidden;
+  left:0px;
+  bottom:0px;
+  right:0px;
+  height:20px;
+  padding-left:5px;
+  padding-right:5px;
+  border-top:1px solid black;
+}
+
+div#wbf-content-full
+{
+  position:absolute;
+  left:0px;
+  top:50px;
+  bottom:0px;
+  right:0px;
+  overflow-x:auto;
+  overflow-y:auto;
+}
+
+
+#wbf-cont-workarea{ / * Contains toolbar and horizontal splitter * /
+  position: absolute;
+  top: 0px;
+  bottom: 1px;
+  left:243px;
+  right:0px;
+  overflow: auto;
+  height:100%;
+}
+
+
+#wbf-maintab_bar
+{
+  position:absolute;  
+  height:25px;
+  left:0px;
+  right:0;
+  top:0px;
+}
+
+*/
+

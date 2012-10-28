@@ -1,0 +1,36 @@
+/* bg images für priority */
+
+select.priority option.min
+{   
+  background-image:url('<?php echo $icons ?>xsmall/priority/min.png'); 
+	background-repeat:no-repeat;
+  padding-left:18px;
+}
+
+select.priority option.low
+{   
+  background-image:url('<?php echo $icons ?>xsmall/priority/low.png'); 
+  background-repeat:no-repeat;	
+  padding-left:18px;
+}
+
+select.priority option.normal
+{   
+  background-image:url('<?php echo $icons ?>xsmall/priority/normal.png'); 
+  background-repeat:no-repeat;	
+  padding-left:18px;
+}
+
+select.priority option.high
+{   
+  background-image:url('<?php echo $icons ?>xsmall/priority/high.png'); 
+  background-repeat:no-repeat;	
+  padding-left:18px;
+}
+
+select.priority option.max
+{   
+  background-image:url('<?php echo $icons ?>xsmall/priority/max.png'); 
+  background-repeat:no-repeat;	
+  padding-left:18px;
+}

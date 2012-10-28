@@ -1,0 +1,33 @@
+/* bg icons für controls */
+
+.wgt-bgi
+{   
+  background-position: 6px center;	
+	background-repeat:no-repeat;
+  padding-left: 28px;	
+}
+
+.wgt-bgi.edit
+{   
+  background-image:url('<?php echo $icons ?>xsmall/control/edit.png'); 
+}
+
+.wgt-bgi.add
+{   
+  background-image:url('<?php echo $icons ?>xsmall/control/add.png'); 
+}
+
+.wgt-bgi.delete
+{   
+  background-image:url('<?php echo $icons ?>xsmall/control/delete.png'); 
+}
+
+.wgt-bgi.search
+{   
+  background-image:url('<?php echo $icons ?>xsmall/control/search.png'); 
+}
+
+.wgt-bgi.rights
+{   
+  background-image:url('<?php echo $icons ?>xsmall/control/rights.png'); 
+}

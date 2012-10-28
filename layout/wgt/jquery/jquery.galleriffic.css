@@ -1,0 +1,342 @@
+div.wgt-gallery.small
+{
+  width: 850px; 
+}
+
+div.wgt-gallery.medium
+{
+  width: 950px; 
+}
+
+div.wgt-gallery.large
+{
+  width: 100%;
+}
+
+div.wgt-gallery div.content 
+{
+  /* The display of content is enabled using jQuery so that the slideshow content won't display unless javascript is enabled. */
+  float: left;
+  width: 350px; 
+}
+
+div.wgt-gallery.small div.content 
+{
+  width: 350px; 
+}
+
+div.wgt-gallery.medium div.content 
+{
+  width: 450px; 
+}
+
+div.wgt-gallery.large div.content 
+{
+  width: 550px; 
+}
+
+div.wgt-gallery div.content a, 
+div.wgt-gallery div.navigation a 
+{
+  text-decoration: none;
+  color: #777;
+}
+
+div.wgt-gallery div.content a:focus, 
+div.wgt-gallery div.content a:hover, 
+div.wgt-gallery div.content a:active 
+{
+  text-decoration: underline;
+}
+
+div.wgt-gallery div.controls 
+{
+  margin-top: 5px;
+  height: 23px;
+}
+
+div.wgt-gallery div.controls a 
+{
+  padding: 5px;
+}
+
+div.wgt-gallery div.ss-controls 
+{
+  float: left;
+}
+
+div.wgt-gallery div.nav-controls 
+{
+  float: right;
+}
+
+
+div.wgt-gallery div.slideshow-container 
+{
+  position: relative;
+  clear: both;
+  height: 302px; /* This should be set to be at least the height of the largest image in the slideshow */
+}
+
+div.wgt-gallery.small div.slideshow-container
+{
+  height: 302px;
+}
+
+div.wgt-gallery.medium div.slideshow-container
+{
+  height: 402px;
+}
+
+div.wgt-gallery.large div.slideshow-container
+{
+  height: 502px;
+}
+
+
+div.wgt-gallery div.loader 
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url('loader.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 350px;
+  height: 302px; /* This should be set to be at least the height of the largest image in the slideshow */
+}
+
+div.wgt-gallery.small div.loader
+{
+  width: 350px;
+  height: 302px;
+}
+
+div.wgt-gallery.medium div.loader
+{
+  width: 450px;
+  height: 402px;
+}
+
+div.wgt-gallery.large div.loader
+{
+  width: 550px;
+  height: 502px;
+}
+
+div.wgt-gallery div.slideshow 
+{
+
+}
+
+div.wgt-gallery div.slideshow span.image-wrapper 
+{
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+div.wgt-gallery div.slideshow a.advance-link 
+{
+  display: block;
+  width: 350px;
+  height: 302px; /* This should be set to be at least the height of the largest image in the slideshow */
+  line-height: 302px; /* This should be set to be at least the height of the largest image in the slideshow */
+  text-align: center;
+}
+
+div.wgt-gallery.small div.slideshow a.advance-link
+{
+  width: 350px;
+  height: 302px; 
+  line-height: 302px; 
+}
+
+div.wgt-gallery.medium div.slideshow a.advance-link
+{
+  width: 450px;
+  height: 402px; 
+  line-height: 402px; 
+}
+
+div.wgt-gallery.large div.slideshow a.advance-link
+{
+  width: 550px;
+  height: 502px; 
+  line-height: 502px; 
+}
+
+div.wgt-gallery div.slideshow a.advance-link:hover, 
+div.wgt-gallery div.slideshow a.advance-link:active, 
+div.wgt-gallery div.slideshow a.advance-link:visited 
+{
+  text-decoration: none;
+}
+
+div.wgt-gallery div.slideshow img 
+{
+  vertical-align: middle;
+  border: 1px solid #ccc;
+  max-height: 292px;
+  max-width: 340px;
+}
+
+div.wgt-gallery.small div.slideshow img 
+{
+  max-height: 292px;
+  max-width: 340px;
+}
+
+div.wgt-gallery.medium div.slideshow img 
+{
+  max-height: 392px;
+  max-width: 440px;
+}
+
+div.wgt-gallery.large div.slideshow img 
+{
+  max-height: 492px;
+  max-width: 540px;
+}
+
+
+div.wgt-gallery div.download 
+{
+  float: right;
+}
+
+div.wgt-gallery div.caption-container 
+{
+  display: block;
+  position: absolute;
+}
+
+div.wgt-gallery span.image-caption 
+{
+  display: block;
+  position: absolute;
+}
+
+
+div.wgt-gallery div.caption
+{
+  background-color: #000;
+  padding: 12px;
+  color: #ccc;
+}
+
+div.wgt-gallery div.caption a 
+{
+  color: #fff;
+}
+
+div.wgt-gallery div.image-title 
+{
+  font-weight: bold;
+  font-size: 1.4em;
+}
+
+div.wgt-gallery div.image-desc 
+{
+  line-height: 1.3em;
+  padding-top: 12px;
+}
+
+div.wgt-gallery div.navigation 
+{
+  width:300px;
+  float:left;
+}
+
+div.wgt-gallery ul.thumbs 
+{
+  clear: both;
+  margin: 0;
+  padding: 0;
+}
+
+div.wgt-gallery ul.thumbs li 
+{
+  float: left;
+  padding: 0;
+  margin: 5px 10px 5px 0;
+  list-style: none;
+}
+
+div.wgt-gallery a.thumb 
+{
+  padding: 2px;
+  display: block;
+  border: 1px solid #ccc;
+}
+
+div.wgt-gallery ul.thumbs li.selected a.thumb 
+{
+  background: #000;
+}
+
+div.wgt-gallery a.thumb:focus 
+{
+  outline: none;
+}
+
+div.wgt-gallery ul.thumbs img 
+{
+  border: none;
+  display: block;
+}
+
+div.wgt-gallery div.pagination 
+{
+  clear: both;
+}
+
+div.wgt-gallery div.navigation div.top 
+{
+  margin-bottom: 12px;
+  height: 11px;
+}
+
+div.wgt-gallery div.navigation div.bottom 
+{
+  margin-top: 12px;
+}
+
+div.wgt-gallery div.pagination a, 
+div.wgt-gallery div.pagination span.current, 
+div.wgt-gallery div.pagination span.ellipsis 
+{
+  display: block;
+  float: left;
+  margin-right: 2px;
+  padding: 4px 7px 2px 7px;
+  border: 1px solid #ccc;
+}
+
+div.wgt-gallery div.pagination a:hover 
+{
+  background-color: #eee;
+  text-decoration: none;
+}
+
+div.wgt-gallery div.pagination span.current 
+{
+  font-weight: bold;
+  background-color: #000;
+  border-color: #000;
+  color: #fff;
+}
+
+div.wgt-gallery div.pagination span.ellipsis 
+{
+  border: none;
+  padding: 5px 0 3px 2px;
+}
+
+div.wgt-gallery div.menu
+{
+  float:left;
+  width:200px;
+  margin-top:20px;
+}

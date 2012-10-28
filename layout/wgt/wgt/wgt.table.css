@@ -1,0 +1,143 @@
+/*//////////////////////////////////////////////////////////////////////////////
+// Table
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+table.wgt-table
+{
+  padding:0px;
+  margin:0px;
+  clear:both;
+}
+
+table.wgt-table.categorized td:first-child
+{
+  padding-left:20px;
+}
+
+
+table.wgt-table thead th,
+table.wgt-table thead th span,
+table.wgt-table thead th a,
+table.wgt-table tbody td,
+table.wgt-table tfoot div
+{
+  padding-left:2px;
+}
+
+table.wgt-table thead th.pos,
+table.wgt-table td.pos
+{
+  background-color:silver;
+  font-weight: bold;
+  color: black;
+  text-align:left;
+  border-bottom:1px solid black;
+}
+
+table.wgt-table td.pos.checked
+{
+  background-color:#585858;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-align:left;
+  border-bottom:1px solid #FFFFFF;
+}
+
+table.wgt-table td.date,
+table.wgt-table td.time,
+table.wgt-table td.number,
+table.wgt-table td.money,
+table.wgt-table td.rtext
+{
+  text-align:right;
+}
+
+table.wgt-table td ul
+{
+  margin-left:15px;
+}
+
+table.wgt-table td ul.wgt-list li
+{
+  list-style-type:decimal;
+}
+
+
+
+table.wgt-table tbody.scrollable
+{
+  overflow-y:scroll;
+  overflow-x:hidden;
+  height:450px;
+}
+
+table.wgt-table input,
+table.wgt-table select,
+table.wgt-table textarea
+{
+  margin:0px;
+  padding:0px;
+  border:0px;
+  background-color:inherit;
+}
+
+table.wgt-table option
+{
+  background-color:white;
+}
+
+table.wgt-table input.show,
+table.wgt-table select.show,
+table.wgt-table textarea.show
+{
+  margin:0px;
+  padding:1px;
+  margin-right:3px;
+  border:1px dotted silver;
+}
+
+table.wgt-table input.show:hover,
+table.wgt-table select.show:hover,
+table.wgt-table textarea.show:hover
+{
+  background-color:#EBEFF2;
+  border:1px ridge silver;
+}
+
+table.wgt-table tfoot input,
+table.wgt-table tfoot select,
+table.wgt-table tfoot textarea
+{
+  border:1px solid black;
+  background-color:white;
+}
+
+
+table.wgt-table thead input,
+table.wgt-table thead select,
+table.wgt-table thead textarea
+{
+  border:1px solid black;
+  padding:0px !important;
+  margin:2px !important;
+  width:98%;
+  border:0px;
+  background-color:white;
+}
+
+
+table.wgt-table tr.category td
+{
+  background-color:silver;
+  font-weight:bold;
+  color:navy;
+  padding-left:4px !important;
+}
+
+table.hide-head thead th
+{
+  border: 1px solid white !important;
+  color: white !important;
+  background-color: white !important;
+}

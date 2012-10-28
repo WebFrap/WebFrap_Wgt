@@ -1,0 +1,672 @@
+/*//////////////////////////////////////////////////////////////////////////////
+// Buttons
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+.wgt-button,
+.wgt-button2
+{
+	cursor:pointer;
+	vertical-align: baseline;
+	white-space: nowrap;
+	margin-bottom:0;
+	margin-left:0;
+	margin-top:0;
+	margin-right:0 !important;
+  padding:2px;
+  padding-top:0 !important;
+  height:22px;
+}
+
+.wgt-button.append,
+.wgt-button.right,
+.wgt-button2.append,
+.wgt-button2.right
+{
+  margin-left:-5px;
+  border:1px solid black;
+  min-width:19px;
+  
+  /* clear borders */
+  border-radius: 0px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.wgt-button.inline,
+.wgt-button2.inline
+{
+  margin-left:-5px;
+  border:1px solid black;
+  
+  /* clear borders */
+  border-radius: 0px;
+}
+
+.wgt-button.right,
+.wgt-button2.right
+{
+  margin-left:-4px !important;
+}
+
+button.wgt-button>img,
+button.wgt-button2>img
+{
+  /*margin-bottom:-5px;*/
+  vertical-align:middle;  
+}
+
+.wgt-button a,
+.wgt-button2 a
+{
+  display:inline;
+  vertical-align:middle;
+}
+
+a.wgt-button,
+a.wgt-button2 
+{
+  height:22px;
+  padding-top:4px !important;
+  color:white !important;
+}
+
+a.wgt-button img,
+a.wgt-button2 img
+{
+  vertical-align:middle;
+  /*
+  float:left;
+  text-align:left;
+  */
+}
+
+.wgt-button.icon
+{
+	height:22px;
+ 	padding:2px 7px 2px 20px;
+}
+
+.wgt-button.reset
+{
+  cursor:pointer;
+}
+
+.wgt-button.just-annotate,
+.wgt-button2.just-annotate
+{
+  cursor:default;
+}
+
+span.wgt-button,
+span.wgt-button2
+{
+  padding:26px;  
+  padding:3px;
+}
+
+span.wgt-button span,
+span.wgt-button2 span,
+span.wgt-button input,
+span.wgt-button2 input,
+span.wgt-button img,
+span.wgt-button2 img
+{
+  vertical-align:middle;
+	border:0px;
+}
+
+span.wgt-button input,
+span.wgt-button2 input
+{
+	margin-left:3px;
+	margin-right:0px;
+}
+
+ul.wgt-button-list
+{
+  width:245px;
+  padding:4px;
+  background-color:silver;
+}
+
+ul.wgt-button-list li
+{
+  margin-bottom:2px;
+}
+
+ul.wgt-button-list button
+{
+  width:245px;
+  text-align:center;
+  height:22px;
+  size:16px;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Buttonset
+//////////////////////////////////////////////////////////////////////////////*/
+
+div.wgt-button-set label span
+{
+  padding:0px;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Formular Settings
+//////////////////////////////////////////////////////////////////////////////*/
+
+fieldset
+{
+  padding:8px 3px 8px 3px;
+  margin-bottom:13px;
+}
+
+legend
+{
+  padding:0px 3px 0px 3px;
+}
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Boxes for layouting
+//////////////////////////////////////////////////////////////////////////////*/
+
+label.wgt-label,
+div.wgt-label
+{
+  clear:both;
+  float:left;
+  width:110px;
+  padding:3px 2px 3px 2px;
+  margin:1px;
+  text-align:right;
+}
+
+label.wgt-label.xsmall,
+div.wgt-label.xsmall
+{
+  width:55px;
+}
+
+label.wgt-label.small,
+div.wgt-label.small
+{
+  width:75px;
+}
+
+label.wgt-label.medium,
+div.wgt-label.medium
+{
+  width:110px;
+}
+
+label.wgt-label.large,
+div.wgt-label.large
+{
+  width:220px;
+}
+
+div.wgt-box.input
+{
+  padding:1px;	
+}
+
+div.wgt-input
+{
+  width:155px;
+  padding:3px 2px 3px 2px;
+  float:left;
+  margin:1px;
+}
+
+div.wgt-input.newline
+{
+  clear:both;
+  width:330px;
+}
+
+div.wgt-input.small
+{
+  width:133px;
+  margin:1px;
+}
+
+div.wgt-input.medium
+{
+  width:200px;
+  margin:1px;
+}
+
+div.wgt-input.large
+{
+  width:273px;
+  margin:1px;
+}
+
+div.wgt-input.xlarge
+{
+  width:350px;
+  margin:1px;
+}
+
+div.wgt-input.xxlarge
+{
+  width:450px;
+  margin:1px;
+}
+
+
+div.wgt-input.large.newline
+{
+  clear:both;
+  width:355px;
+}
+
+
+div.wgt-input.full
+{
+	width:100%;
+  clear:both;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Formatierung der Formulare mit Tabellen
+//////////////////////////////////////////////////////////////////////////////*/
+
+table.wgt-form
+{
+  border-spacing:3px;
+}
+
+table.wgt-form td
+{
+  padding:3px;
+  padding-right:5px;
+  vertical-align:top;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Userinput Fields
+//////////////////////////////////////////////////////////////////////////////*/
+
+/* Standard Abstände */
+input, 
+select,
+div.wgt-fake-input
+{
+  height:22px;
+	padding:2px;
+  background-color:#F8F8F8;
+}
+
+textarea
+{
+  height:100px;
+  width:250px;
+  padding:2px;
+  background-color:#F8F8F8;  
+}
+
+input.ar
+{
+  text-align:right;
+}
+
+/* 
+Wird in den Listenelementen verwedent um die Elemente dezent
+als editierbar zu markieren 
+*/
+input.emphasize, 
+textarea.emphasize, 
+select.emphasize,
+div.wgt-fake-input.emphasize
+{
+  border:1px dotted silver !important;
+}
+
+/* 
+Standard Selectbox
+*/
+select.multi
+{
+  height:80px !important;
+}
+  
+option
+{
+  border:1px solid white;
+  padding:2px;
+}
+
+option:hover
+{
+  color:#530000;
+  border:1px dotted #530000;
+}
+
+/* 
+ Breite der Form Elemente
+*/
+
+textarea.full_edit, 
+input.full_edit 
+{
+	margin:0px !important;
+	padding:0px !important;
+	border:0px !important;
+	width:100%;
+	overflow:visible;
+}
+
+input.xxsmall, 
+select.xxsmall,
+div.wgt-fake-input.xxsmall
+{
+  width:50px;
+}
+
+input.xsmall, 
+select.xsmall,
+div.wgt-fake-input.xsmall
+{
+  width:75px;
+}
+
+input.small,
+select.small,
+textarea.small,
+div.wgt-fake-input.small
+{
+  width:90px;
+}
+
+input.medium, 
+textarea.medium,
+div.wgt-fake-input.medium
+{
+  width:150px;
+}
+
+select.medium.wgt-behind
+{
+  width:180px;
+}
+
+select.medium
+{
+  width:156px;
+}
+
+input.large, 
+select.large, 
+textarea.large,
+div.wgt-fake-input.large
+{
+  width:220px;
+}
+
+input.xlarge, 
+select.xlarge, 
+textarea.xlarge,
+div.wgt-fake-input.xlarge
+{
+  width:400px;
+}
+
+input.xlarge_nl, 
+select.xlarge_nl, 
+textarea.xlarge_nl,
+div.wgt-fake-input.xlarge_nl
+{
+  width:520px;
+}
+
+input.xxlarge, 
+select.xxlarge, 
+textarea.xxlarge,
+div.wgt-fake-input.xxlarge
+{
+  width:600px;
+}
+
+input.full, 
+select.full, 
+textarea.full,
+div.wgt-fake-input.full
+{
+  width:98%;
+}
+
+
+/* Höhe von Textareas */
+
+
+textarea.input
+{
+  height: 1em;
+}
+
+textarea.small-height
+{
+  height: 3em;
+}
+
+textarea.medium-height
+{
+  height: 150px;
+}
+
+textarea.large-height
+{
+  height: 250px;
+}
+
+textarea.xlarge-height
+{
+  height: 450px;
+}
+
+textarea.xxlarge-height
+{
+  height: 600px;
+}
+
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Fancy Selectboxes and Upload Elements
+//////////////////////////////////////////////////////////////////////////////*/
+
+input.wgt-overlay,
+select.wgt-overlay
+{
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  z-index: 1;
+  cursor:pointer;
+}
+
+input.wgt-overlay.embed,
+select.wgt-overlay.embed
+{
+  top: 0px;
+  left: 0px;
+}
+
+button.wgt-overlay.append
+{
+  position: absolute;
+  top: 3px;
+  left: 150px;
+  margin-left:0px;
+  z-index: 1;
+  cursor:pointer;
+}
+
+button.wgt-overlay.append.large
+{
+  left: 222px;
+}
+
+button.wgt-overlay.append.xlarge
+{
+  left: 222px;
+}
+
+button.wgt-overlay.append.embed
+{
+  top: 0px;
+  left: 150px;
+}
+
+input.wgt-behind,
+select.wgt-behind
+{
+  position: relative;
+  filter:alpha(opacity: 0);
+  opacity: 0;
+  width:185px;
+  z-index: 2;
+  cursor:pointer;
+}
+
+input.wgt-behind.small,
+select.wgt-behind.small
+{
+  width:185px;  
+}
+
+input.wgt-behind.large,
+select.wgt-behind.large
+{
+  width:225px;  
+}
+
+input.wgt-behind.medium,
+select.wgt-behind.medium
+{
+  width:165px;  
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Hintergrund Icons in Inputelementen und Selectbox options
+//////////////////////////////////////////////////////////////////////////////*/
+
+input.icon, 
+select.icon
+{
+  background-repeat:no-repeat;
+  padding-left:16px;
+}
+
+select.icon option
+{
+  background-repeat:no-repeat;
+  padding-left:16px;
+}
+
+select option.missing
+{
+  background-color:#C00000;
+	color:white;
+}
+
+select option.inactive
+{
+  background-color:#FFA858;
+  color:white;
+}
+
+select option.active
+{
+  background-color:#C0FFC0;
+  color:#585858;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Userinput Fields
+//////////////////////////////////////////////////////////////////////////////*/
+
+/* Standard Abstände */
+input.search, 
+div.wgt-fake-input.search,
+select.search
+{
+  background-repeat:no-repeat;
+	background-image:url('<?php echo $icons ?>xsmall/control/search.png'); 
+  background-position:right center;	
+}
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Element Status klassen
+//////////////////////////////////////////////////////////////////////////////*/
+
+/* Readonly und disabled */
+
+input.wgt-readonly, 
+textarea.wgt-readonly, 
+select.wgt-readonly,
+div.wgt-fake-input.wgt-readonly,
+input.readonly, 
+select.readonly, 
+textarea.readonly,
+div.wgt-fake-input.readonly
+{
+  background-color:#DCDCDC;
+  border: 1px solid black !important;	
+  cursor: not-allowed !important;  
+}
+
+input.state-ok, 
+textarea.state-ok, 
+select.state-ok,
+div.wgt-fake-input.state-ok
+{
+  border: 1px solid #00C000 !important;
+}
+
+input.state-invalid, 
+textarea.state-invalid, 
+select.state-invalid,
+div.wgt-fake-input.state-invalid
+{
+  border: 1px dashed red !important;
+}
+
+input.state-warn, 
+textarea.state-warn, 
+select.state-warn,
+div.wgt-fake-input.state-warn
+{
+  border: 1px dashed #FF8000 !important;
+}
+
+input.wgt-negativ
+{
+  color:red;
+}
+
+
+.wgt-combobox 
+{
+  position: relative;
+  display: inline-block;
+}
+
+.wgt-combobox-toggle.append
+{
+  margin:0px;
+  height:22px;
+  padding:2px 0px 2px 0px !important;
+  display:inline;
+}
+
+.wgt-combobox-input 
+{
+  margin: 0;
+}
+
+
