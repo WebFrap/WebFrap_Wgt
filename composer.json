@@ -1,0 +1,40 @@
+{
+    "name": "webfrap/wgt",
+    "description": "WebFrap Gui Toolkit",
+    "keywords": ["Webfrap","RIA","Ajax"],
+    "homepage": "http://webfrap.net",
+    "license": [
+      "MIT",
+      "GPL"
+    ],
+    "authors": [
+        {
+            "name": "Dominik Bonsch",
+            "email": "dominik.bonsch@webfrap.net",
+            "homepage": "http://dbonsch.de"
+        }
+    ],
+    "support": {
+        "email": "support@webfrap.net",
+        "irc": "irc://irc.freenode.org/webfrap"
+    },
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "suggest": {
+        "webfrap/webfrap" : "WebFrap, the Web Frame Application",
+        "webfrap/doc" : "The Documentation for the complete WebFrap development platform"
+    },
+    "minimum-stability": "stable",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/dbonsch/WebFrap_Wgt.git"
+        },{
+            "type": "vcs",
+            "url": "https://hg.webfrap-servers.de/core/WebFrap_Wgt"
+        }
+    ],
+    "target-dir": "WebFrap_Wgt"
+}
+
