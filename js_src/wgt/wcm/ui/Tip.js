@@ -5,8 +5,7 @@
  */
 $R.addAction( 'ui_tip', function( jNode ){
 
-  if( jNode.is('button') || jNode.is('p') || jNode.is('a')  )
-  {
+  if( jNode.is('button') || jNode.is('p') || jNode.is('a')  ){
     jNode.wgtTip({
       gravity: 's',
       delayIn: 700, 
@@ -31,6 +30,16 @@ $R.addAction( 'ui_tip-top', function( jNode ){
     delayIn: 700, 
     delayOut: 200
   }).removeClass("wcm_ui_tip-top");
+    
+});
+
+$R.addAction( 'ui_tip-left', function( jNode ){
+
+  jNode.wgtTip({
+    gravity: 'e',
+    delayIn: 700, 
+    delayOut: 200
+  }).removeClass("wcm_ui_tip-left");
     
 });
 

@@ -8,8 +8,10 @@ $R.addAction( 'ui_modal', function( jNode ){
 
   var user = {};
   var settings = { modal: true,
-		draggable: false,
-		resizable: false };
+      draggable: false,
+      resizable: false,
+      onClose: function(){ $D.closeView(); }
+  };
   
   try{
     user = jNode.next().is('var.c-modal')

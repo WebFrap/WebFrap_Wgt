@@ -30,25 +30,27 @@
  */
 $R.addAction( 'widget_grid', function( jNode ){
 
-  if( $C.DEBUG.WCM.WIDGET )
-    console.log( 'wcm widget_grid path: ' +jNode.getNodePath('/')  );
+  var renderTime = $DBG.start();
   
   jNode.removeClass("wcm_widget_grid");
 
-  var settings = {};
-
+  var settings = {},
+    cfgData = $S('var#'+jNode.attr('id')+'-cfg-grid');
+  
+  settings = cfgData.is('var')
+    ? $WGT.robustParseJSON(cfgData.text())
+    : {};
+    
+  
+    
   try{
-
-    var cfgData = $S('var#'+jNode.attr('id')+'-cfg-grid');
-    settings = cfgData.is('var')
-      ? $WGT.robustParseJSON(cfgData.text())
-      : {};
+    jNode.grid( settings );
+  }catch( exc ){
+    console.trace();
+    console.error( exc );
   }
-  catch(err){
-
-    $D.errorWindow( 'UI Error', err.description );
-  }
-
-  jNode.grid(settings);
+  
+  console.log('grid reder duration ' + $DBG.duration( renderTime ) );
+  
   
 });

@@ -14,6 +14,7 @@
 	margin-top:0;
 	margin-right:0 !important;
   padding:2px;
+  padding-bottom:0 !important;
   padding-top:0 !important;
   height:22px;
 }
@@ -66,9 +67,10 @@ button.wgt-button2>img
 a.wgt-button,
 a.wgt-button2 
 {
-  height:22px;
-  padding-top:4px !important;
+  height:16px;
+  padding:2px 4px 2px 4px !important;
   color:white !important;
+	display:block;
 }
 
 a.wgt-button img,
@@ -181,6 +183,12 @@ div.wgt-label
   padding:3px 2px 3px 2px;
   margin:1px;
   text-align:right;
+}
+
+.wgt-label-left label.wgt-label,
+.wgt-label-left div.wgt-label
+{
+	text-align:left;
 }
 
 label.wgt-label.xsmall,

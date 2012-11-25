@@ -15,10 +15,12 @@
 
       var closeTab = tabObj.attr("close");
       
-      if( undefined != closeTab && closeTab == "true"){
+      if( undefined != closeTab && closeTab === "true" ){
         
-        console.log('Close Tab: '+tabObj.attr("id"));
-        $UI.tab.remove('wgt-maintab',tabObj.attr("id"));
+        console.log( 'Close Tab: '+tabObj.attr("id") );
+        
+        $UI.tab.remove( 'wgt-maintab', tabObj.attr("id") );
+        $D.closeView();
       }
 
     });
@@ -32,13 +34,17 @@
       $UI.tab.removeIfExists('wgt-maintab',tabObj.attr("id"));
       
       var title = tabObj.attr('title');
-      if( title )
+      if( title ){
         $D.setTitle( title );
-
+      }
+        
       var closeTab = tabObj.attr("close");
       if( !(undefined != closeTab && closeTab == "true") ){
         
         console.log('Open Tab: '+tabObj.attr("id"));
+        
+        // sollte ein modal offen sein, jetzt schliesen
+        $S.modal.close();
 
         var tabData        = {};
         tabData.text       = tabObj.attr('label');

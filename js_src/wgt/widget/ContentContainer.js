@@ -79,6 +79,9 @@
       if( !this.conatinerId ){
         console.error( "Missing the ID for the container" );
       }
+      else{
+        console.log( 'new content container '+this.conatinerId );
+      }
 
       this.containers  = el.find('>div.container');
 

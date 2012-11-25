@@ -749,7 +749,7 @@
       
       console.log( "set tab active "+index );
       if( 'false' !== settings.reFocus )
-        bodyContainer.find("div.wgt_tab").eq(index).find('input:first').focus();
+        bodyContainer.find("div.wgt_tab").eq(index).find('input').not(':hidden,button').first().focus();
     };
     
     /**
@@ -1001,7 +1001,7 @@
         $D.requestCloseMenu();
         // schliesen des Menüs nach dem Request
         $D.requestCloseMenu = function(){};
-        
+        $D.closeView();
         $UI.tab.remove(contId, tabId);
       }
     };

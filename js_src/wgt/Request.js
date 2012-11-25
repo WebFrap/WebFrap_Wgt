@@ -23,7 +23,7 @@
   "use strict";
 
   /**
-   * @author dominik alexander bonsch <db@webfrap.net>
+   * @author dominik bonsch <db@webfrap.net>
    */
   var Request = function( ){
 
@@ -657,7 +657,7 @@
       return data;
       
     };//end this.appendFormParams
-
+    
     /**
      * @param formId
      */
@@ -707,6 +707,66 @@
       }
      
     };
+    
+    /**
+     * @param url string
+     * @param formId string
+     */
+    this.getFiltered = function( url, formId ){
+      
+      
+      var form = null,
+        begin = null,
+        addParams = null;
+      
+      ////%5Btitle%5D
+      if( typeof formId === 'string' ){
+        
+        form  = $S("form#"+formId);
+      }
+      else{
+        
+        form  = formId;
+        formId = form.attr('id');
+      }
+
+      var begin = form.data('begin');
+      if( begin !== undefined && begin !== null ){
+        url += '&begin='+begin;
+      }
+
+      // felder auslesen, die als zusätzliche parameter an eine form gehängt werden
+      var addParams = $S( ".fparam-"+formId );
+      if( addParams.length ){
+        
+        url += '&'+addParams.serialize();
+        
+        addParams.filter('input[type="checkbox"]').not(":checked").each(function(){
+          url += '&'+$S(this).attr('name')+'=0';
+        });
+        
+      }
+
+      window.location.href = url;
+      
+    };//end this.getFiltered
+    
+    /**
+     * @param url string
+     * @param formId string
+     */
+    this.getBySelection = function( url, tableId ){
+ 
+      $S('#'+tableId+' tr.wgt-selected').each(function(){
+        url += '&e[]='+$S(this).attr('wgt_eid');
+      });
+
+
+      window.location.href = url;
+      
+    };//end this.getBySelection
+    
+    
 
     /**
      * @param lang the language
@@ -1037,18 +1097,25 @@
     *
     */
     this.eventAfterAjaxRequest = function( ) {
+      
+      var startTime = $DBG.start();
 
-      var callback  = null;
-      var length    = this.afterAjaxRequest.length;
+      var callback  = null,
+        length    = this.afterAjaxRequest.length,
+        allActions = null;
 
       for (var index = 0; index < length; ++index){
-
-        callback = this.afterAjaxRequest[index];
+          
+        if( undefined !== this.afterAjaxRequest[index] )
+          callback = this.afterAjaxRequest[index];
+        else
+          continue;
+        
         try{
-
           callback();
         }
         catch( exc ) {
+          
            //alert(e.message);
            $D.errorWindow( exc );
            //this.desktop.errorWindow( exception.name, exception.message );
@@ -1057,12 +1124,13 @@
 
 
       // disable Links and use ajax instead (and remove class)
-      var allActions = $S(".wcm");
+      allActions = $S(".wcm");
       allActions.each(function(){
-        var node      = $S(this);
         
-        var classParts  = node.classes();
-        var tmpLenght   = classParts.length;
+        
+        var node      = $S(this),
+          classParts  = node.classes(),
+          tmpLenght   = classParts.length;
 
         for (var index = 0; index < tmpLenght; ++index){
 
@@ -1079,7 +1147,8 @@
             }
             catch( exc ) {
                //alert(e.message);
-               $D.errorWindow( exc );
+               console.error( 'Error '+exc+' in '+call );
+               //$D.errorWindow( exc );
                //this.desktop.errorWindow( exception.name, exception.message );
             }
 
@@ -1107,6 +1176,8 @@
       this.poolOtPostAray = [];
 
       $D.hideProgressBar();
+      
+      console.log('wcm duration ' + $DBG.duration( startTime ) );
 
     };//end this.eventAfterAjaxRequest 
 
@@ -1135,6 +1206,7 @@
 
   // Expose Request to the global object
   window.$R = new Request();
+  window.$B.loadModule('debug');
 
 })( window, $S );
 

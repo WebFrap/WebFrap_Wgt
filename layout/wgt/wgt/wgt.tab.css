@@ -135,18 +135,9 @@ div.tab_container>span
 }
 
 
-/* IE7 specific
-* See http://www.thestyleworks.de/tut-art/ie7.shtml#ie7-hacks
-*/
-*+html div.tab_container>span
-{
-  padding: 0px;
-  padding-right: 1px;
-}
-
 div.tab_container > span:first-child
 {
-  margin-left: -11px;
+  margin-left: -4px;
 }
 
 div.tab_container > span:last-child

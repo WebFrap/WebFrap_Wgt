@@ -61,10 +61,15 @@
 .wgt-dropdownbox ul li span
 {
   position:absolute;
-  width:180px;
+  width:200px;
   margin-left:137px;
   margin-top:-26px;
   display:none;
+}
+
+.wgt-dropdownbox ul li span ul li span
+{
+  margin-left:162px;
 }
 
 .wgt-dropdownbox.al_right ul li span
@@ -96,17 +101,19 @@
   padding-left:36px;
 }
 
+
 /*.wgt-dropdownbox ul li span ul li:hover a,*/
-.wgt-dropdownbox ul li span ul li.hover a
+.wgt-dropdownbox ul li span ul li.hover>a
 {
   background-color:#ee9;
 }
 
-
+/*
 .wgt-dropdownbox ul li.hover span
 {
   display:block;
 }
+*/
 
 .wgt-dropdownbox .deeplink
 {

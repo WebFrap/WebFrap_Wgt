@@ -12,13 +12,16 @@ $R.addAction( 'control_check_button', function( jNode ){
   if( inpNode.is( ':checked' ) ){
     jNode.addClass( 'active' );
   }
-
-  // togle check onclick
-  jNode.click( function( event ){
-	  
+  
+  var funcCheckB = function( event ){
+         
     console.log( 'click '+inpNode.attr('name') );
-	  
+    var fCounter = null;
+         
     if( inpNode.is( ':checked') ){
+      
+      fCounter = $S('#'+jNode.attr('wgt_counter'));  
+      fCounter.text(  parseInt(fCounter.text()) - 1 );
       
       inpNode.attr( 'checked', false );
       jNode.removeClass( 'active' );
@@ -26,6 +29,9 @@ $R.addAction( 'control_check_button', function( jNode ){
       
     }
     else{
+      
+      fCounter = $S('#'+jNode.attr('wgt_counter'));  
+      fCounter.text(  parseInt(fCounter.text()) + 1 );
       
       inpNode.attr( 'checked', 'checked' );
       inpNode.val(1);
@@ -36,6 +42,10 @@ $R.addAction( 'control_check_button', function( jNode ){
     
     event.stopPropagation();
       
-  });
+  };
+  
+  // togle check onclick
+  jNode.bind( 'mouseup',  funcCheckB );
+  inpNode.bind( 'mouseup',  funcCheckB );
 
 });

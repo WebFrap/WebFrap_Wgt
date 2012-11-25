@@ -28,13 +28,13 @@
   "use strict";
 
   /**
-   * @author dominik alexander bonsch <db@webfrap.net>
+   * @author dominik bonsch <db@webfrap.net>
    */
   var Wcm = function( ){
 
 
     /**
-     * ref to prototype
+     * Reference to the prototype for extensions
      */
     this.fn = Wcm.prototype;
 
@@ -107,22 +107,35 @@
    };//end this.oneTimePostAjax
 
    /**
-    *
+    * trigger events
+    */
+   this.triggerEvent = function( evtStack ){
+
+      $D.showProgressBar();
+
+      for( var func in evtStack ){
+
+        if( !evtStack.hasOwnProperty(func) )
+          continue;
+        
+        try {
+          evtStack[func]();
+        }
+        catch( exc ) {
+          $D.errorWindow( exc.name, exc.message );
+        }
+      }
+
+    };//end triggerEvent
+   
+   /**
+    * trigger event before ajax request
     */
    this.eventBeforeAjaxRequest = function( ){
 
       $D.showProgressBar();
-
-      for( var func in this.beforeAjaxRequest ){
-
-        var callback = this.beforeAjaxRequest[func];
-        try {
-          callback();
-        }
-        catch( e ) {
-          $D.errorWindow( e.name, e.message );
-        }
-      }
+      
+      this.triggerEvent = function( this.beforeAjaxRequest );
 
     };//end this.eventBeforeAjaxRequest
 
@@ -202,7 +215,7 @@
      */
     this.eventInitRequest = function( ) {
 
-      for (var index = 0; index < this.initRequest.length; ++index) {
+      for( var index = 0; index < this.initRequest.length; ++index ) {
 
         var callback = this.initRequest[index];
         try {
@@ -221,7 +234,7 @@
 
   };//end function WgtRequest
 
-  // Expose Request to the global object
+  // put the wcm class on the request
   $R.wcm = new Wcm();
 
 })

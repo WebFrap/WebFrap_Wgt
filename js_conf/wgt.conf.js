@@ -1,28 +1,18 @@
-/*******************************************************************************
-*
-* @project     : Webfrap Web Frame Application
-* @sub project : WebFrap WGT WebFrap GUI Toolkit
-* @author      : Dominik Bonsch <dominik.bonsch@webfrap.net>
-* @copyright   : Webfrap Developer Network <contact@webfrap.net>
-* @publisher   : S-DB Software-Engineering Dominik Bonsch <contact@s-db.de>
-* @date        :
-* @projectUrl  : http://webfrap.net
-*
-* Dual licenced, if you want to develop free Software you can use WebFrap
-* with the conditions of GPLv3.
-* If GPLv3 is nothing for you contact us: <contact@s-db.de>.
-* Depeding on what you want to do we have some commercial licences
-* from free of cost use to enterprise versions or conditions by negotiation.
-*
-* @licence free : (GNU GENERAL PUBLIC LICENSE 3.0) see: LICENCE/GPLv3.txt
-*
-* @licence com  : Commercial <contact@s-db.de>
-*
-* @version: @package_version@  Revision: @package_revision@
-*
-* Changes:
-*
-*******************************************************************************/
+/* 
+ * WGT Web Gui Toolkit
+ * 
+ * Copyright (c) 2009 webfrap.net
+ * 
+ * http://webfrap.net/WGT
+ * 
+ * Depends: 
+ *   - jQuery 1.7.2
+ *   - jQuery UI 1.8 widget factory
+ * 
+ * Dual licensed under the MIT and GPL licenses:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *   http://www.gnu.org/licenses/gpl.html
+ */
 
 
 if ( !console ){

@@ -192,7 +192,9 @@ window.$S = jQuery.noConflict();
      */
     this.loadStyle = function( key ){
       
-      if( self.styles[key] !== undefined ){
+      console.log( 'request to load csspack: '+key );
+      
+      if( self.styles[key] === undefined ){
           
         var tmp = new RegExp( '(?:^|; )' + encodeURIComponent('WEB_GW') + '=([^;]*)' ).exec(document.cookie);
         var WEB_GW = tmp ? decodeURIComponent(tmp[1]) : null;
@@ -463,18 +465,18 @@ window.$S = jQuery.noConflict();
         jsonData = $S.parseJSON(data);
       }
       catch( err ){
-        console.error( 'Failed to parse JSON : '+data);
+        console.error( 'Failed to parse JSON : '+data );
         ///TODO some error handling here
       }
       
-      /*
-       jsonData = $S.parseJSON(data);
-       */
-
       return jsonData;
     
     };//end this.robustParseJSON
     
+    /**
+     * Create a stacktrace
+     * @var message string
+     */
     this.printStackTrace = function( message ) {
       
       var callstack = [],
@@ -561,6 +563,8 @@ window.$S = jQuery.noConflict();
     };
 
   }//end function Wgt  */
+  
+  
 
   // Expose Wgt to the global object
   ///@todo get rid of .wgt and .$WGT

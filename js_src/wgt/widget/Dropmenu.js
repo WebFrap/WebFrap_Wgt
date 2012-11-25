@@ -52,8 +52,16 @@
 
     // Set up the widget
     _create: function() {
+      
+      var self = this,
+        ge = this.element,
+        opts = this.options;
 
-      this.init();
+      if( opts.triggerEvent ){
+        ge.bind( opts.triggerEvent+'.dropmenu' ,function(){
+          self.open();
+        });
+      }
 
     },
 
@@ -63,10 +71,14 @@
       var self = this,
         ge = this.element,
         opts = this.options;
+      
+      if( ge.hasClass('wgt-dpm.init') )
+        return;
+      ge.addClass('wgt-dpm.init')
 
       var dropBoxId = ge.attr( 'wgt_drop_box' );
       var dropBox   = $S( '#'+dropBoxId );
-      
+
       // browser contextmenü deaktivieren
       dropBox.bind('contextmenu', function() { return false;});
       
@@ -141,22 +153,16 @@
       }
       */
       
-
       this.initFolding( ge, dropBox );
-      if( opts.triggerEvent ){
-        ge.bind( opts.triggerEvent+'.dropmenu' ,function(){
-          self.open();
-        });
-      }
-
+      
     },
     
     initFolding: function( el, dropBox ){
 
       dropBox.find( 'li' ).bind( 'mouseover.dropmenu', function(){
-        $S(this).addClass( 'hover' );
+        $S(this).addClass( 'hover' ).find('>span').css('display','block');
       }).bind( 'mouseout.dropmenu', function(){
-        $S(this).removeClass( 'hover' );
+        $S(this).removeClass( 'hover' ).find('>span').css('display','none');
       });
       
     },
@@ -251,6 +257,8 @@
       var self = this,
         ge   = this.element, //das element auf welches geklickt wurde
         opts = this.options;
+      
+      self.init();
 
       var dropBoxId = ge.attr( 'wgt_drop_box' );
       var dropBox   = $S( '#'+dropBoxId+'-init' );

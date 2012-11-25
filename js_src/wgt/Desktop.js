@@ -58,6 +58,16 @@
      * Wird gesetzt um alle möglichen menüs 
      */
     this.globalCloseMenu = function(){};
+    
+    /**
+     * Schliesen des aktiven Menüs
+     * Wird gesetzt um alle möglichen menüs 
+     */
+    this.closeView = function(){
+      
+      $S('.wgt-tip').remove();
+      this.setTitle( $C.windowTitle );
+    };
 
     /**
      * Shortcut für Save on Strg + S

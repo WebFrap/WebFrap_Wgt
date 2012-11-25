@@ -24,8 +24,8 @@ $R.addAction( 'control_context_menu', function( jNode ){
     return false;
   }
  
-  if( !contextNode.parent().is('#wgt_context_container') )
-    $S('#wgt_context_container').append( contextNode );
+  if( !contextNode.parent().is('#wgt-context-container') )
+    $S('#wgt-context-container').append( contextNode );
 
   var actions = jNode.find('var.actions');
   

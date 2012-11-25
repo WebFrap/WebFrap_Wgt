@@ -62,7 +62,7 @@
       this.asgdForm  = $G.$B.getClassByPrefix( 'asgd-', this.element.prop('class'), true );
       
       // soll die selectbox hübsch dekoriert werden?
-      if( this.options.decorate ){
+      if( typeof this.options.decorate !== 'undefined' && true === this.options.decorate ){
         this.decorate();
       }
       
@@ -104,7 +104,8 @@
     
     decorate: function() {
       
-      var self      = this,
+      var self = this,
+        opts = this.options,
         el = this.element;
       
       var img = '<image src="'+$G.$C.WEB_ICONS+'xsmall/'+this.options.icon+'" class="icon xsmall" alt="'+this.options.icon_alt+'" />';
@@ -165,9 +166,6 @@
    */
   $G.$R.addAction( 'widget_selectbox', function( jNode ){
 
-    if( $G.$C.DEBUG.WCM.WIDGET ){
-      console.log( 'wcm widget_selectbox path: ' +jNode.getNodePath('/')  );
-    }
 
     var tmp = jNode.next();
 

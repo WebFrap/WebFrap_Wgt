@@ -4,7 +4,8 @@
  * @author dominik alexander bonsch <db@webfrap.net>
  */
 $R.addAction( 'ui_grid', function( jNode ){
-
+  
+  
 
   jNode.removeClass("wcm_ui_grid");
   
@@ -25,9 +26,10 @@ $R.addAction( 'ui_grid', function( jNode ){
   
   jNode.appear(function(){
     
-    var tObj = $S('#'+jNode.attr('id'));
+    var renderTime = $DBG.start();
     
-    var settings = {};
+    var tObj = $S('#'+jNode.attr('id')),
+      settings = {};
     
     try{
       
@@ -42,6 +44,11 @@ $R.addAction( 'ui_grid', function( jNode ){
     }
 
     tObj.grid(settings);
+    
+    console.log('grid reder duration ' + $DBG.duration( renderTime ) );
+    
   });
+  
+  
   
 });

@@ -95,6 +95,7 @@ div.wgt-grid-body td
   border-bottom:1px solid silver;
   padding-left:3px;
   padding-right:2px;
+	overflow:hidden;
 }
 
 div.wgt-grid-body td.pos
@@ -104,6 +105,7 @@ div.wgt-grid-body td.pos
   color: black;
   text-align:left;
   border-bottom:1px solid black;
+  cursor:pointer;
 }
 
 div.wgt-grid-body td.pos.checked

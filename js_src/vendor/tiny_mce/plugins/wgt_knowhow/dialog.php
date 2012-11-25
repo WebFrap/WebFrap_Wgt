@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <title>{#wgt_knowhow_dlg.title}</title>
-  <script type="text/javascript" src="../../tiny_mce_popup.js"></script>
-  <script type="text/javascript" src="../../utils/mctabs.js"></script>
-  <script type="text/javascript" src="js/dialog.js"></script>
+  <script type="application/javascript" src="../../tiny_mce_popup.js"></script>
+  <script type="application/javascript" src="../../utils/mctabs.js"></script>
+  <script type="application/javascript" src="js/dialog.js"></script>
   <link type="text/css" href="css/wgt_knowow.css" rel="stylesheet" />
 </head>
 <body>

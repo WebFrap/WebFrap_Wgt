@@ -32,10 +32,6 @@
  */
 $R.addAction( 'req_del', function( jNode ){
 
-  if( $C.DEBUG.WCM.ACTION ){
-    console.log( 'wcm req_del path: ' +jNode.getNodePath('/')  );
-  }
-  
   jNode.click(function(){
     
     var delHref = this.href;
@@ -55,5 +51,33 @@ $R.addAction( 'req_del', function( jNode ){
     
   });
   jNode.removeClass("wcm_req_del");
+
+});
+
+$R.addAction( 'req_del_selection', function( jNode ){
+
+  jNode.click(function(){
+    
+    var delHref = this.href;
+
+    if( this.title == undefined ){
+      this.title = 'Are you shure, you want to delete this entries?';
+    }
+    
+    $S( jNode.attr( 'wgt_elem' ) ).find( 'tr.wgt-selected>td.pos' ).each(function(){
+      delHref += '&'+$S(this).attr('name');
+    });
+
+    $D.confirmWindow(
+      this.title ,
+      this.title ,
+      'delete',
+      function (){$R.del(delHref+"&request=ajax");}
+    );
+      
+    return false;
+    
+  });
+  jNode.removeClass("wcm_req_del_selection");
 
 });

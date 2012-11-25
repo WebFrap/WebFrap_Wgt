@@ -32,6 +32,9 @@
  * @param undefined clean undefined
  */
 (function($WGT, $S,undefined){
+  
+  "use strict";
+  
 /*//////////////////////////////////////////////////////////////////////////////
 // First extend UI
 //////////////////////////////////////////////////////////////////////////////*/
@@ -44,56 +47,49 @@
     var br = $S.browser;
     var errorMsg = function( message ){
       
-      if( $S.cookie('shit_browser_confirmed') == 'i_like_the_pain_mkay?!' )
+      if( $S.cookie('untested_browser') === 'itsok' ){
         return;
+      }
       
       $D.confirmWindow( 
         'Browser Warning', 
         message, 
         'I have been warned',
-        function(){ $S.cookie('shit_browser_confirmed','i_like_the_pain_mkay?!'); }
+        function(){ $S.cookie('untested_browser','itsok'); }
       );
     };
     
     if( br.mozilla ){
-      // all fine
+      //$WGT.loadStyle( 'ff' );
       return;
     }
     else if( br.msie ){
       
       var ieV = parseInt(br.version.slice(0,1));
-      if( ieV <= 6 ){
+      if( ieV <= 7 ){
         errorMsg( 
           "<strong>Sorry, but you can't ride a dead horse.<strong>"
-          + " The minimum Version for IE is 7.0, there will be <strong>no Support</strong> for IE 6.0 or lower."
+          + " The minimum Version for IE is 8.0, there will be <strong>no Support</strong> for IE 7.0 or lower."
           + " Please update your IE Version or better switch to a modern Browser like Firefox or Chrom(e/ium)"
           + " We highly recomend to use <strong>Firefox or Chrome</strong>."
           + " Be aware that using IE will severely slow down the response time on your machine."
         );
       }
-      else if( ieV == 7 ){
-        $WGT.loadStyle( 'ie_7' );
-        errorMsg(
-            "It appears that you are using IE 7.0 or IE 8.0 in Compatibility Mode."
-            + "We highly recomend to use <strong>Firefox or Chrom(e/ium) Browser</strong>. "
-            + "With IE you will experience <strong>severe! performance issues.</strong>"
-            + "If you choose to continue using IE and you have IE 8.0 ensure you switch off the Compatibility Mode, "
-            + "else this System will not work."
-            + "Be aware that using IE will severely slow down the response time on your machine."
-          );
-      }
       else if( ieV == 8 ){
-        $WGT.loadStyle( 'ie_8' );
+        //$WGT.loadStyle( 'ie_8' );
         errorMsg(
             + "We highly recomend to use <strong>Firefox or Chrom(e/ium) Browser</strong>."
             + "With IE you will experience <strong>severe! performance issues.</strong>"
             + "Be aware that using IE will severely slow down the response time on your machine."
           );
       }
+      else{
+        //$WGT.loadStyle( 'ie_edge' );
+      }
       
     }
     else if( br.opera ){
-      $WGT.loadStyle( 'opera' );
+      //$WGT.loadStyle( 'opera' );
       errorMsg( 
           "You are using Opera.<br />We have not yet tested the system with Opera."
           +" We do not supply any <strong> official support for Opera</strong> users yet. "
@@ -101,13 +97,13 @@
           +" If you experience problems please use <strong>Firefox or Chrom(e/ium) Browser</strong> to work in this system."
       );
     }
-    else if( br.safari ){
+    else if( br.webkit ){
       
       var userAgent = navigator.userAgent.toLowerCase();
       // give a warning when it is not chrome
       if ( userAgent.indexOf("chrome") === -1 ){
         
-        $WGT.loadStyle( 'safari' );
+        //$WGT.loadStyle( 'safari' );
         errorMsg( 
             "You are using Safari.<br />We have not yet tested the system with Safari."
             +" We do not supply any <strong> official support for Safari</strong> users yet. "
@@ -117,7 +113,7 @@
       }
       else{
         
-        $WGT.loadStyle( 'chrome' );
+        //$WGT.loadStyle( 'chrome' );
       }
       
 

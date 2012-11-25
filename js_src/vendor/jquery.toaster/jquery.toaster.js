@@ -57,11 +57,11 @@ jQuery.toaster = function( settings ){
     var html = '<div class="ui-toaster ' + settings.cssclass + '" id="' + msgId
         + '">';
 
-    if(settings.closable == true) {
+    if( settings.closable === true ) {
       html += '<span title="Close" class="ui-toaster-close">X</span>';
     }
 
-    if(!!settings.title) {
+    if( settings.title ) {
       html += '<h4 class="ui-toaster-title">' + settings.title + '</h4>';
     }
 

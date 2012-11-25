@@ -17,7 +17,7 @@
       if(node.is(selector)){
           return node;
       }
-      else if( node.is('body') || node.is('HTML') ){
+      else if( node.is('body') || node.is('html') ){
         return null;
       }
       else{

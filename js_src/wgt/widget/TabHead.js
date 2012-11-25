@@ -262,6 +262,7 @@
       this.contentBox.find('>div.container').hide();
       $S('.'+this.contentBox.attr('id')).hide();
       
+      console.log( 'tab activate #'+this.contentBox.attr('id')+'-'+ tabId+',.'+this.contentBox.attr('id')+'.box-'+tabId );
       $S('#'+this.contentBox.attr('id')+'-'+ tabId+',.'+this.contentBox.attr('id')+'.box-'+tabId ).show();
       newActTab.addClass('active').show();
       

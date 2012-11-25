@@ -114,16 +114,15 @@
         PaintStyle:{strokeStyle:"#FFD6D6", lineWidth:0.8}
       });
       
-
       this.arrows.back_high = jsPlumb.getInstance({
         Endpoint:[ "Blank", {fillStyle:"gray"}],
         PaintStyle:{strokeStyle:"#C00000", lineWidth:0.8}
       });
       
       var pos = 0,
-        baseLines = 3, 
-        indexSize = 5,
-        vertBSpace = 80; 
+        baseLines = 2, 
+        indexSize = 3,
+        vertBSpace = 110; 
       
       // baseline index
       var bsIndex = {"l1":(cont.cs_x/2)};
@@ -138,7 +137,7 @@
         bsIndex['l'+bsIdx1] = Math.round( 0 + (cont.cs_x/(idx+1)) );
         bsIndex['l'+bsIdx2] = Math.round( cont.cs_x - (cont.cs_x/(idx+1)) );
         
-        console.log( "baseline: "+bsIdx1+" "+bsIndex['l'+bsIdx1]+" "+bsIdx2+" "+bsIndex['l'+bsIdx2] );
+        //console.log( "baseline: "+bsIdx1+" "+bsIndex['l'+bsIdx1]+" "+bsIdx2+" "+bsIndex['l'+bsIdx2] );
         
       }
       
@@ -160,11 +159,13 @@
 
         if( node.hasClass('pos_auto') ){
           
-          var blIndex    = pos%indexSize;
-          var nodeWidth  = node.width();
+          var blIndex  = pos%indexSize,
+            nodeWidth  = node.width();
 
-          var posNodeX = ( ( bsIndex['l'+(blIndex+1)] - (nodeWidth/2) ) - cont.centerX );
+          var posNodeX = ( ( bsIndex['l'+(blIndex+1)] - (nodeWidth /2) ) - cont.centerX );
           var posNodeY = ( ( pos*vertBSpace) + cont.cb ) - cont.centerY;
+          
+          //posNodeX = (nodeWidth/2) - cont.centerX;
           
           //console.log( "Auto node pos "+posNodeX+"x"+posNodeY+" idx: "+blIndex  );
             

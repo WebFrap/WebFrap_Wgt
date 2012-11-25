@@ -52,10 +52,11 @@
         $S.toaster({
           base:'body',
           position:'bl',
-          title:title,
+          closable:true,
+          //title:title,
           text:message,
           timeout:3500,
-          cssclass:'important'
+          cssclass:'ui-state-highlight '
         });
         
         var msg = '<tr class="ui-state-highlight" >';
@@ -79,10 +80,10 @@
         $S.toaster({
           base:'body',
           position:'bl',
-          title:title,
+          //title:title,
+          closable:true,
           text:message,
-          timeout:3500,
-          cssclass:'important'
+          timeout:3500
         });
         
         var msg = '<tr class="ui-state-default" >';
@@ -98,7 +99,7 @@
         msgD += '<td class="status" ><img src="'+$C.iconPath+'xsmall/status/info.png" alt="info"  /> '+timeStr+'</td>';
         msgD + '</tr>';
         
-        $S('#footer_status tbody').html(msgD);
+        $S('#footer-status tbody').html(msgD);
         $S('#wbf-footer-history tbody').append(msg);
       }
     };

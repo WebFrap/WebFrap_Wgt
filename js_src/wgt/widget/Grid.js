@@ -29,9 +29,10 @@
  * @author dominik alexander bonsch <db@webfrap.net>
  * @passed http://www.jshint.com
  */
-(function( $S, $G ) {
+(function( $S, $G, undefined ) {
   
   "use strict";
+  
   $S.widget( "wgt.grid", {
     
     /**
@@ -66,17 +67,23 @@
       body_height: 'large',   // Klasse für die Höhe des bodies
       body_resize_able: false,// flag ob der Databody resizeable ist
       cols_resize_able: true, // flag ob die Cols Resizeable sind
-      select_able: false,     // flag ob die Einträge selektiert werden können
+      select_able: true,     // flag ob die Einträge selektiert werden können
 
       // Editierbare Cells im Grid
       save_form: null,        // ID des Save Formulars bei editierbaren Tabellen
       edit_able: false,       // Flag ob
       allow_insert: false,    // Sollen neue Datensätze angelegt werden können
       
+      load_urls: {}, // urls zum nachladen von content
+      
       // Sort Daten und Optionen
       icon_sort_asc:  'control/sort_asc.png',    // Icon für das absteigenden sortieren
       icon_sort_desc: 'control/sort_desc.png',   // Icon für das aufsteigenden sortieren
       icon_sort_none: 'control/sort_none.png',   // noch nicht sortiert
+      
+      // open / closed
+      icon_opened: 'control/opened.png',   // Icon für einen geschlossenen abschnitt
+      icon_closed: 'control/closed.png',   // Icon für einen offenen abschnitt
       
       // Layout
       color_scheme: null,     // Klasse für das Farbschema
@@ -108,7 +115,7 @@
      * umgebaut wird
      */
     buildGrid: function(){
-      
+
       var self = this,
         ge = this.element,
         opt = this.options,
@@ -140,6 +147,7 @@
 
       // erstellen einer head zeile + resize bar pro alter col
       oldHCols.each( function(){
+        
         var cNode = $S(this);
         var tmpWidth = this.clientWidth;
 
@@ -296,7 +304,7 @@
               var oldWith = actualCol.outerWidth();
               
               var newWidth = (newPos-startPos);
-              if( newWidth<=40 && !actualCol.hasClass('pos') ) {
+              if( newWidth <= 40 && !actualCol.hasClass('pos') ) {
                 
                 newWidth = 40;
                 mover.offset( {left:actualHead.offset().left-40} );
@@ -332,6 +340,10 @@
 
       if( opt.edit_able ){
         self.startEditMode();
+      }
+      
+      if( opt.load_urls !== {} ){
+        self.initLoaderEvent();
       }
       
     },//end buildGrid
@@ -475,8 +487,8 @@
      */
     renderSearchCell: function( cNode, tmpWidth, opt  ){
       
-      var searchBox = '';
-      var searchName = cNode.attr('wgt_search');
+      var searchBox = '',
+        searchName = cNode.attr('wgt_search');
           
       if( searchName ){
 
@@ -494,14 +506,18 @@
           sName = searchName;
           
         }
-
-        searchBox += '<td style="width:'+(tmpWidth-opt.hpad)+'px;text-align:center;" >';
-        searchBox += '<input type="'+sType+'" name="'+sName+'" class="wcm wcm_req_search search wgt-no-save fparam-'+opt.search_form+'" style="width:100%" />';
-        searchBox += '</td>';
+        
+        //width:'+(tmpWidth-opt.hpad)+'px;
+        searchBox = ''.concat( 
+            '<td style="text-align:center;" >',
+            '<input type="'+sType+'" name="'+sName+'" class="wcm wcm_req_search search wgt-no-save fparam-'+opt.search_form+'" style="width:100%" />',
+            '</td>'
+        );
       }
       else{
         
-        searchBox += '<td style="width:'+(tmpWidth-opt.hpad)+'px;text-align:center;" ><span>&nbsp;</td>';
+        //width:'+(tmpWidth-opt.hpad)+'px;
+        searchBox = '<td style="text-align:center;" ><span>&nbsp;</td>';
         
       }
       
@@ -565,19 +581,22 @@
      */
     makeSelectable: function( lElem ){
       
-      lElem.find('tbody>tr')
+      lElem.find('tbody>tr>td.pos').not('.ini')
+        .click(function(){
+
+          $S(this).parent().toggleClass( 'wgt-selected' );
+        }).addClass('ini');
+      
+        /*
         .mouseover( function(){
 
           $S(this).addClass('wgt-hover'); 
-        })
+        });
         .mouseout(function(){
 
           $S(this).removeClass('wgt-hover'); 
         })
-        .click(function(){
-
-          $S(this).toggleClass( 'wgt-selected' );
-        });
+        */
 
     },//end makeSelectable
 
@@ -585,7 +604,7 @@
      * Synchronisation von Head und Body Breite
      */
     syncColWidth: function(){
-
+      
       var self = this;
       
       if( this.firstRow ){
@@ -604,6 +623,102 @@
       }
 
       this.recalcXPosDragHelper();
+
+    },
+    
+    /**
+     * Einen Teil der Tabelle nachladen
+     */
+    triggerLoad: function( key, append, triggerNode ){
+      
+      if( triggerNode && triggerNode.is('state-loaded') ){
+        return;
+      }
+      
+      if( undefined !== this.loadUrls[key]  ){
+        $R.get( this.loadUrls[key]+append );
+        
+        if( triggerNode ){
+          triggerNode.addClass('state-loaded');
+        }
+      }
+    },
+    
+    /**
+     * Events zum nachladen
+     */
+    initLoaderEvent: function(){
+
+      var el = this.element,
+        opts = this.options
+        self = this;
+
+      el.click( function( e ){
+
+        var cTarget = $S( e.target );
+        
+        if( !cTarget.is('.wgt-loader') ){
+          cTarget = cTarget.parentX('.wgt-loader');
+        }
+        
+        if( !cTarget || !cTarget.is('.wgt-loader') ){
+          return;
+        }
+        
+        if( cTarget.is('.state-loaded') ){          
+          return;
+        }
+
+        var loadUrl = opts.load_urls[cTarget.attr('wgt_source_key')];
+        
+        if( cTarget.attr('wgt_eid') ){
+          loadUrl += '&objid='+cTarget.attr('wgt_eid');
+        }
+        
+        if( cTarget.attr('wgt_param') ){
+          loadUrl += cTarget.attr('wgt_param');
+        }
+        
+        var parentTr = cTarget.parentX('tr');
+        
+        if( parentTr ){
+          loadUrl += '&p_row_id='+parentTr.attr('id')+'&p_row_pos='+parentTr.find('td.pos').text();
+        }
+
+        console.log("data "+cTarget.attr('wgt_source_key')+" "+loadUrl );
+        
+        $R.get( loadUrl );
+        
+        cTarget.addClass('state-loaded');
+        cTarget.find('img').attr( 'src', $G.$C.WEB_ICONS+"xsmall/"+opts.icon_opened );
+        
+        parentTr.bind( 'rowclose', function(){
+          cTarget.find("img").attr('src', $G.$C.WEB_ICONS+"xsmall/"+opts.icon_closed);
+          $S('.c-'+parentTr.attr('id')).hide().trigger('rowclose');
+          parentTr.removeClass('state-open');
+        });
+        
+        parentTr.addClass('state-open');
+        
+        
+        cTarget.bind( 'click', function(){
+          
+          if( parentTr.hasClass('state-open') ) {
+            
+            parentTr.trigger('rowclose');
+            self.syncColWidth();
+          }
+          else{
+          
+            cTarget.find("img").attr('src', $G.$C.WEB_ICONS+"xsmall/"+opts.icon_opened);
+            $S('.c-'+parentTr.attr('id')).show();
+            parentTr.addClass('state-open');
+            self.syncColWidth();
+          }
+            
+        });
+      
+      });
 
     },
     
@@ -628,15 +743,7 @@
       
       this.element.treeTable(this.options);
     },
-    
-    /**
-     * Colobject für eine bestimmte Col erfragen
-     */
-    getCol: function( colId ){
-      
-      return new WgtUiCol( this , colId );
-      
-    },
+
 
     /**
      * Grid im Browser sortieren ohne Refresh vom Server
@@ -754,6 +861,24 @@
       fNum.text(num);
 
     },//end setNumEntries
+    
+    /**
+     * Selectieren alle entries
+     */
+    selectAll: function(){
+
+      this.element.find('tr').addClass( 'wgt-selected' );
+
+    },//end selectAll
+    
+    /**
+     * Deselect all selected entries
+     */
+    deSelectAll: function(){
+
+      this.element.find('tr').removeClass( 'wgt-selected' );
+
+    },//end deSelectAll
 
     /**
      * Toggle Body
@@ -833,16 +958,15 @@
      */
     reColorize: function(){
 
-      var rows = this.element.find( 'tbody > tr' ).not('.wgt-block-appear');
-      var fact = 3;
-      var pos = 2;
-      
-      var oldNode = $G.$WGT.getClassByPrefix( $S(rows.get(0)).prop('class'), 'node-', false  );
+      var rows = this.element.find( 'tbody > tr' ).not('.wgt-block-appear'),
+        fact = 3,
+        pos = 2,
+        oldNode = $G.$WGT.getClassByPrefix( $S(rows.get(0)).prop('class'), 'node-', false  );
       
       rows.each(function(){
 
         var row = $S(this);
-        row.removeClass('row1').removeClass('row2');
+        row.removeClass('row1 row2');
         
         var nodeKey = $G.$WGT.getClassByPrefix( row.prop('class'), 'node-', false  );
         
@@ -931,51 +1055,6 @@
 
   });
   
-  /**
-   * @param pTab
-   * @param pColId
-   */
-  function WgtUiCol( pTab , pColId ){
-
-    var tabObj    = pTab,
-      colIndex = null;
-
-    if( typeof pColId === 'number' ){
-      colIndex  = pColId;
-    }
-    else{
-      colIndex  = pColId.index();
-    }
-
-    /**
-     * @return WgtUiTable
-     */
-    this.getTable = function(){
-      return tabObj;
-    };
-
-    /**
-     * @param direction
-     */
-    this.sort = function( direction ){
-      return tabObj.sort( colIndex, {sort:direction} );
-    };
-
-    /**
-     * @param userInput
-     */
-    this.filter = function( userInput ){
-      return tabObj.filter( colIndex, userInput  );
-    };
-
-    /**
-     *
-     */
-    this.cleanFilter = function(){
-      return tabObj.cleanFilter( colIndex  );
-    };
-
-  }//end function WgtUiCol */
 
 }( jQuery, window ) );
 
