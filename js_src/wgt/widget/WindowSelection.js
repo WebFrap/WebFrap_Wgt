@@ -66,6 +66,7 @@
         },
         align:"right"
       });
+      ge.dropdown('init');
 
       var inpElem = $S( '#'+opts.element );
       var dropBoxId = ge.attr( 'wgt_drop_box' );
