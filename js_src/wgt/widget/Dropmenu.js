@@ -74,6 +74,7 @@
       
       if( ge.hasClass('wgt-dpm.init') )
         return;
+      
       ge.addClass('wgt-dpm.init')
 
       var dropBoxId = ge.attr( 'wgt_drop_box' );
@@ -247,8 +248,8 @@
      * Key Commands wieder deaktivieren
      */
     removeKeyCommands: function(){
-      $S(document).unbind( 'keypress.dropmenu' );
-      $S(document).unbind( 'mousedown.dropmenu' );
+      
+      $S(document).unbind( 'keypress.dropmenu' ).unbind( 'mousedown.dropmenu' );
     },
     
     // Set up the widget
@@ -256,12 +257,23 @@
 
       var self = this,
         ge   = this.element, //das element auf welches geklickt wurde
-        opts = this.options;
+        opts = this.options,
+        doc = $S(document);
       
       self.init();
-
-      var dropBoxId = ge.attr( 'wgt_drop_box' );
-      var dropBox   = $S( '#'+dropBoxId+'-init' );
+     
+      var dropBoxId = ge.attr( 'wgt_drop_box' ),
+        dropBox   = $S( '#'+dropBoxId+'-init' );
+      
+      //$target.addClass('flag-menu-overlay');
+      // Die ausrichtung und position des Overlays berechnen
+      // sicher stellen, dass es nicht über die Ränder hinaus floatet
+      var style     = ge.offset(),
+        tStyleW   = ge.outerWidth(),
+        oStyleH   = dropBox.outerHeight(),
+        oStyleW   = dropBox.outerWidth(),
+        winW      = doc.width(),
+        winH      = doc.height()-40;
 
       // Get options of the element
       this.closeAll();
@@ -273,34 +285,17 @@
         self.close();
       };
       
-      // callback
-      try{
-        if( opts.onOpen ){
-          opts.onOpen( ge );
-        }
+      // check if we need a try/catch here
+      if( opts.onOpen ){
+        opts.onOpen( ge );
       }
-      catch( err ){
-        console.error( 'Dropmenu onOpen failed '+err );
-      }
-      
-      
-
-      //$target.addClass('flag-menu-overlay');
-      // Die ausrichtung und position des Overlays berechnen
-      // sicher stellen, dass es nicht über die Ränder hinaus floatet
-      var style     = ge.offset();
-      var tStyleW   = ge.outerWidth();
-      var oStyleH   = dropBox.outerHeight();
-      var oStyleW   = dropBox.outerWidth();
-      var winW      = $S(document).width();
-      var winH      = $S(document).height()-40;
 
       if( !style ){
 
         console.error( 'Dropbox is missing the style' );
 
         if( console.trace ){
-          console.trace(  );
+          console.trace();
         }
 
         return;
@@ -360,7 +355,6 @@
         
       }
         
-      
       style.position = 'absolute';
       dropBox.css(style);
       dropBox.addClass('opened');
@@ -384,15 +378,19 @@
      * schliesen des aktuellen dropdowns
      */
     close: function(){
+      
+      var dropBox = null,
+        opts = this.options,
+        elem = this.element;
         
       // callback
-      if( this.options.onClose ){
-        this.options.onClose( this.element );
+      if( opts.onClose ){
+        opts.onClose( elem );
       }
       
       $G.$D.requestCloseMenu = function(){};
       
-      var dropBox   = $S( '#'+this.element.attr( 'wgt_drop_box' )+'-init' );
+      dropBox = $S( '#'+elem.attr( 'wgt_drop_box' )+'-init' );
       dropBox.removeClass('opened').hide();
       
       this.removeKeyCommands( );
