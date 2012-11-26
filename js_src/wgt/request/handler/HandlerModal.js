@@ -12,31 +12,30 @@
       $S.modal.close();
 
       var modalNode = $S(this);
-      var modalBody = modalNode.find('body');
-      var modalScript = modalNode.find('script').text();
+      var modalBody = modalNode.find('body'),
+        modalScript = modalNode.find('script').text(),
+        title = modalNode.attr('title'),
+        mW = modalNode.attr('width'),
+        mH = modalNode.attr('height'),
+        modalObj = null,
+        settings = {
+            overlayClose: true,
+            opacity:10
+        };
       
-      var title = modalNode.attr('title');
-      if( title )
+      if( title ){
         $D.setTitle( title );
-      
-      var settings = {
-          overlayClose: true,
-          opacity:10
-      };
-      
-      var mW = modalNode.attr('width');
-      var mH = modalNode.attr('height');
-      
+      }
+
       settings.minWidth = mW?parseInt(mW):600;
       settings.minHeight = mH?parseInt(mH):360;
       //settings.onClose = function(){ $D.closeView(); };
+
+      modalObj = $S.modal( modalBody.text(), settings  );
       
-      console.log( "minw: "+settings.minWidth+" maxw: "+settings.minHeight );
-        
-      var modalObj = $S.modal( modalBody.text(), settings  );
-      
-      if( modalScript )
+      if( modalScript ){
         (new Function("self",modalScript))( $S('#simplemodal-container') );
+      }
 
     });
   
