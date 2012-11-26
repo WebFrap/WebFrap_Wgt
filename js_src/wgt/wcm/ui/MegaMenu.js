@@ -6,19 +6,17 @@
 $R.addAction( 'ui_mega_menu', function( jNode ){
   
   var settings = {};
+  var renderTime = $DBG.start();
 
-  try{
-    settings = jNode.next().is('var.wgt-settings')
-    ? $WGT.robustParseJSON(jNode.next().text())
-    : { rowItems: '3',
+
+  settings = jNode.next().is('var.wgt-settings') ? $WGT.robustParseJSON(jNode.next().text()) : { rowItems: '3',
         speed: 'fast',
         event: 'hover'
       };
-  }
-  catch(err){
-    $D.errorWindow( 'UI Error', err.description );
-  }
+
 
   jNode.wgtMegaMenu(settings).removeClass("wcm_ui_mega_menu");
+  
+  console.log('mega reder duration ' + $DBG.duration( renderTime ) );
 
 });

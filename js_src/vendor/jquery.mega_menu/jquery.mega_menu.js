@@ -43,11 +43,11 @@
     //act upon the element that is passed into the design
     return $wgtMegaMenuObj.each(function(options){
 
-      var clSubParent = defaults.classSubParent;
-      var clSubLink = defaults.classSubLink;
-      var clParent = defaults.classParent;
-      var clContainer = defaults.classContainer;
-      var clWidget = defaults.classWidget;
+      var clSubParent = defaults.classSubParent,
+        clSubLink = defaults.classSubLink,
+        clParent = defaults.classParent,
+        clContainer = defaults.classContainer,
+        clWidget = defaults.classWidget;
       
       megaSetup();
       
@@ -76,14 +76,7 @@
         $D.requestCloseMenu( 'mega_menu' );
           
         $D.requestCloseMenu = closeMega;
-        /*
-        if(defaults.effect == 'fade'){
-          $(subNav).fadeIn(defaults.speed);
-        }
-        if(defaults.effect == 'slide'){
-          $(subNav).show(defaults.speed);
-        }
-        */
+
         // beforeOpen callback;
         defaults.beforeOpen.call(this);
       }
@@ -96,24 +89,11 @@
         
         $(subNav).show();
         
-        /*
-        if(defaults.effect === 'fade'){
-          
-          $(subNav).fadeIn(defaults.speed);
-        }
-        else if(defaults.effect === 'slide'){
-          
-          $(subNav).show(defaults.speed);
-        }
-        */
-        
         // beforeOpen callback;
         defaults.beforeOpen.call(this);
       }
 
       function megaOut(){
-        
-        //console.log( 'close mega' );
 
         var subNav = $('.subcnt',this);
         $(this).removeClass('mega-hover');
@@ -175,12 +155,12 @@
               $primaryLink.addClass(clParent).append($arrow);
               $mainSub.addClass('sub').addClass('subcnt').wrap('<div class="'+clContainer+'" />');
 
-              var pos = $(this).position();
+              var pos = actLi.position();
               var pl  = pos.left;
 
               if($('ul',$mainSub).length){
 
-                $(this).addClass(clParentLi);
+                actLi.addClass(clParentLi);
                 $('.'+clContainer,this).addClass('mega');
 
                 $('> li',$mainSub).each(function(){
@@ -218,7 +198,7 @@
               $mainSub.show();
               
               // Get Position of Parent Item
-              var pw = $(this).width();
+              var pw = actLi.width();
               var pr = pl + pw;
               
               // Check available right margin
@@ -335,11 +315,11 @@
             out: megaOut
           };
           
-          $('li',$wgtMegaMenuObj).hoverIntent(config);
+          //$('li',$wgtMegaMenuObj).hoverIntent(config); // feals much to slow!
+          $wgtMegaMenuObj.children().bind( 'mouseover' ,megaOver ).bind('mouseout',megaOut);
           
         }
-        
-        if( defaults.event === 'click' ){
+        else if( defaults.event === 'click' ){
         
           $('body').mouseup(function(e){
             if(!$(e.target).parents('.mega-hover').length){
