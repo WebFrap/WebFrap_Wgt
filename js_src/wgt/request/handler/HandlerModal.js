@@ -29,7 +29,7 @@
       
       settings.minWidth = mW?parseInt(mW):600;
       settings.minHeight = mH?parseInt(mH):360;
-      settings.onClose = function(){ $D.closeView(); };
+      //settings.onClose = function(){ $D.closeView(); };
       
       console.log( "minw: "+settings.minWidth+" maxw: "+settings.minHeight );
         
