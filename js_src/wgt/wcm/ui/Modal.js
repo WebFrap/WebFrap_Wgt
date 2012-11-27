@@ -3,29 +3,28 @@
 /**
  * @author Marko Andrijasevic
  */
-$R.addAction( 'ui_modal', function( jNode ){
-  
+$R.addAction('ui_modal', function(jNode)
+{
 
   var user = {};
-  var settings = { modal: true,
-      draggable: false,
-      resizable: false,
-      onClose: function(){ $D.closeView(); }
+  var settings = {
+    modal : true,
+    draggable : false,
+    resizable : false
   };
-  
-  try{
-    user = jNode.next().is('var.c-modal')
-    ? $WGT.robustParseJSON(jNode.next().text())
-    : {};
-  }
-  catch(err){
-    $D.errorWindow( 'UI Error', err.description );
-  }
-  
-  //$S.extend( true, settings, user );
 
-  jNode.dialog( settings );
+  try
+  {
+    user = jNode.next().is('var.c-modal') ? $WGT.robustParseJSON(jNode.next()
+        .text()) : {};
+  } catch (err)
+  {
+    $D.errorWindow('UI Error', err.description);
+  }
+
+  // $S.extend( true, settings, user );
+
+  jNode.dialog(settings);
   jNode.removeClass('ui_modal');
-  
-  
+
 });
