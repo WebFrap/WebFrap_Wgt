@@ -15,7 +15,8 @@ div.wgt-editor_container
 }
 
 /* Sicher stellen, dass die Pfade hinter den elementen verlaufen */
-div.wgt-editor_container svg{
+div.wgt-editor_container svg
+{
   z-index:1;
 }
 
@@ -49,14 +50,31 @@ div.wgt-editor_container .node
   cursor:pointer;
 }
 
+div.doc .node
+{
+  min-width:60px;
+  width:60px;
+  min-height:30px;
+  border:1px solid silver;
+  background-color:#A0A0A0; 
+  color:white;
+  white-space:nowrap;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  overflow:hidden;
+  text-align:center;
+  padding:5px;
+}
 
-div.wgt-editor_container .node:hover
+
+div.wgt-editor_container .node:hover,
+div.doc .node:hover
 {
   background-color:#303030 !important; 
   color:white !important;
 }
 
-div.wgt-editor_container .node.active
+div.wgt-editor_container .node.active,
+div.doc .node.active
 {
   background-color:#FFFFFF;
   border:2px dotted #FF00FF;
@@ -64,43 +82,50 @@ div.wgt-editor_container .node.active
   font-weight: bold;
 }
 
-div.wgt-editor_container .node.start
+div.wgt-editor_container .node.start,
+div.doc .node.start
 {
   background-color:#B4EEB2; 
   color:black;
 }
 
-div.wgt-editor_container .node.end
+div.wgt-editor_container .node.end,
+div.doc .node.end
 {
   background-color:#008000; 
   color:white;
 }
 
-div.wgt-editor_container .node.aborted
+div.wgt-editor_container .node.aborted,
+div.doc .node.aborted
 {
   background-color:#C00000; 
   color:white;
 }
 
-div.wgt-editor_container .node.gateway
+div.wgt-editor_container .node.gateway,
+div.doc .node.gateway
 {
   background-color:#000080; 
   color:white;
 }
 
-div.wgt-editor_container .node.waring
+div.wgt-editor_container .node.waring,
+div.doc .node.waring
 {
   background-color:#FF8000; 
   color:white;
 }
 
-div.wgt-editor_container .node.archive
+div.wgt-editor_container .node.archive,
+div.doc .node.archive
 {
   background-color:#303030; 
   color:white;
 }
 
-div.wgt-editor_container .node.checked
+div.wgt-editor_container .node.checked,
+div.doc .node.checked
 {
   background-color:#800080; 
   color:white;
