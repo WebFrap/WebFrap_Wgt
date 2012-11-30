@@ -16,16 +16,22 @@ $R.addAction( 'control_check_button', function( jNode ){
   var funcCheckB = function( event ){
          
     console.log( 'click '+inpNode.attr('name') );
-    var fCounter = null;
+    
+    var fCounter = null,
+      evTrgt = $S( event.target ) ;
          
     if( inpNode.is( ':checked') ){
       
       fCounter = $S('#'+jNode.attr('wgt_counter'));  
       fCounter.text(  parseInt(fCounter.text()) - 1 );
-      
-      inpNode.attr( 'checked', false );
       jNode.removeClass( 'active' );
-      inpNode.change();
+      
+      if( !evTrgt.is( 'input' ) ){
+        inpNode.attr( 'checked', false );
+        inpNode.change();
+      }
+      
+      
       
     }
     else{
@@ -33,19 +39,23 @@ $R.addAction( 'control_check_button', function( jNode ){
       fCounter = $S('#'+jNode.attr('wgt_counter'));  
       fCounter.text(  parseInt(fCounter.text()) + 1 );
       
-      inpNode.attr( 'checked', 'checked' );
       inpNode.val(1);
       jNode.addClass( 'active' );
-      inpNode.change();
       
+      if( !evTrgt.is( 'input' ) ){
+    	  inpNode.attr( 'checked', 'checked' );
+          inpNode.change();
+      }
+
     }
     
     event.stopPropagation();
+    return false;
       
   };
   
   // togle check onclick
   jNode.bind( 'mouseup',  funcCheckB );
-  inpNode.bind( 'mouseup',  funcCheckB );
+  //inpNode.bind( 'mouseup',  funcCheckB );
 
 });
