@@ -315,8 +315,8 @@
             out: megaOut
           };
           
-          //$('li',$wgtMegaMenuObj).hoverIntent(config); // feals much to slow!
-          $wgtMegaMenuObj.children().bind( 'mouseover' ,megaOver ).bind('mouseout',megaOut);
+          $('li',$wgtMegaMenuObj).hoverIntent(config); // feals much to slow!
+          //$wgtMegaMenuObj.children().bind( 'mouseover' ,megaOver ).bind('mouseout',megaOut);
           
         }
         else if( defaults.event === 'click' ){
