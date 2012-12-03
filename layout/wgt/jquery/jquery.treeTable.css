@@ -17,7 +17,7 @@ table.wgt-table tbody tr td .expander {
 
 
 table.wgt-table.tree tbody tr td {
-  cursor: default;
+  /*cursor: default;*/
   /*padding: .3em 1.5em;*/
 }
 
