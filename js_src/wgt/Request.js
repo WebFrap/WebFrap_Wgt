@@ -756,12 +756,11 @@
      * @param formId string
      */
     this.getBySelection = function( url, tableId ){
- 
+
       $S('#'+tableId+' tr.wgt-selected').each(function(){
         url += '&e[]='+$S(this).attr('wgt_eid');
       });
-
-
+      
       window.location.href = url;
       
     };//end this.getBySelection
