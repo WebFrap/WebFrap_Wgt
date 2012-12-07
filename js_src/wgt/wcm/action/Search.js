@@ -5,8 +5,6 @@
  */
 $R.addAction( 'req_search', function( jNode ){
   
-  if( $C.DEBUG.WCM.ACTION )
-    console.log( 'wcm req_search path: ' +jNode.getNodePath('/')  );
 
   jNode.removeClass('wcm_req_search');
   
@@ -21,11 +19,11 @@ $R.addAction( 'req_search', function( jNode ){
       formId = jNode.getActionClass('fparam',true,'-');
     }
       
-    if(!formId){
+    if( !formId ){
       console.log("found no form for the given search element");
       return;
     }
-    nForm = $S('#'+formId);
+    nForm = $S('form#'+formId);
     
     //console.log("found form "+formId);
   }
@@ -40,29 +38,46 @@ $R.addAction( 'req_search', function( jNode ){
   });
   */
   
+  var evAction = function(e) {
+    nForm.data('start','0');
+    nForm.data('begin',null);
+    $R.form( nForm );
+    e.preventDefault();
+    return false;
+  };
+  
   // custom event to trigger a search event
   if( jNode.is('input[type=checkbox],input[type=hidden]') ){
     
-    jNode.bind( 'change', function(e) {
-      nForm.data('start','0');
-      nForm.data('begin',null);
-      $R.form( nForm );
-      return false;
-    });
+    jNode.bind( 'change', evAction );
     
   }
   else{
     
-    // on return
-    jNode.keyup(function(e) {
+    // on change & on return
+    jNode.bind( 'change', evAction ).keydown(function(e) {
       
-      if(e.keyCode == 13) {
+      var fTrigger = false;
+      if(e.keyCode === $S.ui.keyCode.RETURN ) {
+
         nForm.data('start','0');
         nForm.data('begin',null);
-        
         $R.form( nForm );
+        e.preventDefault();
         return false;
       }
+
+    }).keyup(function(e) {
+        
+        if( e.keyCode === $S.ui.keyCode.ESCAPE ){
+          jNode.val('');
+          nForm.data('start','0');
+          nForm.data('begin',null);
+          $R.form( nForm );
+          e.preventDefault();
+          return false;
+        }
+  
     });
   }
 
