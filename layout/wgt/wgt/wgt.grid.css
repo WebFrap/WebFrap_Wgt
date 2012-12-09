@@ -90,20 +90,34 @@ div.wgt-grid-body.xxlarge
   height:700px;
 }
 
-div.wgt-grid-body td
+div.wgt-grid-body td,
+table.wgt-grid.simple tbody tr td
 {
   border-bottom:1px solid silver;
   padding-left:3px;
   padding-right:2px;
 	overflow:hidden;
+  vertical-align: top;
 }
 
-div.wgt-grid-body td.pos
+table.wgt-grid.simple
+{
+  border-left:1px solid silver;
+  border-right:1px solid silver;
+}
+
+table.wgt-grid.simple tbody tr td
+{
+  border-right:1px solid silver;
+}
+
+div.wgt-grid-body td.pos,
+table.wgt-grid.simple tbody tr td.pos
 {
   background-color:silver;
   font-weight: bold;
   color: black;
-  text-align:left;
+  text-align:right;
   border-bottom:1px solid black;
   cursor:pointer;
 }
