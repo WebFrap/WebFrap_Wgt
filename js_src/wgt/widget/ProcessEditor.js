@@ -143,12 +143,13 @@
       
       // verarbeiten der Nodes
       var processNodes = el.find('.node');
+      processNodes.disableTextSelect();
       
       processNodes.each(function(){
 
         var node = $S(this),
           offset;
-
+   
         node.mousedown(function(){
           
           cont.moveBg = false;
