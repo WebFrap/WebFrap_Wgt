@@ -5,15 +5,27 @@
  */
 $R.addAction( 'ui_tip', function( jNode ){
 
+  var infoPos = jNode.attr('wgt_tt_align');
+
+  if( infoPos ){
+    
+    jNode.wgtTip({
+      gravity: infoPos,
+      delayIn: 700, 
+      delayOut: 200
+    }).removeClass("wcm_ui_tip");
+    
+  }
   if( jNode.is('button') || jNode.is('p') || jNode.is('a')  ){
+
     jNode.wgtTip({
       gravity: 's',
       delayIn: 700, 
       delayOut: 200
     }).removeClass("wcm_ui_tip");
   }
-  else
-  {
+  else{
+
     jNode.wgtTip({
       gravity: 'w',
       delayIn: 700, 
@@ -34,6 +46,16 @@ $R.addAction( 'ui_tip-top', function( jNode ){
 });
 
 $R.addAction( 'ui_tip-left', function( jNode ){
+
+  jNode.wgtTip({
+    gravity: 'w',
+    delayIn: 700, 
+    delayOut: 200
+  }).removeClass("wcm_ui_tip-left");
+    
+});
+
+$R.addAction( 'ui_tip-right', function( jNode ){
 
   jNode.wgtTip({
     gravity: 'e',

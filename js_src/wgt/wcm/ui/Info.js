@@ -13,10 +13,15 @@ $R.addAction( 'ui_info', function( jNode ){
   }).removeClass("wcm_ui_info");
   */
   
+  var infoPos = jNode.attr('wgt_tt_align');
+  
+  if( !infoPos )
+    infoPos = 'e';
+  
   jNode.wgtTip({
-    gravity: 'e',
+    gravity: infoPos,
     delayIn: 700, 
     delayOut: 200
-  }).removeClass("wcm_ui_tip-left");
+  }).removeClass( "wcm_ui_tip-left" );
 
 });
