@@ -48,7 +48,7 @@ $R.addAction( 'ui_tip-top', function( jNode ){
 $R.addAction( 'ui_tip-left', function( jNode ){
 
   jNode.wgtTip({
-    gravity: 'w',
+    gravity: 'e',
     delayIn: 700, 
     delayOut: 200
   }).removeClass("wcm_ui_tip-left");
@@ -58,7 +58,7 @@ $R.addAction( 'ui_tip-left', function( jNode ){
 $R.addAction( 'ui_tip-right', function( jNode ){
 
   jNode.wgtTip({
-    gravity: 'e',
+    gravity: 'w',
     delayIn: 700, 
     delayOut: 200
   }).removeClass("wcm_ui_tip-left");
