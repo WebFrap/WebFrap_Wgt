@@ -29,5 +29,17 @@
 {
   padding-left: 1.2em;
 }
-.ui-accordion .ui-accordion-header .ui-accordion-header-icon { position: absolute; left: .5em; top: 50%; margin-top: -8px; }
-.ui-accordion .ui-accordion-content { padding: 1em 1.2em; border-top: 0; overflow: auto; zoom: 1; }
+.ui-accordion .ui-accordion-header .ui-accordion-header-icon 
+{ 
+  position: absolute; 
+  left: .5em; 
+  top: 50%; 
+  margin-top: -8px;
+}
+.ui-accordion .ui-accordion-content 
+{ 
+  padding: 1em 1.2em; 
+  border-top: 0; 
+  overflow: auto; 
+  zoom: 1;
+}
