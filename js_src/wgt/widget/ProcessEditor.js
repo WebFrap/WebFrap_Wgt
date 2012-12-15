@@ -134,8 +134,8 @@
         var bsIdx1 = (indexSize + 2) - (bsIndTmpKey -1),
             bsIdx2 = (indexSize + 2) - (bsIndTmpKey -2);          
         
-        bsIndex['l'+bsIdx1] = Math.round( 0 + (cont.cs_x/(idx+1)) );
-        bsIndex['l'+bsIdx2] = Math.round( cont.cs_x - (cont.cs_x/(idx+1)) );
+        bsIndex['l'+bsIdx1] = Math.round( 0 + (cont.cs_x/(idx+1)) )-100;
+        bsIndex['l'+bsIdx2] = Math.round( cont.cs_x - (cont.cs_x/(idx+1)) )+100;
         
         //console.log( "baseline: "+bsIdx1+" "+bsIndex['l'+bsIdx1]+" "+bsIdx2+" "+bsIndex['l'+bsIdx2] );
         
