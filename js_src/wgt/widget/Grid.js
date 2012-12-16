@@ -985,6 +985,44 @@
       
     },//end this.reColorize
     
+    /**
+    *
+    */
+   renderRowLayout: function(){
+
+     var rows = this.element.find( 'tbody > tr' ).not('.wgt-block-appear'),
+       fact = 3,
+       pos = 2,
+       oldNode = $G.$WGT.getClassByPrefix( $S(rows.get(0)).prop('class'), 'node-', false  );
+     
+     rows.find('>td.pos').not('.ini')
+     .click(function(){
+
+       $S(this).parent().toggleClass( 'wgt-selected' );
+     }).addClass('ini');
+     
+     rows.each(function(){
+
+       var row = $S(this);
+       row.removeClass('row1 row2');
+       
+       var nodeKey = $G.$WGT.getClassByPrefix( row.prop('class'), 'node-', false  );
+       
+       if( nodeKey !== oldNode ){
+
+         row.find('td.pos').text(pos);
+         oldNode = nodeKey;
+         ++fact;
+         ++pos;
+       }
+       
+       row.addClass('row'+((fact%2)+1));
+
+     });
+
+     
+   },//end this.reColorize
+    
     // _setOptions is called with a hash of all options that are changing
     // always refresh when changing options
     _setOptions: function() {
