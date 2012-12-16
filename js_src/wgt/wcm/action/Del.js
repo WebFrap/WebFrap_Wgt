@@ -64,8 +64,8 @@ $R.addAction( 'req_del_selection', function( jNode ){
       this.title = 'Are you shure, you want to delete this entries?';
     }
     
-    $S( jNode.attr( 'wgt_elem' ) ).find( 'tr.wgt-selected>td.pos' ).each(function(){
-      delHref += '&'+$S(this).attr('name');
+    $S( jNode.attr( 'wgt_elem' ) ).find( 'tr.wgt-selected' ).each(function(){
+      delHref += '&slct[]='+$S(this).attr('wgt_eid');
     });
 
     $D.confirmWindow(
