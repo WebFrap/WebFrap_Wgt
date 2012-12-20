@@ -53,7 +53,7 @@ $R.addAction( 'ui_accordion_tab', function( jNode ){
     accObj.bind( 'accordionchangestart', function( event, ui ){
       
       var headEntry = ui.newHeader.find('a');
-      
+
       if( headEntry.hasClass('disabled') ){
         return false;
       }
@@ -68,16 +68,26 @@ $R.addAction( 'ui_accordion_tab', function( jNode ){
       var tmpRef = headEntry.attr('tab');
       var tmpSrc = headEntry.attr('wgt_src');
       
+      if( tmpSrc &&  !headEntry.is('.loaded') ){
+        headEntry.dblclick(function(){
+          $R.get( tmpSrc, {async:true} );
+        });
+      }
+      
       if( tmpSrc && ( headEntry.is('.reload_able') || !headEntry.is('.loaded') )  ){
         headEntry.addClass('loaded');
         $R.get( tmpSrc, {async:true} );
       }
       
+
+      
       contObj.contentContainer( 'setActive' ,tmpRef );
       $S('.'+jNode.attr('id')+'.box-'+tmpRef).show();
+    
       
     });
     
+   
     jNode.removeClass('wcm_ui_accordion_tab');
 
 });
