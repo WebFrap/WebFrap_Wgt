@@ -68,7 +68,7 @@ $R.addAction( 'ui_accordion_tab', function( jNode ){
       var tmpRef = headEntry.attr('tab');
       var tmpSrc = headEntry.attr('wgt_src');
       
-      if( tmpSrc && !headEntry.is('.loaded') ){
+      if( tmpSrc && ( headEntry.is('.reload_able') || !headEntry.is('.loaded') )  ){
         headEntry.addClass('loaded');
         $R.get( tmpSrc, {async:true} );
       }
