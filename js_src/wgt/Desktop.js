@@ -456,5 +456,32 @@
   
   // create instance
   window.$D = new WgtDesktop();
+  
+  
+  $S(window).keypress(function(event) {
+    
+    console.log( "pressed "+event.which );
+    
+    if ( (event.which === 115 && event.ctrlKey) || (event.which === 19) ){ 
+      // context element speichern
+      alert("Ctrl-S pressed");
+      event.preventDefault();
+      return false;
+    }
+    else if ( (event.which === 110 && event.ctrlKey) || (event.which === 19) ){ 
+      // context element new
+      alert("Ctrl-N pressed");
+      event.preventDefault();
+      return false;
+    }
+    else if ( (event.which === 101 && event.ctrlKey) || (event.which === 19) ){ 
+      // soll globales event sein
+      alert("Ctrl-E pressed");
+      event.preventDefault();
+      return false;
+    }
+
+    return true;
+  });
 
 })( jQuery, window);
