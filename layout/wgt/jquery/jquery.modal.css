@@ -16,9 +16,10 @@
   min-height:360px; 
   min-width:600px; 
   color:#000000; 
-  background-color:#F2F2F2; 
-  border:2px solid #444; 
+  background-color:#FAFAFA; 
+  border:1px solid #444; 
   padding:12px;
+  border-radius: 9px;
 }
 
 #simplemodal-container .simplemodal-data 
