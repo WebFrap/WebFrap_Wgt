@@ -25,15 +25,18 @@
  */
 $R.addAction( 'control_toggle', function( jNode ){
   
+
   var showNot = jNode.attr('wgt_not') === '!'?true:false, // invert the visibility
     trgtSrc = jNode.attr('wgt_target'); // any valid jquery selector
-  
+
   // hide & show action
   var triggerA = function(){
     
     var evTNode = $S(trgtSrc);
-    
+
     if( jNode.is(':checked') ){
+      
+      console.log( 'checked '+trgtSrc+' '+evTNode.length );
       
       if( showNot ){
         evTNode.hide();
@@ -44,8 +47,8 @@ $R.addAction( 'control_toggle', function( jNode ){
         
     }
     else{
-      
-      if( !showNot ){
+
+      if( showNot ){
         evTNode.show();
       }
       else{
@@ -61,6 +64,6 @@ $R.addAction( 'control_toggle', function( jNode ){
   // toggle vissibility on change of the state
   jNode.bind( 'change', triggerA );
     
-  jNode.removeClass( "control_toggle" );
+  jNode.removeClass( "wcm_control_toggle" );
 
 });
