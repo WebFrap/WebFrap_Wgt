@@ -11,6 +11,9 @@
   position: absolute;
   z-index: 1000;
   display: none;
+  -moz-box-shadow:8px 8px 8px #666;
+  -webkit-box-shadow:8px 8px 8px #666;
+  box-shadow:8px 8px 8px #666;  
 }
 
 

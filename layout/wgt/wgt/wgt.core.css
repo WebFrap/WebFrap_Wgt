@@ -590,6 +590,13 @@ div.wgt-clear.xxsmall
   line-height:0;
 }
 
+
+div.wgt-clear.sep-bottom
+{
+  border-bottom:1px solid silver;
+  margin-botom:7px;
+}
+
 div.wgt-clear.small
 {
   height:1em;
@@ -605,6 +612,9 @@ div.wgt-clear.large
 {
   height:2em;
 }
+
+
+
 
 /*//////////////////////////////////////////////////////////////////////////////
 // Boxes for layouting

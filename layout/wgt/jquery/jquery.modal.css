@@ -19,6 +19,12 @@
   background-color:#FAFAFA; 
   border:1px solid #444; 
   padding:12px;
+  -moz-box-shadow:8px 8px 8px #666;
+  -webkit-box-shadow:8px 8px 8px #666;
+  box-shadow:8px 8px 8px #666;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  -o-border-radius: 9px;
   border-radius: 9px;
 }
 
@@ -31,12 +37,12 @@
 #simplemodal-container a.modalCloseImg 
 {
   background:url(<?php echo $images ?>wgt/close_modal.png) no-repeat; 
-  width:25px; 
-  height:29px; 
+  width:22px; 
+  height:22px; 
   display:inline; 
   z-index:3200; 
   position:absolute; 
-  top:-10px; 
-  right:-11px; 
+  top:5px; 
+  right:5px; 
   cursor:pointer;
 }
