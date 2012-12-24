@@ -24,6 +24,9 @@ ul.wgt-mega-menu ul li ul
 ul.wgt-mega-menu .sub 
 {
 	display: none;
+  -moz-box-shadow:8px 8px 8px #666;
+  -webkit-box-shadow:8px 8px 8px #666;
+  box-shadow:8px 8px 8px #666;  
 }
 
 ul.wgt-mega-menu .sub ul 
@@ -89,33 +92,36 @@ ul.wgt-mega-menu li>a:hover,
 ul.wgt-mega-menu li.mega-hover p, 
 ul.wgt-mega-menu li>p:hover 
 {
-	background-position: 100% -40px; 
+	/*background-position: 100% -40px; */
 	color: #000; 
 	text-shadow: none;
 }
 
 ul.wgt-mega-menu li.mega-hover a .wgt-mega-icon 
 {
-	background-position: 0 100%;
+	/*background-position: 0 100%;*/
 }
 
 ul.wgt-mega-menu li .sub-container 
 {
 	position: absolute; 
-	background: url(<?php echo $images ?>mega_menu/bg_sub_left.png) no-repeat 0 100%; 
+	/*background: url(<?php echo $images ?>mega_menu/bg_sub_left.png) no-repeat 0 100%; */
 	padding-left: 20px; 
-	margin-left: -3px;
 }
 
 ul.wgt-mega-menu li .sub 
 {
-	background: url(<?php echo $images ?>mega_menu/bg_sub.png) no-repeat 100% 100%; 
-	padding: 20px 20px 20px 10px;
+	/*background: url(<?php echo $images ?>mega_menu/bg_sub.png) no-repeat 100% 100%; */
+  background-color:white;
+	padding: 20px;
+  border: 1px solid silver;
+  border-bottom-left-radius: 9px;
+  border-bottom-right-radius: 9px;  
 }
 
 ul.wgt-mega-menu li .sub-container.mega .sub 
 {
-	padding: 20px 20px 10px 0;
+	padding: 20px;
 }
 
 ul.wgt-mega-menu li .sub .row 
@@ -148,7 +154,7 @@ ul.wgt-mega-menu li .sub li.mega-hdr.last
 ul.wgt-mega-menu li .sub a,
 ul.wgt-mega-menu li .sub p
 {
-	background: none; 
+	/*background: none; */
 	border: none; 
 	text-shadow: none; 
 	color: #000000; 
