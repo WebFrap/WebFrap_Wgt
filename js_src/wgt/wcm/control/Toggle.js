@@ -27,7 +27,8 @@ $R.addAction( 'control_toggle', function( jNode ){
   
 
   var showNot = jNode.attr('wgt_not') === '!'?true:false, // invert the visibility
-    trgtSrc = jNode.attr('wgt_target'); // any valid jquery selector
+    trgtSrc = jNode.attr('wgt_target'),// any valid jquery selector
+    actBox = null; // tmp actualBox
 
   // hide & show action
   var triggerA = function(){
@@ -39,20 +40,52 @@ $R.addAction( 'control_toggle', function( jNode ){
       console.log( 'checked '+trgtSrc+' '+evTNode.length );
       
       if( showNot ){
-        evTNode.hide();
+        evTNode.each(function(){
+          
+          actBox = $S(this);
+          if( actBox.is('[wgt_hidden="true"]') ){
+            actBox.show();
+          }else{
+            actBox.hide();
+          }
+        });
       }
       else{
-        evTNode.show();
+        evTNode.each(function(){
+          
+          actBox = $S(this);
+          if( actBox.is('[wgt_hidden="true"]') ){
+            actBox.hide();
+          }else{
+            evTNode.show();
+          }
+        });
       }
         
     }
     else{
 
       if( showNot ){
-        evTNode.show();
+        evTNode.each(function(){
+          
+          actBox = $S(this);
+          if( actBox.is('[wgt_hidden="true"]') ){
+            actBox.hide();
+          }else{
+            actBox.show();
+          }
+        });
       }
       else{
-        evTNode.hide();
+        evTNode.each(function(){
+          
+          actBox = $S(this);
+          if( actBox.is('[wgt_hidden="true"]') ){
+            actBox.show();
+          }else{
+            evTNode.hide();
+          }
+        });
       }
     }
     
