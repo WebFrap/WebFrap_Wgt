@@ -31,17 +31,10 @@ $R.addAction( 'ui_grid', function( jNode ){
     var tObj = $S('#'+jNode.attr('id')),
       settings = {};
     
-    try{
-      
-      var cfgData = $S('var#'+jNode.attr('id')+'-cfg-grid');
-      settings = cfgData.is('var')
-        ? $WGT.robustParseJSON(cfgData.text())
-        : {};
-    }
-    catch(err){
-      
-      $D.errorWindow( 'UI Error', err.description );
-    }
+    var cfgData = $S('var#'+jNode.attr('id')+'-cfg-grid');
+    settings = cfgData.is('var')
+      ? $WGT.robustParseJSON(cfgData.text())
+      : {};
 
     tObj.grid(settings);
     
