@@ -39,6 +39,7 @@ $files = array
   PATH_WGT.'layout/wgt/wgt/wgt.tree.css',
   PATH_WGT.'layout/wgt/wgt/wgt.text.css',
   PATH_WGT.'layout/wgt/wgt/wgt.search.css',
+  PATH_WGT.'layout/wgt/wgt/wgt.elements.css',
   
   // layouts
   PATH_WGT.'layout/wgt/wgt/layout/wgt.layout.grid.css',
@@ -52,8 +53,6 @@ $files = array
   
   PATH_WGT.'layout/wgt/wgt/editor/wgt.editor.core.css',
   
-  
-  
   // selectboxes
   PATH_WGT.'layout/wgt/wgt/select/wgt.select.priority.css',
 
@@ -62,7 +61,6 @@ $files = array
   PATH_WGT.'layout/wgt/jquery_ui/jquery.ui.accordion.css',
   PATH_WGT.'layout/wgt/jquery_ui/jquery.ui.datepicker.css',
 
-  
   // wgt widgets
   PATH_WGT.'layout/wgt/wgt/widget/wgt.widget.dropbox.css',
 
@@ -75,7 +73,6 @@ $files = array
   PATH_WGT.'layout/wgt/jquery/jquery.treeTable.css',
   PATH_WGT.'layout/wgt/jquery/jquery.modal.css',
   PATH_WGT.'layout/wgt/jquery/jquery.star_rating.css',
-  PATH_WGT.'layout/wgt/jquery/jquery.vert_mega_menu.css',
   PATH_WGT.'layout/wgt/jquery/jquery.mega_menu.css',
   PATH_WGT.'layout/wgt/jquery/jquery.ui.datetimepicker.css',
 
