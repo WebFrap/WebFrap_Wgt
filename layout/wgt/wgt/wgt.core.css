@@ -217,6 +217,26 @@ keinen strich durch die rechnung macht. */
   margin:5px !important;
 }
 
+.wgt-space.stop
+{
+  margin-top:12px !important;
+}
+
+.wgt-space.sbottom
+{
+  margin-bottom:12px !important;
+}
+
+.wgt-space-top
+{
+  margin-top:12px !important;
+}
+
+.wgt-space-bottom
+{
+  margin-bottom:12px !important;
+}
+
 .wgt-space p
 {
   margin-left:0px;
