@@ -57,7 +57,7 @@ $R.addAction( 'control_toggle', function( jNode ){
           if( actBox.is('[wgt_hidden="true"]') ){
             actBox.hide();
           }else{
-            evTNode.show();
+            actBox.show();
           }
         });
       }
@@ -83,7 +83,7 @@ $R.addAction( 'control_toggle', function( jNode ){
           if( actBox.is('[wgt_hidden="true"]') ){
             actBox.show();
           }else{
-            evTNode.hide();
+            actBox.hide();
           }
         });
       }
