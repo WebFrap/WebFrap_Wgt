@@ -161,6 +161,7 @@ $files = array
   PATH_WGT.'js_src/wgt/wcm/ui/ToggleControls.js',
   PATH_WGT.'js_src/wgt/wcm/ui/SelectionTab.js',
   PATH_WGT.'js_src/wgt/wcm/ui/RadioTab.js',
+  PATH_WGT.'js_src/wgt/wcm/ui/ButtonCheckMatrix.js',
   
   PATH_WGT.'js_src/wgt/wcm/control/Minidrop.js',
   PATH_WGT.'js_src/wgt/wcm/control/CheckButton.js',
