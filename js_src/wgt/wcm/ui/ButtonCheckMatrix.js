@@ -30,21 +30,24 @@
  */
 $R.addAction( 'ui_button_check_matrix', function( jNode ){
 
+  console.log("bin da");
+  
   jNode.removeClass("wcm_ui_button_check_matrix");
 
-  var renderAct=function(){
-    var evntNode = $S(this);
+  jNode.find('button').bind( 'click', function(){    
     
-    if( evntNode.hasClass('wgt-active') ){
+    console.log( "clicked " );
+    
+    var evntNode = $S(this);
+
+    if( evntNode.hasClass('ui-state-active') ){
       jNode.find('input[name="'+evntNode.attr('wgt_key')+'"]').removeAttr('checked');
-      evntNode.removeClass('wgt-active');
+      evntNode.removeClass('ui-state-active');
     }else{
       jNode.find('input[name="'+evntNode.attr('wgt_key')+'"]').attr('checked','checked');
-      evntNode.addClass('wgt-active');
+      evntNode.addClass('ui-state-active');
     }
     
-  };
-  
-  jNode.find('button').change(renderAct).change();
+  });
 
 });
