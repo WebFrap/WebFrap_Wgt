@@ -7,3 +7,10 @@
   display:inline-block;
   width:90px;
 }
+
+
+.wgt-matrix .cell
+{
+  display:inline-block;
+  width:25px;
+}
