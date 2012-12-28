@@ -146,7 +146,17 @@
        
       
       }//end if( true === opts.closeOnLeave || 'true' === opts.closeOnLeave  )
+      else{
+        
+        dropBox.bind( 'mouseenter.dropmenu', function(){
+          
+          dropBox.removeClass('wgt-opacity-30');
+        }).bind( 'mouseleave.dropmenu', function(){
 
+          dropBox.addClass('wgt-opacity-30');
+        });
+        
+      }
       // event setzen
       /*
       if( opts.closeAll ){
@@ -181,6 +191,7 @@
 
       // Elemente des dropmenüs per tastatur selectierbar machen
       $S(document).bind( 'keypress.dropmenu',  function(e) {
+        
         switch( e.keyCode ) {
         
           case 38: // up
@@ -240,6 +251,7 @@
           break;
             
         }// end switch
+        
       });
       
     },
@@ -250,6 +262,7 @@
     removeKeyCommands: function(){
       
       $S(document).unbind( 'keypress.dropmenu' ).unbind( 'mousedown.dropmenu' );
+      
     },
     
     // Set up the widget
