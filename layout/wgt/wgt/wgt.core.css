@@ -35,6 +35,20 @@ a.plain
   cursor:default;
 }
 
+pre
+{
+  font-family:"Courier";
+}
+
+
+a.wgt-action
+{
+  font-weight:bold !important;
+  padding:2px;
+  border:1px solid grey;
+  border-radius: 3px;
+}
+
 /*//////////////////////////////////////////////////////////////////////////////
 // Meta elements
 //////////////////////////////////////////////////////////////////////////////*/
@@ -491,6 +505,21 @@ img.wgt-icon.xxlarge
 .bw4
 {
   width:500px !important;
+}
+
+.bw42
+{
+  width:525px !important;
+}
+
+.bw45
+{
+  width:575px !important;
+}
+
+.bw58
+{
+  width:600px !important;
 }
 
 .bw5
