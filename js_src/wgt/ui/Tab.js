@@ -426,11 +426,12 @@
       
       try{
         
-        if( tab.script != undefined )
+        if( tab.script !== undefined ){
           (new Function("self",tab.script))(tabObj);
+        }
       }
       catch( err ) {
-        console.error( 'Tab code Failed '+err.description );
+        console.error( 'Tab code Failed Code: '+tab.script+' '+err.description );
       }
       
       var position = headContainer.find(".tab_container .tab").length-1;

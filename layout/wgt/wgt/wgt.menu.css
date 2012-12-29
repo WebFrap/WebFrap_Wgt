@@ -33,7 +33,7 @@ div.wgt-block
   width:90px;
   height:90px;
   margin-bottom:30px;
-  border:2px solid white !important;
+  border:2px solid transparent !important;
   border-radius: 4px;
 }
 
@@ -43,6 +43,9 @@ div.wgt-block:hover
   border:2px solid silver !important;
   border-radius: 3px;
   background-color:#DFEFFC;
+  -moz-box-shadow:3px 3px 3px #666;
+  -webkit-box-shadow:3px 3px 3px #666;
+  box-shadow:3px 3px 3px #666;  
 }
 
 div.wgt-menu.folder>div.wgt-entry p,

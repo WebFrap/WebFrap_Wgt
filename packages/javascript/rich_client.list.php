@@ -234,7 +234,6 @@ $files = array
   PATH_WGT.'js_src/wgt/jquery/minimenu/Url.js',
   PATH_WGT.'js_src/wgt/jquery/minimenu/Dom.js',
 
-
   // Compatibility check
   PATH_WGT.'js_src/wgt/wgt/Compatibility.js',
   
