@@ -10,7 +10,7 @@ $R.addAction( 'ui_dropform', function( jNode ){
   var props  = source.is( 'var' )? $WGT.robustParseJSON( source.text() ) : {};
   
   
-  var menuWidth = 450,
+  var menuWidth = 750,
     menuItems = [];
   
   if( source.length > 0 ){
