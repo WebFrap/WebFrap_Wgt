@@ -6,7 +6,8 @@ div,
 p,
 textarea,
 input,
-select
+select,
+ul
 {
   /* see http://css-tricks.com/box-sizing/ */
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
