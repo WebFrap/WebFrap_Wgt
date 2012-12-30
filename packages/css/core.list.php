@@ -55,7 +55,7 @@ $files = array
   
   // selectboxes
   PATH_WGT.'layout/wgt/wgt/select/wgt.select.priority.css',
-
+  PATH_WGT.'layout/wgt/wgt/lists/wgt.lists.access.css',
  
   PATH_WGT.'layout/wgt/jquery_ui/jquery.ui.core.css', 
   PATH_WGT.'layout/wgt/jquery_ui/jquery.ui.accordion.css',
