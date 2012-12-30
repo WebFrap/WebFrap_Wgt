@@ -79,7 +79,7 @@
 
       var dropBoxId = ge.attr( 'wgt_drop_box' );
       var dropBox   = $S( '#'+dropBoxId );
-
+      
       // browser contextmenü deaktivieren
       dropBox.bind('contextmenu', function() { return false;});
       

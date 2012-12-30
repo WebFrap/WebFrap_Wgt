@@ -48,9 +48,10 @@
       // Save options to element
       $this.data( 'miniMenuOptions', opts );
 
-      if( $this.hasClass( 'wgt-dropform-menu-selector' ) )
+      if( $this.hasClass( 'wgt-dropform-menu-selector' ) ){
         return this;
-
+      }
+      
       // Initialise the overlay box
       initMiniMenuOverlay( opts, $this );
 
@@ -314,6 +315,7 @@
     style.top = style.top + $target.outerHeight();
     style.position = 'absolute';
     $overlay.css(style);
+    $R.eventAfterAjaxRequest();
     $overlay.show( );
     
   
@@ -403,7 +405,8 @@
     else{
       $S("#"+overlayID).replaceWith( tplOverlay );
     }
-
+      
+    
     
     $S("#"+overlayID).attr("style", "");
     $S("#"+overlayID).css(opts.overlayStyle);

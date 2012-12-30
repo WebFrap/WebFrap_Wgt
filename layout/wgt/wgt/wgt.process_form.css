@@ -9,14 +9,41 @@ div.wgt-process-form
 
 div.wgt-process-form div.description
 {
-  width:185px;
+  width:200px;
   margin:5px;
   float:left;
 }
 
-div.wgt-process-form div.action
+div.wgt-process-form div.wgt-panel.title h2
+{
+  width:700px;
+  float:left;  
+}
+
+div.wgt-process-form div.pstate
+{
+  padding-right:10px;
+  padding-top:3px;
+}
+
+div.wgt-process-form div.form
+{
+  width:285px;
+  margin:5px;
+  float:left;
+}
+
+div.wgt-process-form div.states
 {
   width:235px;
+  margin:5px;
+  float:left;
+  clear:bothx;
+}
+
+div.wgt-process-form div.action
+{
+  width:275px;
   margin:5px;
   float:left;
 }
@@ -40,27 +67,27 @@ div.wgt-process-form div.action ul.actions li
 
 div.wgt-process-form div.comment
 {
-  width:420px;
+  width:220px;
   margin:5px;
   float:left;
 }
 
 div.wgt-process-form textarea
 {
-  width:420px;
+  width:220px;
   height:75px;
 }
 
 
 div.wgt-process-form div.slices
 {
-  width:430px;
+  width:285px;
   float:left;
 }
 
 div.wgt-process-form div.slice
 {
-  width:420px;
+  width:275px;
   margin:5px;
   float:left;
 }

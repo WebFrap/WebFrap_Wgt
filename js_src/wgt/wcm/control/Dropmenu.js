@@ -10,27 +10,22 @@ $R.addAction( 'control_dropmenu', function( jNode ){
 
   jNode.removeClass("wcm_control_dropmenu");
 
-  var settings = {};
-
-  try{
-
-    var cfgData = $S('var#'+jNode.attr('id')+'-cfg-dropmenu');
-    
-    if( cfgData.is('var') ){
-      settings = $WGT.robustParseJSON(cfgData.text());
-      cfgData.remove();
-    }
-    else{
-      settings = {};
-    }
-
+  var settings = {},
+    cfgData = jNode.next();
+  
+  if( !cfgData.is('var') )
+    cfgData = $S('var#'+jNode.attr('id')+'-cfg-dropmenu');
+  
+  if( cfgData.is('var') ){
+    console.log( "qdqwdqw "+settings.align+' '+cfgData.text() );
+    settings = $WGT.robustParseJSON(cfgData.text());
+    //cfgData.remove();
   }
-  catch(err){
-    
-    if( undefined !== $D )
-      $D.errorWindow( 'UI Error', err.description );
+  else{
+    settings = {};
   }
 
+  
   jNode.dropdown( settings );
 
 });

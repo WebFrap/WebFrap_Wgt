@@ -26,6 +26,7 @@ $files = array
   PATH_WGT.'layout/wgt/wgt/wgt.blocklist.css',
   PATH_WGT.'layout/wgt/wgt/wgt.dropform.css',
   PATH_WGT.'layout/wgt/wgt/wgt.footer.css',
+  PATH_WGT.'layout/wgt/wgt/wgt.controls.css',
   PATH_WGT.'layout/wgt/wgt/wgt.form.css',
   PATH_WGT.'layout/wgt/wgt/wgt.grid.css',
   PATH_WGT.'layout/wgt/wgt/wgt.list.css',

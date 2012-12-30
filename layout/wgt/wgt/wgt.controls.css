@@ -1,0 +1,159 @@
+/*//////////////////////////////////////////////////////////////////////////////
+// Buttons
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+.wgt-button,
+.wgt-button2
+{
+  cursor:pointer;
+  vertical-align: baseline;
+  white-space: nowrap;
+  margin-bottom:0;
+  margin-left:0;
+  margin-top:0;
+  margin-right:0 !important;
+  padding:2px;
+  padding-bottom:0 !important;
+  padding-top:0 !important;
+  height:22px;
+}
+
+.wgt-button.append,
+.wgt-button.right,
+.wgt-button2.append,
+.wgt-button2.right
+{
+  margin-left:-5px;
+  border:1px solid black;
+  min-width:19px;
+  
+  /* clear borders */
+  border-radius: 0px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.wgt-button.inline,
+.wgt-button2.inline
+{
+  margin-left:-5px;
+  border:1px solid black;
+  
+  /* clear borders */
+  border-radius: 0px;
+}
+
+.wgt-button.right,
+.wgt-button2.right
+{
+  margin-left:-4px !important;
+}
+
+button.wgt-button>img,
+button.wgt-button2>img
+{
+  /*margin-bottom:-5px;*/
+  vertical-align:middle;  
+}
+
+.wgt-button a,
+.wgt-button2 a
+{
+  display:inline;
+  vertical-align:middle;
+}
+
+a.wgt-button,
+a.wgt-button2 
+{
+  height:16px;
+  padding:2px 4px 2px 4px !important;
+  color:white !important;
+  display:block;
+}
+
+a.wgt-button img,
+a.wgt-button2 img
+{
+  vertical-align:middle;
+  /*
+  float:left;
+  text-align:left;
+  */
+}
+
+.wgt-button.icon
+{
+  height:22px;
+  padding:2px 7px 2px 20px;
+}
+
+.wgt-button.reset
+{
+  cursor:pointer;
+}
+
+.wgt-button.just-annotate,
+.wgt-button2.just-annotate
+{
+  cursor:default;
+}
+
+span.wgt-button,
+span.wgt-button2
+{
+  padding:26px;  
+  padding:3px;
+}
+
+span.wgt-button span,
+span.wgt-button2 span,
+span.wgt-button input,
+span.wgt-button2 input,
+span.wgt-button img,
+span.wgt-button2 img
+{
+  vertical-align:middle;
+  border:0px;
+}
+
+span.wgt-button input,
+span.wgt-button2 input
+{
+  margin-left:3px;
+  margin-right:0px;
+}
+
+ul.wgt-button-list
+{
+  width:245px;
+  padding:4px;
+  background-color:silver;
+}
+
+ul.wgt-button-list li
+{
+  margin-bottom:2px;
+}
+
+ul.wgt-button-list button
+{
+  width:245px;
+  text-align:center;
+  height:22px;
+  size:16px;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Button states
+//////////////////////////////////////////////////////////////////////////////*/
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Buttonset
+//////////////////////////////////////////////////////////////////////////////*/
+
+div.wgt-button-set label span
+{
+  padding:0px;
+}
