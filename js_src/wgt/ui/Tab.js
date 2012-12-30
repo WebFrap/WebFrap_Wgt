@@ -568,7 +568,7 @@
           
           var tmp = classNames[i];
   
-          if( tmp.indexOf("wgt_tabkey_") != -1 ){
+          if( tmp.indexOf("wgt_tabkey_") !== -1 ){
             
             tabId = classNames[i].substr(11);
             break; // break after the first match
@@ -579,7 +579,7 @@
         // if there is a url on the tab send a get request
         var tabUrl = tabLink.prop( 'href' );
   
-        if( tabUrl != undefined ){
+        if( tabUrl !== undefined ){
             
           if( !tabLink.hasClass('wgt_loaded') ){
             
@@ -594,7 +594,7 @@
         children.removeClass("ui-state-active");
           
         for( var i=0; i< clicked.length; i++ ){
-          if( clicked[i]==$S(this).prop('id') ){
+          if( clicked[i]===$S(this).prop('id') ){
             
             clicked.splice(i,1);
             break;
@@ -603,7 +603,7 @@
           
         clicked.push(tabNode.prop('id'));
          
-        if( tabNode.css('display') == "none" ){
+        if( tabNode.css('display') === "none" ){
   
           tabNode.css('display','inline').removeClass('tab_hidden');
           var rightVisible = (
@@ -664,7 +664,7 @@
                 
             }
             
-            if( i == clicked.length){
+            if( i === clicked.length){
               
               temp = tabScroll.find('.tab:not(.tab_hidden,.tab_no_hide):first');
               temp.addClass('tab_hidden').css('display','none');
