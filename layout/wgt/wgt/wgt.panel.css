@@ -55,4 +55,32 @@ div.wgt-panel.menu
 	margin-left:5px;
 }
 
+/**/
+
+.wgt-panel.progress
+{
+  height:32px;
+  padding:0px;
+  vertical-align:middle;
+  background-color:#CBCBCB;
+}
+
+.wgt-panel.progress li
+{
+  height:32px;
+  line-height:32px;
+  display:inline-block;
+  list-style:none;
+  font-weight:bold;
+  padding:3px 21px 3px 3px;
+  background: url("<?php echo $images ?>wgt/arrow_sep.png") right center no-repeat;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.wgt-panel.progress li:hover
+{
+  background-color:white;
+}
 

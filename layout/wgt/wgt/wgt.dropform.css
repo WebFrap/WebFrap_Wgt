@@ -7,16 +7,19 @@
 .wgt-dropform-overlay 
 {
   /*width: 150px;*/
-  font-size: .9em;
   position: absolute;
   z-index: 1000;
   display: none;
+  padding:0px;
   -moz-box-shadow:8px 8px 8px #666;
   -webkit-box-shadow:8px 8px 8px #666;
   box-shadow:8px 8px 8px #666;  
+  border: 1px solid black;
+  border-radius: 9px;
+  overflow:hidden;
 }
 
-
+/*
 #wgt-dropform-overlay .ui-widget,
 .wgt-dropform-overlay .ui-widget
 {
@@ -36,6 +39,7 @@
    margin-bottom: .1em;
    padding: .2em;
 }
+*/
 
 #wgt-dropform-overlay .ui-widget.ui-widget-content,
 .wgt-dropform-overlay .ui-widget.ui-widget-content
@@ -49,7 +53,6 @@
   border-top:none;
   border-bottom:none;
   border-left:none;
-  border-right-width: 2px;
 }
 
 #wgt-dropform-overlay .button-close,
@@ -74,15 +77,15 @@
 .wgt-dropform-overlay .bottom 
 {
   float: left;
-  padding-top: .2em;
-  padding-bottom: .4em;
+  /*padding-top: .2em;
+  padding-bottom: .4em;*/
 }
 
 #wgt-dropform-overlay .miniMenuMenuButton,
 .wgt-dropform-overlay .miniMenuMenuButton
 {
-  padding-top:    .1em;
-  padding-bottom: .0em;
+  /*padding-top:    .1em;
+  padding-bottom: .0em;*/
 
 }
 

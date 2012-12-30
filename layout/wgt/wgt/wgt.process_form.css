@@ -4,7 +4,7 @@
 
 div.wgt-process-form
 {
-
+  width:750px;
 }
 
 div.wgt-process-form div.description
@@ -48,6 +48,7 @@ div.wgt-process-form div.comment
 div.wgt-process-form textarea
 {
   width:420px;
+  height:75px;
 }
 
 
