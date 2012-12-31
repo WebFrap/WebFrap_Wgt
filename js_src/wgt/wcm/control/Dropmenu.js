@@ -5,19 +5,16 @@
  */
 $R.addAction( 'control_dropmenu', function( jNode ){
 
-  if( $C.DEBUG.WCM.WIDGET )
-    console.log( 'wcm control_dropmenu path: ' +jNode.getNodePath('/')  );
-
   jNode.removeClass("wcm_control_dropmenu");
 
   var settings = {},
     cfgData = jNode.next();
   
-  if( !cfgData.is('var') )
+  if( !cfgData.is('var') ){
     cfgData = $S('var#'+jNode.attr('id')+'-cfg-dropmenu');
+  }
   
   if( cfgData.is('var') ){
-    console.log( "qdqwdqw "+settings.align+' '+cfgData.text() );
     settings = $WGT.robustParseJSON(cfgData.text());
     //cfgData.remove();
   }
@@ -25,7 +22,6 @@ $R.addAction( 'control_dropmenu', function( jNode ){
     settings = {};
   }
 
-  
   jNode.dropdown( settings );
 
 });

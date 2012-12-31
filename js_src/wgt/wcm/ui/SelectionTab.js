@@ -65,9 +65,7 @@ $R.addAction( 'ui_selection_tab', function( jNode ){
 
     
     triggerAct = function(){
-      
-      console.log( 'Trigger' );
-      
+
       var headEntry = jNode.find(':checked');
       
       if( headEntry.hasClass('disabled') ){

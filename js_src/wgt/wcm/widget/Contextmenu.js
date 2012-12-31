@@ -67,7 +67,7 @@ $R.addAction( 'widget_contextmenu', function( jNode ){
       jNode.unbind('mouseup.context');
       if( evt.button == 2 ) {
           
-        console.log("rechtsklick");
+        //console.log("rechtsklick");
         
         $doc.unbind('click');
         
