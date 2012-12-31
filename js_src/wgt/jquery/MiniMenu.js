@@ -100,7 +100,10 @@
           $S('#'+theOverlay.find('var.conf').text()).hide();
         }
       }
-
+      
+      if( undefined !== $D.globalClick['.'+ overlayID] )
+        $D.globalClick['.'+ overlayID] = undefined;
+      
       //jQuery('.wgt-dropform-overlay').removeClass('wgt-dropform-overlay');
     }
     
@@ -128,6 +131,14 @@
     
     // Einfach mal die Box schliesen für den Fall, dass sie aktuell noch offen ist
     jQuery.fn.miniMenu.close();
+    
+    $D.globalClick['.'+ overlayID] = function( event ){
+      
+      if( !$S(event.target).parentX( '.'+ overlayID ) ){
+        jQuery.fn.miniMenu.close();
+        $D.globalClick['.'+ overlayID] = undefined;
+      }
+    };
 
     if( !jQuery( '#'+$targetId+'-mnm-overl' ).length ){
       
