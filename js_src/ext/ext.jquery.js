@@ -187,7 +187,7 @@
       
     });
     
-    console.log( 'SUM '+sum );
+    //console.log( 'SUM '+sum );
     
     if( isNaN(sum) ){
       return sum;
