@@ -60,6 +60,35 @@
     this.globalCloseMenu = function(){};
     
     /**
+     * Actions für einen globalen klick
+     * Nur on demand befüllen wenn etwas aktiv ist
+     * ansonsten muss geleert werden.
+     * 
+     * Key muss ein valider Selector sein.
+     * Es wird regelmäßig gecheckt ob die elemente noch vorhanden sind ansonsten
+     * wird die action rausgeworfen
+     */
+    this.globalClick = {};
+    
+    /**
+     * global click triggern
+     */
+    this.triggerGlobalClick = function( event ){
+      
+      for (var prop in this.globalClick) {
+        if( this.globalClick.hasOwnProperty( prop ) ) {
+          if( undefined !== this.globalClick[prop] ){
+            this.globalClick[prop]( event );
+          }
+        } 
+      }
+      
+      return true;
+      
+    };//end this.triggerGlobalClick */
+
+    
+    /**
      * Schliesen des aktiven Menüs
      * Wird gesetzt um alle möglichen menüs 
      */
@@ -457,7 +486,7 @@
   // create instance
   window.$D = new WgtDesktop();
   
-  
+  // short cuts
   $S(window).keypress(function(event) {
     
     console.log( "pressed "+event.which );
@@ -482,6 +511,11 @@
     }
 
     return true;
+  });
+  
+  // global click
+  $S(window).mouseup(function(event) {
+    return $D.triggerGlobalClick( event );
   });
 
 })( jQuery, window);
