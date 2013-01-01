@@ -12,16 +12,23 @@ $R.addAction( 'ui_dropform', function( jNode ){
   
   var menuWidth = 750,
     menuItems = [],
-    overlayData;
+    overlayData,
+    nextNode,
+    nodeId;
   
   if( source.length > 0 ){
     
     jNode.click( function( event ){
       
-      var nextNode = jNode.next(),
-        nodeId   = jNode.attr('id');
+      nextNode = jNode.next();
+      nodeId   = jNode.attr('id');
       
       overlayData = jNode.data( 'mini-menu-overlay' );
+      
+      if( !overlayData && nextNode.is( '.'+nodeId ) ){
+        overlayData = nextNode.html();
+        jNode.data( 'mini-menu-overlay', overlayData );
+      }
       
       // wenn nicht vorhanden vom server laden
       if( !overlayData ){  //!nextNode.is( '.'+nodeId ) ){
@@ -58,6 +65,16 @@ $R.addAction( 'ui_dropform', function( jNode ){
     
   }
   else{
+    
+    nextNode = jNode.next();
+    nodeId   = jNode.attr('id');
+    
+    overlayData = jNode.data( 'mini-menu-overlay' );
+    
+    if( !overlayData && nextNode.is( '.'+nodeId ) ){
+      overlayData = nextNode.html();
+      jNode.data( 'mini-menu-overlay', overlayData );
+    }
       
     //var theContentNode = $S( '.'+jNode.attr('id') );
     var theContent = $S('<div>'+overlayData+'</div>');
