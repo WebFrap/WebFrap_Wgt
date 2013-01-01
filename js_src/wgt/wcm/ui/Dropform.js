@@ -11,7 +11,8 @@ $R.addAction( 'ui_dropform', function( jNode ){
   
   
   var menuWidth = 750,
-    menuItems = [];
+    menuItems = [],
+    overlayData;
   
   if( source.length > 0 ){
     
@@ -20,11 +21,13 @@ $R.addAction( 'ui_dropform', function( jNode ){
       var nextNode = jNode.next(),
         nodeId   = jNode.attr('id');
       
+      overlayData = jNode.data( 'mini-menu-overlay' );
+      
       // wenn nicht vorhanden vom server laden
-      if( !nextNode.is( '.'+nodeId ) ){
+      if( !overlayData ){  //!nextNode.is( '.'+nodeId ) ){
 
         var theTemplate = $R.get( props.url+'&input='+nodeId ).data;
-        jNode.after( '<div class="'+nodeId+' template" >'+theTemplate+'</div>' );
+        jNode.data( 'mini-menu-overlay', theTemplate );
         
         //var theContentNode = $S( '.'+nodeId );
         var theContent = $S( '<div>'+theTemplate+'</div>' );
@@ -56,8 +59,8 @@ $R.addAction( 'ui_dropform', function( jNode ){
   }
   else{
       
-    var theContentNode = $S( '.'+jNode.attr('id') );
-    var theContent = $S('<div>'+theContentNode.html()+'</div>');
+    //var theContentNode = $S( '.'+jNode.attr('id') );
+    var theContent = $S('<div>'+overlayData+'</div>');
     
     theContent.find(':input').removeClass('flag-template');
   

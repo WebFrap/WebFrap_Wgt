@@ -101,8 +101,9 @@
         }
       }
       
-      if( undefined !== $D.globalClick['.'+ overlayID] )
+      if( undefined !== $D.globalClick['.'+ overlayID] ){
         $D.globalClick['.'+ overlayID] = undefined;
+      }
       
       //jQuery('.wgt-dropform-overlay').removeClass('wgt-dropform-overlay');
     }
@@ -110,6 +111,9 @@
   };
 
   // Opens the overlay box
+  /**
+   * @param target
+   */
   jQuery.fn.miniMenu.open = function( target ){
 
     var $target   = jQuery(target);
@@ -168,7 +172,7 @@
           }
   
           if( builders[item.type] !== undefined ){
-            builders[item.type](item , menuBody, $target );
+            builders[item.type]( item, menuBody, $target );
           }
           else{
             // check for some error handling

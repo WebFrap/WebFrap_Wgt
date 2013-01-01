@@ -354,7 +354,7 @@
         params = {};
       }
 
-      console.log( "Request by Form ID "+formId  );
+      console.log( "Request by Form ID "+formId+' found '+$S('#'+formId).length  );
       
       if( params.search ){
         
