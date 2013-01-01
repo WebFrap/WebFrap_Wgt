@@ -181,6 +181,15 @@ table.wgt-table tbody,
   padding:3px;
 }
 
+div.wgt-content_box,
+div.wgt-news-box,
+.wgt-dashboard-header
+{
+  -moz-box-shadow:1px 1px 1px #666;
+  -webkit-box-shadow:1px 1px 1px #666;
+  box-shadow:1px 1px 1px #666;  
+}
+
 div.wgt-content_box div.head h2,
 div.wgt-ui-desktop h1,
 div.wgt-news-box h2
@@ -226,7 +235,12 @@ div.wgt-fake-input
 
 fieldset
 {
-  border: 1px solid #5c5c5c;
+  border: none;
+  border-left: 1px solid #5c5c5c;  
+  border-radius: 3px;
+  -moz-box-shadow:1px 1px 1px #666;
+  -webkit-box-shadow:1px 1px 1px #666;
+  box-shadow:1px 1px 1px #666;  
 }
 
 
