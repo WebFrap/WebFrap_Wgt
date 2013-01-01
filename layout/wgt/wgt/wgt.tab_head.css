@@ -8,9 +8,9 @@ div.wgt-tab-head
   /*border:1px solid silver;*/
   border-radius: 3px;  
 
-  -moz-box-shadow:2px 2px 2px #666;
-  -webkit-box-shadow:2px 2px 2px #666;
-  box-shadow:2px 2px 2px #666;  
+  -moz-box-shadow:1px 1px 1px #666;
+  -webkit-box-shadow:1px 1px 1px #666;
+  box-shadow:1px 1px 1px #666;  
 }
 
 div.wgt-tab-head  div.tab_head
