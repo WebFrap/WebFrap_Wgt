@@ -74,6 +74,7 @@ $R.addAction( 'ui_dropform', function( jNode ){
     if( !overlayData && nextNode.is( '.'+nodeId ) ){
       overlayData = nextNode.html();
       jNode.data( 'mini-menu-overlay', overlayData );
+      nextNode.remove();
     }
       
     //var theContentNode = $S( '.'+jNode.attr('id') );
