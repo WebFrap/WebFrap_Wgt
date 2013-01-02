@@ -566,9 +566,9 @@ span.tab.ui-state-active a,
 div.wgt-tab-head a.tab.active
 {
   border: 1px solid #5c5c5c;
-  background: #e3e3e3 url(<?php echo $images ?>ui/ui-bg_highlight-soft_50_e3e3e3_1x100.png) 50% 50% repeat;
+  background: #750003 url(<?php echo $images ?>ui/ui-bg_highlight-soft_25_750003_1x100.png) 50% 50% repeat-x;
+  color: #cccccc;
   font-weight: normal;
-  color: #0e0606;
 }
 
 .ui-accordion-content label
@@ -864,9 +864,9 @@ div.box-message a
 .ui-widget-header .ui-state-active
 {
   border: 1px solid #5c5c5c;
-  background: #e3e3e3 url(<?php echo $images ?>ui/ui-bg_highlight-soft_50_e3e3e3_1x100.png) 50% 50% repeat;
+  background: #750003 url(<?php echo $images ?>ui/ui-bg_highlight-soft_25_750003_1x100.png) 50% 50% repeat-x;
+  color: #cccccc;
   font-weight: normal;
-  color: #0e0606;
 }
 
 .ui-state-active a,
