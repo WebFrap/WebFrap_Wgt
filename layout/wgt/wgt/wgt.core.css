@@ -772,6 +772,24 @@ table.fix_layout
   border-spacing:0px;
 }
 
+/*//////////////////////////////////////////////////////////////////////////////
+// shadow
+//////////////////////////////////////////////////////////////////////////////*/
+
+/* @imutable */
+.wgt-shadow
+{
+  -moz-box-shadow:1px 1px 1px #666;
+  -webkit-box-shadow:1px 1px 1px #666;
+  box-shadow:1px 1px 1px #666;  
+}
+
+.wgt-shadow-b
+{
+  -moz-box-shadow:5px 5px 5px #666;
+  -webkit-box-shadow:5px 5px 5px #666;
+  box-shadow:5px 5px 5px #666;  
+}
 
 
 /*//////////////////////////////////////////////////////////////////////////////

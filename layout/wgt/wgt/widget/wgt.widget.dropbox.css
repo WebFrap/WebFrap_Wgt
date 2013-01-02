@@ -5,9 +5,9 @@
   background-color:#eee;
   border:1px solid #ccc;
   display:none;
-  -moz-box-shadow:8px 8px 8px #666;
-  -webkit-box-shadow:8px 8px 8px #666;
-  box-shadow:8px 8px 8px #666;  
+  -moz-box-shadow:5px 5px 5px #666;
+  -webkit-box-shadow:5px 5px 5px #666;
+  box-shadow:5px 5px 5px #666;  
 }
 
 .wgt-dropdownbox ul 
@@ -86,9 +86,9 @@
   border:1px solid #ccc;
   padding-left:30px;
   width:200px;  
-  -moz-box-shadow:8px 8px 8px #666;
-  -webkit-box-shadow:8px 8px 8px #666;
-  box-shadow:8px 8px 8px #666;  
+  -moz-box-shadow:5px 5px 5px #666;
+  -webkit-box-shadow:5px 5px 5px #666;
+  box-shadow:5px 5px 5px #666;  
 }
 
 .wgt-dropdownbox ul li span ul li 
