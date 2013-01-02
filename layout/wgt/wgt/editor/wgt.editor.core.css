@@ -110,8 +110,8 @@ div.doc .node.gateway
   color:white;
 }
 
-div.wgt-editor_container .node.waring,
-div.doc .node.waring
+div.wgt-editor_container .node.warning,
+div.doc .node.warning
 {
   background-color:#FF8000; 
   color:white;

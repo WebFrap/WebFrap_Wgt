@@ -30,9 +30,7 @@ $R.addAction( 'control_check_button', function( jNode ){
         inpNode.attr( 'checked', false );
         inpNode.change();
       }
-      
-      
-      
+
     }
     else{
       

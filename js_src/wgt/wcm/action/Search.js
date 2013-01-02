@@ -41,7 +41,7 @@ $R.addAction( 'req_search', function( jNode ){
   var evAction = function(e) {
     nForm.data('start','0');
     nForm.data('begin',null);
-    $R.form( nForm );
+    $R.form( formId );
     e.preventDefault();
     return false;
   };
@@ -62,7 +62,7 @@ $R.addAction( 'req_search', function( jNode ){
 
         nForm.data('start','0');
         nForm.data('begin',null);
-        $R.form( nForm );
+        $R.form( formId );
         e.preventDefault();
         return false;
       }
@@ -73,7 +73,7 @@ $R.addAction( 'req_search', function( jNode ){
           jNode.val('');
           nForm.data('start','0');
           nForm.data('begin',null);
-          $R.form( nForm );
+          $R.form( formId );
           e.preventDefault();
           return false;
         }
