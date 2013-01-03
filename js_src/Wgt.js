@@ -121,10 +121,10 @@ window.$S = jQuery.noConflict();
         
         self.modules[key] = true;
         
-        if( WEB_GW !== undefined ){
+        if( WEB_GW !== undefined && WEB_GW !== null ){
           $S('head').append( '<script type="text/javascript" src="'+WEB_GW+'js.php?l=list.'+key+'" ></script>' );
         }
-        else if( window.$C.WEB_GW ){
+        else if( window.$C.WEB_GW !== undefined && window.$C.WEB_GW !== null ){
           $S('head').append( '<script type="text/javascript" src="'+window.$C.WEB_GW+'js.php?l=list.'+key+'" ></script>' );
         }
         else{
