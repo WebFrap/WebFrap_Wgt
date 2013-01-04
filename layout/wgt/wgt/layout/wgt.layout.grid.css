@@ -7,14 +7,15 @@
   display:table;
 }
 
-.wgt-layout-grid div.gr
-.wgt-layout-grid>div
+.wgt-layout-grid div.gr/*,
+.wgt-layout-grid>div*/
 {
   display:table-row;
 }
 
-.wgt-layout-grid div.gc
-.wgt-layout-grid>div>div
+.wgt-layout-grid div.gc,
+.wgt-layout-grid div.gr>div/*,
+.wgt-layout-grid>div>div*/
 {
   display:table-cell;
 }

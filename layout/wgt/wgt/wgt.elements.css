@@ -14,3 +14,32 @@
   display:inline-block;
   width:25px;
 }
+
+
+/* list element */
+
+ul.wgt-input-list
+{
+  margin-left:120px;
+  width:325px;
+}
+
+ul.wgt-input-list li
+{
+  border-bottom:1px dotted silver;
+}
+
+ul.wgt-input-list li label
+{
+  float:left;
+  display:inline-block;
+  width:250px;
+}
+
+ul.wgt-input-list li div.nav
+{
+  display:inline-block;
+  width:75px;  
+  float:left;
+  clear:both;  
+}
