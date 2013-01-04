@@ -29,15 +29,13 @@ a:link,
 a:visited
 {
   color: #222222;
-  font-weight: normal;
 }
-
+ 
 a:focus,
 a:hover,
 a:active
 {
   color: #750003;
-  font-weight: normal;
   text-decoration: none;
 }
 
