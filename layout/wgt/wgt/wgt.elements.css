@@ -18,10 +18,26 @@
 
 /* list element */
 
+div.wgt-input-list
+{
+  width:500px;
+}
+
+div.wgt-input-list>label
+{
+  width:110px;
+  display:block;
+  float:left;
+  text-align:right;
+  padding: 3px 2px;
+  margin:1px;
+}
+
 ul.wgt-input-list
 {
-  margin-left:120px;
   width:325px;
+  display:inline-block;  
+  float:left;  
 }
 
 ul.wgt-input-list li
@@ -42,4 +58,5 @@ ul.wgt-input-list li div.nav
   width:75px;  
   float:left;
   clear:both;  
+  text-align:right;  
 }
