@@ -145,11 +145,13 @@ table.wgt-table tbody,
 
 .wgt-border
 {
-  border-left:1px solid #5c5c5c !important;
+  border:1px solid #5c5c5c !important;
   border-radius: 3px;  
+  /*
   -moz-box-shadow:1px 1px 1px #666;
   -webkit-box-shadow:1px 1px 1px #666;
   box-shadow:1px 1px 1px #666;  
+  */
 }
 
 .wgt-border-top
@@ -183,6 +185,7 @@ table.wgt-table tbody,
   padding:3px;
 }
 
+/*
 div.wgt-content_box,
 div.wgt-news-box,
 .wgt-dashboard-header
@@ -191,6 +194,7 @@ div.wgt-news-box,
   -webkit-box-shadow:1px 1px 1px #666;
   box-shadow:1px 1px 1px #666;  
 }
+*/
 
 div.wgt-content_box div.head h2,
 div.wgt-ui-desktop h1,
@@ -238,11 +242,13 @@ div.wgt-fake-input
 fieldset
 {
   border: none;
-  border-left: 1px solid #5c5c5c;  
+  border: 1px solid #5c5c5c;  
   border-radius: 3px;
+  /*
   -moz-box-shadow:1px 1px 1px #666;
   -webkit-box-shadow:1px 1px 1px #666;
   box-shadow:1px 1px 1px #666;  
+  */
 }
 
 
