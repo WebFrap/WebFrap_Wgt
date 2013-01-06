@@ -9,10 +9,37 @@
 }
 
 
+/*//////////////////////////////////////////////////////////////////////////////
+// Wgt Matrix
+//////////////////////////////////////////////////////////////////////////////*/
+
+
 .wgt-matrix .cell
 {
   display:inline-block;
   width:25px;
+}
+
+table.wgt-matrix
+{
+  min-width:100%;
+}
+
+table.wgt-matrix td
+{
+  border-right: 1px solid silver;
+  border-bottom: 1px solid silver;
+}
+
+table.wgt-matrix th
+{
+  min-width:75px;
+}
+
+table.wgt-matrix td.head,
+table.wgt-matrix th
+{
+  background-color:#CBCBCB;
 }
 
 
@@ -36,8 +63,8 @@ div.wgt-input-list>label
 ul.wgt-input-list
 {
   width:325px;
-  display:inline-block;  
-  float:left;  
+  display:inline-block;
+  float:left;
 }
 
 ul.wgt-input-list li
@@ -55,8 +82,8 @@ ul.wgt-input-list li label
 ul.wgt-input-list li div.nav
 {
   display:inline-block;
-  width:75px;  
+  width:75px;
   float:left;
-  clear:both;  
-  text-align:right;  
+  clear:both;
+  text-align:right;
 }
