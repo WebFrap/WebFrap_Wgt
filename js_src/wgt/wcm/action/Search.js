@@ -5,14 +5,19 @@
  */
 $R.addAction( 'req_search', function( jNode ){
   
+  "use strict";
 
   jNode.removeClass('wcm_req_search');
   
-  var nForm = jNode.parentX('form');
+  var nForm = jNode.parentX('form'),
+    formId,
+    evAction,
+    fTrigger,
+    dropBox;
   
   if( !nForm ){
     // ist als datavalue an eine form gebunden
-    var formId = jNode.getActionClass('asgd',true,'-');
+    formId = jNode.getActionClass('asgd',true,'-');
     
     if(!formId){
       // ist als parameter an eine form gebunden
@@ -38,7 +43,7 @@ $R.addAction( 'req_search', function( jNode ){
   });
   */
   
-  var evAction = function(e) {
+  evAction = function(e) {
     nForm.data('start','0');
     nForm.data('begin',null);
     $R.form( formId );
@@ -57,7 +62,7 @@ $R.addAction( 'req_search', function( jNode ){
     // on change & on return
     jNode.bind( 'change', evAction ).keydown(function(e) {
       
-      var fTrigger = false;
+      fTrigger = false;
       if(e.keyCode === $S.ui.keyCode.RETURN ) {
 
         nForm.data('start','0');
@@ -67,7 +72,7 @@ $R.addAction( 'req_search', function( jNode ){
         return false;
       }
 
-    }).keyup(function(e) {
+    }).keyup( function(e) {
         
         if( e.keyCode === $S.ui.keyCode.ESCAPE ){
           jNode.val('');
@@ -79,6 +84,15 @@ $R.addAction( 'req_search', function( jNode ){
         }
   
     });
+    
+    dropBox = jNode.attr('wgt_drop_trigger');
+    
+    if( dropBox ){
+      jNode.bind( 'click keydown', function(){
+        $S('#'+dropBox).dropdown('open');
+      });
+    }
+    
   }
 
 });
