@@ -63,7 +63,7 @@ div.wgt-label.large
 
 div.wgt-box.input
 {
-  padding:1px;	
+  padding:1px;
 }
 
 div.wgt-input
@@ -145,7 +145,7 @@ table.wgt-form td
 //////////////////////////////////////////////////////////////////////////////*/
 
 /* Standard Abstände */
-input, 
+input,
 select,
 div.wgt-fake-input
 {
@@ -159,7 +159,7 @@ textarea
   height:100px;
   width:250px;
   padding:2px;
-  background-color:#F8F8F8;  
+  background-color:#F8F8F8;
 }
 
 input.ar
@@ -167,26 +167,26 @@ input.ar
   text-align:right;
 }
 
-/* 
+/*
 Wird in den Listenelementen verwedent um die Elemente dezent
-als editierbar zu markieren 
+als editierbar zu markieren
 */
-input.emphasize, 
-textarea.emphasize, 
+input.emphasize,
+textarea.emphasize,
 select.emphasize,
 div.wgt-fake-input.emphasize
 {
   border:1px dotted silver !important;
 }
 
-/* 
+/*
 Standard Selectbox
 */
 select.multi
 {
   height:80px !important;
 }
-  
+
 option
 {
   border:1px solid white;
@@ -199,12 +199,12 @@ option:hover
   border:1px dotted #530000;
 }
 
-/* 
+/*
  Breite der Form Elemente
 */
 
-textarea.full_edit, 
-input.full_edit 
+textarea.full_edit,
+input.full_edit
 {
 	margin:0px !important;
 	padding:0px !important;
@@ -213,14 +213,14 @@ input.full_edit
 	overflow:visible;
 }
 
-input.xxsmall, 
+input.xxsmall,
 select.xxsmall,
 div.wgt-fake-input.xxsmall
 {
   width:50px;
 }
 
-input.xsmall, 
+input.xsmall,
 select.xsmall,
 div.wgt-fake-input.xsmall
 {
@@ -235,7 +235,7 @@ div.wgt-fake-input.small
   width:90px;
 }
 
-input.medium, 
+input.medium,
 textarea.medium,
 div.wgt-fake-input.medium
 {
@@ -252,40 +252,40 @@ select.medium
   width:156px;
 }
 
-input.large, 
-select.large, 
+input.large,
+select.large,
 textarea.large,
 div.wgt-fake-input.large
 {
   width:220px;
 }
 
-input.xlarge, 
-select.xlarge, 
+input.xlarge,
+select.xlarge,
 textarea.xlarge,
 div.wgt-fake-input.xlarge
 {
   width:400px;
 }
 
-input.xlarge_nl, 
-select.xlarge_nl, 
+input.xlarge_nl,
+select.xlarge_nl,
 textarea.xlarge_nl,
 div.wgt-fake-input.xlarge_nl
 {
   width:520px;
 }
 
-input.xxlarge, 
-select.xxlarge, 
+input.xxlarge,
+select.xxlarge,
 textarea.xxlarge,
 div.wgt-fake-input.xxlarge
 {
   width:600px;
 }
 
-input.full, 
-select.full, 
+input.full,
+select.full,
 textarea.full,
 div.wgt-fake-input.full
 {
@@ -389,26 +389,26 @@ select.wgt-behind
 input.wgt-behind.small,
 select.wgt-behind.small
 {
-  width:185px;  
+  width:185px;
 }
 
 input.wgt-behind.large,
 select.wgt-behind.large
 {
-  width:225px;  
+  width:225px;
 }
 
 input.wgt-behind.medium,
 select.wgt-behind.medium
 {
-  width:165px;  
+  width:165px;
 }
 
 /*//////////////////////////////////////////////////////////////////////////////
 // Hintergrund Icons in Inputelementen und Selectbox options
 //////////////////////////////////////////////////////////////////////////////*/
 
-input.icon, 
+input.icon,
 select.icon
 {
   background-repeat:no-repeat;
@@ -444,13 +444,13 @@ select option.active
 //////////////////////////////////////////////////////////////////////////////*/
 
 /* Standard Abstände */
-input.search, 
+input.search,
 div.wgt-fake-input.search,
 select.search
 {
   background-repeat:no-repeat;
-	background-image:url('<?php echo $icons ?>xsmall/control/search.png'); 
-  background-position:right center;	
+	background-image:url('<?php echo $icons ?>xsmall/control/search.png');
+  background-position:right center;
 }
 
 
@@ -460,38 +460,38 @@ select.search
 
 /* Readonly und disabled */
 
-input.wgt-readonly, 
-textarea.wgt-readonly, 
+input.wgt-readonly,
+textarea.wgt-readonly,
 select.wgt-readonly,
 div.wgt-fake-input.wgt-readonly,
-input.readonly, 
-select.readonly, 
+input.readonly,
+select.readonly,
 textarea.readonly,
 div.wgt-fake-input.readonly
 {
   background-color:#DCDCDC;
-  border: 1px solid black !important;	
-  cursor: not-allowed !important;  
+  border: 1px solid black !important;
+  cursor: not-allowed !important;
 }
 
-input.state-ok, 
-textarea.state-ok, 
+input.state-ok,
+textarea.state-ok,
 select.state-ok,
 div.wgt-fake-input.state-ok
 {
   border: 1px solid #00C000 !important;
 }
 
-input.state-invalid, 
-textarea.state-invalid, 
+input.state-invalid,
+textarea.state-invalid,
 select.state-invalid,
 div.wgt-fake-input.state-invalid
 {
   border: 1px dashed red !important;
 }
 
-input.state-warn, 
-textarea.state-warn, 
+input.state-warn,
+textarea.state-warn,
 select.state-warn,
 div.wgt-fake-input.state-warn
 {
@@ -504,7 +504,7 @@ input.wgt-negativ
 }
 
 
-.wgt-combobox 
+.wgt-combobox
 {
   position: relative;
   display: inline-block;
@@ -518,7 +518,7 @@ input.wgt-negativ
   display:inline;
 }
 
-.wgt-combobox-input 
+.wgt-combobox-input
 {
   margin: 0;
 }
