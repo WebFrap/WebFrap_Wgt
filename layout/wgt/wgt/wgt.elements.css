@@ -65,6 +65,8 @@ ul.wgt-input-list
   width:325px;
   display:inline-block;
   float:left;
+	max-height:120px;
+	overflow:auto;
 }
 
 ul.wgt-input-list li
