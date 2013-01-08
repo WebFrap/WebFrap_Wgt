@@ -65,7 +65,7 @@
 
 
       
-    },//end initEvents
+    }//end initEvents
 
   });
 
