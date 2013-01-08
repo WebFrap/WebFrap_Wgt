@@ -25,6 +25,14 @@
  * 
  */
 
+/* Example code
+ 
+<select>
+
+</select>
+ 
+*/
+
 /**
  * Tab Head implementieren für Selectboxen oder Radio Elemente
  * On Change auf dem Element wird zwischen Benamten Boxen in einem Content Container
@@ -56,8 +64,9 @@ $R.addAction( 'ui_selection_tab', function( jNode ){
     }
       
     
-    if( contObj.length )
+    if( contObj.length ){
       contObj.contentContainer();
+    }
     
     settings = cfgData.is('var')
       ? $WGT.robustParseJSON(cfgData.text())
