@@ -16,6 +16,8 @@ $R.addAction( 'ui_tree', function( jNode ){
 
   settings.imagePath = $C.imagePath+'wgt/';
 
+  console.log('tree '+jNode.attr('id'));
+  
   jNode.dynatree( settings ).removeClass('wcm_ui_tree');
 
 

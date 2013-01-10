@@ -75,7 +75,15 @@ $R.addAction( 'ui_selection_tab', function( jNode ){
     
     triggerAct = function(){
 
-      var headEntry = jNode.find(':checked');
+      var headEntry = null;
+      
+      if( jNode.is('select') ){
+        headEntry = jNode.find(':selected');
+      }
+      else{
+        headEntry = jNode.find(':checked');
+      }
+        
       
       if( headEntry.hasClass('disabled') ){
         return false;
@@ -101,7 +109,13 @@ $R.addAction( 'ui_selection_tab', function( jNode ){
     };
     
     // switch workarea
-    jNode.find(':input').bind( 'change.tab', triggerAct );
+    if( jNode.is('select') ){
+      jNode.bind( 'change.tab', triggerAct );
+    }
+    else{
+      jNode.find(':input').bind( 'change.tab', triggerAct );
+    }
+      
     jNode.removeClass( 'wcm_ui_selection_tab' );
 
 });

@@ -267,6 +267,10 @@ keinen strich durch die rechnung macht. */
   margin-bottom:5px;
 }
 
+.wgt-padding
+{
+	padding:5px;
+}
 
 /*//////////////////////////////////////////////////////////////////////////////
 // Fix sizes
