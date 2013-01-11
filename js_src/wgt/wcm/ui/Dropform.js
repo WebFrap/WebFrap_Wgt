@@ -31,9 +31,10 @@ $R.addAction( 'ui_dropform', function( jNode ){
       }
 
       // wenn nicht vorhanden vom server laden
-      if( !overlayData ){  //!nextNode.is( '.'+nodeId ) ){
+      if( !overlayData && props.url  ){  //!nextNode.is( '.'+nodeId ) ){
 
         var theTemplate = $R.get( props.url+'&input='+nodeId ).data;
+        props.url = null; // sicher stellen, dass wir in keiner endlosschleife landen
         jNode.data( 'mini-menu-overlay', theTemplate );
 
         //var theContentNode = $S( '.'+nodeId );
