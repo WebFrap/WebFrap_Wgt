@@ -227,7 +227,10 @@
 
           });
        });
-     }else{
+     }
+      
+      /*
+      else{
        
        $overlay.mouseenter( function(){
          $overlay.removeClass('wgt-opacity-30');
@@ -236,6 +239,7 @@
        });
        
      }
+     */
      
 
       // flag setzen, dass das element auf global close events reagieren soll

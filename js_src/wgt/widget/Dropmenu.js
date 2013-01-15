@@ -146,6 +146,7 @@
        
       
       }//end if( true === opts.closeOnLeave || 'true' === opts.closeOnLeave  )
+      /*
       else{
         
         dropBox.bind( 'mouseenter.dropmenu', function(){
@@ -157,6 +158,7 @@
         });
         
       }
+      */
       // event setzen
       /*
       if( opts.closeAll ){
