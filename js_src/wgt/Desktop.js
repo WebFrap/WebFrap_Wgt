@@ -1,17 +1,17 @@
 /* jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true, undef:true, unused:true, curly:true, browser:true, devel:true, jquery:true, indent:4, maxerr:50 */
-/* 
+/*
  * WGT Web Gui Toolkit
- * 
+ *
  * Copyright (c) 2009 webfrap.net
- * 
+ *
  * http://webfrap.net/WGT
- * 
+ *
  * @author Dominik Bonsch <db@webfrap.net>
- * 
- * Depends: 
+ *
+ * Depends:
  *   - jQuery 1.7.2
  *   - jQuery UI 1.8 widget factory
- * 
+ *
  * Dual licensed under the MIT and GPL licenses:
  * @license http://www.opensource.org/licenses/mit-license.php
  * @license http://www.gnu.org/licenses/gpl.html
@@ -19,81 +19,86 @@
 
 
 ;(function( $S, window,undefined){
-  
+
   "use strict";
-  
+
   /**
    * @author dominik alexander bonsch <db@webfrap.net>
    */
   var WgtDesktop = function( ){
-    
+
     /**
      * make it extendable
      */
     this.fn = WgtDesktop.prototype;
-    
+
+    /**
+     * timestamp
+     */
+    this.timestamp = Date.now();
+
     /**
      * Array mit Closures welche clear funktionen implementieren
      */
     this.clearCall = {};
-    
+
     /**
      * Der aktive Maincontainer
      */
     this.actMainCont = null;
-    
+
     /**
      * self reference
      */
     var self = this;
-    
+
     /**
      * Schliesen des aktiven Menüs
-     * Wird gesetzt um alle möglichen menüs 
+     * Wird gesetzt um alle möglichen menüs
      */
     this.requestCloseMenu = function(){};
-    
+
     /**
      * Schliesen des aktiven Menüs
-     * Wird gesetzt um alle möglichen menüs 
+     * Wird gesetzt um alle möglichen menüs
      */
     this.globalCloseMenu = function(){};
-    
+
     /**
      * Actions für einen globalen klick
      * Nur on demand befüllen wenn etwas aktiv ist
      * ansonsten muss geleert werden.
-     * 
+     *
      * Key muss ein valider Selector sein.
      * Es wird regelmäßig gecheckt ob die elemente noch vorhanden sind ansonsten
      * wird die action rausgeworfen
      */
     this.globalClick = {};
-    
+
     /**
      * global click triggern
      */
     this.triggerGlobalClick = function( event ){
-      
+
       for (var prop in this.globalClick) {
         if( this.globalClick.hasOwnProperty( prop ) ) {
           if( undefined !== this.globalClick[prop] ){
             this.globalClick[prop]( event );
           }
-        } 
+        }
       }
-      
+
       return true;
-      
+
     };//end this.triggerGlobalClick */
 
-    
+
     /**
      * Schliesen des aktiven Menüs
-     * Wird gesetzt um alle möglichen menüs 
+     * Wird gesetzt um alle möglichen menüs
      */
     this.closeView = function(){
-      
+
       $S('.wgt-tip').remove();
       this.setTitle( $C.windowTitle );
     };
@@ -102,7 +107,7 @@
      * Shortcut für Save on Strg + S
      */
     this.shortCutSave = function(){};
-    
+
     /**
      * aktivieren und deaktivieren der lightbox
      * @param activate boolean
@@ -110,7 +115,7 @@
     this.lightBox = function( activate ){
       ///TODO implement a lighbox here
     };
-    
+
     /**
      * Den Desktop aufräumen,
      * Tooltips, schliesen, offenen Menüs schliesen etc.
@@ -118,7 +123,7 @@
     this.clear = function(  ){
       ///TODO implement a lighbox here
     };
-    
+
    /**
      * Den Desktop aufräumen,
      * Tooltips, schliesen, offenen Menüs schliesen etc.
@@ -126,7 +131,16 @@
     this.setTitle = function( title ){
       window.document.title = title;
     };
-    
+
+    /**
+     * Den Desktop neu laden
+     */
+    this.refresh = function( ){
+
+      this.timestamp = $R.get( 'ajax.php?c=Webfrap.Desktop.refresh&timestamp='+this.timestamp, {}, true );
+
+    };
+
     /**
      * create an error window
      * use this function instead of ulgy alert windows
@@ -134,11 +148,11 @@
      * @param message
      */
     this.errorWindow = function( title, message ){
-      
+
       if( console.trace ){
         console.trace();
       }
-      
+
       if( typeof title === 'string' ){
         // den 2ten parameter optional machen we
         if( !message ){
@@ -147,12 +161,12 @@
         }
       }
       else if( undefined === message ){
-        
+
         // ok sieht so aus als ob wir eine exception bekommen haben
         message = title.message;
         title = title.name;
       }
-      
+
       var template = this.template( $S("#wgt-template-dialog").html(), {'title':title,'message':message}, false );
 
       $S(template).dialog({
@@ -168,7 +182,7 @@
           confirm : function(){$S(this).dialog('close');}
         }
       });
-      
+
       /*
       if( $S.dialog ){
         $S(template).dialog({
@@ -201,9 +215,9 @@
      */
     this.confirmWindow = function( title, message, Confirm, callBack ){
 
-      var templateNode = this.template( 
-        $S("#wgt-template-dialog").html(), 
-        {'title':title,'message':message} 
+      var templateNode = this.template(
+        $S("#wgt-template-dialog").html(),
+        {'title':title,'message':message}
       );
 
       $S(templateNode).dialog({
@@ -225,7 +239,7 @@
           }
         }
       });
-      
+
     };
 
 
@@ -235,7 +249,7 @@
      * @param params
      */
     this.openWindow = function( content , params ){
-        
+
       // umschreiben auf extends
       if( params === undefined  ){
         params = {};
@@ -252,7 +266,7 @@
 
       $S(content).dialog(params);
 
-    };//end this.openWindow 
+    };//end this.openWindow
 
     /**
      * open an new browser window / popup
@@ -284,7 +298,7 @@
       newWindow.focus();
 
     };//end this.openBrowserWindow
-    
+
     /**
     *
     * @param params
@@ -324,8 +338,8 @@
      * show the progress bar
      */
     this.showProgressBar = function(){
-      
-      
+
+
       // sicher stellen, dass der z-index auch ganz oben ist
       var zIndex = window.$B.getNextHighestZindex();
 
@@ -340,7 +354,7 @@
      * hide the pogress bar
      */
     this.hideProgressBar = function(){
-      
+
       $S('#wgt_progress_bar').hide();
     };
 
@@ -348,31 +362,31 @@
      * @param e
      */
     this.activateProgressIcon = function(e){
-      
+
       $S('#wgt_wait_icon').show();
       $S("body").bind("mousemove", self.moveProgessIcon );
-      
+
     }; //end this.activateProgressIcon
 
     /**
      * @param e
      */
     this.deactivateProgressIcon = function(e){
-      
+
       $S('#wgt_wait_icon').hide();
       $S("body").unbind("mousemove", self.moveProgessIcon );
-      
+
     };//end this.deactivateProgressIcon
 
     /**
      * @param e
      */
     this.moveProgessIcon = function(e){
-      
+
       var mouseX = document.all ? window.event.x : e.pageX;
       var mouseY = document.all ? window.event.y : e.pageY;
       $S("#wgt_wait_icon").css({top:mouseY, left:mouseX});
-      
+
     };//end this.moveProgessIcon
 
     /**
@@ -381,7 +395,7 @@
      * @param asObject
      */
     this.template = function( template, data, asObject ){
-      
+
       //if as Object ist 'undefined' return the data as object
       if( typeof asObject === 'undefined' ){
         asObject=true;
@@ -405,7 +419,7 @@
      * @param tplId string
      */
     this.getTemplate = function( tplId  ){
-      
+
       var tmp = $S( "#"+tplId ).clone();
       tmp.attr('id','');
 
@@ -419,9 +433,9 @@
      * @return
      */
     this.getTabsWidth = function( tc ){
-      
+
       return ( tc.find('.tab:last').position().left - tc.find('.tab:first').position().left + tc.find('.tab:last').outerWidth(true) + 6 );
-      
+
     };//end this.getTabsWidth
 
     /**
@@ -431,7 +445,7 @@
      * @return
      */
     this.scrollTabs = function(tc, offset){
-      
+
       tc
       .find('.tab_scroll')
       .animate(
@@ -482,40 +496,44 @@
 
 
   };//end function WgtDesktop( )
-  
+
   // create instance
   window.$D = new WgtDesktop();
-  
+
   // short cuts
   $S(window).keypress(function(event) {
-    
-    console.log( "pressed "+event.which );
-    
-    if ( (event.which === 115 && event.ctrlKey) || (event.which === 19) ){ 
+
+    //console.log( "pressed "+event.which );
+
+    /*
+    if ( (event.which === 115 && event.ctrlKey) || (event.which === 19) ){
       // context element speichern
       alert("Ctrl-S pressed");
       event.preventDefault();
       return false;
     }
-    else if ( (event.which === 110 && event.ctrlKey) || (event.which === 19) ){ 
+    else if ( (event.which === 110 && event.ctrlKey) || (event.which === 19) ){
       // context element new
       alert("Ctrl-N pressed");
       event.preventDefault();
       return false;
     }
-    else if ( (event.which === 101 && event.ctrlKey) || (event.which === 19) ){ 
+    else if ( (event.which === 101 && event.ctrlKey) || (event.which === 19) ){
       // soll globales event sein
       alert("Ctrl-E pressed");
       event.preventDefault();
       return false;
     }
+    */
 
     return true;
   });
-  
+
   // global click
   $S(window).mouseup(function(event) {
     return $D.triggerGlobalClick( event );
   });
+
+  setInterval( function(){ $D.refresh(); }, 150000  );
 
 })( jQuery, window);

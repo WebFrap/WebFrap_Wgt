@@ -1,17 +1,17 @@
 /* jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true, undef:true, unused:true, curly:true, browser:true, devel:true, jquery:true, indent:4, maxerr:50 */
-/* 
+/*
  * WGT Web Gui Toolkit
- * 
+ *
  * Copyright (c) 2009 webfrap.net
- * 
+ *
  * http://webfrap.net/WGT
- * 
+ *
  * @author Dominik Bonsch <db@webfrap.net>
- * 
- * Depends: 
+ *
+ * Depends:
  *   - jQuery 1.7.2
  *   - jQuery UI 1.8 widget factory
- * 
+ *
  * Dual licensed under the MIT and GPL licenses:
  * @license http://www.opensource.org/licenses/mit-license.php
  * @license http://www.gnu.org/licenses/gpl.html
@@ -19,7 +19,7 @@
 
 
 (function( window, $S, undefined ){
-  
+
   "use strict";
 
   /**
@@ -36,7 +36,7 @@
      * ref to prototype
      */
     this.fn = Request.prototype;
-    
+
     /**
      * das letzte HTTPRequest object
      */
@@ -46,7 +46,7 @@
      * way to self
      */
     var self = this;
-    
+
     /**
      * the request handler
      * @var RequestHandler
@@ -76,52 +76,52 @@
      * Eventliste für das erste erstellen einer Seite
      */
     this.initRequest       = [];
-    
+
     /**
      * pool with acttions
      */
     this.actionPool       = {};
-    
+
 /*//////////////////////////////////////////////////////////////////////////////
  // getter & setter methodes
 //////////////////////////////////////////////////////////////////////////////*/
 
     /**
-     * @param rqHandler RequestHandler  
+     * @param rqHandler RequestHandler
      */
     this.setHandler = function( rqHandler ){
-      
+
       handler = rqHandler;
     };
-    
+
     /**
      * @return RequestHandler
      */
     this.getHandler = function(){
-      
+
       return handler;
     };
-    
+
     /**
      * Fragen ob der letzte Request ok war
      * @return boolean
      */
     this.ok = function(){
-      
+
       return self.lastRequest.status === 200 ? true:false;
     };
-    
+
 /*//////////////////////////////////////////////////////////////////////////////
 // methodes
 //////////////////////////////////////////////////////////////////////////////*/
 
     /**
      * Einen GET Request über das Ajax Interface absetzen
-     * 
-     * @param requestUrl string 
+     *
+     * @param requestUrl string
      * @param params {}
      */
-    this.get = function( requestUrl, params  ){
+    this.get = function( requestUrl, params, background  ){
 
       // when the url is empty break here
       if( window.$B.empty( requestUrl ) ){
@@ -135,7 +135,7 @@
       /*
       if( params.check ){
         if( !$S('#'+params.check.input).is(':checked') ){
-          
+
           $D.errorWindow(
             params.check.title,
             params.check.message,
@@ -151,75 +151,75 @@
       params.type = 'get';
 
       if( undefined !== params.confirm  ){
-        
+
         var response = null;
-        
+
         $D.confirmWindow(
           'Confirm',
           params.confirm,
           'Confirm',
           function (){ response = self.wgtRequest(params); }
         );
-        
+
         return response;
-        
+
       }
       else{
-        
-        return self.wgtRequest( params );
-        
+
+        return self.wgtRequest( params, background );
+
       }
- 
-    };//end this.get 
+
+    };//end this.get
 
     /**
-     * Einen POST Request über das Ajax Interface absetzen 
-     * 
+     * Einen POST Request über das Ajax Interface absetzen
+     *
      * @param requestUrl
      * @param requestData
      * @param params
      */
     this.post = function( requestUrl, requestData, params  ){
-      
+
       // when the url is empty break here
       if( window.$B.empty(requestUrl) ){
         console.error( "triggert post with an empty url" );
         return null;
       }
-      
+
       if( undefined === params ){
         params = {};
       }
-      
+
       params.url  = requestUrl;
       params.type = 'post';
       params.data = requestData;
 
       if( undefined !== params.confirm  ){
-        
+
         var response = null;
-        
+
         $D.confirmWindow(
           'Confirm',
           params.confirm,
           'Confirm',
           function (){ response = self.wgtRequest( params ); }
         );
-        
+
         return response;
-        
+
       }
       else{
-        
+
         return self.wgtRequest( params );
-        
+
       }
 
     };//end this.post */
 
     /**
      * Einen PUT Request über das Ajax Interface absetzen
-     * 
+     *
      * @param requestUrl
      * @param requestData
      * @param params
@@ -234,31 +234,31 @@
       if( undefined === params ){
         params = {};
       }
-      
+
       params.url  = requestUrl;
       params.type = 'put';
       params.data = requestData;
 
       if( undefined !== params.confirm  ){
-        
+
         var response = null;
-        
+
         $D.confirmWindow(
           'Confirm',
           params.confirm,
           'Confirm',
           function (){ response = self.wgtRequest( params ); }
         );
-        
+
         return response;
-        
+
       }
       else{
-        
+
         return self.wgtRequest( params );
-        
+
       }
-      
+
     };//end this.put */
 
     /**
@@ -278,14 +278,14 @@
       if( undefined === params ){
         params = {};
       }
-      
+
       params.url  = requestUrl+'&request=ajax';
       params.type = 'delete';
-      
+
       if( undefined !== params.confirm ){
-        
+
         var response = null;
-        
+
         $D.confirmWindow(
           params.confirm,
           params.confirm,
@@ -295,26 +295,26 @@
         return response;
       }
       else{
-        
+
         return self.wgtRequest(params);
       }
 
     };//end this.del */
-    
+
     /**
      * Ein formular abschicken, kein Ajax request!
      * @param formId
      * @param params
      */
     this.submit = function( formId, params ){
-      
+
       if( undefined === params ){
         params = {};
       }
-      
+
       if( params.check ){
         if( !$S('#'+params.check.input).is(':checked') ){
-          
+
           $D.errorWindow(
             params.check.title,
             params.check.message,
@@ -324,9 +324,9 @@
           return false;
         }
       }
-      
+
       if( undefined !== params.confirm  ){
-        
+
         $D.confirmWindow(
           params.confirm.title,
           params.confirm.message,
@@ -335,13 +335,13 @@
         );
       }
       else{
-        
+
         $S('#'+formId).submit();
       }
-      
+
       return false;
     };
-    
+
     /**
      * Abschicken eines Formulars als ajax request
      * @param formId
@@ -349,21 +349,21 @@
      * @param params
      */
     this.form = function( formId, formUrl, params ){
-      
+
       if( undefined === params ){
         params = {};
       }
 
       console.log( "Request by Form ID "+formId+' found '+$S('#'+formId).length  );
-      
+
       if( params.search ){
-        
+
         this.cleanFormParams( formId );
       }
-      
+
       if( params.check ){
         if( !$S('#'+params.check.input).is(':checked') ){
-          
+
           $D.errorWindow(
             params.check.title,
             params.check.message,
@@ -373,11 +373,11 @@
           return false;
         }
       }
-      
+
       var response = null;
-      
+
       if( undefined !== params.confirm  ){
-        
+
         $D.confirmWindow(
           params.confirm.title,
           params.confirm.message,
@@ -386,10 +386,10 @@
         );
       }
       else{
-        
+
         response = self.sendForm( formId, formUrl, params );
       }
-      
+
       return response;
     };
 
@@ -411,50 +411,50 @@
       if( params.statusCallback ){
         requestParams.statusCallback = params.statusCallback;
       }
-      
+
       if( params.success ){
         requestParams.success = params.success;
       }
-      
+
       if( params.error ){
         requestParams.error = params.error;
       }
-      
+
       if( typeof formId  === 'object'  ){
 
         form   = formId;
         formId = form.attr('id');
       }
       else{
-        
+
         form   = $S("form#"+formId);
       }
-      
+
       if( !form ){
         console.log( 'Missing form '+formId );
         return;
       }
-      
+
       var formMethod = form.attr('method');
-      
+
       if( !formMethod ){
         console.log( 'Missing method in form '+formId );
         return;
       }
-      
+
       formMethod = formMethod.toLowerCase();
 
 
       // clean form data
       if( params.clean === true ){
-        
+
         this.cleanFormParams(form);
       }
 
       if( true === params.append ){
-        
+
         formUrl = form.attr("action")+formUrl+"&request=ajax";
-      }  
+      }
       else if( !formUrl ){
 
         formUrl = form.attr("action")+"&request=ajax";
@@ -471,15 +471,15 @@
         $S('#'+editorKey).val(keyData);
       });
       */
-      
+
       var formParams  = this.appendFormParams( form );
-      
+
       /*
       if($S.ajaxFileUpload)
       {
         alert('Anzahl files '+formId+' '+$S(":file.asgd-"+formId).length);
       }*/
-        
+
 
       // check if there file inputs in the form
       if( ( form.find(":file").length || $S(":file.asgd-"+formId).length  ) && $S.ajaxFileUpload ){
@@ -490,29 +490,29 @@
           formid    :formId,
           dataType  :'xml',
           success   :function( responseXML ){
-            
+
             $R.lastResponse   = responseXML;
             var responseData  = handler.xml(responseXML);
             //params.success( responseData );
             $R.eventAfterAjaxRequest( );
-            
+
             if( params.success ){
               params.success( $R.lastResponse, responseData );
             }
-            
+
             if( params.callback ){
               params.callback();
             }
-            
+
           },
           error :function (data, status, e){
-            
+
             if( params.error ){
               params.error( data, status, e );
             }
 
             $D.errorWindow( e );
-            
+
           },
           statusCallback: requestParams.statusCallback
         });
@@ -520,21 +520,21 @@
         return response;
       }
       else{
-        
+
         var formFields  = form.find(":input").not(":submit").not(":reset").not(".wgt-ignore").not('.asgd-'+formId).not('.fparam-'+formId);
         var formData    = formFields.serialize();
-        
+
         formFields.filter('input[type="checkbox"]').not(":checked").each( function(){
           formData += '&'+$S(this).attr('name')+'=0';
         });
-        
+
         if( params.data !== undefined ){
           for( var key in params.data ){
-            
+
             formData += '&'+key+'='+params.data[key];
           }
         }
-        
+
         /*
         var externFields = $S('.'+formId+'_asgd');
         if( externFields.length > 0 )
@@ -545,18 +545,18 @@
         if( externFields.length > 0 )
           formData += '&'+externFields.serialize();
         */
-        
+
         var externFields = $S('.asgd-'+formId).not('.flag-template');
         if( externFields.length > 0 ){
-          
+
           formData += '&'+externFields.serialize();
-          
+
           externFields.filter('input[type="checkbox"]').not(":checked").each(function(){
             formData += '&'+$S(this).attr('name')+'=0';
           });
-          
+
         }
-        
+
         if( 'post' === formMethod ){
 
           response = $R.post(
@@ -564,40 +564,40 @@
             formData+formParams.post,
             requestParams
           );
-          
+
           if( params.callback ){
             params.callback();
           }
-          
+
         }
         else if( 'put' === formMethod ){
-          
+
           response = $R.put(
             formUrl+formParams.url,
             formData+formParams.post,
             requestParams
           );
-            
+
           if( params.callback ){
             params.callback();
           }
-          
+
         }
         else{
-          
+
           response = $R.get(
-            formUrl+formParams.url+'&'+formData+formParams.post, 
-            requestParams 
+            formUrl+formParams.url+'&'+formData+formParams.post,
+            requestParams
           );
-          
+
           if( params.callback ){
             params.callback();
           }
-          
+
         }
-        
+
         return response;
-      
+
       }
 
     };//end this.form
@@ -606,18 +606,18 @@
      * @param formId
      */
     this.appendFormParams = function( formId ){
-      
-      
+
+
       var form,
         data = {url:'',post:''};
-      
+
       ////%5Btitle%5D
       if(typeof formId === 'string'){
-        
+
         form  = $S("form#"+formId);
       }
       else{
-        
+
         form  = formId;
         formId = form.attr('id');
       }
@@ -645,26 +645,26 @@
       // felder auslesen, die als zusätzliche parameter an eine form gehängt werden
       var addParams = $S( ".fparam-"+formId );
       if( addParams.length ){
-        
+
         data.url += '&'+addParams.serialize();
-        
+
         addParams.filter('input[type="checkbox"]').not(":checked").each(function(){
           data.url += '&'+$S(this).attr('name')+'=0';
         });
-        
+
       }
 
       return data;
-      
+
     };//end this.appendFormParams
-    
+
     /**
      * @param formId
      */
     this.cleanFormParams = function( formId ){
-      
+
       var form;
-      
+
       if( typeof formId === 'string' ){
         form=$S("form#"+formId);
       }
@@ -677,7 +677,7 @@
       //form.data('qsize',null);
       form.data('next',null);
       form.data('begin',null);
-      
+
       return this;
 
     };//end this.cleanFormParams
@@ -688,44 +688,44 @@
      * @param data array
      */
     this.redirect = function( linktarget, data ){
-      
+
       if( undefined === data ){
-        
+
         window.location.href = linktarget ;
       }
       else{
-        
+
         var form = '<form id="wgt_redirect" class="meta" method="post" action="'+linktarget+'" >';
-        
+
         $S.each(data,function(key,value){
           form += '<input type="text" name="'+key+'" value="'+value+'" />';
         });
         form += '</form>';
-        
+
         $S('body').append(form);
         $S('#wgt_redirect').submit();
       }
-     
+
     };
-    
+
     /**
      * @param url string
      * @param formId string
      */
     this.getFiltered = function( url, formId ){
-      
-      
+
+
       var form = null,
         begin = null,
         addParams = null;
-      
+
       ////%5Btitle%5D
       if( typeof formId === 'string' ){
-        
+
         form  = $S("form#"+formId);
       }
       else{
-        
+
         form  = formId;
         formId = form.attr('id');
       }
@@ -738,19 +738,19 @@
       // felder auslesen, die als zusätzliche parameter an eine form gehängt werden
       var addParams = $S( ".fparam-"+formId );
       if( addParams.length ){
-        
+
         url += '&'+addParams.serialize();
-        
+
         addParams.filter('input[type="checkbox"]').not(":checked").each(function(){
           url += '&'+$S(this).attr('name')+'=0';
         });
-        
+
       }
 
       window.location.href = url;
-      
+
     };//end this.getFiltered
-    
+
     /**
      * @param url string
      * @param formId string
@@ -760,12 +760,12 @@
       $S('#'+tableId+' tr.wgt-selected').each(function(){
         url += '&e[]='+$S(this).attr('wgt_eid');
       });
-      
+
       window.location.href = url;
-      
+
     };//end this.getBySelection
-    
-    
+
+
 
     /**
      * @param lang the language
@@ -782,7 +782,7 @@
      * @param redirectUrl
      */
     this.redirectByValue = function( selector , redirectUrl ){
-      
+
       var value = $S(selector).value();
       window.location.href= str_replace( '{id}', value, redirectUrl );
     };
@@ -806,26 +806,30 @@
       $R.get(url+value);
       return true;
 
-    };//end this.showEntity 
+    };//end this.showEntity
 
     /**
      * @param params array
      */
-    this.wgtRequest = function( params ){
+    this.wgtRequest = function( params, background ){
+
+
+      if( undefined === background )
+        background = false;
 
       // when the url is empty break here
       if( window.$B.undef(params) || window.$B.undef(params.url) ){
         Console.error('Got empty request');
         return false;
       }
-      
+
       //window.$B.loadModule('request');
-      
+
       // setting of default values
       window.$B.dval(params,'type','post');
       window.$B.dval(params,'success',function(data){});
       window.$B.dval(params,'error',function(data){});
-      
+
       // per default we want synchron request, as most of the requests
       // are in transactions where the response is required for the next
       // steps.
@@ -840,10 +844,10 @@
       if( undefined === params.callback ){
 
         callback = function(){
-          
+
           // wenn vorhanden original debug consolen content löschen
           $S('#wgt_debug_console-content').remove();
-          
+
           $R.eventAfterAjaxRequest();
         };
 
@@ -851,20 +855,20 @@
       else{
 
         callback = function(){
-          
+
           // wenn vorhanden original debug consolen content löschen
           $S('#wgt_debug_console-content').remove();
-          
+
           params.callback();
           $R.eventAfterAjaxRequest();
         };
       }
-        
+
       // events trigger die vor einem ajax request ausgeführt werden
       $R.eventBeforeAjaxRequest();
-      
+
       /**
-       * WGT request object including 
+       * WGT request object including
        * the xrqt object
        * extracted data
        * rendering status
@@ -878,7 +882,7 @@
       if( 'xml' === params.ctype ) {
 
         if( true === params.async ) { // async
-          
+
           try{
 
             self.lastRequest = $S.ajax ({
@@ -891,39 +895,41 @@
                 $R.lastResponse = responseXML;
                 responseData = handler.xml( responseXML, params.statusCallback  );
                 requestData.data = responseData;
-                
+
                 params.success( responseXML, responseData );
-                
+
                 callback();
-                
+
               },
               error:  params.error
             });
-            
+
             requestData.rqt = self.lastRequest;
             requestData.status = 0;
-            
+
             // schliesen des Menüs nach dem Request
-            $D.requestCloseMenu();
+            if( !background ){
+              $D.requestCloseMenu();
+            }
           }
           catch( exc ){
-            
+
             requestData.rqt = self.lastRequest;
             requestData.status = 1;
-            
+
             $D.errorWindow( exc );
           }
-          
+
           console.log( 'Request: '+requestData.rqt.status );
 
           return requestData;
 
         }
         else{ // sync
-            
+
           // wann wird die exception geworfen?
           try{
-            
+
 
             self.lastRequest = $S.ajax({
               type:   params.type,
@@ -938,39 +944,41 @@
             responseData  = handler.xml( self.lastResponse, params.statusCallback );
 
             // schliesen des Menüs nach dem Request
-            $D.requestCloseMenu();
-            
+            if( !background ){
+              $D.requestCloseMenu();
+            }
+
             if( params.success ){
               console.log( 'trigger success' );
               params.success( responseData );
             }
-            
+
             // callback nach dem request
             callback();
 
             requestData.status = 0;
           }
           catch( exc ){
-            
+
             requestData.status = 1;
             $D.errorWindow( exc );
           }
-          
+
 
           requestData.rqt = self.lastRequest;
           requestData.data = responseData;
-          
+
           console.log( 'Request: '+requestData.rqt.status );
-          
+
           return requestData;
-          
+
         }
 
       }
       else{
-          
+
         try{
-          
+
 
           self.lastRequest = $S.ajax({
             type:   params.type,
@@ -982,33 +990,36 @@
           });
 
           var retVal  = handler.json( self.lastRequest.responseText, params.statusCallback );
-          
+
           // schliesen des Menüs nach dem Request
-          $D.requestCloseMenu();
-        
+          if( !background ){
+            $D.requestCloseMenu();
+          }
+
           if( params.success ){
             params.success( self.lastRequest, retVal );
           }
-          
+
           callback();
-          
+
           requestData.status = 0;
+
         }
         catch( exc ){
-          
+
           // error handling
           console.error( 'Request failed '+exc.message );
           $D.errorWindow( exc );
           requestData.status = 1;
         }
-        
+
         requestData.rqt = self.lastRequest;
         requestData.data = retVal;
-        
+
         console.log( 'Request: '+requestData.rqt.status );
-        
+
         return requestData;
-        
+
       }
 
     };//end this.wgtRequest */
@@ -1046,7 +1057,7 @@
    this.addAction = function( key, callBack ){
      this.actionPool[key] = callBack;
    };//end this.oneTimePostAjax
-   
+
 
    /**
     * @param key
@@ -1055,7 +1066,7 @@
    this.getAction = function( key ){
      return this.actionPool[key];
    };//end this.getAction
-   
+
     /**
     * Eine WCM Action auf einem definierten Node ausführen
     * @param key string
@@ -1096,7 +1107,7 @@
     *
     */
     this.eventAfterAjaxRequest = function( ) {
-      
+
       var startTime = $DBG.start();
 
       var callback  = null,
@@ -1104,17 +1115,17 @@
         allActions = null;
 
       for (var index = 0; index < length; ++index){
-          
+
         if( undefined !== this.afterAjaxRequest[index] )
           callback = this.afterAjaxRequest[index];
         else
           continue;
-        
+
         try{
           callback();
         }
         catch( exc ) {
-          
+
            //alert(e.message);
            $D.errorWindow( exc );
            //this.desktop.errorWindow( exception.name, exception.message );
@@ -1125,8 +1136,8 @@
       // disable Links and use ajax instead (and remove class)
       allActions = $S(".wcm");
       allActions.each(function(){
-        
-        
+
+
         var node      = $S(this),
           classParts  = node.classes(),
           tmpLenght   = classParts.length;
@@ -1138,7 +1149,7 @@
           if( 'wcm_' === callback.substring(0,4) ) {
 
             var call = $R.actionPool[callback.substring(4,callback.length)];
-            
+
             try{
               if( typeof call !== 'undefined'){
                 call (node );
@@ -1162,10 +1173,10 @@
 
         callback = this.poolOtPostAray[iter];
         try {
-         
+
           callback();
         } catch( exc ) {
-         
+
           //alert(e.message);
           $D.errorWindow( exc );
           //this.desktop.errorWindow( exception.name, exception.message );
@@ -1175,10 +1186,10 @@
       this.poolOtPostAray = [];
 
       $D.hideProgressBar();
-      
+
       console.log('wcm duration ' + $DBG.duration( startTime ) );
 
-    };//end this.eventAfterAjaxRequest 
+    };//end this.eventAfterAjaxRequest
 
     /**
      *
@@ -1189,10 +1200,10 @@
 
         var callback = this.initRequest[index];
         try {
-          
+
           callback();
         } catch( e ) {
-          
+
           //alert(e.message);
           $D.errorWindow( e.name, e.message );
           //this.desktop.errorWindow( exception.name, exception.message );
