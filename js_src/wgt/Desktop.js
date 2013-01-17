@@ -129,7 +129,9 @@
      * Tooltips, schliesen, offenen Menüs schliesen etc.
      */
     this.setTitle = function( title ){
+
       window.document.title = title;
+
     };
 
     /**
