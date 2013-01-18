@@ -108,7 +108,7 @@
      */
     this.ok = function(){
 
-      return self.lastRequest.status === 200 ? true:false;
+      return $S.inArray( self.lastRequest.status, [200,201,202]  );
     };
 
 /*//////////////////////////////////////////////////////////////////////////////
@@ -498,6 +498,7 @@
 
             if( params.success ){
               params.success( $R.lastResponse, responseData );
+              console.log( "trigger upload sucess" );
             }
 
             if( params.callback ){
@@ -948,7 +949,7 @@
               $D.requestCloseMenu();
             }
 
-            if( params.success ){
+            if( this.ok() &&  params.success ){
               console.log( 'trigger success' );
               params.success( responseData );
             }
