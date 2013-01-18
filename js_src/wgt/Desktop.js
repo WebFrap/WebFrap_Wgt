@@ -139,7 +139,9 @@
      */
     this.refresh = function( ){
 
-      this.timestamp = $R.get( 'ajax.php?c=Webfrap.Desktop.refresh&timestamp='+this.timestamp, {}, true );
+      var tmp = this.timestamp;
+      this.timestamp = Date.now();
+      $R.get( 'ajax.php?c=Webfrap.Desktop.refresh&timestamp='+tmp, {}, true );
 
     };
 
