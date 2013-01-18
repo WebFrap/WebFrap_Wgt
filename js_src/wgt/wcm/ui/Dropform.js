@@ -52,6 +52,7 @@ $R.addAction( 'ui_dropform', function( jNode ){
           button      : 'Close',
           plain       : false,
           globalClose : false,
+          closeScroll : props.closeScroll,
           align : 'middle',
           overlayStyle: {width:menuWidth+'px'},
           menuItems   : menuItems
@@ -91,6 +92,7 @@ $R.addAction( 'ui_dropform', function( jNode ){
       button      : 'Close',
       plain 	    : false,
       globalClose : false,
+      closeScroll : props.closeScroll,
       overlayStyle:{width:menuWidth+'px'},
       menuItems   : menuItems
     });

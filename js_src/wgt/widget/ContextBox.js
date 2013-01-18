@@ -1,28 +1,28 @@
 /* jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true, undef:true, unused:true, curly:true, browser:true, devel:true, jquery:true, indent:4, maxerr:50 */
-/* 
+/*
  * WGT Web Gui Toolkit
- * 
+ *
  * Copyright (c) 2009 webfrap.net
- * 
+ *
  * http://webfrap.net/WGT
- * 
+ *
  * @author Dominik Bonsch <db@webfrap.net>
- * 
- * Depends: 
+ *
+ * Depends:
  *   - jQuery 1.7.2
  *   - jQuery UI 1.8 widget factory
  *   - WGT 0.9
- * 
+ *
  * License:
  * Dual licensed under the MIT and GPL licenses:
  * @license http://www.opensource.org/licenses/mit-license.php
  * @license http://www.gnu.org/licenses/gpl.html
- * 
+ *
  * Code Style:
  *   indent: 2 spaces
  *   codelang: english
  *   identStyle: camel case
- * 
+ *
  */
 
 /**
@@ -32,19 +32,20 @@
 (function( $S, $WGT ) {
 
   $S.widget( "wgt.contextBox", {
- 
+
 
     // These options will be used as defaults
-    options: { 
+    options: {
       clear         : null,
       align         : 'left',
       triggerEvent  : 'click',
       overlayStyle  : {width:200},
       closeOnLeave  : true,
+      closeScroll   : false,
       onOpen        : function(){},
       onClose       : function(){}
     },
- 
+
 
     // Set up the widget
     _create: function() {
@@ -63,7 +64,7 @@
 
       var contextBoxId = ge.attr( 'wgt-context_box' );
       var contextBox   = $S( '#'+contextBoxId );
-      
+
       // browser contextmenü deaktivieren
       contextBox.bind('contextmenu', function() { return false; });
 
@@ -83,7 +84,7 @@
         var dClose = null;
 
         setTimeout( function(){
-          
+
             if( !contextBox.hasClass('mouse_in') && !contextBox.hasClass('mouse_in') ){
               self.close();
             }
@@ -93,7 +94,7 @@
         );
 
         contextBox.bind( 'mouseenter.context_box', function(){
-          
+
           contextBox.addClass('mouse_in');
           contextBox.removeClass('mouse_in');
         }).bind( 'mouseleave.context_box', function(){
@@ -123,7 +124,7 @@
 
           });
         });
-      
+
       }//end if( true === opts.closeOnLeave || 'true' === opts.closeOnLeave  )
 
       if( opts.triggerEvent ){
@@ -133,7 +134,7 @@
       }
 
     },
-    
+
 
     // Set up the widget
     open: function(  ){
@@ -148,7 +149,13 @@
 
       // Get options of the element
       this.closeAll();
-      
+
+      if( opts.closeScroll ){
+        console.log( "closeScroll true" );
+        $D.scrollEvents[contextBoxId] = function(){
+          self.close();
+        };
+      }
 
       //$target.addClass('flag-menu-overlay');
       // Die ausrichtung und position des Overlays berechnen
@@ -214,7 +221,7 @@
       contextBox.show( );
 
     },
-    
+
     /**
      * globales schliesen aller drowpdown boxes
      */
@@ -232,21 +239,27 @@
       var contextBox   = $S( '#'+this.element.attr( 'wgt-context_box' )+'-init' );
       contextBox.removeClass('opened').hide();
 
+      ge = this.element,
+      opts = this.options;
+
+      if( opts.closeScroll ){
+        $D.scrollEvents[ge.attr( 'wgt-context_box' )] = undefined;
+      }
+
     },
-    
+
     /**
      * schliesen des aktuellen dropdowns
      */
     remove: function(){
 
       $S(document).unbind('keypress.context_box');
-
       $S( '#'+this.element.attr( 'wgt-context_box' )+'-init' ).remove();
 
     },
 
-    /* 
-     * Use the destroy method to clean up any modifications your 
+    /*
+     * Use the destroy method to clean up any modifications your
      * widget has made to the DOM
      */
     destroy: function() {

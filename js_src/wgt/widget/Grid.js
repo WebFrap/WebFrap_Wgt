@@ -1,28 +1,28 @@
 /* jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true, undef:true, unused:true, curly:true, browser:true, devel:true, jquery:true, indent:4, maxerr:50 */
-/* 
+/*
  * WGT Web Gui Toolkit
- * 
+ *
  * Copyright (c) 2009 webfrap.net
- * 
+ *
  * http://webfrap.net/WGT
- * 
+ *
  * @author Dominik Bonsch <db@webfrap.net>
- * 
- * Depends: 
+ *
+ * Depends:
  *   - jQuery 1.7.2
  *   - jQuery UI 1.8 widget factory
  *   - WGT 0.9
- * 
+ *
  * License:
  * Dual licensed under the MIT and GPL licenses:
  * @license http://www.opensource.org/licenses/mit-license.php
  * @license http://www.gnu.org/licenses/gpl.html
- * 
+ *
  * Code Style:
  *   indent: 2 spaces
  *   codelang: english
  *   identStyle: camel case
- * 
+ *
  */
 
 /**
@@ -30,26 +30,26 @@
  * @passed http://www.jshint.com
  */
 (function( $S, $G, undefined ) {
-  
+
   "use strict";
-  
+
   $S.widget( "wgt.grid", {
-    
+
     /**
      * Array mit den Resize Elementen
      */
     dragBars: [],
-    
+
     /**
      * Array mit den Head Cols
-     */ 
+     */
     headCols: [],
 
     /**
      * Array mit den Head Cols
      */
     changedData: [],
-    
+
     /**
      * Referenz auf die erste row im grid
      */
@@ -59,7 +59,7 @@
      * Standard Options
      */
     options: {
-      
+
       // technische Eigenschaften
       grid_class: 'wgt-grid', // Klasse für die Deklaration als Grid Element
       hpad: 0,                // Größe des Paddings im Heads ( sollte dynamisch errechnet werden )
@@ -73,43 +73,43 @@
       save_form: null,        // ID des Save Formulars bei editierbaren Tabellen
       edit_able: false,       // Flag ob
       allow_insert: false,    // Sollen neue Datensätze angelegt werden können
-      
+
       load_urls: {}, // urls zum nachladen von content
-      
+
       // Sort Daten und Optionen
       icon_sort_asc:  'control/sort_asc.png',    // Icon für das absteigenden sortieren
       icon_sort_desc: 'control/sort_desc.png',   // Icon für das aufsteigenden sortieren
       icon_sort_none: 'control/sort_none.png',   // noch nicht sortiert
-      
+
       // open / closed
       icon_opened: 'control/opened.png',   // Icon für einen geschlossenen abschnitt
       icon_closed: 'control/closed.png',   // Icon für einen offenen abschnitt
-      
+
       // Layout
       color_scheme: null,     // Klasse für das Farbschema
-      
+
       // Eigenschaften für die Suchleiste
       search_able: false,     // flag ob die Einträge selektiert werden können
       search_form: null,      // ID des Suchformulars / Paging / Datenquelle
-      
+
       // Treeeigenschaften des Grids
-      expandable: false       // Flag ob der Baum colapsable ist 
+      expandable: false       // Flag ob der Baum colapsable ist
     },
- 
+
 
     /**
      * Setup / Constructor methode des Widgets
      */
     _create: function() {
-        
+
       var self = this;
-      
+
       this.element.appear(function(){
         self.buildGrid();
       });
 
     },//end _create
-    
+
     /**
      * Die Standardmethode in welcher eine normale Tabelle zum Gridelement
      * umgebaut wird
@@ -125,17 +125,17 @@
         searchBox = '', // Box mit den Suchelementen, wird nur bei Bedarf gefüllt
         resizeBox = '<div class="wgt-drag" >', // die Box mit den resize elementen
         sizes = []; // liste mit den größen
-        
+
       // setzen der Grid Basisklasse wenn noch nicht vorhanden
       if( !ge.hasClass( opt.grid_class ) ){
         ge.addClass( opt.grid_class );
       }
-      
+
       // Einträge Selektiebar machen
-      if( opt.select_able ){  
+      if( opt.select_able ){
         this.makeSelectable( ge );
       }
-        
+
       if( opt.search_able ){
         searchBox += '<tbody><tr>';
       }
@@ -147,7 +147,7 @@
 
       // erstellen einer head zeile + resize bar pro alter col
       oldHCols.each( function(){
-        
+
         var cNode = $S(this);
         var tmpWidth = this.clientWidth;
 
@@ -157,45 +157,45 @@
         if( opt.search_able ){
           searchBox += self.renderSearchCell( cNode, tmpWidth, opt  );
         }
-        
+
         resizeBox += '<div></div>';
         sizes.push( tmpWidth );
-        
+
       });
-      
+
       // schliesen des heads
       headTab += "</tr></thead>";
       headTab += "</table></div></div>";
-      
+
       if( opt.search_able ){
         searchBox += '</tr></tbody>';
       }
-      
+
       // schliesen der resize box
       resizeBox += '<div class="helper" ></div></div>';
-      
+
       // Sortierelemente im Head anhängen
       var jHeadTab = $S(headTab);
-      
+
       // anhängen der Searchbar wenn gewünscht
       if( opt.search_able ){
         jHeadTab.find('table').append(searchBox);
       }
-      
+
       this.injectSortControls( jHeadTab );
-      
-      
+
+
       // den neuen kopf sowie die resize box vor die tabelle kopieren
       ge.parent().wrap( '<div class="body-scroll">' );
       ge.parent().before(jHeadTab);
       ge.parent().before(resizeBox);
-      
+
       // store the head
       var headBar = ge.parent().parent().find('.wgt-grid-head');
       var headOff = headBar.position();
-      
+
       var tbodyHeight = ge.parent().height() + headBar.height();
-      
+
       // add the scroll events
       var tmpBox    = ge.parent();
       var scrolling = false;
@@ -203,83 +203,83 @@
         scrolling = true;
         headBar.scrollLeft(this.scrollLeft);
       };
-      
+
       tmpBox.mouseup(function(){
-        
+
         // only execute after scrolling
         if( scrolling ){
-          
+
           self.recalcXPosDragHelper();
           scrolling = false;
         }
       });
-      
+
       // all drag helper divs
       this.dragBars = ge.parent().parent().find('div.wgt-drag>div');
-      
+
       // the content boxes of the head
       this.headCols = headBar.find('th>div');
-        
+
       // the first Row
       this.firstRow = ge.find('thead th');
-      
+
       // Resize für das Grid implementieren
       var helper    = ge.parent().parent().find('div.wgt-drag>div.helper');
-      
+
       helper.css({top:headOff.top})
         .height(tbodyHeight+'px')
         .hide();
-      
+
       gridBody.scroll( function(){
 
         var gof = gridBody.get(0);
-        
+
         headBar.css( 'marginLeft', '-'+gof.scrollLeft+'px' );
         ge.parent().parent().find('div.wgt-drag').css( 'marginLeft', '-'+gof.scrollLeft+'px' );
 
-        
+        $D.scrollTrigger();
         //console.log('scroll '+gof.scrollLeft+'  '+gof.scrollTop);
       });
-      
+
       this.firstRow.each( function( idx ){
-        
+
         var actualCol    = $S(this);
         var actualHead   = $S( self.headCols.get(idx) );
-        
+
         var cWidth = actualHead.outerWidth();
-        
+
         //console.log( "Grid: col: "+idx+" width "+cWidth );
-        
+
         //actualCol.width(cWidth);
         var nextPos = actualHead.outerWidth()+actualHead.offset().left-2;
-  
-        
+
+
         // store the position on drag start
         var startPos = null;
         var mover    = null;
-        
+
         $S( self.dragBars.get(idx) )
           .css( {top:headOff.top} )
           .offset( {left:nextPos} )
           .height( tbodyHeight+'px' )
-          .draggable({ 
+          .draggable({
             axis: "x",
             start: function( event, ui ){
               mover = $S(this);
-              
+
               if( idx === 0 ){
                 startPos = 0;
               }
               else{
                 startPos = $S( self.dragBars.get(idx-1) ).position().left;
               }
-              
+
             },
             drag: function( event, ui ){
-              
+
               /*
               var newPos = mover.position().left;
-              
+
               // min size of a column is 50px
               if( (newPos-startPos) <= 57 )
               {
@@ -294,32 +294,32 @@
                 helper.hide();
               }
               */
-              
+
             },
             stop: function(){
-              
+
               //var tw     = actualCol.width();
               //var mover  = $S(this);
               var newPos  = mover.position().left;
               var oldWith = actualCol.outerWidth();
-              
+
               var newWidth = (newPos-startPos);
               if( newWidth <= 40 && !actualCol.hasClass('pos') ) {
-                
+
                 newWidth = 40;
                 mover.offset( {left:actualHead.offset().left-40} );
               }
-              
+
               if( actualCol.hasClass('pos') ) {
-                
+
                 newWidth = 30;
                 mover.offset( {left:actualHead.offset().left-30} );
               }
-              
+
               actualCol.width(newWidth);
-              
+
               var tmpNewW = ge.outerWidth()+(newWidth-oldWith)+opt.hpad;
-              
+
               ge.width( tmpNewW );
               self.syncColWidth();
 
@@ -327,13 +327,13 @@
               actualHead.width(newWidth);
               actualCol.width(actualHead.outerWidth());
               */
-              
+
               self.recalcXPosDragHelper();
             }
           });
-        
+
       });
-      
+
       // nach dem Init nocheinmal sicher stellen das ResizeBars und Size
       // auch in sync sind
       self.syncColWidth();
@@ -341,11 +341,11 @@
       if( opt.edit_able ){
         self.startEditMode();
       }
-      
+
       if( opt.load_urls !== {} ){
         self.initLoaderEvent();
       }
-      
+
     },//end buildGrid
 
     /**
@@ -399,7 +399,7 @@
               cTarget.html( editLayer.html() );
             }
           });
-          
+
           //editLayer.selection( 0, editLayer.text().length );
 
           if( 'date' === type ){
@@ -412,20 +412,20 @@
       });
 
     },
-    
+
     /**
      * Berechnen der korrekten position für die Drag Bar Elemente
      * Werden für das Resizing der Cols benötigt
      */
     recalcXPosDragHelper: function(){
-      
+
       var self = this;
-      
+
       ///@todo hier brauchen wir dringend ne fehlerbehandlung
       if( this.headCols ){
-        
+
         this.headCols.each(function (idx){
-          
+
           var actualHead   = $S(self.headCols.get(idx));
           var mover        = $S(self.dragBars.get(idx));
           var tmpPos = actualHead.outerWidth()+actualHead.offset().left-2;
@@ -437,18 +437,18 @@
         });
       }
     },//end recalcXPosDragHelper
-    
+
     /**
      * Injizieren der Sortelements in den Tabellenhead
      */
     injectSortControls: function( jHeadTab ){
-      
+
       var opt = this.options;
-        
+
       jHeadTab.find('img').each( function(){
-        
+
          var imgNode = $S(this);
-         
+
          imgNode.bind("click.grid", function() {
 
           var nIcon = $S(this);
@@ -472,13 +472,13 @@
 
         });
       });
-      
+
       jHeadTab.find('input.wcm_req_search,select.wcm_req_search').each(function(){
         $G.$R.callAction( 'req_search', $S(this) );
       });
 
     },//end injectSortControls
-    
+
     /**
      * Sc
      * @param cNode jQuery jQuery Object des th nodes
@@ -486,10 +486,10 @@
      * @param opt Object Options Object
      */
     renderSearchCell: function( cNode, tmpWidth, opt  ){
-      
+
       var searchBox = '',
         searchName = cNode.attr('wgt_search');
-          
+
       if( searchName ){
 
         var tmp   = searchName.split(':'),
@@ -499,46 +499,46 @@
         if( 2 === tmp.length ){
           sType = tmp[0];
           sName = tmp[1];
-          
+
         }
         else{
           sType = 'text';
           sName = searchName;
-          
+
         }
-        
+
         //width:'+(tmpWidth-opt.hpad)+'px;
-        searchBox = ''.concat( 
+        searchBox = ''.concat(
             '<td style="text-align:center;" >',
             '<input type="'+sType+'" name="'+sName+'" class="wcm wcm_req_search search wgt-no-save fparam-'+opt.search_form+'" style="width:100%" />',
             '</td>'
         );
       }
       else{
-        
+
         //width:'+(tmpWidth-opt.hpad)+'px;
         searchBox = '<td style="text-align:center;" ><span>&nbsp;</td>';
-        
+
       }
-      
+
       return searchBox;
 
     },//end renderSearchCell
-    
+
      /**
      * Render einer Head Label Cell bei Bedarf mit Order Feld
-     * 
+     *
      * @param node DOMNode
      * @param cNode jQuery of DOMNode
      * @param tmpWidth int
      * @param opt Object Options Object
      */
     renderHeadCell: function( node, cNode, tmpWidth, opt  ){
-    
+
       var nodeName  = cNode.attr('wgt_sort_name'),
         headTab   = '',
         tmpNewWdth = null;
-      
+
       if( nodeName ){
 
         var sortIcon  = opt.icon_sort_none;
@@ -561,10 +561,10 @@
         headTab += '<input type="hidden" name="'+nodeName+'" value="'+sortVal+'" class="wcm wcm_req_search wgt-no-save fparam-'+opt.search_form+'" />';
         headTab += "</p>";
         headTab += "</div></th>";
-        
-      } 
+
+      }
       else{
-        
+
         tmpNewWdth = tmpWidth-opt.hpad;
         headTab += "<th style=\"width:"+tmpNewWdth+"px;\" orig_width=\""+tmpNewWdth+"\" ><div style=\"width:"+tmpNewWdth+"px;\" ><p class=\"label\" >"+node.innerHTML+"</p></div></th>";
       }
@@ -572,7 +572,7 @@
       return headTab;
 
     },//end renderHeadCell
-    
+
     /**
      * Die Listeneinträge selektierbar machen
      * Diese Funktion ermöglicht es primär die rows mit wgt-selected zu tagen
@@ -580,21 +580,21 @@
      * der Multi Action zu definieren.
      */
     makeSelectable: function( lElem ){
-      
+
       lElem.find('tbody>tr>td.pos').not('.ini')
         .click(function(){
 
           $S(this).parent().toggleClass( 'wgt-selected' );
         }).addClass('ini');
-      
+
         /*
         .mouseover( function(){
 
-          $S(this).addClass('wgt-hover'); 
+          $S(this).addClass('wgt-hover');
         });
         .mouseout(function(){
 
-          $S(this).removeClass('wgt-hover'); 
+          $S(this).removeClass('wgt-hover');
         })
         */
 
@@ -604,46 +604,46 @@
      * Synchronisation von Head und Body Breite
      */
     syncColWidth: function(){
-      
+
       var self = this;
-      
+
       if( this.firstRow ){
-        
+
         this.firstRow.each(function(idx){
-          
+
           var actualCol  = $S(this);
           var actualHead = $S(self.headCols.get(idx));
-          
+
           var cWidth = actualCol.outerWidth();
           var newWidth = cWidth -6 ;//-(self.options.hpad+1);
           actualHead.width( newWidth ).parent().width( newWidth );
           //actualHead.width(cWidth-15);
-  
+
         });
       }
 
       this.recalcXPosDragHelper();
 
     },
-    
+
     /**
      * Einen Teil der Tabelle nachladen
      */
     triggerLoad: function( key, append, triggerNode ){
-      
+
       if( triggerNode && triggerNode.is('state-loaded') ){
         return;
       }
-      
+
       if( undefined !== this.loadUrls[key]  ){
         $R.get( this.loadUrls[key]+append );
-        
+
         if( triggerNode ){
           triggerNode.addClass('state-loaded');
         }
       }
     },
-    
+
     /**
      * Events zum nachladen
      */
@@ -656,98 +656,98 @@
       el.click( function( e ){
 
         var cTarget = $S( e.target );
-        
+
         if( !cTarget.is('.wgt-loader') ){
           cTarget = cTarget.parentX('.wgt-loader');
         }
-        
+
         if( !cTarget || !cTarget.is('.wgt-loader') ){
           return;
         }
-        
-        if( cTarget.is('.state-loaded') ){          
+
+        if( cTarget.is('.state-loaded') ){
           return;
         }
 
         var loadUrl = opts.load_urls[cTarget.attr('wgt_source_key')];
-        
+
         if( cTarget.attr('wgt_eid') ){
           loadUrl += '&objid='+cTarget.attr('wgt_eid');
         }
-        
+
         if( cTarget.attr('wgt_param') ){
           loadUrl += cTarget.attr('wgt_param');
         }
-        
+
         var parentTr = cTarget.parentX('tr');
-        
+
         if( parentTr ){
           loadUrl += '&p_row_id='+parentTr.attr('id')+'&p_row_pos='+parentTr.find('td.pos').text();
         }
 
         console.log("data "+cTarget.attr('wgt_source_key')+" "+loadUrl );
-        
+
         $R.get( loadUrl );
-        
+
         cTarget.addClass('state-loaded');
         cTarget.find('img').attr( 'src', $G.$C.WEB_ICONS+"xsmall/"+opts.icon_opened );
-        
+
         parentTr.bind( 'rowclose', function(){
           cTarget.find("img").attr('src', $G.$C.WEB_ICONS+"xsmall/"+opts.icon_closed);
           $S('.c-'+parentTr.attr('id')).hide().trigger('rowclose');
           parentTr.removeClass('state-open');
         });
-        
+
         parentTr.addClass('state-open');
-        
-        
+
+
         cTarget.bind( 'click', function(){
-          
+
           if( parentTr.hasClass('state-open') ) {
-            
+
             parentTr.trigger('rowclose');
             self.syncColWidth();
           }
           else{
-          
+
             cTarget.find("img").attr('src', $G.$C.WEB_ICONS+"xsmall/"+opts.icon_opened);
             $S('.c-'+parentTr.attr('id')).show();
             parentTr.addClass('state-open');
             self.syncColWidth();
           }
-            
+
         });
-      
+
       });
 
     },
-    
+
     /**
      * Grid als Treetable darstellen
      */
     treeMode: function( ){
-      
+
       //if( undefined === this.options.expandable )
         //this.options.expandable = false; // quick fix
-      
+
       this.element.treeTable(this.options);
     },
-    
+
     /**
      * Neu hinzugekommene Einträge in den Baum integrieren
      */
     refreshTree: function( ){
-      
+
       //if( undefined === this.options.expandable )
         //this.options.expandable = false; // quick fix
-      
+
       this.element.treeTable(this.options);
     },
 
 
     /**
      * Grid im Browser sortieren ohne Refresh vom Server
-     * 
+     *
      * @param colId int, the numeric index of the col
      * @param params Object, named params array
      */
@@ -781,7 +781,7 @@
       for( var pos = 0; pos < sortKeys.length; pos++ ){
         this.element.append(sortKeys[pos][1]);
       }
-      
+
       this.reColorize();
 
     },//end this.sort
@@ -796,7 +796,7 @@
       var reg   = new RegExp("("+escapearg(htmlspecialchars(input.toUpperCase()))+")",'g');
 
       rows.each(function(){
-        
+
         var row = $S(this);
         var col = row.find('td').get(colId);
         if( reg.test( $S(col).text().toUpperCase() ) ){
@@ -811,7 +811,7 @@
 
     },//end this.filter
 
-    
+
     /**
      * Inkrementieren der Anzahl gelisteter Einträge
      */
@@ -822,13 +822,13 @@
       if( !fNum.length ){
         return;
       }
-      
+
       var numVal = Number(fNum.text());
       ++numVal;
       fNum.text(numVal);
-      
+
     },//end incEntries
-    
+
     /**
      * Dekrementieren der Anzahl gelisteter Einträge
      */
@@ -839,13 +839,13 @@
       if( !fNum.length ){
         return;
       }
-      
+
       var numVal = Number(fNum.text());
       --numVal;
       fNum.text(numVal);
 
     },//end decEntries
-    
+
     /**
      * Setzen der Anzahl gelisteter Einträge
      */
@@ -861,7 +861,7 @@
       fNum.text(num);
 
     },//end setNumEntries
-    
+
     /**
      * Selectieren alle entries
      */
@@ -870,7 +870,7 @@
       this.element.find('tr').addClass( 'wgt-selected' );
 
     },//end selectAll
-    
+
     /**
      * Deselect all selected entries
      */
@@ -886,7 +886,7 @@
     toggle: function( ){
 
       this.element.find('tbody').toggle();
-      
+
     },//end this.toggle
 
     /**
@@ -947,7 +947,7 @@
 
       }
       else{
-        
+
         return 'sort_asc';
       }
 
@@ -962,14 +962,14 @@
         fact = 3,
         pos = 2,
         oldNode = $G.$WGT.getClassByPrefix( $S(rows.get(0)).prop('class'), 'node-', false  );
-      
+
       rows.each(function(){
 
         var row = $S(this);
         row.removeClass('row1 row2');
-        
+
         var nodeKey = $G.$WGT.getClassByPrefix( row.prop('class'), 'node-', false  );
-        
+
         if( nodeKey !== oldNode ){
 
           row.find('td.pos').text(pos);
@@ -977,14 +977,14 @@
           ++fact;
           ++pos;
         }
-        
+
         row.addClass('row'+((fact%2)+1));
 
       });
 
-      
+
     },//end this.reColorize
-    
+
     /**
     *
     */
@@ -994,20 +994,20 @@
        fact = 3,
        pos = 2,
        oldNode = $G.$WGT.getClassByPrefix( $S(rows.get(0)).prop('class'), 'node-', false  );
-     
+
      rows.find('>td.pos').not('.ini')
      .click(function(){
 
        $S(this).parent().toggleClass( 'wgt-selected' );
      }).addClass('ini');
-     
+
      rows.each(function(){
 
        var row = $S(this);
        row.removeClass('row1 row2');
-       
+
        var nodeKey = $G.$WGT.getClassByPrefix( row.prop('class'), 'node-', false  );
-       
+
        if( nodeKey !== oldNode ){
 
          row.find('td.pos').text(pos);
@@ -1015,14 +1015,14 @@
          ++fact;
          ++pos;
        }
-       
+
        row.addClass('row'+((fact%2)+1));
 
      });
 
-     
+
    },//end this.reColorize
-    
+
     // _setOptions is called with a hash of all options that are changing
     // always refresh when changing options
     _setOptions: function() {
@@ -1040,12 +1040,12 @@
       $S.Widget.prototype._setOption.apply( this, arguments );
       // In jQuery UI 1.8, you have to manually invoke the _setOption method from the base widget
       //$.Widget.prototype._setOption.apply( this, arguments );
-      
+
       // In jQuery UI 1.9 and above, you use the _super method instead
       //this._super( "_setOption", key, value );
 
     },
- 
+
     // called when created, and later when changing options
     _refresh: function() {
 
@@ -1054,14 +1054,14 @@
     },
 
     /**
-     * Use the destroy method to clean up any modifications your 
+     * Use the destroy method to clean up any modifications your
      * widget has made to the DOM
      */
     destroy: function() {
 
       $S.Widget.prototype.destroy.call( this );
     },//end destroy
-    
+
 
     /**
      * @param formId
@@ -1076,7 +1076,7 @@
       $G.$R.form(formId);
 
     },//end this.pageSize
-    
+
     /**
      * @param formId
      * @param element
@@ -1092,7 +1092,7 @@
     }//end this.search
 
   });
-  
+
 
 }( jQuery, window ) );
 

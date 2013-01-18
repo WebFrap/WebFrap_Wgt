@@ -65,6 +65,10 @@
     this.globalCloseMenu = function(){};
 
     /**
+     */
+    this.scrollEvents = {};
+
+    /**
      * Actions für einen globalen klick
      * Nur on demand befüllen wenn etwas aktiv ist
      * ansonsten muss geleert werden.
@@ -91,6 +95,28 @@
       return true;
 
     };//end this.triggerGlobalClick */
+
+    /**
+     * global click triggern
+     * @var event
+     */
+    this.scrollTrigger = function( ){
+
+      for ( var prop in this.scrollEvents ) {
+
+        if( this.scrollEvents.hasOwnProperty( prop ) ) {
+          if( undefined !== this.scrollEvents[prop] ){
+            this.scrollEvents[prop]( );
+          }
+        }
+
+      }
+
+      this.scrollEvents = {};
+
+      return true;
+
+    };//end scrollTrigger */
 
 
     /**
