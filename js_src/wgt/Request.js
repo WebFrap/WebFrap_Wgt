@@ -107,8 +107,10 @@
      * @return boolean
      */
     this.ok = function(){
-
-      return $S.inArray( self.lastRequest.status, [200,201,202]  );
+      
+      console.log( ' status '+self.lastRequest.status );
+     
+      return !( -1 ===  $S.inArray( self.lastRequest.status, [200,201,202] ) );
     };
 
 /*//////////////////////////////////////////////////////////////////////////////
@@ -950,7 +952,7 @@
             }
 
             if( this.ok() &&  params.success ){
-              console.log( 'trigger success' );
+              console.log( 'wgt sync request trigger success' );
               params.success( responseData );
             }
 
