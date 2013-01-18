@@ -127,7 +127,7 @@ span.wgt-button2 input
 
 ul.wgt-button-list
 {
-  width:245px;
+  width:225px;
   padding:4px;
   background-color:silver;
 }
@@ -139,7 +139,7 @@ ul.wgt-button-list li
 
 ul.wgt-button-list button
 {
-  width:245px;
+  width:225px;
   text-align:center;
   height:22px;
   size:16px;
