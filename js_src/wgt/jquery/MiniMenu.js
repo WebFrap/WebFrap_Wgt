@@ -316,12 +316,14 @@
       return;
     }
 
+
+
     if( 'right' == opts.align ){
 
       style.left =  style.left + tStyleW - oStyleW;
 
-      if( ( style.left + opts.overlayStyle.width ) > winW ){
-        style.left = winW - opts.overlayStyle.width;
+      if( ( style.left + oStyleW  + 10 ) > winW ){
+        style.left = winW - (oStyleW + 10 );
       }
 
     }
@@ -329,17 +331,19 @@
 
       style.left = style.left + ( ( tStyleW - oStyleW ) / 2 ) ;
 
-      if( ( style.left + opts.overlayStyle.width ) > winW ){
-        style.left = winW - opts.overlayStyle.width;
+      if( ( style.left + oStyleW  + 10 ) > winW ){
+        style.left = winW - (oStyleW + 10 );
       }
 
     }
     else{
 
-      if( ( style.left + opts.overlayStyle.width ) > winW ){
-        style.left = winW - opts.overlayStyle.width;
+      if( ( style.left + oStyleW  + 10 ) > winW ){
+        style.left = winW - (oStyleW + 10 );
       }
     }
+
+    console.log(  style.left+" + "+oStyleW+" > " + winW );
 
     if(  style.left < 0 ){
       style.left = 0;
