@@ -14,7 +14,18 @@ $R.addAction( 'ui_dropform', function( jNode ){
     menuItems = [],
     overlayData,
     nextNode,
-    nodeId;
+    nodeId,
+    sizes = {
+      'small':250,
+      'medium':500,
+      'big':750,
+      'huge':950
+    };
+
+  // menu sizes
+  if( undefined !== props.size && undefined !== sizes[props.size] ){
+    menuWidth = sizes[props.size];
+  }
 
   if( source.length > 0 ){
 
