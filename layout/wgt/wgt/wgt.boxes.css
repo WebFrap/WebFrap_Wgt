@@ -119,14 +119,14 @@ div.wgt-content_box>div.head div.search
 div.wgt-content_box>div.content
 {
   padding:3px;
-  padding-top:6px;  
-  padding-bottom:6px; 
+  padding-top:6px;
+  padding-bottom:6px;
   overflow: auto;
 }
 
 div.wgt-content_box>div.head button.wgt-button.append
 {
-  
+
   padding:0px;
   margin-left:-5px;
 }
@@ -168,7 +168,7 @@ div.wgt-content_box.wgt-tag_cloud>div.content span:hover
   cursor: default;
 }
 
-div.wgt-content_box.wgt-tag_cloud>div.content button 
+div.wgt-content_box.wgt-tag_cloud>div.content button
 {
   padding:0 !important;
   margin:0 !important;

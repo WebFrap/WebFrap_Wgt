@@ -89,3 +89,21 @@ ul.wgt-input-list li div.nav
   clear:both;
   text-align:right;
 }
+
+/**/
+
+ul.wgt-news-list.thumbs li.entry
+{
+  background-color:white;
+}
+
+ul.wgt-news-list.thumbs .thumb
+{
+  float:left;
+  width:50px;
+}
+
+ul.wgt-news-list.thumbs .content
+{
+  float:left;
+}
