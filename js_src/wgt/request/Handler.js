@@ -82,6 +82,7 @@
            +' This can happen when your Browser is in the Offline Mode, or when an internal Server Error occures.'
            +' Please report if this problem persists.'
         );
+        console.log( xmlData );
         return null;
       }
 

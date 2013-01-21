@@ -107,9 +107,9 @@
      * @return boolean
      */
     this.ok = function(){
-      
+
       console.log( ' status '+self.lastRequest.status );
-     
+
       return !( -1 ===  $S.inArray( self.lastRequest.status, [200,201,202] ) );
     };
 
@@ -817,6 +817,21 @@
     this.wgtRequest = function( params, background ){
 
 
+      /**
+       * WGT request object including
+       * the xrqt object
+       * extracted data
+       * rendering status
+       */
+      var callback = null,
+        responseData,
+        requestData = {
+            rqt: null,
+            data: null,
+            status: null
+          };
+
+
       if( undefined === background )
         background = false;
 
@@ -831,7 +846,6 @@
       // setting of default values
       window.$B.dval(params,'type','post');
       window.$B.dval(params,'success',function(data){});
-      window.$B.dval(params,'error',function(data){});
 
       // per default we want synchron request, as most of the requests
       // are in transactions where the response is required for the next
@@ -841,8 +855,8 @@
       window.$B.dval(params,'async',false);
       window.$B.dval(params,'ctype','xml');
 
-      var callback = null,
-        responseData;
+      // events trigger die vor einem ajax request ausgeführt werden
+      $R.eventBeforeAjaxRequest( background );
 
       if( undefined === params.callback ){
 
@@ -851,7 +865,7 @@
           // wenn vorhanden original debug consolen content löschen
           $S('#wgt_debug_console-content').remove();
 
-          $R.eventAfterAjaxRequest();
+          $R.eventAfterAjaxRequest( background );
         };
 
       }
@@ -863,24 +877,23 @@
           $S('#wgt_debug_console-content').remove();
 
           params.callback();
-          $R.eventAfterAjaxRequest();
+          $R.eventAfterAjaxRequest( background );
         };
       }
 
-      // events trigger die vor einem ajax request ausgeführt werden
-      $R.eventBeforeAjaxRequest();
+      if( undefined === params.error ){
 
-      /**
-       * WGT request object including
-       * the xrqt object
-       * extracted data
-       * rendering status
-       */
-      var requestData = {
-        rqt: null,
-        data: null,
-        status: null
-      };
+        params.error = function( response ){
+
+          callback();
+
+          $R.lastResponse = response;
+          responseData = handler.xml( response.responseXML, params.statusCallback  );
+          requestData.data = responseData;
+
+        };
+
+      }
 
       if( 'xml' === params.ctype ) {
 
@@ -1089,9 +1102,11 @@
    /**
     *
     */
-   this.eventBeforeAjaxRequest = function( ){
+   this.eventBeforeAjaxRequest = function( background ){
 
-      $D.showProgressBar();
+      if( !background ){
+        $D.showProgressBar();
+      }
 
       for( var func in this.beforeAjaxRequest ){
 
@@ -1109,7 +1124,7 @@
    /**
     *
     */
-    this.eventAfterAjaxRequest = function( ) {
+    this.eventAfterAjaxRequest = function( background ) {
 
       var startTime = $DBG.start();
 
@@ -1188,7 +1203,9 @@
 
       this.poolOtPostAray = [];
 
-      $D.hideProgressBar();
+      if( !background ){
+        $D.hideProgressBar();
+      }
 
       console.log('wcm duration ' + $DBG.duration( startTime ) );
 
