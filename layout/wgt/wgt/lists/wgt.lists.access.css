@@ -10,59 +10,59 @@ span.access
 span.access.l_denied
 {
   color:#C85E60;
-  border:2px dotted #C85E60;
+  border:1px dotted #555555;
 }
 
 span.access.l_listing
 {
   color:#D6EBBE;
-  border:2px dotted #D6EBBE;
+  border:1px dotted #555555;
 }
 
 span.access.l_access
 {
   color:#B6DB8C;
-  border:2px dotted #B6DB8C;
+  border:1px dotted #555555;
 }
 
 span.access.l_assign
 {
   color:#99CD5D;
-  border:2px dotted #99CD5D;
+  border:1px dotted #555555;
 }
 
 span.access.l_insert
 {
   color:#7ABE2F;
-  border:2px dotted #7ABE2F;
+  border:1px dotted #555555;
 }
 
 span.access.l_update
 {
   color:#CAE2FF;
-  border:2px dotted #CAE2FF;
+  border:1px dotted #555555;
 }
 
 span.access.l_delete
 {
   color:#9EC9FF;
-  border:2px dotted #9EC9FF;
+  border:1px dotted #555555;
 }
 
 span.access.l_publish
 {
   color:#77B4FF;
-  border:2px dotted #77B4FF;
+  border:1px dotted #555555;
 }
 
 span.access.l_maintenance
 {
   color:#4096FF;
-  border:2px dotted #4096FF;
+  border:1px dotted #555555;
 }
 
 span.access.l_admin
 {
   color:#AE2CFF;
-  border:2px dotted #AE2CFF;
+  border:1px dotted #555555;
 }
