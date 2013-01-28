@@ -151,7 +151,7 @@
       this.closeAll();
 
       if( opts.closeScroll ){
-        console.log( "closeScroll true" );
+        //console.log( "closeScroll true" );
         $D.scrollEvents[contextBoxId] = function(){
           self.close();
         };

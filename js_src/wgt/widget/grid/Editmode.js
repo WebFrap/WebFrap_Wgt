@@ -69,7 +69,7 @@
 
           var editLayer = $S('#wgt-edit-field-'+type);
 
-          console.log( cTarget.parentX('table').css('margin-top')+' type '+type+' '+cTarget.prop('class') );
+          //console.log( cTarget.parentX('table').css('margin-top')+' type '+type+' '+cTarget.prop('class') );
 
           editLayers.unbind('blur');
           editLayers.hide();

@@ -38,7 +38,8 @@
     $S(this).each( function(){
 
       // Save reference
-      var $this = jQuery(this);
+      var $this = jQuery(this),
+        opts;
 
       if( typeof HTMLDocument !== 'undefined'  ){
         if( this instanceof HTMLDocument ){
@@ -48,7 +49,7 @@
       }
 
       // Merge default options with passed options
-      var opts = jQuery.extend({}, jQuery.fn.miniMenu.defaults, options);
+      opts = jQuery.extend({}, jQuery.fn.miniMenu.defaults, options);
 
       // Save options to element
       $this.data( 'miniMenuOptions', opts );
@@ -151,7 +152,7 @@
     jQuery.fn.miniMenu.close();
 
     if( opts.closeScroll ){
-      console.log( "closeScroll true" );
+      //console.log( "closeScroll true" );
       $D.scrollEvents[overlayID] = function(){
         jQuery.fn.miniMenu.close();
       };
@@ -167,7 +168,8 @@
 
     if( !jQuery( '#'+$targetId+'-mnm-overl' ).length ){
 
-      console.log( "Minimenu no dropdown: "+'#'+$targetId+'-mnm-overl' );
+      //console.log( "Minimenu no dropdown: "+'#'+$targetId+'-mnm-overl ' );
+      //console.dir(opts);
 
       // get jQuery object of overlay box
       $overlay  = jQuery( '#'+overlayID ).clone();
@@ -181,7 +183,7 @@
 
       var builders = jQuery.fn.miniMenu.builders;
       // If there are any additional menu items to be shown ...
-      if (opts.menuItems != null){
+      if (opts.menuItems !== null){
 
         var length = opts.menuItems.length;
         for (var i = 0; i < length; i++){
@@ -271,7 +273,7 @@
     }
     else{
 
-      console.log( "Minimenu found dropdown: "+'#'+$targetId+'-mnm-overl' );
+      //console.log( "Minimenu found dropdown: "+'#'+$targetId+'-mnm-overl' );
 
       $overlay = jQuery( '#'+$targetId+'-mnm-overl' );
 
@@ -292,6 +294,10 @@
     // event setzen
     if( opts.globalClose ){
       jQuery(document).bind( 'mouseup.wgt_mini_menu', docMouseDown );
+    }
+    
+    if( opts.overlayStyle ){
+      $overlay.css(opts.overlayStyle);
     }
 
 
@@ -343,7 +349,7 @@
       }
     }
 
-    console.log(  style.left+" + "+oStyleW+" > " + winW );
+    //console.log(  style.left+" + "+oStyleW+" > " + winW );
 
     if(  style.left < 0 ){
       style.left = 0;
@@ -372,7 +378,7 @@
    */
   function docMouseDown( evt ){
 
-    console.log( 'Minimenu Global Event '+overlayID );
+    //console.log( 'Minimenu Global Event '+overlayID );
 
     if( $S("."+overlayID+":visible").length === 0 ){
       return;
@@ -401,12 +407,19 @@
 
 
     if( jQuery( '#'+callerObj.attr('id')+'-mnm-overl' ).length ){
-      console.log( 'Remove overlay #'+callerObj.attr('id')+'-mnm-overl' );
+      //console.log( 'Remove overlay #'+callerObj.attr('id')+'-mnm-overl' );
       jQuery( '#'+callerObj.attr('id')+'-mnm-overl' ).remove();
+    }
+    else{
+      //console.log( 'INIT overlay #'+callerObj.attr('id')+'-mnm-overl' );
+      //console.dir( opts );
     }
 
 
-    var codeCloseButton = '';
+    var codeCloseButton = '',
+      codeCloseParent = '',
+      tplOverlay = '';
+    
     if( !opts.plain ){
       codeCloseButton = '    <div class="miniMenuCloseButton" >'
       +'      <a href="javascript: void(0);" onclick="jQuery.fn.miniMenu.close()"'
@@ -419,12 +432,11 @@
       +'    </div>';
     }
 
-    var codeCloseParent = '';
     if( opts.closeParent ){
       codeCloseParent += '<var class="conf" >'+callerObj.attr('id')+'</var>';
     }
 
-    var tplOverlay = '<div id="'+overlayID+'" class="template" style="position:absolute;" >'
+    tplOverlay = '<div id="'+overlayID+'" class="template" style="position:absolute;" >'
             +'  <div class="ui-widget ui-widget-content" style="padding: 0px;" >'
             +'    <div class="wgt-border-bottom" >'
             +'      <div class="wgt-minimenu-content"></div>'
@@ -449,8 +461,6 @@
     else{
       $S("#"+overlayID).replaceWith( tplOverlay );
     }
-
-
 
     $S("#"+overlayID).attr("style", "");
     $S("#"+overlayID).css(opts.overlayStyle);

@@ -74,7 +74,7 @@
       $S(this.element).content_map();
       $S(this.element).content_map('injectInstance',this);
       
-      console.log( 'Container ID '+this.container.element.attr('id') );
+      //console.log( 'Container ID '+this.container.element.attr('id') );
       
       this.initEditor();
 
@@ -202,13 +202,13 @@
         node.j
         .mousedown(function(event){
           
-          console.log("node mousedown");
+          //console.log("node mousedown");
           cont.moveBg = false;
           event.stopPropagation();
         })
         .mouseup(function(event){
           
-          console.log("node mouseup");
+          //console.log("node mouseup");
           cont.moveBg = true;
           event.stopPropagation();
         })
@@ -247,12 +247,15 @@
           conSet.dir = value.dir;
           conSet.eClick = function( conn ) {
 
+            /*
             if( conn.isDetachable() ){
               console.log("clicked on detachable "+contId+'-n-'+value.target);
             }
             else{
               console.log("clicked on non detachable "+contId+'-n-'+value.target);
             }
+            */
+            
             jsPlumb.detach( conn );
           };
 
@@ -293,11 +296,11 @@
       
       var self = this;
 
-      console.log( "detach node "+nodeId );
+      //console.log( "detach node "+nodeId );
 
       $S.each( this.edges[nodeId], function( key, con ){
         
-        console.log( "detach connection "+key+" "+con.sourceId + " to " + con.targetId );
+        //console.log( "detach connection "+key+" "+con.sourceId + " to " + con.targetId );
         
         jsPlumb.detach( { source:con.sourceId, target:con.targetId } );
         

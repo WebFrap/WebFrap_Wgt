@@ -638,7 +638,7 @@
       var content;
       var data = json.data;
       
-      console.log(json);
+      //console.log(json);
       
       if ( Boolean(json) ){    //check if json is null or []
         categories = json.categories;

@@ -192,7 +192,7 @@ window.$S = jQuery.noConflict();
      */
     this.loadStyle = function( key ){
       
-      console.log( 'request to load csspack: '+key );
+      //console.log( 'request to load csspack: '+key );
       
       if( self.styles[key] === undefined ){
           
@@ -530,7 +530,7 @@ window.$S = jQuery.noConflict();
         }
       }
       
-      console.log( message+" call: "+callstack );
+      //console.log( message+" call: "+callstack );
     };
     
     /**

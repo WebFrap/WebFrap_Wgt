@@ -369,7 +369,7 @@
 
           var editLayer = $S('#wgt-edit-field-'+type);
 
-          console.log( cTarget.parentX('table').css('margin-top')+' type '+type+' '+cTarget.prop('class') );
+          //console.log( cTarget.parentX('table').css('margin-top')+' type '+type+' '+cTarget.prop('class') );
 
           editLayers.unbind('blur');
           editLayers.hide();
@@ -685,7 +685,7 @@
           loadUrl += '&p_row_id='+parentTr.attr('id')+'&p_row_pos='+parentTr.find('td.pos').text();
         }
 
-        console.log("data "+cTarget.attr('wgt_source_key')+" "+loadUrl );
+        //console.log("data "+cTarget.attr('wgt_source_key')+" "+loadUrl );
 
         $R.get( loadUrl );
 

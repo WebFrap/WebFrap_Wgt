@@ -37,9 +37,11 @@ $R.addAction( 'ui_dropform', function( jNode ){
   if( undefined !== props.size && undefined !== sizes[props.size] ){
     //console.log( 'log in size '+props.size );
     menuWidth = sizes[props.size];
-    //console.log( 'menu size now '+menuWidth);
+    console.log( jNode.attr('id')+' menu size now '+menuWidth);
   }
 
+  props.menuWidth = menuWidth;
+  
   if( props.url ){
 
     jNode.click( function( event ){
@@ -78,7 +80,7 @@ $R.addAction( 'ui_dropform', function( jNode ){
           globalClose : false,
           closeScroll : props.closeScroll,
           align : 'middle',
-          overlayStyle: {"width":menuWidth+'px'},
+          overlayStyle: {"width":props.menuWidth+'px'},
           menuItems   : menuItems
         });
 
@@ -117,7 +119,7 @@ $R.addAction( 'ui_dropform', function( jNode ){
       plain 	   : props.plain,
       globalClose : false,
       closeScroll : props.closeScroll,
-      overlayStyle:{width:menuWidth+'px'},
+      overlayStyle:{"width":props.menuWidth+'px'},
       menuItems   : menuItems
     });
 

@@ -108,7 +108,7 @@
      */
     this.ok = function(){
 
-      console.log( ' status '+self.lastRequest.status );
+      //console.log( ' status '+self.lastRequest.status );
 
       return !( -1 ===  $S.inArray( self.lastRequest.status, [200,201,202] ) );
     };

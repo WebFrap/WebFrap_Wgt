@@ -96,7 +96,7 @@
         
       }
       catch( err ) {
-        console.log( err.description );
+        console.error( err.description );
       }
 
     },
@@ -194,7 +194,7 @@
      */
     clicked = [];
 
-    console.log( "refocus "+settings.reFocus );
+    //console.log( "refocus "+settings.reFocus );
      
     // constructor block
 
@@ -250,7 +250,7 @@
         
         tabData.id = tabObj.prop("id");
 
-        console.log( 'TAB id '+tabData.id );
+        //console.log( 'TAB id '+tabData.id );
 
         // if there is a on
         if( tabObj.find("a.wgt_ref").is("a.wgt_ref") ){
@@ -438,7 +438,7 @@
 
       clicked.push(contId+"_tab_"+tab.id);
       
-      console.log("Added tab");
+      //console.log("Added tab");
       
       // fokus auf das erste inputelement
       if( 'false' !== settings.reFocus )
@@ -748,7 +748,7 @@
       
       headContainer.find(".tab_container .tab").eq(index).click();
       
-      console.log( "set tab active "+index );
+      //console.log( "set tab active "+index );
       if( 'false' !== settings.reFocus )
         bodyContainer.find("div.wgt_tab").eq(index).find('input').not(':hidden,button').first().focus();
     };
