@@ -887,9 +887,11 @@
 
           callback();
 
-          $R.lastResponse = response;
-          responseData = handler.xml( response.responseXML, params.statusCallback  );
-          requestData.data = responseData;
+          if( true === params.async ){
+            $R.lastResponse = response;
+            responseData = handler.xml( response.responseXML, params.statusCallback  );
+            requestData.data = responseData;
+          }
 
         };
 
@@ -954,9 +956,8 @@
               async:  false,
               error:  params.error
             });
-
+              
             self.lastResponse = self.lastRequest.responseXML;
-
             responseData  = handler.xml( self.lastResponse, params.statusCallback );
 
             // schliesen des Menüs nach dem Request
