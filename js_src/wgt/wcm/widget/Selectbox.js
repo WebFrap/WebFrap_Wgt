@@ -123,7 +123,12 @@
       el.css( "width", slctWidth );
 
       el.bind( 'click.wgt_selectbox',  function(){
-        $S( 'input#display-'+self.elemId).val( self.rNode.options[self.rNode.selectedIndex].innerHTML );
+        
+        if( undefined !== self.rNode.options[self.rNode.selectedIndex] ){
+          $S( 'input#display-'+self.elemId).val( self.rNode.options[self.rNode.selectedIndex].innerHTML );
+        }else{
+          $S( 'input#display-'+self.elemId).val( '' );
+        }
       });
       
       el.bind( 'keyup.wgt_selectbox', function( event ){
