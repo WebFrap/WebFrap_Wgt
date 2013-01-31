@@ -56,7 +56,15 @@
 
       var self = this,
         ge = this.element,
-        opts = this.options;
+        opts = this.options,
+        dropBoxId = ge.attr( 'wgt_drop_box' ),
+        dropBox   = $S( '#'+dropBoxId );
+      
+        // leere menüs direkt verstecken
+        if( dropBox.find('li').length == 0 ){
+          ge.hide();
+          return;
+        }
 
       if( opts.triggerEvent ){
         ge.bind( opts.triggerEvent+'.dropmenu' ,function(){
@@ -80,6 +88,12 @@
 
       var dropBoxId = ge.attr( 'wgt_drop_box' );
       var dropBox   = $S( '#'+dropBoxId );
+      
+      // leere menüs direkt verstecken
+      if( dropBox.find('li').length == 0 ){
+        ge.hide();
+        return;
+      }
 
       // browser contextmenü deaktivieren
       dropBox.bind('contextmenu', function() { return false;});
