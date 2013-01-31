@@ -281,6 +281,13 @@
       var dropBoxId = ge.attr( 'wgt_drop_box' ),
         dropBox   = $S( '#'+dropBoxId+'-init' );
 
+      // leere menüs nicht öffnen
+      if( 0 == dropBox.find('li').length ){
+        
+        $D.message.warning( 'Warning' , 'There are no actions for your profile in this menu.' );
+        return false;
+      }
+        
 
       if( opts.closeScroll ){
         console.log( "closeScroll true" );

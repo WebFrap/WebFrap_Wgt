@@ -149,6 +149,11 @@
 
       // Get options of the element
       this.closeAll();
+      
+      // leere menüs gar nicht erst öffnen
+      if( !contextBox.find('li') ){
+        return false;
+      }
 
       if( opts.closeScroll ){
         //console.log( "closeScroll true" );
