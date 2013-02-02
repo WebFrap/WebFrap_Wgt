@@ -1,5 +1,5 @@
 /*//////////////////////////////////////////////////////////////////////////////
-// Table
+// List Elements
 //////////////////////////////////////////////////////////////////////////////*/
 
 div.wgt-grid
@@ -161,8 +161,8 @@ div.wgt-grid-head
   float:right;
   height:18px;
   width:20px;
-  padding:0px;  
-  margin:0px; 
+  padding:0px;
+  margin:0px;
   text-align:center;
 }
 
@@ -443,4 +443,17 @@ table.wgt-table tbody tr.subtitle td.child
 {
   padding-left:6px;
 }
+
+/* Matrix stuff */
+
+table.wgt-matrix td
+{
+  vertical-align: top;
+}
+
+div.wgt-tile
+{
+
+}
+
 
