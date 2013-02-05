@@ -124,8 +124,15 @@
   $S.fn.calcSum = function(  ){
    
     var sum = 0;
+    var elements = $S(this);
     
-    $S(this).each( function(){
+    if( !elements.length ){
+      return 0;
+    }
+    
+    elements.removeClass('state-warn');
+    
+    elements.each( function(){
       
       if( isNaN(sum) ){
         return;
@@ -139,16 +146,17 @@
       }
       
       if( isNaN(value) ){
-        sum = '(not a number)';
+        $node.addClass('state-warn');
+        return;
       }
       
-      sum += parseFloat(value);
+      sum += 100000*parseFloat(value);
       
       return;
       
     });
     
-    return sum;
+    return sum/100000;
   };
   
   /**
@@ -178,10 +186,11 @@
       }
       
       if( isNaN(value) ){
-        sum = '(not a number)';
+        $node.addClass('state-warn');
+        return '(not a number)';
       }
       
-      sum += parseFloat(value);
+      sum += 100000 * parseFloat(value);
       
       return;
       
@@ -193,7 +202,7 @@
       return sum;
     }
     
-    return (sum / elements.length).toFixed(2);
+    return ( (sum / elements.length ) / 100000 ).toFixed(2);
   };
   
   /**
