@@ -65,6 +65,13 @@ div.wgt-panel ul.progress
   background-color:#CBCBCB;
 }
 
+
+div.wgt-panel label
+{
+  display:block;
+  float:left;
+}
+
 div.wgt-panel ul.progress li
 {
   height:32px;
