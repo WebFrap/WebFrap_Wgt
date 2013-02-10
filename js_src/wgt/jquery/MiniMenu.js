@@ -295,7 +295,7 @@
     if( opts.globalClose ){
       jQuery(document).bind( 'mouseup.wgt_mini_menu', docMouseDown );
     }
-    
+
     if( opts.overlayStyle ){
       $overlay.css(opts.overlayStyle);
     }
@@ -361,6 +361,10 @@
 
     style['z-index'] = '10000';
 
+    $overlay.find( '.wgtac_close_overlay' ).bind( 'click.close', function(){
+      jQuery.fn.miniMenu.close();
+    });
+
     // adjust top coordinate
     style.top = style.top + $target.outerHeight();
     style.position = 'absolute';
@@ -419,7 +423,7 @@
     var codeCloseButton = '',
       codeCloseParent = '',
       tplOverlay = '';
-    
+
     if( !opts.plain ){
       codeCloseButton = '    <div class="miniMenuCloseButton" >'
       +'      <a href="javascript: void(0);" onclick="jQuery.fn.miniMenu.close()"'
