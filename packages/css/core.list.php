@@ -8,7 +8,7 @@
 * @projectUrl  : http://webfrap.net
 *
 * @licence     : BSD License see: LICENCE/BSD Licence.txt
-* 
+*
 * @version: @package_version@  Revision: @package_revision@
 *
 * Changes:
@@ -41,7 +41,7 @@ $files = array
   PATH_WGT.'layout/wgt/wgt/wgt.text.css',
   PATH_WGT.'layout/wgt/wgt/wgt.search.css',
   PATH_WGT.'layout/wgt/wgt/wgt.elements.css',
-  
+
   // layouts
   PATH_WGT.'layout/wgt/wgt/layout/wgt.layout.grid.css',
   PATH_WGT.'layout/wgt/wgt/layout/wgt.layout.list.css',
@@ -51,14 +51,14 @@ $files = array
   PATH_WGT.'layout/wgt/wgt/wgt.ui.css',
   PATH_WGT.'layout/wgt/wgt/wgt.ui.message-pipe.css',
   PATH_WGT.'layout/wgt/wgt/wgt.ui.tip.css',
-  
+
   PATH_WGT.'layout/wgt/wgt/editor/wgt.editor.core.css',
-  
+
   // selectboxes
   PATH_WGT.'layout/wgt/wgt/select/wgt.select.priority.css',
   PATH_WGT.'layout/wgt/wgt/lists/wgt.lists.access.css',
- 
-  PATH_WGT.'layout/wgt/jquery_ui/jquery.ui.core.css', 
+
+  PATH_WGT.'layout/wgt/jquery_ui/jquery.ui.core.css',
   PATH_WGT.'layout/wgt/jquery_ui/jquery.ui.accordion.css',
   PATH_WGT.'layout/wgt/jquery_ui/jquery.ui.datepicker.css',
 
