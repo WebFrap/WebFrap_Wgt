@@ -141,17 +141,20 @@
       jQuery.fn.miniMenu.globalClose = false;
     }
 
-    if( opts.closeScroll ){
+    if (opts.closeScroll){
+
       jQuery.fn.miniMenu.closeScroll = true;
-    }
-    else{
+
+    } else {
+
       jQuery.fn.miniMenu.closeScroll = false;
     }
 
     // Einfach mal die Box schliesen für den Fall, dass sie aktuell noch offen ist
     jQuery.fn.miniMenu.close();
 
-    if( opts.closeScroll ){
+    if ( opts.closeScroll ){
+
       //console.log( "closeScroll true" );
       $D.scrollEvents[overlayID] = function(){
         jQuery.fn.miniMenu.close();
@@ -166,7 +169,14 @@
       }
     };
 
-    if( !jQuery( '#'+$targetId+'-mnm-overl' ).length ){
+    if ($target.is('.state-new')) {
+      console.log('state new...');
+      jQuery( '#'+$targetId+'-mnm-overl' ).remove();
+      $target.removeClass('state-new');
+    }
+
+
+    if ( !jQuery( '#'+$targetId+'-mnm-overl' ).length ) {
 
       //console.log( "Minimenu no dropdown: "+'#'+$targetId+'-mnm-overl ' );
       //console.dir(opts);
