@@ -16,8 +16,14 @@ div.wgt-process-form div.description
 
 div.wgt-process-form div.wgt-panel.title h2
 {
-  width:700px;
-  float:left;  
+  width:650px;
+  float:left;
+}
+
+div.wgt-process-form div.wgt-panel.title a
+{
+  padding-right:5px;
+  padding-top:3px;
 }
 
 div.wgt-process-form div.pstate

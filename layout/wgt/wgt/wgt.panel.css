@@ -51,13 +51,13 @@ div.wgt-panel.menu
 	clear:none;
   display:inline;
   float:left;
-  zoom: 1; /* FU IE */  
+  zoom: 1; /* FU IE */
 	margin-left:5px;
 }
 
 /**/
 
-.wgt-panel.progress
+div.wgt-panel ul.progress
 {
   height:32px;
   padding:0px;
@@ -65,7 +65,7 @@ div.wgt-panel.menu
   background-color:#CBCBCB;
 }
 
-.wgt-panel.progress li
+div.wgt-panel ul.progress li
 {
   height:32px;
   line-height:32px;
