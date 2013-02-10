@@ -99,4 +99,34 @@ div.wgt-process-form div.slice
   float:left;
 }
 
+button.wgt-button.state-ok
+{
+  background-color:#C0FFC0;
+  color: #0000FF;
+}
+
+button.wgt-button.state-warn
+{
+  background-color:#FFA858;
+  color: #FFFFFF;
+}
+
+button.wgt-button.state-bad
+{
+  background-color:#C00000;
+  color: #FFFFFF;
+}
+
+button.wgt-button.state-frozen
+{
+  background-color:#ACE4E4;
+  color: #303030;
+}
+
+button.wgt-button.state-complete
+{
+  background-color:#DCDCDC;
+  color: #000000;
+}
+
 
