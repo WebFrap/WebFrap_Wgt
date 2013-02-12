@@ -101,30 +101,35 @@ div.wgt-process-form div.slice
 
 button.wgt-button.state-ok
 {
+  background-image:none;
   background-color:#C0FFC0;
   color: #0000FF;
 }
 
 button.wgt-button.state-warn
 {
+  background-image:none;
   background-color:#FFA858;
   color: #FFFFFF;
 }
 
 button.wgt-button.state-bad
 {
+  background-image:none;
   background-color:#C00000;
   color: #FFFFFF;
 }
 
 button.wgt-button.state-frozen
 {
+  background-image:none;
   background-color:#ACE4E4;
   color: #303030;
 }
 
-button.wgt-button.state-complete
+button.wgt-button.state-completed
 {
+  background-image:none;
   background-color:#DCDCDC;
   color: #000000;
 }
