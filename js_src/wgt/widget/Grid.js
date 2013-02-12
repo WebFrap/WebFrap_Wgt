@@ -116,12 +116,15 @@
      */
     buildGrid: function(){
 
+      // erst mal alle benötigten variablen deklarieren
       var self = this,
         ge = this.element,  // shortcut aufs das element
         opt = this.options, // shortcut für die options
         gridBody = null,    // die box in welcher sich die content tabelle befindet
+        parentBox = ge.parent(),
         parentHeight = null,
         parentHeightStyle = null,
+        scrollHeightStyle = null,
         jHeadTab  = null,
         oldHCols = ge.find('thead th'), // der original head
         headTab   = "<div class=\"wgt-grid-head\" ><div><table><thead><tr>", // start des neuen heads
@@ -135,17 +138,23 @@
       }
       
       //console.log( 'height '+ge.parent().parent().height() );
-      if( 'full' === opt.height ){
+      if ('full' === opt.height) {
         
-        parentHeight = ge.parent().parent().height();
+        parentHeight = parentBox.parent().height();
+        parentBox.css('height', parentHeight+'px');
         
-        if( parentHeight < 120 ){
-          parentHeight = 120;
+        // hier noch ein check für create
+          
+        parentHeight -= 32;
+        scrollHeightStyle = ' style="height:'+(parentHeight)+'px;" ';
+
+        parentHeight -= 20;
+        if (opt.search_able) {
+          parentHeight -= 23;
         }
         
-        ge.parent().css( 'height', parentHeight+'px' );
         
-        parentHeightStyle = 'style="height:'+(parentHeight-41)+'px;"';
+        parentHeightStyle = ' style="height:'+(parentHeight)+'px;" ';
       }
 
       // Einträge Selektiebar machen
@@ -203,7 +212,7 @@
 
 
       // den neuen kopf sowie die resize box vor die tabelle kopieren
-      ge.parent().wrap( '<div class="body-scroll" '+parentHeightStyle+' >' );
+      ge.parent().wrap( '<div class="body-scroll" '+scrollHeightStyle+' >' );
       ge.parent().before(jHeadTab);
       ge.parent().before(resizeBox);
 
@@ -270,7 +279,6 @@
 
         //actualCol.width(cWidth);
         var nextPos = actualHead.outerWidth()+actualHead.offset().left-2;
-
 
         // store the position on drag start
         var startPos = null;
