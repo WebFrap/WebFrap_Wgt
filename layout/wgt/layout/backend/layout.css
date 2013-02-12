@@ -30,14 +30,14 @@ div#wbf-body
 body,
 div#wbf-body
 {
-  overflow-y:hidden;  
+  overflow-y:hidden;
 }
 
 
 div#wbf-ui-panel
 {
   position:absolute;
-  height:29px;	
+  height:29px;
   top:0px;
   left:0px;
   right:0px;
@@ -52,18 +52,18 @@ div#wbf-content
   right:0px;
 	left:0px;
 	bottom:29px;
-  overflow:hidden;	
+  overflow:hidden;
 }
 
-div#wgt-maintab 
+div#wgt-maintab
 {
 	position:absolute;
   margin:0px;
-  top:0px;	
+  top:0px;
   right:0px;
-  left:0px;	
+  left:0px;
   bottom:0px;
-  overflow:auto;	
+  overflow:auto;
 }
 
 div#wgt-maintab div.wgt_tab_head
@@ -99,12 +99,12 @@ div#wgt-maintab div.wgt-content.maintab
   right:0px;
   bottom:0px;
   padding:0px;
-  overflow:hidden;
+  overflow-y:hidden;
   z-index:0;
 }
 
 #wbf-footer
-{ 
+{
   position: absolute;
   left:0px;
   bottom: 0px;
@@ -151,7 +151,7 @@ div#wgt-maintab-head div.wgt-container-controls .wgt-container-buttons
 {
   background-image: url('<?php echo $icons; ?>/small/desktop/message.png');
   background-repeat:no-repeat;
-  background-position:10% 90%;  
+  background-position:10% 90%;
   /*background: inherit url('<?php echo $icons; ?>/small/desktop/message.png') fixed no-repeat;*/
   width:25px;
   padding: 1px 3px 11px 10px;
