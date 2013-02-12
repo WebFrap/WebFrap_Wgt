@@ -99,7 +99,7 @@ div#wgt-maintab div.wgt-content.maintab
   right:0px;
   bottom:0px;
   padding:0px;
-  overflow:auto;
+  overflow:hidden;
   z-index:0;
 }
 

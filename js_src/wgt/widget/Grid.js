@@ -117,9 +117,12 @@
     buildGrid: function(){
 
       var self = this,
-        ge = this.element,
-        opt = this.options,
-        gridBody = null,
+        ge = this.element,  // shortcut aufs das element
+        opt = this.options, // shortcut für die options
+        gridBody = null,    // die box in welcher sich die content tabelle befindet
+        parentHeight = null,
+        parentHeightStyle = null,
+        jHeadTab  = null,
         oldHCols = ge.find('thead th'), // der original head
         headTab   = "<div class=\"wgt-grid-head\" ><div><table><thead><tr>", // start des neuen heads
         searchBox = '', // Box mit den Suchelementen, wird nur bei Bedarf gefüllt
@@ -129,6 +132,20 @@
       // setzen der Grid Basisklasse wenn noch nicht vorhanden
       if( !ge.hasClass( opt.grid_class ) ){
         ge.addClass( opt.grid_class );
+      }
+      
+      //console.log( 'height '+ge.parent().parent().height() );
+      if( 'full' === opt.height ){
+        
+        parentHeight = ge.parent().parent().height();
+        
+        if( parentHeight < 120 ){
+          parentHeight = 120;
+        }
+        
+        ge.parent().css( 'height', parentHeight+'px' );
+        
+        parentHeightStyle = 'style="height:'+(parentHeight-41)+'px;"';
       }
 
       // Einträge Selektiebar machen
@@ -141,7 +158,7 @@
       }
 
       // die tabelle wird mit dem grid element umrahmt
-      ge.wrap('<div class="wgt-grid-body '+opt.height+'" id="'+ge.attr('id')+'-body" />');
+      ge.wrap('<div class="wgt-grid-body '+opt.height+'" id="'+ge.attr('id')+'-body" '+parentHeightStyle+' />');
 
       gridBody = $S( '#'+ge.attr('id')+'-body' );
 
@@ -175,7 +192,7 @@
       resizeBox += '<div class="helper" ></div></div>';
 
       // Sortierelemente im Head anhängen
-      var jHeadTab = $S(headTab);
+      jHeadTab = $S(headTab);
 
       // anhängen der Searchbar wenn gewünscht
       if( opt.search_able ){
@@ -186,7 +203,7 @@
 
 
       // den neuen kopf sowie die resize box vor die tabelle kopieren
-      ge.parent().wrap( '<div class="body-scroll">' );
+      ge.parent().wrap( '<div class="body-scroll" '+parentHeightStyle+' >' );
       ge.parent().before(jHeadTab);
       ge.parent().before(resizeBox);
 
@@ -197,8 +214,9 @@
       var tbodyHeight = ge.parent().height() + headBar.height();
 
       // add the scroll events
-      var tmpBox    = ge.parent();
-      var scrolling = false;
+      var tmpBox    = ge.parent(),
+        scrolling = false;
+      
       tmpBox.get(0).onscroll = function(){
         scrolling = true;
         headBar.scrollLeft(this.scrollLeft);
@@ -632,10 +650,12 @@
     triggerLoad: function( key, append, triggerNode ){
 
       if( triggerNode && triggerNode.is('state-loaded') ){
+        
         return;
       }
 
       if( undefined !== this.loadUrls[key]  ){
+        
         $R.get( this.loadUrls[key]+append );
 
         if( triggerNode ){
@@ -753,14 +773,16 @@
      */
     sort: function( colId, params ){
 
-      if( params === undefined ){
+      if ( params === undefined ) {
         params = {};
       }
 
-      if( params.sort === undefined ){
+      if ( params.sort === undefined ) {
+        
         params.sort =  this.getOrderByFromCol(colId, true);
-      }
-      else{
+        
+      } else {
+        
         params.sort = 'sort_'+params.sort;
       }
 
@@ -774,11 +796,13 @@
       });
 
       sortKeys.sort();
-      if( params.sort === 'sort_desc' ) {
+      if (params.sort === 'sort_desc') {
+        
         sortKeys.reverse();
       }
 
-      for( var pos = 0; pos < sortKeys.length; pos++ ){
+      for (var pos = 0; pos < sortKeys.length; pos++) {
+        
         this.element.append(sortKeys[pos][1]);
       }
 
@@ -790,19 +814,21 @@
      * @param colId int, the numeric index of the col
      * @param input Object, named params array
      */
-    filter: function( colId , input  ){
+    filter: function(colId , input){
 
-      var rows  = this.element.find( 'tbody > tr' );
-      var reg   = new RegExp("("+escapearg(htmlspecialchars(input.toUpperCase()))+")",'g');
+      var rows  = this.element.find( 'tbody > tr' ),
+        reg   = new RegExp("("+escapearg(htmlspecialchars(input.toUpperCase()))+")",'g');
 
       rows.each(function(){
 
         var row = $S(this);
         var col = row.find('td').get(colId);
         if( reg.test( $S(col).text().toUpperCase() ) ){
+          
           row.show();
-        }
-        else{
+          
+        } else {
+          
           row.hide();
         }
       });
@@ -819,7 +845,8 @@
 
       var fNum = this.element.parent().parent().parent().find('.wgt-num-entry');
 
-      if( !fNum.length ){
+      if ( !fNum.length ) {
+        
         return;
       }
 
@@ -937,7 +964,7 @@
         }
         else {
           sort = 'sort_asc';
-          if( changeIcon ) {
+          if (changeIcon) {
             colHead.addClass('sort_asc');
             colHead.find('img').attr('src',  $G.$C.iconSortDesc );
           }
