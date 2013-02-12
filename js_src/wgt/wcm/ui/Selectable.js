@@ -12,10 +12,12 @@ $R.addAction( 'ui_selectable', function( jNode ){
     var theClass = jNode.prop('class');
     var cKey = $WGT.getClassByPrefix( theClass, 'node-', false );
 
-    if( cKey ){
+    if (cKey) {
+      
       jNode.parent().find('.'+cKey).toggleClass( 'wgt-selected' );
-    }
-    else{
+      
+    } else {
+      
       jNode.toggleClass('wgt-selected');
     }
 
