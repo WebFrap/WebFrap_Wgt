@@ -81,21 +81,28 @@ table.wgt-cell_grid td
 div.wgt-content_box,
 div.wgt-news-box
 {
-  height:auto;
-  padding:5px;
-  margin-top:5px;
-  border:1px solid #ccc;
-  border-radius:5px 5px 0px 0px;
-  background-color:#eee;
+	height:					auto;
+	padding:				5px;
+	margin-top:				5px;
+	border:					1px solid #cdcdcd;
+	border-radius:			4px;
+	background:				#f7f7f7; /* Old browsers */
+	background:				-moz-linear-gradient(top,  #f7f7f7 0%, #efefef 100%); /* FF3.6+ */
+	background:				-webkit-gradient(linear, left top, left bottom, color-stop(0%,#f7f7f7), color-stop(100%,#efefef)); /* Chrome,Safari4+ */
+	background:				-webkit-linear-gradient(top,  #f7f7f7 0%,#efefef 100%); /* Chrome10+,Safari5.1+ */
+	background: 			-o-linear-gradient(top,  #f7f7f7 0%,#efefef 100%); /* Opera 11.10+ */
+	background:				-ms-linear-gradient(top,  #f7f7f7 0%,#efefef 100%); /* IE10+ */
+	background: 			linear-gradient(to bottom,  #f7f7f7 0%,#efefef 100%); /* W3C */
+	filter: 				progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#efefef',GradientType=0 ); /* IE6-9 */
 }
 
 div.wgt-content_box>div.head,
 div.wgt-news-box>div.head
 {
-  border-bottom:1px solid #ddd;
-  padding:5px;
-  padding-bottom:10px;
-  height:33px;
+	height:					33px;
+	border-bottom:			1px solid #cdcdcd;
+	padding:				5px;
+	padding-bottom:			10px;
 }
 
 div.wgt-content_box>div.head h2,
