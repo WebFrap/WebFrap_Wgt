@@ -151,6 +151,13 @@ div.wgt-content_box.wgt-tag_cloud>div.content
   height:180px;
 }
 
+/* Lists */
+div.wgt-content_box ul li
+{
+	min-height:					30px;
+	line-height:			30px;
+}
+
 /* Tag Cloud specific */
 
 div.wgt-content_box.wgt-tag_cloud>div.content span.tag
