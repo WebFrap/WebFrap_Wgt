@@ -5,11 +5,14 @@
  */
 $R.addAction( 'ui_dropform', function( jNode ){
 
-  var source = jNode.find( 'var' );
+  var source = jNode.find( 'var:first' ),
+    props = {};
   
   //console.log( 'before var' );
-  
-  var props  = source.is( 'var' )? $WGT.robustParseJSON( source.text() ) : {};
+  if (  source.is( 'var' ) ){
+    props =  $WGT.robustParseJSON( source.text() );
+    source.remove();
+  }
   
   if( undefined === props.button ){
     props.button = 'Close';
