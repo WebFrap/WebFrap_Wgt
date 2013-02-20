@@ -1,4 +1,4 @@
-.wgt-dropdownbox 
+.wgt-dropdownbox
 {
   width:200px;
   height:auto;
@@ -7,10 +7,10 @@
   display:none;
   -moz-box-shadow:5px 5px 5px #666;
   -webkit-box-shadow:5px 5px 5px #666;
-  box-shadow:5px 5px 5px #666;  
+  box-shadow:5px 5px 5px #666;
 }
 
-.wgt-dropdownbox ul 
+.wgt-dropdownbox ul
 {
   border-top:1px solid #ddd;
   margin-left:30px;
@@ -20,9 +20,11 @@
 }
 
 .wgt-dropdownbox ul li a img,
-.wgt-dropdownbox ul li a input, 
+.wgt-dropdownbox ul li a input,
+.wgt-dropdownbox ul li a i,
 .wgt-dropdownbox ul li img,
-.wgt-dropdownbox ul li input 
+.wgt-dropdownbox ul li input,
+.wgt-dropdownbox ul li i
 {
   position:absolute;
   margin-left:-30px;
@@ -49,7 +51,7 @@
 }
 
 /*.wgt-dropdownbox ul li>a:hover,*/
-.wgt-dropdownbox ul li.hover>a 
+.wgt-dropdownbox ul li.hover>a
 {
   background-color:#ee9;
   border:1px solid #ddf;
@@ -80,18 +82,18 @@
   margin-left:-260px;
 }
 
-.wgt-dropdownbox ul li span ul 
+.wgt-dropdownbox ul li span ul
 {
   background-color:#eee;
   border:1px solid #ccc;
   padding-left:30px;
-  width:200px;  
+  width:200px;
   -moz-box-shadow:5px 5px 5px #666;
   -webkit-box-shadow:5px 5px 5px #666;
-  box-shadow:5px 5px 5px #666;  
+  box-shadow:5px 5px 5px #666;
 }
 
-.wgt-dropdownbox ul li span ul li 
+.wgt-dropdownbox ul li span ul li
 {
   padding:4px;
   padding-left:6px;

@@ -20,6 +20,8 @@ echo '@charset "utf-8";'.NL;
 $files = array
 (
 
+  PATH_WGT.'layout/wgt/font_awesome/font-awesome.css',
+
   // wgt css framework
   PATH_WGT.'layout/wgt/wgt/wgt.core.css',
   PATH_WGT.'layout/wgt/wgt/wgt.boxes.css',
