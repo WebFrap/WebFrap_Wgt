@@ -2,8 +2,8 @@
 
 /**
  * @author dominik alexander bonsch <db@webfrap.net>
+ * @param jNode the jQuery Object of the target node
  */
-
 $R.addAction( 'ui_month', function( jNode ){
 
   jNode.monthpicker({

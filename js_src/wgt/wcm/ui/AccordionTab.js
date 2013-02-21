@@ -27,6 +27,7 @@
 
 /**
  * @author dominik bonsch <db@webfrap.net>
+ * @param jNode the jQuery Object of the target node
  */
 $R.addAction( 'ui_accordion_tab', function( jNode ){
   

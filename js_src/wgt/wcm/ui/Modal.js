@@ -2,9 +2,9 @@
 
 /**
  * @author Marko Andrijasevic
+ * @param jNode the jQuery Object of the target node
  */
-$R.addAction('ui_modal', function(jNode)
-{
+$R.addAction('ui_modal', function(jNode) {
 
   var user = {};
   var settings = {
@@ -13,12 +13,9 @@ $R.addAction('ui_modal', function(jNode)
     resizable : false
   };
 
-  try
-  {
-    user = jNode.next().is('var.c-modal') ? $WGT.robustParseJSON(jNode.next()
-        .text()) : {};
-  } catch (err)
-  {
+  try {
+    user = jNode.next().is('var.c-modal') ? $WGT.robustParseJSON(jNode.next().text()) : {};
+  } catch (err) {
     $D.errorWindow('UI Error', err.description);
   }
 

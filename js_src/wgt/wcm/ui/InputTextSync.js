@@ -2,6 +2,7 @@
 
 /**
  * @author dominik alexander bonsch <db@webfrap.net>
+ * @param jNode the jQuery Object of the target node
  * @todo doku, was genau sollte das denn machen?
  */
 $R.addAction( 'input_text_sync', function( jNode ){

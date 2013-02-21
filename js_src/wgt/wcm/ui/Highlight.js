@@ -2,6 +2,7 @@
 
 /**
  * @author dominik alexander bonsch <db@webfrap.net>
+ * @param jNode the jQuery Object of the target node
  */
 $R.addAction( 'ui_highlight', function( jNode ){
 
@@ -39,6 +40,7 @@ $R.addAction( 'ui_highlight', function( jNode ){
 
 /**
  * @author dominik alexander bonsch <db@webfrap.net>
+ * @param jNode the jQuery Object of the target node
  */
 $R.addAction( 'ui_highlight2', function( jNode ){
 

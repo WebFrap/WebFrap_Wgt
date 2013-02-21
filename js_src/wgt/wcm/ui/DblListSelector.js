@@ -4,6 +4,7 @@
 
   /**
    * @author dominik alexander bonsch <db@webfrap.net>
+   * @param jNode the jQuery Object of the target node
    */
   $R.addAction( 'ui_dbl_list_selector', function( jNode ){
 

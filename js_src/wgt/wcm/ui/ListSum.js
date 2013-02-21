@@ -2,6 +2,7 @@
 
 /**
  * @author Dominik Bonsch
+ * @param jNode the jQuery Object of the target node
  */
 $R.addAction('list_sum', function(jNode){
 
@@ -9,13 +10,13 @@ $R.addAction('list_sum', function(jNode){
 
   var fields = jNode.attr('wgt_fields');
   
-  if( !fields || '' == fields.trim() ){
+  if( !fields || '' === fields.trim() ){
     jNode.val('0');
     return;
   }
   
 
-  jNode.text( fields ).calcSum() );
+  jNode.text( fields.calcSum() );
   
 
 });

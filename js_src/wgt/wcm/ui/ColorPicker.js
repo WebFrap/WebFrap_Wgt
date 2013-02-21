@@ -27,6 +27,7 @@
 
 /**
  * @author Milos Kosanovic  <milos.kosanovic@webfrap.net>
+ * @param jNode the jQuery Object of the target node
  */
 $R.addAction( 'ui_color_picker', function( jNode ){
   

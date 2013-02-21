@@ -2,6 +2,7 @@
 
 /**
  * @author dominik alexander bonsch <db@webfrap.net>
+ * @param jNode the jQuery Object of the target node
  */
 $R.addAction( 'menu_table', function( jNode ){
 
