@@ -77,9 +77,9 @@
       load_urls: {}, // urls zum nachladen von content
 
       // Sort Daten und Optionen
-      icon_sort_asc:  'control/sort_asc.png',    // Icon für das absteigenden sortieren
-      icon_sort_desc: 'control/sort_desc.png',   // Icon für das aufsteigenden sortieren
-      icon_sort_none: 'control/sort_none.png',   // noch nicht sortiert
+      icon_sort_asc:  'icon-sort-down',    // Icon für das absteigenden sortieren
+      icon_sort_desc: 'icon-sort-up',   // Icon für das aufsteigenden sortieren
+      icon_sort_none: 'icon-sort',   // noch nicht sortiert
 
       // open / closed
       icon_opened: 'control/opened.png',   // Icon für einen geschlossenen abschnitt
@@ -471,28 +471,28 @@
 
       var opt = this.options;
 
-      jHeadTab.find('img').each( function(){
+      jHeadTab.find('i.sort').each( function(){
 
          var imgNode = $S(this);
 
          imgNode.bind("click.grid", function() {
 
-          var nIcon = $S(this);
-          var pIcon = nIcon.parent();
+          var nIcon = $S(this),
+            pIcon = nIcon.parent();
 
           if( pIcon.hasClass('sort-asc') ){
             pIcon.removeClass('sort-asc').addClass('sort-desc');
-            nIcon.attr( 'src', $G.$C.WEB_ICONS+"xsmall/"+opt.icon_sort_desc );
+            nIcon.removeClass().addClass( opt.icon_sort_desc+' sort' );
             nIcon.next().val('desc').change();
           }
           else if( pIcon.hasClass('sort-desc') ){
             pIcon.removeClass('sort-desc');
-            nIcon.attr( 'src', $G.$C.WEB_ICONS+"xsmall/"+opt.icon_sort_none );
+            nIcon.removeClass().addClass( opt.icon_sort_none+' sort' );
             nIcon.next().val('').change();
           }
           else{
             pIcon.addClass('sort-asc');
-            nIcon.attr( 'src', $G.$C.WEB_ICONS+"xsmall/"+opt.icon_sort_asc );
+            nIcon.removeClass().addClass( opt.icon_sort_asc+' sort' );
             nIcon.next().val('asc').change();
           }
 
@@ -567,9 +567,9 @@
 
       if( nodeName ){
 
-        var sortIcon  = opt.icon_sort_none;
-        var sortClass = '';
-        var sortVal   = '';
+        var sortIcon  = opt.icon_sort_none, 
+          sortClass = '',
+          sortVal = '';
 
         var sortDir  = cNode.attr('wgt_sort');
         if( sortDir ){
@@ -583,7 +583,7 @@
         headTab += "<th style=\"width:"+tmpNewWdth+"px;\" orig_width=\""+tmpNewWdth+"\" ><div style=\"width:"+tmpNewWdth+"px;\" >";
         headTab += "<p class=\"label\" >"+node.innerHTML+"</p>";
         headTab += "<p class=\"order"+sortClass+"\" >";
-        headTab += "<img src=\""+$G.$C.WEB_ICONS+"xsmall/"+sortIcon+"\"  alt=\"Sort\"  class=\"icon xsmall\" />";
+        headTab += "<i class=\""+sortIcon+" sort\" ></i>";
         headTab += '<input type="hidden" name="'+nodeName+'" value="'+sortVal+'" class="wcm wcm_req_search wgt-no-save fparam-'+opt.search_form+'" />';
         headTab += "</p>";
         headTab += "</div></th>";
@@ -592,7 +592,9 @@
       else{
 
         tmpNewWdth = tmpWidth-opt.hpad;
-        headTab += "<th style=\"width:"+tmpNewWdth+"px;\" orig_width=\""+tmpNewWdth+"\" ><div style=\"width:"+tmpNewWdth+"px;\" ><p class=\"label\" >"+node.innerHTML+"</p></div></th>";
+        headTab += "<th style=\"width:"+tmpNewWdth+"px;\" orig_width=\""+tmpNewWdth+"\" >"
+          +"<div style=\"width:"+tmpNewWdth+"px;\" ><p class=\"label\" >"+node.innerHTML+"</p></div>"
+          +"</th>";
       }
 
       return headTab;
@@ -959,7 +961,7 @@
           if( changeIcon ) {
             colHead.removeClass('sort_asc');
             colHead.addClass('sort_desc');
-            colHead.find('img').attr('src', $G.$C.iconSortAsc );
+            colHead.find('i.sort').removeClass().addClass('icon-sort-down sort');
           }
         }
         else if( classes.indexOf('sort_desc') !== -1 ) {
@@ -967,14 +969,15 @@
           if( changeIcon ) {
             colHead.removeClass('sort_desc');
             colHead.addClass('sort_asc');
-            colHead.find('img').attr('src', $G.$C.iconSortDesc );
+            colHead.find('i.sort').removeClass().addClass('icon-sort-up sort');
           }
         }
         else {
+          
           sort = 'sort_asc';
           if (changeIcon) {
             colHead.addClass('sort_asc');
-            colHead.find('img').attr('src',  $G.$C.iconSortDesc );
+            colHead.find('i.sort').removeClass().addClass('icon-sort-up sort');
           }
         }
 
