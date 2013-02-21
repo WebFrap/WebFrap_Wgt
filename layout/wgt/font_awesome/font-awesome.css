@@ -38,6 +38,7 @@
   font-style: normal;
   text-decoration: inherit;
   -webkit-font-smoothing: antialiased;
+  font-size: 1.2em;
 
   /* sprites.less reset */
   display: inline;
