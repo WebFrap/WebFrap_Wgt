@@ -118,7 +118,7 @@ table.wgt-grid.simple tbody tr td.pos
   font-weight: bold;
   color: black;
   text-align:right;
-  border-bottom:1px solid black;
+  border-bottom:1px solid #808080;
   cursor:pointer;
   background:       #bf0003; /* Old browsers */
   background:       -moz-linear-gradient(left,  #F7F7F7 1%, #DCDCDC 100%); /* FF3.6+ */
