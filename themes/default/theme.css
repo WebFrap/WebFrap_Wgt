@@ -60,7 +60,14 @@ Theme URL:
 
 body
 {
-  background-color:#f8f8f8;
+  background: <?php echo $bgContentLight ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgContentLight ?> 1%, <?php echo $bgContentDark ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgContentLight ?>), color-stop(100%,<?php echo $bgContentDark ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgContentLight ?> 1%,<?php echo $bgContentDark ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgContentLight ?> 1%,<?php echo $bgContentDark ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgContentLight ?> 1%,<?php echo $bgContentDark ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgContentLight ?> 1%,<?php echo $bgContentDark ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgContentLight ?>', endColorstr='<?php echo $bgContentDark ?>',GradientType=0 ); /* IE6-9 */
 }
 
 a,
@@ -135,7 +142,7 @@ div.wgt-bgbox,
 div#wbf-footer
 {
   border: 1px solid #ccc;
-  background: <?php echo $bgP1Dark ?>; /* Old browsers */
+  background: <?php echo $bgP1Light ?>; /* Old browsers */
   background: -moz-linear-gradient(top,  <?php echo $bgP1Light ?> 1%, <?php echo $bgP1Dark ?> 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgP1Light ?>), color-stop(100%,<?php echo $bgP1Dark ?>)); /* Chrome,Safari4+ */
   background: -webkit-linear-gradient(top,  <?php echo $bgP1Light ?> 1%,<?php echo $bgP1Dark ?> 100%); /* Chrome10+,Safari5.1+ */
@@ -311,7 +318,7 @@ fieldset
 .wgt-button:hover,
 .wgt-button.append:hover
 {
-  border: 1px solid #5c5c5c;
+  border: 1px solid #393939;
   background: <?php echo $bgHeadHiDark ?>; /* Old browsers */
   background: -moz-linear-gradient(top,  <?php echo $bgHeadHiLight  ?> 1%, <?php echo $bgHeadHiDark  ?> 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgHeadHiLight  ?>), color-stop(100%,<?php echo $bgHeadHiDark  ?>)); /* Chrome,Safari4+ */
@@ -353,7 +360,7 @@ fieldset
   color: <?php echo $fontButton ?>;
   font-weight: normal;
   border-radius: <?php echo $cornerRadius ?>;
-  border:       1px solid #ddd !important;
+  border:       1px solid #A8A8A8 !important;
   background:     <?php echo $bgButtonLight ?>; /* Old browsers */
   background:     -moz-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%, <?php echo $bgButtonDark ?> 100%); /* FF3.6+ */
   background:     -webkit-gradient(linear, left top, left bottom, color-stop(0%,<?php echo $bgButtonLight ?>), color-stop(100%,<?php echo $bgButtonDark ?>)); /* Chrome,Safari4+ */
@@ -495,21 +502,21 @@ ul.wgt-mega-menu li .sub li.mega-hdr p.mega-hdr-a
   cursor:pointer;
   color: #333 !important;
   font-weight: normal !important;
-  border:       1px solid #ddd !important;
-  background:     <?php echo $bgButtonLight ?>; /* Old browsers */
-  background:     -moz-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%, <?php echo $bgP2Dark ?> 100%); /* FF3.6+ */
-  background:     -webkit-gradient(linear, left top, left bottom, color-stop(0%,<?php echo $bgButtonLight ?>), color-stop(100%,<?php echo $bgP2Dark ?>)); /* Chrome,Safari4+ */
-  background:     -webkit-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgP2Dark ?> 100%); /* Chrome10+,Safari5.1+ */
-  background:     -o-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgP2Dark ?> 100%); /* Opera 11.10+ */
-  background:     -ms-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgP2Dark ?> 100%); /* IE10+ */
-  background:     linear-gradient(to bottom,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgP2Dark ?> 100%); /* W3C */
-  filter:       progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgButtonLight ?>', endColorstr='<?php echo $bgP2Dark ?>',GradientType=0 ); /* IE6-9 */
+  border: 1px solid #ddd !important;
+  background: <?php echo $bgButtonLight ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%, <?php echo $bgP2Dark ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,<?php echo $bgButtonLight ?>), color-stop(100%,<?php echo $bgP2Dark ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgP2Dark ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgP2Dark ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgP2Dark ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgP2Dark ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgButtonLight ?>', endColorstr='<?php echo $bgP2Dark ?>',GradientType=0 ); /* IE6-9 */
 }
 
 ul.wgt-mega-menu li .sub-container.mega .sub
 {
-  opacity: .97;
-  filter:Alpha(Opacity=97);
+  opacity: .99;
+  filter:Alpha(Opacity=99);
 }
 
 /* Table & Grid
@@ -650,26 +657,38 @@ div.wgt-panel.menu
 span.tab,
 div.wgt-tab-head a.tab
 {
-  border:       1px solid #aaa;
-  color:         #333;
-  font-weight:     normal;
-  background:     #f7f7f7; /* Old browsers */
-  background:     -moz-linear-gradient(top,  #f7f7f7 0%, #8e8e8e 100%); /* FF3.6+ */
-  background:     -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f7f7f7), color-stop(100%,#8e8e8e)); /* Chrome,Safari4+ */
-  background:     -webkit-linear-gradient(top,  #f7f7f7 0%,#8e8e8e 100%); /* Chrome10+,Safari5.1+ */
-  background:     -o-linear-gradient(top,  #f7f7f7 0%,#8e8e8e 100%); /* Opera 11.10+ */
-  background:     -ms-linear-gradient(top,  #f7f7f7 0%,#8e8e8e 100%); /* IE10+ */
-  background:     linear-gradient(to bottom,  #f7f7f7 0%,#8e8e8e 100%); /* W3C */
-  filter:       progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#8e8e8e',GradientType=0 ); /* IE6-9 */
+  color: <?php echo $fontButton ?>;
+  font-weight: normal;
+  border-radius: <?php echo $cornerRadius ?>;
+  border:       1px solid #A8A8A8 !important;
+  background:     <?php echo $bgButtonLight ?>; /* Old browsers */
+  background:     -moz-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%, <?php echo $bgButtonDark ?> 100%); /* FF3.6+ */
+  background:     -webkit-gradient(linear, left top, left bottom, color-stop(0%,<?php echo $bgButtonLight ?>), color-stop(100%,<?php echo $bgButtonDark ?>)); /* Chrome,Safari4+ */
+  background:     -webkit-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgButtonDark ?> 100%); /* Chrome10+,Safari5.1+ */
+  background:     -o-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgButtonDark ?> 100%); /* Opera 11.10+ */
+  background:     -ms-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgButtonDark ?> 100%); /* IE10+ */
+  background:     linear-gradient(to bottom,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgButtonDark ?> 100%); /* W3C */
+  filter:       progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgButtonLight ?>', endColorstr='<?php echo $bgButtonDark ?>',GradientType=0 ); /* IE6-9 */
 }
 
 span.tab:hover,
-div.wgt-tab-head a.tab:hover
+div.wgt-tab-head a.tab:hover,
+span.tab.ui-state-active:hover,
+span.tab.ui-state-active:hover a,
+div.wgt-tab-head a.tab.active:hover
 {
-  border: 1px solid #5c5c5c;
-  background: #ffd07c url(<?php echo $images ?>ui/ui-bg_highlight-hard_55_ffd07c_1x100.png) 50% 50% repeat-x;
+  border: 1px solid #393939;
+  background: <?php echo $bgHeadHiDark ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgHeadHiLight  ?> 1%, <?php echo $bgHeadHiDark  ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgHeadHiLight  ?>), color-stop(100%,<?php echo $bgHeadHiDark  ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgHeadHiLight  ?> 1%,<?php echo $bgHeadHiDark  ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgHeadHiLight  ?> 1%,<?php echo $bgHeadHiDark  ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgHeadHiLight  ?> 1%,<?php echo $bgHeadHiDark  ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgHeadHiLight  ?> 1%,<?php echo $bgHeadHiDark  ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgHeadHiLight  ?>', endColorstr='<?php echo $bgHeadHiDark  ?>',GradientType=0 ); /* IE6-9 */
+  color: <?php echo $fontHighlight  ?>;
   font-weight: normal;
-  color: <?php echo $bgHeadDark  ?>;
+  border-radius: <?php echo $cornerRadius ?>;
 }
 
 span.tab a
@@ -689,7 +708,7 @@ span.tab.ui-state-active a,
 div.wgt-tab-head a.tab.active
 {
   border: 1px solid #5c5c5c;
-  color: #cccccc;
+  color: #fff;
   font-weight: normal;
   background:       <?php echo $bgHeadLight  ?>; /* Old browsers */
   background:       -moz-linear-gradient(top,  <?php echo $bgHeadLight  ?> 1%, <?php echo $bgHeadDark  ?> 100%); /* FF3.6+ */
