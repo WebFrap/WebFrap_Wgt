@@ -1,9 +1,6 @@
 /*//////////////////////////////////////////////////////////////////////////////
 // Error , Warning and Message Boxes
 //////////////////////////////////////////////////////////////////////////////*/
-
-
-
 .wgt-box.full
 {
   padding:7px;
@@ -206,7 +203,7 @@ div.wgt-content_box.wgt-tag_cloud>div.head div.search
 {
   position:relative;
   padding-bottom:25px;
-	padding-right:10px;
+  padding-right:10px;
 }
 
 /* Comment Tree specific */

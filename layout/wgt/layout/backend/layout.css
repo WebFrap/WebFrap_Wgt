@@ -7,7 +7,9 @@ p,
 textarea,
 input,
 select,
-ul
+ul,
+th,
+td
 {
   /* see http://css-tricks.com/box-sizing/ */
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
@@ -19,11 +21,11 @@ ul
 div#wbf-body
 {
   /*
-	position:relative;
+  position:relative;
   height:    100%;
   */
-	margin:0px;
-	padding:0px;
+  margin:0px;
+  padding:0px;
   height:auto;
 }
 
@@ -50,14 +52,14 @@ div#wbf-content
   position:absolute;
   top:29px;
   right:0px;
-	left:0px;
-	bottom:29px;
+  left:0px;
+  bottom:29px;
   overflow:hidden;
 }
 
 div#wgt-maintab
 {
-	position:absolute;
+  position:absolute;
   margin:0px;
   top:0px;
   right:0px;
@@ -109,7 +111,7 @@ div#wgt-maintab div.wgt-content.maintab
   left:0px;
   bottom: 0px;
   right:0px;
-  overflow: hide;
+  overflow: hidden;
   height:29px;
   border-right:0px !important;
 }
@@ -143,13 +145,13 @@ div#wgt-maintab div.wgt-content.maintab
 
 div#wgt-maintab-head div.wgt-container-controls
 {
-	text-align:left !important;
+  text-align:left !important;
 }
 
 div#wgt-maintab-head div.wgt-container-controls .wgt-container-buttons
 {
   width:3px !important;
-	margin-right:0px;
+  margin-right:0px;
 }
 
 /* panel */
