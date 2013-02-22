@@ -1,15 +1,15 @@
 /*<?php
 
 // BODY Layout
-
 $bgContentLight = '#FFFFFF';
 $bgContentDark = '#FCFCFC';
 
 // FONTS
-$fHead = '#275A8B';
 $fontHighlight = '#fff';
 
 // HEADS
+$fHead = '#275A8B';
+
 $bgHeadHiLight = '#FFA858';
 $bgHeadHiDark = '#E5974F';
 
@@ -22,6 +22,15 @@ $bgP1Dark  = '#F0F0F0';
 
 $bgP2Light = '#F2F2F2';
 $bgP2Dark  = '#C3C3C3';
+
+// BUTTON
+$fontButton = '#333';
+$bgButtonLight = '#f7f7f7';
+$bgButtonDark = '#e8e8e8';
+
+// ELSE
+
+$cornerRadius = '3px';
 
 // BF0003
 
@@ -193,7 +202,7 @@ table.wgt-table tbody,
 .wgt-border
 {
   border:1px solid #5c5c5c !important;
-  border-radius: 3px;
+  border-radius: <?php echo $cornerRadius ?>;
   /*
   -moz-box-shadow:1px 1px 1px #666;
   -webkit-box-shadow:1px 1px 1px #666;
@@ -259,7 +268,7 @@ div.wgt-news-box h2
 .wgt-selected a
 {
   background-color: #ffee9b !important;
-  color: <?php echo $bgHeadDark  ?> !important;
+  color: <?php echo $bgHeadDark ?> !important;
 }
 
 .wgt-active
@@ -290,7 +299,7 @@ fieldset
 {
   border: none;
   border: 1px solid #5c5c5c;
-  border-radius: 3px;
+  border-radius: <?php echo $cornerRadius ?>;
   /*
   -moz-box-shadow:1px 1px 1px #666;
   -webkit-box-shadow:1px 1px 1px #666;
@@ -314,7 +323,7 @@ fieldset
 
   color: <?php echo $fontHighlight  ?>;
   font-weight: normal;
-  border-radius: 3px;
+  border-radius: <?php echo $cornerRadius ?>;
 }
 
 .wgt-button.append:hover
@@ -341,19 +350,18 @@ fieldset
 .wgt-button2,
 .wgt-button2.append
 {
-  border: 1px solid #5c5c5c;
-  color: #333;
+  color: <?php echo $fontButton ?>;
   font-weight: normal;
-    border-radius: 3px;
+  border-radius: <?php echo $cornerRadius ?>;
   border:       1px solid #ddd !important;
-  background:     #f7f7f7; /* Old browsers */
-  background:     -moz-linear-gradient(top,  #f7f7f7 0%, #e8e8e8 100%); /* FF3.6+ */
-  background:     -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f7f7f7), color-stop(100%,#e8e8e8)); /* Chrome,Safari4+ */
-  background:     -webkit-linear-gradient(top,  #f7f7f7 0%,#e8e8e8 100%); /* Chrome10+,Safari5.1+ */
-  background:     -o-linear-gradient(top,  #f7f7f7 0%,#e8e8e8 100%); /* Opera 11.10+ */
-  background:     -ms-linear-gradient(top,  #f7f7f7 0%,#e8e8e8 100%); /* IE10+ */
-  background:     linear-gradient(to bottom,  #f7f7f7 0%,#e8e8e8 100%); /* W3C */
-  filter:       progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#e8e8e8',GradientType=0 ); /* IE6-9 */
+  background:     <?php echo $bgButtonLight ?>; /* Old browsers */
+  background:     -moz-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%, <?php echo $bgButtonDark ?> 100%); /* FF3.6+ */
+  background:     -webkit-gradient(linear, left top, left bottom, color-stop(0%,<?php echo $bgButtonLight ?>), color-stop(100%,<?php echo $bgButtonDark ?>)); /* Chrome,Safari4+ */
+  background:     -webkit-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgButtonDark ?> 100%); /* Chrome10+,Safari5.1+ */
+  background:     -o-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgButtonDark ?> 100%); /* Opera 11.10+ */
+  background:     -ms-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgButtonDark ?> 100%); /* IE10+ */
+  background:     linear-gradient(to bottom,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgButtonDark ?> 100%); /* W3C */
+  filter:       progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgButtonLight ?>', endColorstr='<?php echo $bgButtonDark ?>',GradientType=0 ); /* IE6-9 */
 }
 
 .wgt-button.append,
@@ -366,8 +374,8 @@ fieldset
     border-radius: 0px;
 
   /* right borders */
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+    border-top-right-radius: <?php echo $cornerRadius ?>;
+    border-bottom-right-radius: <?php echo $cornerRadius ?>;
 }
 
 .wgt-button.splitted,
@@ -488,14 +496,14 @@ ul.wgt-mega-menu li .sub li.mega-hdr p.mega-hdr-a
   color: #333 !important;
   font-weight: normal !important;
   border:       1px solid #ddd !important;
-  background:     #f7f7f7; /* Old browsers */
-  background:     -moz-linear-gradient(top,  #f7f7f7 0%, #e8e8e8 100%); /* FF3.6+ */
-  background:     -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f7f7f7), color-stop(100%,#e8e8e8)); /* Chrome,Safari4+ */
-  background:     -webkit-linear-gradient(top,  #f7f7f7 0%,#e8e8e8 100%); /* Chrome10+,Safari5.1+ */
-  background:     -o-linear-gradient(top,  #f7f7f7 0%,#e8e8e8 100%); /* Opera 11.10+ */
-  background:     -ms-linear-gradient(top,  #f7f7f7 0%,#e8e8e8 100%); /* IE10+ */
-  background:     linear-gradient(to bottom,  #f7f7f7 0%,#e8e8e8 100%); /* W3C */
-  filter:       progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#e8e8e8',GradientType=0 ); /* IE6-9 */
+  background:     <?php echo $bgButtonLight ?>; /* Old browsers */
+  background:     -moz-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%, <?php echo $bgP2Dark ?> 100%); /* FF3.6+ */
+  background:     -webkit-gradient(linear, left top, left bottom, color-stop(0%,<?php echo $bgButtonLight ?>), color-stop(100%,<?php echo $bgP2Dark ?>)); /* Chrome,Safari4+ */
+  background:     -webkit-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgP2Dark ?> 100%); /* Chrome10+,Safari5.1+ */
+  background:     -o-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgP2Dark ?> 100%); /* Opera 11.10+ */
+  background:     -ms-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgP2Dark ?> 100%); /* IE10+ */
+  background:     linear-gradient(to bottom,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgP2Dark ?> 100%); /* W3C */
+  filter:       progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgButtonLight ?>', endColorstr='<?php echo $bgP2Dark ?>',GradientType=0 ); /* IE6-9 */
 }
 
 ul.wgt-mega-menu li .sub-container.mega .sub
@@ -1854,77 +1862,77 @@ background-position: -16px -96px;
 /* Corner radius */
 .ui-corner-tl
 {
-  -moz-border-radius-topleft: 3px;
-  -webkit-border-top-left-radius: 3px;
-  border-top-left-radius: 3px;
+  -moz-border-radius-topleft: <?php echo $cornerRadius ?>;
+  -webkit-border-top-left-radius: <?php echo $cornerRadius ?>;
+  border-top-left-radius: <?php echo $cornerRadius ?>;
 }
 
 .ui-corner-tr
 {
-  -moz-border-radius-topright: 3px;
-  -webkit-border-top-right-radius: 3px;
-  border-top-right-radius: 3px;
+  -moz-border-radius-topright: <?php echo $cornerRadius ?>;
+  -webkit-border-top-right-radius: <?php echo $cornerRadius ?>;
+  border-top-right-radius: <?php echo $cornerRadius ?>;
 }
 
 .ui-corner-bl
 {
-  -moz-border-radius-bottomleft: 3px;
-  -webkit-border-bottom-left-radius: 3px;
-  border-bottom-left-radius: 3px;
+  -moz-border-radius-bottomleft: <?php echo $cornerRadius ?>;
+  -webkit-border-bottom-left-radius: <?php echo $cornerRadius ?>;
+  border-bottom-left-radius: <?php echo $cornerRadius ?>;
 }
 
 .ui-corner-br
 {
-  -moz-border-radius-bottomright: 3px;
-  -webkit-border-bottom-right-radius: 3px;
-  border-bottom-right-radius: 3px;
+  -moz-border-radius-bottomright: <?php echo $cornerRadius ?>;
+  -webkit-border-bottom-right-radius: <?php echo $cornerRadius ?>;
+  border-bottom-right-radius: <?php echo $cornerRadius ?>;
 }
 
 .ui-corner-top
 {
-  -moz-border-radius-topleft: 3px;
-  -webkit-border-top-left-radius: 3px;
-  border-top-left-radius: 3px;
-  -moz-border-radius-topright: 3px;
-  -webkit-border-top-right-radius: 3px;
-  border-top-right-radius: 3px;
+  -moz-border-radius-topleft: <?php echo $cornerRadius ?>;
+  -webkit-border-top-left-radius: <?php echo $cornerRadius ?>;
+  border-top-left-radius: <?php echo $cornerRadius ?>;
+  -moz-border-radius-topright: <?php echo $cornerRadius ?>;
+  -webkit-border-top-right-radius: <?php echo $cornerRadius ?>;
+  border-top-right-radius: <?php echo $cornerRadius ?>;
 }
 
 .ui-corner-bottom
 {
-  -moz-border-radius-bottomleft: 3px;
-  -webkit-border-bottom-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  -moz-border-radius-bottomright: 3px;
-  -webkit-border-bottom-right-radius: 3px;
-  border-bottom-right-radius: 3px;
+  -moz-border-radius-bottomleft: <?php echo $cornerRadius ?>;
+  -webkit-border-bottom-left-radius: <?php echo $cornerRadius ?>;
+  border-bottom-left-radius: <?php echo $cornerRadius ?>;
+  -moz-border-radius-bottomright: <?php echo $cornerRadius ?>;
+  -webkit-border-bottom-right-radius: <?php echo $cornerRadius ?>;
+  border-bottom-right-radius: <?php echo $cornerRadius ?>;
 }
 
 .ui-corner-right
 {
-  -moz-border-radius-topright: 3px;
-  -webkit-border-top-right-radius: 3px;
-  border-top-right-radius: 3px;
-  -moz-border-radius-bottomright: 3px;
-  -webkit-border-bottom-right-radius: 3px;
-  border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: <?php echo $cornerRadius ?>;
+  -webkit-border-top-right-radius: <?php echo $cornerRadius ?>;
+  border-top-right-radius: <?php echo $cornerRadius ?>;
+  -moz-border-radius-bottomright: <?php echo $cornerRadius ?>;
+  -webkit-border-bottom-right-radius: <?php echo $cornerRadius ?>;
+  border-bottom-right-radius: <?php echo $cornerRadius ?>;
 }
 
 .ui-corner-left
 {
-  -moz-border-radius-topleft: 3px;
-  -webkit-border-top-left-radius: 3px;
-  border-top-left-radius: 3px;
-  -moz-border-radius-bottomleft: 3px;
-  -webkit-border-bottom-left-radius: 3px;
-  border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: <?php echo $cornerRadius ?>;
+  -webkit-border-top-left-radius: <?php echo $cornerRadius ?>;
+  border-top-left-radius: <?php echo $cornerRadius ?>;
+  -moz-border-radius-bottomleft: <?php echo $cornerRadius ?>;
+  -webkit-border-bottom-left-radius: <?php echo $cornerRadius ?>;
+  border-bottom-left-radius: <?php echo $cornerRadius ?>;
 }
 
 .ui-corner-all
 {
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
+  -moz-border-radius: <?php echo $cornerRadius ?>;
+  -webkit-border-radius: <?php echo $cornerRadius ?>;
+  border-radius: <?php echo $cornerRadius ?>;
 }
 
 /* Overlays */
