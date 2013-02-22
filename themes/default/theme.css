@@ -4,6 +4,11 @@
 $bgContentLight = '#FFFFFF';
 $bgContentDark = '#FCFCFC';
 
+// STATES
+
+$bgStateActiveLight = '#4AA5FF';
+$bgStateActiveDark = '#2B6095';
+
 // FONTS
 $fontHighlight = '#fff';
 
