@@ -108,6 +108,7 @@
 
    /**
     * trigger events
+    * @evtStack
     */
    this.triggerEvent = function( evtStack ){
 
@@ -134,8 +135,7 @@
    this.eventBeforeAjaxRequest = function( ){
 
       $D.showProgressBar();
-      
-      this.triggerEvent = function( this.beforeAjaxRequest );
+      this.triggerEvent( this.beforeAjaxRequest );
 
     };//end this.eventBeforeAjaxRequest
 
@@ -164,17 +164,19 @@
 
       // disable Links and use ajax instead (and remove class)
       var allActions = $S(".wcm");
-      allActions.each(function(){
-        var node      = $S(this);
-        var classParts   = node.classes();
 
-        var tmpLenght   = classParts.length;
+      allActions.each(function(){
+        
+        var node = $S(this);
+        var classParts = node.classes();
+
+        var tmpLenght = classParts.length;
 
         for (var index = 0; index < tmpLenght; ++index){
 
           var callback = classParts[index];
 
-          if( 'wcm_' == callback.substring(0,4) ) {
+          if( 'wcm_' === callback.substring(0,4) ) {
 
             var call = $R.actionPool[callback.substring(4,callback.length)];
 
