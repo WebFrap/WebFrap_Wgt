@@ -5,15 +5,21 @@ $bgContentLight = '#FFFFFF';
 $bgContentDark = '#FCFCFC';
 
 // STATES
-
 $bgStateActiveLight = '#4AA5FF';
 $bgStateActiveDark = '#2B6095';
+
+
+$bgStateHighLight = '#FFA858';
+$bgStateHighDark = '#E5974F';
+
 
 // FONTS
 $fontHighlight = '#fff';
 
+// green 64B824
+
 // HEADS
-$fHead = '#275A8B';
+$fHead = '#1E446A';
 
 $bgHeadHiLight = '#FFA858';
 $bgHeadHiDark = '#E5974F';
@@ -646,7 +652,7 @@ div.wgt-panel.title
 
 .wgt-panel.title h2
 {
-/*  text-shadow:      1px 1px 3px rgba(0, 0, 0, 0.3);*/
+  text-shadow: 2px 2px 4px rgba(254, 254, 254, 0.7);
 }
 
 div.wgt-panel.menu
@@ -682,7 +688,10 @@ span.tab.ui-state-active:hover,
 span.tab.ui-state-active:hover a,
 div.wgt-tab-head a.tab.active:hover
 {
+  color: <?php echo $fontHighlight  ?>;
+  font-weight: normal;
   border: 1px solid #393939;
+  border-radius: <?php echo $cornerRadius ?>;
   background: <?php echo $bgHeadHiDark ?>; /* Old browsers */
   background: -moz-linear-gradient(top,  <?php echo $bgHeadHiLight  ?> 1%, <?php echo $bgHeadHiDark  ?> 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgHeadHiLight  ?>), color-stop(100%,<?php echo $bgHeadHiDark  ?>)); /* Chrome,Safari4+ */
@@ -691,9 +700,6 @@ div.wgt-tab-head a.tab.active:hover
   background: -ms-linear-gradient(top,  <?php echo $bgHeadHiLight  ?> 1%,<?php echo $bgHeadHiDark  ?> 100%); /* IE10+ */
   background: linear-gradient(to bottom,  <?php echo $bgHeadHiLight  ?> 1%,<?php echo $bgHeadHiDark  ?> 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgHeadHiLight  ?>', endColorstr='<?php echo $bgHeadHiDark  ?>',GradientType=0 ); /* IE6-9 */
-  color: <?php echo $fontHighlight  ?>;
-  font-weight: normal;
-  border-radius: <?php echo $cornerRadius ?>;
 }
 
 span.tab a
@@ -704,7 +710,7 @@ span.tab a
 
 span.tab:hover a
 {
-  color: <?php echo $bgHeadDark  ?>;
+  color: <?php echo $fontHighlight  ?>;
   font-weight: normal;
 }
 
@@ -715,14 +721,14 @@ div.wgt-tab-head a.tab.active
   border: 1px solid #5c5c5c;
   color: #fff;
   font-weight: normal;
-  background:       <?php echo $bgHeadLight  ?>; /* Old browsers */
-  background:       -moz-linear-gradient(top,  <?php echo $bgHeadLight  ?> 1%, <?php echo $bgHeadDark  ?> 100%); /* FF3.6+ */
-  background:       -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgHeadLight  ?>), color-stop(100%,<?php echo $bgHeadDark  ?>)); /* Chrome,Safari4+ */
-  background:       -webkit-linear-gradient(top,  <?php echo $bgHeadLight  ?> 1%,<?php echo $bgHeadDark  ?> 100%); /* Chrome10+,Safari5.1+ */
-  background:        -o-linear-gradient(top,  <?php echo $bgHeadLight  ?> 1%,<?php echo $bgHeadDark  ?> 100%); /* Opera 11.10+ */
-  background:       -ms-linear-gradient(top,  <?php echo $bgHeadLight  ?> 1%,<?php echo $bgHeadDark  ?> 100%); /* IE10+ */
-  background:       linear-gradient(to bottom,  <?php echo $bgHeadLight  ?> 1%,<?php echo $bgHeadDark  ?> 100%); /* W3C */
-  filter:         progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgHeadLight  ?>', endColorstr='<?php echo $bgHeadDark  ?>',GradientType=0 ); /* IE6-9 */
+  background: <?php echo $bgHeadLight  ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgHeadLight  ?> 1%, <?php echo $bgHeadDark  ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgHeadLight  ?>), color-stop(100%,<?php echo $bgHeadDark  ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgHeadLight  ?> 1%,<?php echo $bgHeadDark  ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgHeadLight  ?> 1%,<?php echo $bgHeadDark  ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgHeadLight  ?> 1%,<?php echo $bgHeadDark  ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgHeadLight  ?> 1%,<?php echo $bgHeadDark  ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgHeadLight  ?>', endColorstr='<?php echo $bgHeadDark  ?>',GradientType=0 ); /* IE6-9 */
 }
 
 .ui-accordion-content label
@@ -742,53 +748,6 @@ div.wgt-tab-head a.tab.active
   font-style:italic;
 }
 
-/* Drop Menu
-------------------------------------------------------------------------------*/
-
-
-.wgt-dropmenu li.wgt-hover>a:first-child,
-.wgt-dropmenu li.wgt-hover>p:first-child
-{
-  /*border: 1px solid #ffdea3;*/
-  background: #ffee9b url(<?php echo $images ?>ui/ui-bg_glass_55_ffee9b_1x400.png) 50% 50% repeat;
-  color: <?php echo $bgHeadDark  ?>;
-}
-
-.wgt-dropmenu ul
-{
-  border-left: 1px solid #5c5c5c;
-  border-top: 1px solid #5c5c5c;
-}
-
-.wgt-dropmenu li li,
-.wgt-dropmenu li li li,
-.wgt-dropmenu li li li li
-{
-  border-bottom: 1px solid #5c5c5c;
-  border-right: 1px solid #5c5c5c;
-  background: #919191 url(<?php echo $images ?>ui/ui-bg_highlight-hard_45_919191_1x100.png) 50% 50% repeat;
-}
-
-.wgt-dropmenu a:focus,
-.wgt-dropmenu a:hover,
-.wgt-dropmenu a:active,
-.wgt-dropmenu p:focus,
-.wgt-dropmenu p:hover,
-.wgt-dropmenu p:active
-{
-  background: #ffd07c url(<?php echo $images ?>ui/ui-bg_highlight-hard_55_ffd07c_1x100.png) 50% 50% repeat-x;
-  font-weight: normal;
-  color: <?php echo $bgHeadDark  ?>;
-}
-
-
-.wgt-dropmenu a,
-.wgt-dropmenu p
-{
-  background: #f8f8f8 url(<?php echo $images ?>ui/ui-bg_flat_95_f8f8f8_40x100.png) 50% 50% repeat;
-  color: #222222;
-  font-weight: normal;
-}
 
 
 /* Message Pipe
