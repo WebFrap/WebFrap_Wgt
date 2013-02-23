@@ -173,7 +173,9 @@ div.wgt_tab_head,
 div.wgt-tab-head,
 div.wgt-bgbox,
 .wgt-dropdownbox,
-div#wbf-footer
+div#wbf-footer,
+div.wgt-content_box,
+div.wgt-news-box
 {
   border: 1px solid #ccc;
   background: <?php echo $bgP1Light ?>; /* Old browsers */
@@ -202,7 +204,6 @@ table.wgt-table tbody,
   background: -ms-linear-gradient(top,  <?php echo $bgContentLight ?> 1%,<?php echo $bgContentDark ?> 100%); /* IE10+ */
   background: linear-gradient(to bottom,  <?php echo $bgContentLight ?> 1%,<?php echo $bgContentDark ?> 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgContentLight ?>', endColorstr='<?php echo $bgContentDark ?>',GradientType=0 ); /* IE6-9 */
-
   color: #222222;
 }
 
@@ -298,6 +299,13 @@ div.wgt-ui-desktop h1,
 div.wgt-news-box h2
 {
   color: <?php echo $bgHeadDark  ?>;
+}
+
+
+div.wgt-content_box,
+div.wgt-news-box
+{
+  border-radius: <?php echo $cornerRadius ?>;
 }
 
 

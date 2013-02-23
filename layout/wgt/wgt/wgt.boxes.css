@@ -1,6 +1,7 @@
 /*//////////////////////////////////////////////////////////////////////////////
 // Error , Warning and Message Boxes
 //////////////////////////////////////////////////////////////////////////////*/
+
 .wgt-box.full
 {
   padding:7px;
@@ -78,28 +79,18 @@ table.wgt-cell_grid td
 div.wgt-content_box,
 div.wgt-news-box
 {
-	height:					auto;
-	padding:				5px;
-	margin-top:				5px;
-	border:					1px solid #cdcdcd;
-	border-radius:			4px;
-	background:				#f7f7f7; /* Old browsers */
-	background:				-moz-linear-gradient(top,  #f7f7f7 0%, #efefef 100%); /* FF3.6+ */
-	background:				-webkit-gradient(linear, left top, left bottom, color-stop(0%,#f7f7f7), color-stop(100%,#efefef)); /* Chrome,Safari4+ */
-	background:				-webkit-linear-gradient(top,  #f7f7f7 0%,#efefef 100%); /* Chrome10+,Safari5.1+ */
-	background: 			-o-linear-gradient(top,  #f7f7f7 0%,#efefef 100%); /* Opera 11.10+ */
-	background:				-ms-linear-gradient(top,  #f7f7f7 0%,#efefef 100%); /* IE10+ */
-	background: 			linear-gradient(to bottom,  #f7f7f7 0%,#efefef 100%); /* W3C */
-	filter: 				progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#efefef',GradientType=0 ); /* IE6-9 */
+	height:  auto;
+	padding: 5px;
+	margin-top:  5px;
 }
 
 div.wgt-content_box>div.head,
 div.wgt-news-box>div.head
 {
-	height:					33px;
-	border-bottom:			1px solid #cdcdcd;
-	padding:				5px;
-	padding-bottom:			10px;
+	height: 33px;
+	border-bottom: 1px solid #cdcdcd;
+	padding: 5px;
+	padding-bottom: 10px;
 }
 
 div.wgt-content_box>div.head h2,
@@ -120,7 +111,8 @@ div.wgt-content_box>div.head div.search
   padding:0px;
 }
 
-div.wgt-content_box>div.content
+div.wgt-content_box>div.content,
+div.wgt-news-box>div.content
 {
   padding:3px;
   padding-top:6px;
@@ -130,29 +122,36 @@ div.wgt-content_box>div.content
 
 div.wgt-content_box>div.head button.wgt-button.append
 {
-
   padding:0px;
   margin-left:-5px;
 }
+
+
 
 /* Widget */
 
 div.wgt-content_box.wgt-widget
 {
-  width:380px;
+  width:410px;
+}
+
+div.wgt-content_box.wgt-widget.w2x
+{
+  width:830px !important;
 }
 
 div.wgt-content_box.wgt-widget>div.content,
-div.wgt-content_box.wgt-tag_cloud>div.content
+div.wgt-content_box.wgt-tag_cloud>div.content,
+div.wgt-news-box>div.content
 {
-  height:180px;
+  height:200px;
 }
 
 /* Lists */
 div.wgt-content_box ul li
 {
-	min-height:					30px;
-	line-height:			30px;
+	min-height:  25px;
+	line-height: 25px;
 }
 
 /* Tag Cloud specific */
