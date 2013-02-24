@@ -147,11 +147,14 @@ div.wgt-news-box>div.content
   height:200px;
 }
 
-/* Lists */
+/* Lists*/
 div.wgt-content_box ul li
 {
+  vertical-align:middle;
+  /*
 	min-height:  25px;
 	line-height: 25px;
+	*/
 }
 
 /* Tag Cloud specific */
