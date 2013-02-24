@@ -1,72 +1,72 @@
 ul.wgt-mega-menu
-{ 
+{
 	line-height: 16px;
 }
 
-ul.wgt-mega-menu ul, 
-.wgt-mega-menu ul li 
+ul.wgt-mega-menu ul,
+.wgt-mega-menu ul li
 {
 	list-style: none;
 }
 
-ul.wgt-mega-menu ul 
+ul.wgt-mega-menu ul
 {
 	position: relative;
-	padding: 0; 
+	padding: 0;
 	margin: 0;
 }
 
-ul.wgt-mega-menu ul li ul 
+ul.wgt-mega-menu ul li ul
 {
 	display: none;
 }
 
-ul.wgt-mega-menu .sub 
+ul.wgt-mega-menu .sub
 {
 	display: none;
   -moz-box-shadow:5px 5px 5px #666;
   -webkit-box-shadow:5px 5px 5px #666;
-  box-shadow:5px 5px 5px #666;  
+  box-shadow:5px 5px 5px #666;
 }
 
-ul.wgt-mega-menu .sub ul 
+ul.wgt-mega-menu .sub ul
 {
 	display: block;
 }
 
 
-ul.wgt-mega-menu, 
-ul.wgt-mega-menu li 
+ul.wgt-mega-menu,
+ul.wgt-mega-menu li
 {
-	margin: 0; 
-	padding: 0; 
+	margin: 0;
+	padding: 0;
 	border: none;
 }
 
-ul.wgt-mega-menu 
+ul.wgt-mega-menu
 {
-	width: 100%; 
-	height: 40px; 
-	border-right: 1px solid #44B3FF; 
-	border-left: 1px solid #44B3FF; 
+	width: 100%;
+	height: 40px;
+	border-right: 1px solid #44B3FF;
+	border-left: 1px solid #44B3FF;
 	position: relative;
 }
 
-ul.wgt-mega-menu li 
+ul.wgt-mega-menu li
 {
-	float: left; 
-	margin: 0; 
-	padding: 0; 
+	float: left;
+	margin: 0;
+	padding: 0;
 }
 
 ul.wgt-mega-menu li>a,
 ul.wgt-mega-menu li>p
 {
-	float: left; 
-	display: block; 
-	color: #000; 
-	padding: 12px 17px 12px 15px; 
-	text-shadow: 1px 1px 1px #fff; 
+	float: left;
+	display: block;
+	color: #000;
+	padding: 12px 17px 12px 15px;
+	text-shadow: 1px 1px 1px #fff;
 	text-decoration: none;
 }
 
@@ -76,77 +76,77 @@ ul.wgt-mega-menu li p.wgt-mega
 	position: relative;
 }
 
-ul.wgt-mega-menu li a .wgt-mega-icon 
+ul.wgt-mega-menu li a .wgt-mega-icon
 {
-	display: block; 
-	position: absolute;  
-	top: 18px; 
-	right: 15px; 
-	width: 8px; 
-	height: 6px; 
+	display: block;
+	position: absolute;
+	top: 18px;
+	right: 15px;
+	width: 8px;
+	height: 6px;
 	background: url(<?php echo $images ?>mega_menu/arrow.png) no-repeat 0 100%;
 }
 
-ul.wgt-mega-menu li.mega-hover a, 
+ul.wgt-mega-menu li.mega-hover a,
 ul.wgt-mega-menu li>a:hover,
-ul.wgt-mega-menu li.mega-hover p, 
-ul.wgt-mega-menu li>p:hover 
+ul.wgt-mega-menu li.mega-hover p,
+ul.wgt-mega-menu li>p:hover
 {
 	/*background-position: 100% -40px; */
-	color: #000; 
+	color: #000;
 	text-shadow: none;
 }
 
-ul.wgt-mega-menu li.mega-hover a .wgt-mega-icon 
+ul.wgt-mega-menu li.mega-hover a .wgt-mega-icon
 {
 	/*background-position: 0 100%;*/
 }
 
-ul.wgt-mega-menu li .sub-container 
+ul.wgt-mega-menu li .sub-container
 {
-	position: absolute; 
+	position: absolute;
 	/*background: url(<?php echo $images ?>mega_menu/bg_sub_left.png) no-repeat 0 100%; */
-	padding-left: 20px; 
+	padding-left: 20px;
 }
 
-ul.wgt-mega-menu li .sub 
+ul.wgt-mega-menu li .sub
 {
 	/*background: url(<?php echo $images ?>mega_menu/bg_sub.png) no-repeat 100% 100%; */
   background-color:white;
 	padding: 20px;
   border: 1px solid silver;
   border-bottom-left-radius: 9px;
-  border-bottom-right-radius: 9px;  
+  border-bottom-right-radius: 9px;
 }
 
-ul.wgt-mega-menu li .sub-container.mega .sub 
+ul.wgt-mega-menu li .sub-container.mega .sub
 {
 	padding: 20px;
 }
 
-ul.wgt-mega-menu li .sub .row 
+ul.wgt-mega-menu li .sub .row
 {
-	width: 100%; 
-	overflow: hidden; 
+	width: 100%;
+	overflow: hidden;
 	clear: both;
 }
 
-ul.wgt-mega-menu li .sub li 
+ul.wgt-mega-menu li .sub li
 {
-	list-style: none; 
-	float: none; 
-	width: 170px; 
-	font-size: 1em; 
+	list-style: none;
+	float: none;
+	width: 170px;
+	font-size: 1em;
 	font-weight: normal;
 }
 
-ul.wgt-mega-menu li .sub li.mega-hdr 
+ul.wgt-mega-menu li .sub li.mega-hdr
 {
-	margin: 0 10px 10px 0; 
+	margin: 0 10px 10px 0;
 	float: left;
 }
 
-ul.wgt-mega-menu li .sub li.mega-hdr.last 
+ul.wgt-mega-menu li .sub li.mega-hdr.last
 {
 	margin-right: 0;
 }
@@ -155,24 +155,24 @@ ul.wgt-mega-menu li .sub a,
 ul.wgt-mega-menu li .sub p
 {
 	/*background: none; */
-	border: none; 
-	text-shadow: none; 
-	color: #000000; 
-	padding: 7px 10px; 
-	display: block; 
-	float: none; 
-	text-decoration: none; 
+	border: none;
+	text-shadow: none;
+	color: #000000;
+	padding: 7px 10px;
+	display: block;
+	float: none;
+	text-decoration: none;
 	font-size: 0.9em;
 }
 
 ul.wgt-mega-menu li .sub li.mega-hdr a.mega-hdr-a,
-ul.wgt-mega-menu li .sub li.mega-hdr p.mega-hdr-a 
+ul.wgt-mega-menu li .sub li.mega-hdr p.mega-hdr-a
 {
-	padding: 5px 5px 5px 15px; 
-	margin-bottom: 5px; 
-	background: #4EC3F3 url(<?php echo $images ?>mega_menu/bg_mega_hdr.png) no-repeat 0 0; 
-	/*text-transform: uppercase; 
-	font-weight: bold; 
+	padding: 5px 5px 5px 15px;
+	margin-bottom: 5px;
+	background: #4EC3F3 url(<?php echo $images ?>mega_menu/bg_mega_hdr.png) no-repeat 0 0;
+	/*text-transform: uppercase;
+	font-weight: bold;
 	color: #000000; */
 	text-shadow: 1px 1px 1px #fff;
 }
@@ -184,54 +184,54 @@ ul.wgt-mega-menu li .sub li.mega-hdr p.mega-hdr-a.plain
 }
 
 ul.wgt-mega-menu li .sub li.mega-hdr a.mega-hdr-a:hover,
-ul.wgt-mega-menu li .sub li.mega-hdr p.mega-hdr-a:hover 
+ul.wgt-mega-menu li .sub li.mega-hdr p.mega-hdr-a:hover
 {
-	color: #fff; 
+	color: #fff;
 	text-shadow: none;
 }
 
 ul.wgt-mega-menu .sub li.mega-hdr li a,
 ul.wgt-mega-menu .sub li.mega-hdr li p
 {
-	padding: 4px 5px 4px 20px; 
-	background: url(<?php echo $images ?>mega_menu/arrow_off.png) no-repeat 5px 8px; 
+	padding: 4px 5px 4px 20px;
+	background: url(<?php echo $images ?>mega_menu/arrow_off.png) no-repeat 5px 8px;
 	font-weight: normal;
 }
 
 ul.wgt-mega-menu .sub li.mega-hdr li a:hover,
 ul.wgt-mega-menu .sub li.mega-hdr li p:hover
 {
-	color: #a32403; 
-	background: #efefef url(<?php echo $images ?>mega_menu/arrow_on.png) no-repeat 5px 8px;
+	color: #a32403;
+  background: #efefef url(<?php echo $images ?>mega_menu/arrow_on.png) no-repeat 5px 8px;
 }
 
-ul.wgt-mega-menu .sub ul li 
+ul.wgt-mega-menu .sub ul li
 {
 	padding-right: 0;
 }
 
-ul.wgt-mega-menu li .sub-container.non-mega .sub 
+ul.wgt-mega-menu li .sub-container.non-mega .sub
 {
 	padding: 20px 20px 20px 0;
 }
 
-ul.wgt-mega-menu li .sub-container.non-mega li 
+ul.wgt-mega-menu li .sub-container.non-mega li
 {
-	padding: 0; 
-	width: 190px; 
+	padding: 0;
+	width: 190px;
 	margin: 0;
 }
 
 ul.wgt-mega-menu li .sub-container.non-mega li a,
-ul.wgt-mega-menu li .sub-container.non-mega li p 
+ul.wgt-mega-menu li .sub-container.non-mega li p
 {
-	padding: 7px 5px 7px 22px; 
+	padding: 7px 5px 7px 22px;
 	background: url(<?php echo $images ?>mega_menu/arrow_off.png) no-repeat 7px 10px;
 }
 
 ul.wgt-mega-menu li .sub-container.non-mega li a:hover,
 ul.wgt-mega-menu li .sub-container.non-mega li p:hover
 {
-	color: #a32403; 
+	color: #a32403;
 	background: #efefef url(<?php echo $images ?>mega_menu/arrow_on.png) no-repeat 7px 10px;
 }
