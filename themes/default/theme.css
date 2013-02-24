@@ -25,10 +25,10 @@ $fontStateHover = '#740103';
 $bgStateHoverLight = '#FFE6C3';
 $bgStateHoverDark = '#FFDCA8';
 
-$fontStateWarn = '#FFE862';
-$borderStateWarn = '#FFE862';
-$bgStateWarnLight = '#FF8400';
-$bgStateWarnDark = '#D16C00';
+$borderStateWarn = '1px solid #fff';
+$fontStateWarn = '#fff';
+$bgStateWarnLight = '#FFBD82';
+$bgStateWarnDark = '#FFA353';
 
 $fontStateError = '#fff';
 $borderStateError = '#fff';
@@ -64,7 +64,7 @@ $bgButtonDark = '#e8e8e8';
 
 // ELSE
 
-$cornerRadius = '3px';
+$cornerRadius = '4px';
 
 // BF0003
 
@@ -175,7 +175,8 @@ div.wgt-bgbox,
 .wgt-dropdownbox,
 div#wbf-footer,
 div.wgt-content_box,
-div.wgt-news-box
+div.wgt-news-box,
+.wgt-dashboard-header
 {
   border: 1px solid #ccc;
   background: <?php echo $bgP1Light ?>; /* Old browsers */
@@ -283,16 +284,26 @@ table.wgt-table tbody,
   padding:3px;
 }
 
-/*
-div.wgt-content_box,
-div.wgt-news-box,
 .wgt-dashboard-header
 {
-  -moz-box-shadow:1px 1px 1px #666;
-  -webkit-box-shadow:1px 1px 1px #666;
-  box-shadow:1px 1px 1px #666;
+  color:  #5C5C5C;
+  font-family:  Arial Black;
+  border: 1px solid #cdcdcd;
+  border-radius: <?php echo $cornerRadius ?>;
 }
-*/
+
+.wgt-dashboard-message
+{
+  border-radius: <?php echo $cornerRadius ?>;
+}
+
+.wgt-dashboard-message h3
+{
+  color: #fff;
+  font-weight:bold;
+  font-size:16px;
+}
+
 
 div.wgt-content_box div.head h2,
 div.wgt-ui-desktop h1,
@@ -1033,7 +1044,8 @@ div.box-message a
 
 .ui-state-active,
 .ui-widget-content .ui-state-active,
-.ui-widget-header .ui-state-active
+.ui-widget-header .ui-state-active,
+.wgt-dashboard-message
 {
   border: <?php echo $borderLayout ?>;
   color: <?php echo $fontStateActive  ?>;
@@ -1102,7 +1114,6 @@ div.box-message a
   background: -ms-linear-gradient(top,  <?php echo $bgStateErrorLight  ?> 1%,<?php echo $bgStateErrorDark  ?> 100%); /* IE10+ */
   background: linear-gradient(to bottom,  <?php echo $bgStateErrorLight  ?> 1%,<?php echo $bgStateErrorDark  ?> 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgStateErrorLight  ?>', endColorstr='<?php echo $bgStateErrorDark  ?>',GradientType=0 ); /* IE6-9 */
-
 }
 
 .ui-state-error a,
@@ -1117,6 +1128,36 @@ div.box-message a
 .ui-widget-header .ui-state-error-text
 {
   color: #faf500;
+}
+
+.ui-state-warn,
+.ui-widget-content .ui-state-warn,
+.ui-widget-header .ui-state-warn
+{
+  border: <?php echo $borderStateWarn ?>;
+  color: <?php echo $fontStateWarn ?>;
+  background: <?php echo $bgStateWarnLight  ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgStateWarnLight  ?> 1%, <?php echo $bgStateWarnDark  ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgStateWarnLight  ?>), color-stop(100%,<?php echo $bgStateWarnDark  ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgStateWarnLight  ?> 1%,<?php echo $bgStateWarnDark  ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgStateWarnLight  ?> 1%,<?php echo $bgStateWarnDark  ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgStateWarnLight  ?> 1%,<?php echo $bgStateWarnDark  ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgStateWarnLight  ?> 1%,<?php echo $bgStateWarnDark  ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgStateWarnLight  ?>', endColorstr='<?php echo $bgStateWarnDark  ?>',GradientType=0 ); /* IE6-9 */
+}
+
+.ui-state-warn a,
+.ui-widget-content .ui-state-warn a,
+.ui-widget-header .ui-state-warn a
+{
+  color: <?php echo $fontStateWarn ?>;
+}
+
+.ui-state-warn-text,
+.ui-widget-content .ui-state-warn-text,
+.ui-widget-header .ui-state-warn-text
+{
+  color: <?php echo $fontStateWarn ?>;
 }
 
 .ui-priority-primary,
