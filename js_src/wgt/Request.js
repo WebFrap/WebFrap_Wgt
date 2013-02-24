@@ -17,7 +17,11 @@
  * @license http://www.gnu.org/licenses/gpl.html
  */
 
-
+/**
+ * @param window the browser window
+ * @param $S the jQuery object
+ * @param undefined
+ */
 (function( window, $S, undefined ){
 
   "use strict";
@@ -122,6 +126,7 @@
      *
      * @param requestUrl string
      * @param params {}
+     * @param background boolean
      */
     this.get = function( requestUrl, params, background  ){
 
@@ -812,7 +817,10 @@
     };//end this.showEntity
 
     /**
+     * Die Haupt Request methode
+     *
      * @param params array
+     * @param background boolean
      */
     this.wgtRequest = function( params, background ){
 
@@ -956,7 +964,7 @@
               async:  false,
               error:  params.error
             });
-              
+
             self.lastResponse = self.lastRequest.responseXML;
             responseData  = handler.xml( self.lastResponse, params.statusCallback );
 
