@@ -1,9 +1,6 @@
-<h1>wgt.vendor.jquery.jquery_ui</h1>
+# jQuery UI
 
-<p>Hier könnte ihre Dokumentation stehen... Wenn sie endlich jemand schreiben würde...</p>
+- Homepage: http://jqueryui.com
+- Github: https://github.com/jquery/jquery-ui
 
-<h3>Hier wäre ein super Platz für ein Codebeispiel</h3>
-<?php start_highlight(); ?>
-<_..._>
-</_..._>
-<?php display_highlight( 'xml' ); ?>
+jQuery UI provides interactions like Drag and Drop and widgets like Autocomplete, Tabs and Slider and makes these as easy to use as jQuery itself.
