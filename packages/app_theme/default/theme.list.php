@@ -27,6 +27,7 @@ $files = array
   // layout
   PATH_THEME.'themes/default/theme.css',
   PATH_THEME.'themes/default/icons.css',
+  PATH_THEME.'themes/default/status.css',
 );
 
 

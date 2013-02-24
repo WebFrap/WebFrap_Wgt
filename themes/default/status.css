@@ -1,0 +1,92 @@
+/*<?php
+
+
+// STATES
+
+$fontPrioMin = '#ccc';
+$bgPrioMinLight = '#ECECFF';
+$bgPrioMinDark = '#DCDCFF';
+
+$fontPrioLow = '#ccc';
+$bgPrioLowLight = '#E7E7FF';
+$bgPrioLowDark = '#CBCBFF';
+
+$fontPrioNormal = '#ccc';
+$bgPrioNormalLight = '#D5EFCD';
+$bgPrioNormalDark = '#B4EFA1';
+
+$fontPrioHigh = '#ccc';
+$bgPrioHighLight = '#FFECCF';
+$bgPrioHighDark = '#FFDCA8';
+
+$fontPrioMax = '#ccc';
+$bgPrioMaxLight = '#FFECCF';
+$bgPrioMaxDark = '#FFDCA8';
+
+
+?>*/
+
+.wgt-prio-min
+{
+  color:<?php echo $fontPrioMin ?>;
+  background: <?php echo $bgPrioMinLight ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgPrioMinLight ?> 1%, <?php echo $bgPrioMinDark ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgPrioMinLight ?>), color-stop(100%,<?php echo $bgPrioMinDark ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgPrioMinLight ?> 1%,<?php echo $bgPrioMinDark ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgPrioMinLight ?> 1%,<?php echo $bgPrioMinDark ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgPrioMinLight ?> 1%,<?php echo $bgPrioMinDark ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgPrioMinLight ?> 1%,<?php echo $bgPrioMinDark ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgPrioMinLight ?>', endColorstr='<?php echo $bgPrioMinDark ?>',GradientType=0 ); /* IE6-9 */
+}
+
+.wgt-prio-low
+{
+  color:<?php echo $fontPrioLow ?>;
+  background: <?php echo $bgPrioMinLight ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgPrioMinLight ?> 1%, <?php echo $bgPrioMinDark ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgPrioMinLight ?>), color-stop(100%,<?php echo $bgPrioMinDark ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgPrioMinLight ?> 1%,<?php echo $bgPrioMinDark ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgPrioMinLight ?> 1%,<?php echo $bgPrioMinDark ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgPrioMinLight ?> 1%,<?php echo $bgPrioMinDark ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgPrioMinLight ?> 1%,<?php echo $bgPrioMinDark ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgPrioMinLight ?>', endColorstr='<?php echo $bgPrioMinDark ?>',GradientType=0 ); /* IE6-9 */
+}
+
+.wgt-prio-normal
+{
+  color:<?php echo $fontPrioNormal ?>;
+  background: <?php echo $bgPrioNormalLight ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgPrioNormalLight ?> 1%, <?php echo $bgPrioNormalDark ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgPrioNormalLight ?>), color-stop(100%,<?php echo $bgPrioNormalDark ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgPrioNormalLight ?> 1%,<?php echo $bgPrioNormalDark ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgPrioNormalLight ?> 1%,<?php echo $bgPrioNormalDark ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgPrioNormalLight ?> 1%,<?php echo $bgPrioNormalDark ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgPrioNormalLight ?> 1%,<?php echo $bgPrioNormalDark ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgPrioNormalLight ?>', endColorstr='<?php echo $bgPrioNormalDark ?>',GradientType=0 ); /* IE6-9 */
+}
+
+.wgt-prio-high
+{
+  color:<?php echo $fontPrioHigh ?>;
+  background: <?php echo $bgPrioHighLight ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgPrioHighLight ?> 1%, <?php echo $bgPrioHighDark ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgPrioHighLight ?>), color-stop(100%,<?php echo $bgPrioHighDark ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgPrioHighLight ?> 1%,<?php echo $bgPrioHighDark ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgPrioHighLight ?> 1%,<?php echo $bgPrioHighDark ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgPrioHighLight ?> 1%,<?php echo $bgPrioHighDark ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgPrioHighLight ?> 1%,<?php echo $bgPrioHighDark ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgPrioHighLight ?>', endColorstr='<?php echo $bgPrioHighDark ?>',GradientType=0 ); /* IE6-9 */
+}
+
+.wgt-prio-max
+{
+  color:<?php echo $fontPrioMax ?>;
+  background: <?php echo $bgPrioMaxLight ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgPrioMaxLight ?> 1%, <?php echo $bgPrioMaxDark ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgPrioMaxLight ?>), color-stop(100%,<?php echo $bgPrioMaxDark ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgPrioMaxLight ?> 1%,<?php echo $bgPrioMaxDark ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgPrioMaxLight ?> 1%,<?php echo $bgPrioMaxDark ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgPrioMaxLight ?> 1%,<?php echo $bgPrioMaxDark ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgPrioMaxLight ?> 1%,<?php echo $bgPrioMaxDark ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgPrioMaxLight ?>', endColorstr='<?php echo $bgPrioMaxDark ?>',GradientType=0 ); /* IE6-9 */
+}
