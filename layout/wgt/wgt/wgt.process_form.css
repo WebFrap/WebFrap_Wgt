@@ -14,6 +14,11 @@ div.wgt-process-form div.description
   float:left;
 }
 
+div.wgt-process-form div.wgt-panel
+{
+	padding:0px !important;
+}
+
 div.wgt-process-form div.wgt-panel.title h2
 {
   width:650px;

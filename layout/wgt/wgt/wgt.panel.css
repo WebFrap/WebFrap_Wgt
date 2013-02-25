@@ -61,7 +61,6 @@ div.wgt-panel ul.progress
   height:32px;
   padding:0px;
   vertical-align:middle;
-  background-color:#CBCBCB;
 }
 
 
@@ -79,14 +78,15 @@ div.wgt-panel ul.progress li
   list-style:none;
   font-weight:bold;
   padding:3px 21px 3px 3px;
-  background: url("<?php echo $images ?>wgt/arrow_sep.png") right center no-repeat;
+  /*background: url("<?php echo $images ?>wgt/arrow_sep.png") right center no-repeat;*/
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
   box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
-.wgt-panel.progress li:hover
+div.wgt-panel ul.progress
 {
-  background-color:white;
+  vertical-align:middle;	
 }
+
 
