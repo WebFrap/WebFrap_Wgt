@@ -26,7 +26,10 @@
 {
   margin-left:-5px;
   border:1px solid black;
-  min-width:19px;
+  min-width:22px;
+	padding-left:3px;
+	padding-right:4px;
+	
   
   /* clear borders */
   border-radius: 0px;
