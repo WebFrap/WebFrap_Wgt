@@ -744,3 +744,31 @@ background-position: -16px -96px;
 {
   background-position: -80px -224px;
 }
+
+
+/* FA Icons */
+
+.icon-money
+{
+  color:#608D1D;
+}
+
+.icon-remove,
+.icon-remove-sign,
+.icon-remove-circle,
+.icon-minus,
+.icon-minus-sign,
+.icon-minus-circle,
+.icon-minus-trash
+{
+  color:#800000;
+}
+
+.icon-ok
+{
+  color:#008000;
+}
+
+
+
+
