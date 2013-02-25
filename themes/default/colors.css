@@ -1,0 +1,2225 @@
+/*<?php
+
+// BODY Layout
+$bgContentLight = '#FFFFFF';
+$bgContentDark = '#FCFCFC';
+
+$borderLayout = '1px solid #5c5c5c';
+
+$fontWText = 'normal';
+
+// STATES
+
+$bgStateDefaultLight = '#f7f7f7';
+$bgStateDefaultDark = '#e8e8e8';
+
+$fontStateActive = '#fff';
+$bgStateActiveLight = '#4AA5FF';
+$bgStateActiveDark = '#2B6095';
+
+$fontStateHigh = '#fff';
+$bgStateHighLight = '#FFA858';
+$bgStateHighDark = '#E5974F';
+
+$fontStateHover = '#740103';
+$bgStateHoverLight = '#FFE6C3';
+$bgStateHoverDark = '#FFDCA8';
+
+$borderStateWarn = '1px solid #fff';
+$fontStateWarn = '#fff';
+$bgStateWarnLight = '#FFBD82';
+$bgStateWarnDark = '#FFA353';
+
+$fontStateError = '#fff';
+$borderStateError = '#fff';
+$bgStateErrorLight = '#BA1315';
+$bgStateErrorDark = '#6A0A0C';
+
+
+// FONTS
+$fontHighlight = '#fff';
+
+// green 64B824
+
+// HEADS
+$fontHead = '#1E446A';
+
+$bgHeadHiLight = '#FFA858';
+$bgHeadHiDark = '#E5974F';
+
+$bgHeadLight = '#4AA5FF';
+$bgHeadDark = '#2B6095';
+
+// PANEL
+$bgP1Light = '#F9F9F9';
+$bgP1Dark  = '#F0F0F0';
+
+$bgP2Light = '#F2F2F2';
+$bgP2Dark  = '#C3C3C3';
+
+// BUTTON
+$fontButton = '#333';
+$bgButtonLight = '#f7f7f7';
+$bgButtonDark = '#e8e8e8';
+
+// ELSE
+
+$cornerRadius = '4px';
+
+// BF0003
+
+//linear-gradient(to bottom, #BF0003 1%, #750003 100%) repeat scroll 0 0 transparent
+
+?>*/
+/*******************************************************************************
+* WebFrap UI CSS Framework, extends jQuery UI CSS Framework
+*******************************************************************************/
+
+/*
+Theme URL:
+
+?&ffDefault=Verdana,Arial,sans-serif&fwDefault=normal&fsDefault=1em&cornerRadius=3px&bgColorHeader=750003&bgTextureHeader=03_highlight_soft.png&bgImgOpacityHeader=25&borderColorHeader=5c5c5c&fcHeader=cccccc&iconColorHeader=cccccc&bgColorContent=f8f8f8&bgTextureContent=01_flat.png&bgImgOpacityContent=95&borderColorContent=5c5c5c&fcContent=222222&iconColorContent=222222&bgColorDefault=919191&bgTextureDefault=04_highlight_hard.png&bgImgOpacityDefault=45&borderColorDefault=5c5c5c&fcDefault=ffffff&iconColorDefault=e3e3e3&bgColorHover=ffd07c&bgTextureHover=04_highlight_hard.png&bgImgOpacityHover=55&borderColorHover=5c5c5c&fcHover=750003&iconColorHover=750003&bgColorActive=e3e3e3&bgTextureActive=03_highlight_soft.png&bgImgOpacityActive=50&borderColorActive=5c5c5c&fcActive=0e0606&iconColorActive=0e0606&bgColorHighlight=ffee9b&bgTextureHighlight=02_glass.png&bgImgOpacityHighlight=55&borderColorHighlight=ffdea3&fcHighlight=750003&iconColorHighlight=e14f1c&bgColorError=e14f1c&bgTextureError=12_gloss_wave.png&bgImgOpacityError=45&borderColorError=750003&fcError=faf500&iconColorError=ffffff&bgColorOverlay=aaaaaa&bgTextureOverlay=07_diagonals_small.png&bgImgOpacityOverlay=75&opacityOverlay=30&bgColorShadow=999999&bgTextureShadow=01_flat.png&bgImgOpacityShadow=55&opacityShadow=45&thicknessShadow=0px&offsetTopShadow=5px&offsetLeftShadow=5px&cornerRadiusShadow=5px
+
+*/
+
+/* clean all */
+*
+{
+  font-family: Verdana,Arial,sans-serif;
+}
+
+
+/* Base Elements
+------------------------------------------------------------------------------*/
+
+body
+{
+  background: <?php echo $bgContentLight ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgContentLight ?> 1%, <?php echo $bgContentDark ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgContentLight ?>), color-stop(100%,<?php echo $bgContentDark ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgContentLight ?> 1%,<?php echo $bgContentDark ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgContentLight ?> 1%,<?php echo $bgContentDark ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgContentLight ?> 1%,<?php echo $bgContentDark ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgContentLight ?> 1%,<?php echo $bgContentDark ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgContentLight ?>', endColorstr='<?php echo $bgContentDark ?>',GradientType=0 ); /* IE6-9 */
+}
+
+a,
+a:link,
+a:visited
+{
+  color: #222222;
+}
+
+a:focus,
+a:hover,
+a:active
+{
+  color: <?php echo $bgHeadDark  ?>;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+legend
+{
+  padding-left:4px;
+  color: <?php echo $fontHead ?>;
+  font-weight: <?php echo $fontWText ?>;
+}
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a
+{
+  color: <?php echo $fontHead ?>;
+  font-weight: <?php echo $fontWText ?>;
+}
+
+
+/* Layout Theme
+------------------------------------------------------------------------------*/
+
+.wgt_underline,
+div#wbf-ui-panel,
+.wgt-panel,
+.ui-widget-header.bar,
+.wgt_tab_head
+{
+  border-bottom:<?php echo $borderLayout ?> !important;
+}
+
+div#wbf-menu
+{
+  border-right:<?php echo $borderLayout ?> !important;
+}
+
+div#wbf-footer
+{
+  border-top: solid 1px #ccc;
+}
+
+div#wbf-menu,
+div.bar,
+div.wgt-panel,
+div.wgt_tab_head,
+div.wgt-tab-head,
+div.wgt-bgbox,
+.wgt-dropdownbox,
+div#wbf-footer,
+div.wgt-content_box,
+div.wgt-news-box,
+.wgt-dashboard-header
+{
+  border: 1px solid #ccc;
+  background: <?php echo $bgP1Light ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgP1Light ?> 1%, <?php echo $bgP1Dark ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgP1Light ?>), color-stop(100%,<?php echo $bgP1Dark ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgP1Light ?> 1%,<?php echo $bgP1Dark ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgP1Light ?> 1%,<?php echo $bgP1Dark ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgP1Light ?> 1%,<?php echo $bgP1Dark ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgP1Light ?> 1%,<?php echo $bgP1Dark ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgP1Light ?>', endColorstr='<?php echo $bgP1Dark ?>',GradientType=0 ); /* IE6-9 */
+
+}
+
+div#wbf-body,
+div#wbf-content,
+div.wgt_window,
+table.wgt-table tbody,
+.wgt-content,
+.wgt-bg-control
+{
+  background: <?php echo $bgContentDark ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgContentLight ?> 1%, <?php echo $bgContentDark ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgContentLight ?>), color-stop(100%,<?php echo $bgContentDark ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgContentLight ?> 1%,<?php echo $bgContentDark ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgContentLight ?> 1%,<?php echo $bgContentDark ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgContentLight ?> 1%,<?php echo $bgContentDark ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgContentLight ?> 1%,<?php echo $bgContentDark ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgContentLight ?>', endColorstr='<?php echo $bgContentDark ?>',GradientType=0 ); /* IE6-9 */
+  color: #222222;
+}
+
+
+#wgt-panel-switch-profile
+{
+  height:22px;
+}
+
+.wgt-lyt-logo
+{
+  background: white url('./files/logo/logo_small.png') fixed no-repeat !important;
+}
+
+.wgt-lyt-logo a
+{
+  padding:0xp;
+  margin:0px;
+  width:75px !important;
+  background:inherit !important;
+}
+
+/* Boxes, Backgrounds & Borders
+------------------------------------------------------------------------------*/
+
+.wgt-border-bopen
+{
+  border:<?php echo $borderLayout ?> !important;
+  border-bottom:none !important;
+}
+
+.wgt-border-vert
+{
+  border-top:<?php echo $borderLayout ?> !important;
+  border-bottom:<?php echo $borderLayout ?> !important;
+}
+
+.wgt-border
+{
+  border:<?php echo $borderLayout ?> !important;
+  border-radius: <?php echo $cornerRadius ?>;
+  /*
+  -moz-box-shadow:1px 1px 1px #666;
+  -webkit-box-shadow:1px 1px 1px #666;
+  box-shadow:1px 1px 1px #666;
+  */
+}
+
+.wgt-border-top
+{
+  border-top:<?php echo $borderLayout ?> !important;
+}
+
+.wgt-border-bottom
+{
+  border-bottom:<?php echo $borderLayout ?> !important;
+}
+
+.wgt-border-left
+{
+  border-left:<?php echo $borderLayout ?> !important;
+}
+
+.wgt-border-right
+{
+  border-right:<?php echo $borderLayout ?> !important;
+}
+
+.wgt-bgbox
+{
+  background-color:#CBCBCB;
+  padding:4px;
+}
+
+.wgt-padding
+{
+  padding:3px;
+}
+
+.wgt-dashboard-header
+{
+  color:  #5C5C5C;
+  font-family:  Arial Black;
+  border: 1px solid #cdcdcd;
+  border-radius: <?php echo $cornerRadius ?>;
+}
+
+.wgt-dashboard-message
+{
+  border-radius: <?php echo $cornerRadius ?>;
+}
+
+.wgt-dashboard-message h3
+{
+  color: #fff;
+  font-weight:bold;
+  font-size:16px;
+}
+
+
+div.wgt-content_box div.head h2,
+div.wgt-ui-desktop h1,
+div.wgt-news-box h2
+{
+  color: <?php echo $bgHeadDark  ?>;
+}
+
+
+div.wgt-content_box,
+div.wgt-news-box
+{
+  border-radius: <?php echo $cornerRadius ?>;
+}
+
+
+/* Semantics
+------------------------------------------------------------------------------*/
+
+.wgt-hover,
+.wgt-selected,
+.wgt-hover a,
+.wgt-selected a
+{
+  color: <?php echo $fontStateHover  ?>;
+  background: <?php echo $bgStateHoverLight  ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgStateHoverLight  ?> 1%, <?php echo $bgStateHoverDark  ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgStateHoverLight  ?>), color-stop(100%,<?php echo $bgStateHoverDark  ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgStateHoverLight  ?> 1%,<?php echo $bgStateHoverDark  ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgStateHoverLight  ?> 1%,<?php echo $bgStateHoverDark  ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgStateHoverLight  ?> 1%,<?php echo $bgStateHoverDark  ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgStateHoverLight  ?> 1%,<?php echo $bgStateHoverDark  ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgStateHoverLight  ?>', endColorstr='<?php echo $bgStateHoverDark  ?>',GradientType=0 ); /* IE6-9 */
+}
+
+.wgt-active.nb
+{
+  border: none;
+}
+
+/* Form Styles
+------------------------------------------------------------------------------*/
+
+input,
+textarea,
+select,
+div.wgt-fake-input
+{
+  border:solid 1px #5c5c5c;
+}
+
+
+fieldset
+{
+  border: none;
+  border: <?php echo $borderLayout ?>;
+  border-radius: <?php echo $cornerRadius ?>;
+  /*
+  -moz-box-shadow:1px 1px 1px #666;
+  -webkit-box-shadow:1px 1px 1px #666;
+  box-shadow:1px 1px 1px #666;
+  */
+}
+
+
+.wgt-button:hover,
+.wgt-button.append:hover
+{
+  border: 1px solid #393939;
+  background: <?php echo $bgHeadHiDark ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgHeadHiLight  ?> 1%, <?php echo $bgHeadHiDark  ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgHeadHiLight  ?>), color-stop(100%,<?php echo $bgHeadHiDark  ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgHeadHiLight  ?> 1%,<?php echo $bgHeadHiDark  ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgHeadHiLight  ?> 1%,<?php echo $bgHeadHiDark  ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgHeadHiLight  ?> 1%,<?php echo $bgHeadHiDark  ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgHeadHiLight  ?> 1%,<?php echo $bgHeadHiDark  ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgHeadHiLight  ?>', endColorstr='<?php echo $bgHeadHiDark  ?>',GradientType=0 ); /* IE6-9 */
+
+  color: <?php echo $fontHighlight  ?>;
+  font-weight: <?php echo $fontWText ?>;
+  border-radius: <?php echo $cornerRadius ?>;
+}
+
+.wgt-button.append:hover
+{
+  /* right borders */
+    border-top-left-radius: 0px;
+    border-bottom-right-left: 0px;
+}
+
+.wgt-button .ui-icon,
+.wgt-button.append .ui-icon
+{
+  background-image: url(<?php echo $images ?>ui/ui-icons_e3e3e3_256x240.png);
+}
+
+.wgt-button:hover .ui-icon,
+.wgt-button.append:hover .ui-icon
+{
+  background-image: url(<?php echo $images ?>ui/ui-icons_750003_256x240.png);
+}
+
+.wgt-button,
+.wgt-button.append,
+.wgt-button2,
+.wgt-button2.append
+{
+  color: <?php echo $fontButton ?>;
+  font-weight: <?php echo $fontWText ?>;
+  border-radius: <?php echo $cornerRadius ?>;
+  border: 1px solid #A8A8A8 !important;
+  background: <?php echo $bgButtonLight ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%, <?php echo $bgButtonDark ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,<?php echo $bgButtonLight ?>), color-stop(100%,<?php echo $bgButtonDark ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgButtonDark ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgButtonDark ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgButtonDark ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgButtonDark ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgButtonLight ?>', endColorstr='<?php echo $bgButtonDark ?>',GradientType=0 ); /* IE6-9 */
+}
+
+.wgt-button.append,
+.wgt-button.right,
+.wgt-button2.append,
+.wgt-button2.right
+{
+
+  /* clear borders */
+  border-radius: 0px;
+
+  /* right borders */
+  border-top-right-radius: <?php echo $cornerRadius ?>;
+  border-bottom-right-radius: <?php echo $cornerRadius ?>;
+}
+
+.wgt-button.splitted,
+.wgt-button2.splitted
+{
+  padding-right:10px;
+}
+
+
+/* Mega Menu
+------------------------------------------------------------------------------*/
+
+ul.wgt-mega-menu
+{
+  text-decoration: none;
+  width: 100%;
+  height: 18px;
+  position: relative;
+  border-left:0px;
+  border-right:0px;
+  color: #222222;
+  font-weight: <?php echo $fontWText ?>;
+}
+
+ul.wgt-mega-menu a.wgt-mega-menu ,
+ul.wgt-mega-menu li.custom>a
+{
+  color: #cccccc;
+}
+
+ul.wgt-mega-menu li,
+ul.wgt-mega-menu li.notify.end
+{
+  border-right:1px ridge #5c5c5c;
+}
+
+ul.wgt-mega-menu ul.sub li
+{
+  border-right:0px;
+}
+
+ul.wgt-mega-menu li.wgt-mega-menu-li>a,
+ul.wgt-mega-menu li.custom>a,
+ul.wgt-mega-menu li.notify>a
+{
+  text-shadow: none;
+  height: 18px;
+  text-decoration: none;
+  padding: 5px 12px 5px 9px;
+  color: #ffffff;
+  font-weight: <?php echo $fontWText ?>;
+}
+
+ul.wgt-mega-menu li a
+{
+  text-shadow: none;
+  height: 18px;
+  text-decoration: none;
+  padding: 5px 12px 5px 9px;
+  color: #222222;
+  font-weight: <?php echo $fontWText ?>;
+}
+
+ul.wgt-mega-menu li.notify
+{
+  border-right:0px;
+}
+
+ul.wgt-mega-menu li.notify a
+{
+  padding: 3px 3px 8px 3px;
+  color: #ffffff;
+}
+
+ul.wgt-mega-menu li.notify.end a
+{
+  padding: 3px 10px 8px 3px;
+}
+
+ul.wgt-mega-menu li.notify.start a
+{
+  padding: 3px 3px 8px 10px;
+}
+
+
+ul.wgt-mega-menu li a:hover,
+ul.wgt-mega-menu li p:hover,
+ul.wgt-mega-menu .mega-hover a
+{
+  border: <?php echo $borderLayout ?>;
+  font-weight: <?php echo $fontWText ?>;
+  color: #fff;
+  border:0px !important;
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  -o-user-select: none;
+  user-select: none;
+  background: <?php echo $bgHeadHiDark ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgHeadHiLight  ?> 1%, <?php echo $bgHeadHiDark  ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgHeadHiLight  ?>), color-stop(100%,<?php echo $bgHeadHiDark  ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgHeadHiLight  ?> 1%,<?php echo $bgHeadHiDark  ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgHeadHiLight  ?> 1%,<?php echo $bgHeadHiDark  ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgHeadHiLight  ?> 1%,<?php echo $bgHeadHiDark  ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgHeadHiLight  ?> 1%,<?php echo $bgHeadHiDark  ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgHeadHiLight  ?>', endColorstr='<?php echo $bgHeadHiDark  ?>',GradientType=0 ); /* IE6-9 */
+}
+
+ul.wgt-mega-menu li .sub li.mega-hdr a.mega-hdr-a,
+ul.wgt-mega-menu li .sub li.mega-hdr p.mega-hdr-a
+{
+  padding: 3px 5px 3px 15px;
+  margin-bottom: 3px;
+  text-transform: uppercase;
+  text-shadow: none;
+  text-decoration: none;
+  cursor:pointer;
+  color: #333 !important;
+  font-weight: <?php echo $fontWText ?> !important;
+  border: 1px solid #ddd !important;
+  background: <?php echo $bgButtonLight ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%, <?php echo $bgP2Dark ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,<?php echo $bgButtonLight ?>), color-stop(100%,<?php echo $bgP2Dark ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgP2Dark ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgP2Dark ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgP2Dark ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgP2Dark ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgButtonLight ?>', endColorstr='<?php echo $bgP2Dark ?>',GradientType=0 ); /* IE6-9 */
+}
+
+ul.wgt-mega-menu li .sub-container.mega .sub
+{
+  opacity: .99;
+  filter:Alpha(Opacity=99);
+}
+
+/* Table & Grid
+------------------------------------------------------------------------------*/
+
+.ui-widget-footer,
+.wgt-head,
+table.wgt-table tfoot,
+table.wgt-table thead,
+table.wgt-grid tfoot,
+table.wgt-grid thead
+{
+  border: <?php echo $borderLayout ?>;
+  background: black;
+  color: #cccccc !important;
+  font-weight: <?php echo $fontWText ?> !important;
+}
+
+table.wgt-table tfoot a,
+table.wgt-table tfoot td,
+table.wgt-table tfoot span,
+table.wgt-table tfoot div,
+table.wgt-table thead a,
+table.wgt-table thead th,
+table.wgt-table thead span,
+table.wgt-grid tfoot a,
+table.wgt-grid tfoot td,
+table.wgt-grid tfoot span,
+table.wgt-grid tfoot div,
+table.wgt-grid thead a,
+table.wgt-grid thead th,
+table.wgt-grid thead span
+{
+  color: #cccccc !important;
+  font-weight: bold !important;
+  text-decoration: none;
+}
+
+div.wgt-grid-head,
+div.wgt-grid-head table thead th
+{
+  color: #fff !important;
+  font-weight: bold;
+  text-decoration: none;
+  border:  0px solid <?php echo $bgHeadDark ?>;
+  background: <?php echo $bgHeadDark ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgHeadLight ?> 1%, <?php echo $bgHeadDark ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgHeadLight ?>), color-stop(100%,<?php echo $bgHeadDark ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgHeadLight ?> 1%,<?php echo $bgHeadDark ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgHeadLight ?> 1%,<?php echo $bgHeadDark ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgHeadLight ?> 1%,<?php echo $bgHeadDark ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgHeadLight ?> 1%,<?php echo $bgHeadDark ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgHeadLight ?>', endColorstr='<?php echo $bgHeadDark ?>',GradientType=0 ); /* IE6-9 */
+}
+
+table.wgt-grid tbody tr.title,
+table.wgt-table tbody tr.title
+{
+  background: <?php echo $bgHeadDark ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgP2Light ?> 1%, <?php echo $bgP2Dark ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgP2Light ?>), color-stop(100%,<?php echo $bgP2Dark ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgP2Light ?> 1%,<?php echo $bgP2Dark ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgP2Light ?> 1%,<?php echo $bgP2Dark ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgP2Light ?> 1%,<?php echo $bgP2Dark ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgP2Light ?> 1%,<?php echo $bgP2Dark ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgP2Light ?>', endColorstr='<?php echo $bgP2Dark ?>',GradientType=0 ); /* IE6-9 */
+  color: black;
+  font-weight: bold;
+}
+
+table.wgt-grid tbody tr.subtitle,
+table.wgt-table tbody tr.subtitle
+{
+  background-color:##F2F2F2 !important;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+div.wgt-grid-body tr.wgt-selected td.pos
+{
+  border: <?php echo $borderLayout ?>;
+  background-color: #e3e3e3;
+  font-weight: <?php echo $fontWText ?>;
+  color: #0e0606;
+}
+
+table.wgt-table li,
+table.wgt-grid li
+{
+  list-style:circle;
+}
+
+table.wgt-table tbody tr.row1,
+table.wgt-grid tbody tr.row1
+{
+  background-color:white;
+}
+
+table.wgt-table tbody tr.row2,
+table.wgt-grid tbody tr.row2
+{
+  background-color:#f8f8f8;
+}
+
+
+/* Panel
+------------------------------------------------------------------------------*/
+
+div.wgt-panel.title
+{
+  color: #333;
+  background: <?php echo $bgP2Dark ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgP2Light ?> 1%, <?php echo $bgP2Dark ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgP2Dark ?>), color-stop(100%,<?php echo $bgP2Dark ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgP2Light ?> 1%,<?php echo $bgP2Dark ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgP2Light ?> 1%,<?php echo $bgP2Dark ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgP2Light ?> 1%,<?php echo $bgP2Dark ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgP2Light ?> 1%,<?php echo $bgP2Dark ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgP2Light ?>', endColorstr='<?php echo $bgP2Dark ?>',GradientType=0 ); /* IE6-9 */
+}
+
+.wgt-panel.title h2
+{
+  text-shadow: 2px 2px 4px rgba(254, 254, 254, 0.7);
+}
+
+div.wgt-panel.menu
+{
+  padding:2px;
+}
+
+
+/* Tabs
+------------------------------------------------------------------------------*/
+
+
+span.tab,
+div.wgt-tab-head a.tab
+{
+  color: <?php echo $fontButton ?>;
+  font-weight: <?php echo $fontWText ?>;
+  border-radius: <?php echo $cornerRadius ?>;
+  border: 1px solid #A8A8A8 !important;
+  background: <?php echo $bgButtonLight ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%, <?php echo $bgButtonDark ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,<?php echo $bgButtonLight ?>), color-stop(100%,<?php echo $bgButtonDark ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgButtonDark ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgButtonDark ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgButtonDark ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgButtonLight ?> 0%,<?php echo $bgButtonDark ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgButtonLight ?>', endColorstr='<?php echo $bgButtonDark ?>',GradientType=0 ); /* IE6-9 */
+}
+
+span.tab:hover,
+div.wgt-tab-head a.tab:hover,
+span.tab.ui-state-active:hover,
+span.tab.ui-state-active:hover a,
+div.wgt-tab-head a.tab.active:hover
+{
+  color: <?php echo $fontHighlight  ?>;
+  font-weight: <?php echo $fontWText ?>;
+  border: 1px solid #393939;
+  border-radius: <?php echo $cornerRadius ?>;
+  background: <?php echo $bgHeadHiDark ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgHeadHiLight  ?> 1%, <?php echo $bgHeadHiDark  ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgHeadHiLight  ?>), color-stop(100%,<?php echo $bgHeadHiDark  ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgHeadHiLight  ?> 1%,<?php echo $bgHeadHiDark  ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgHeadHiLight  ?> 1%,<?php echo $bgHeadHiDark  ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgHeadHiLight  ?> 1%,<?php echo $bgHeadHiDark  ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgHeadHiLight  ?> 1%,<?php echo $bgHeadHiDark  ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgHeadHiLight  ?>', endColorstr='<?php echo $bgHeadHiDark  ?>',GradientType=0 ); /* IE6-9 */
+}
+
+span.tab a
+{
+  color: #333;
+  font-weight: <?php echo $fontWText ?>;
+}
+
+span.tab:hover a
+{
+  color: <?php echo $fontHighlight  ?>;
+  font-weight: <?php echo $fontWText ?>;
+}
+
+span.tab.ui-state-active,
+span.tab.ui-state-active a,
+div.wgt-tab-head a.tab.active
+{
+  border: <?php echo $borderLayout ?>;
+  color: #fff;
+  font-weight: <?php echo $fontWText ?>;
+  background: <?php echo $bgHeadLight  ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgHeadLight  ?> 1%, <?php echo $bgHeadDark  ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgHeadLight  ?>), color-stop(100%,<?php echo $bgHeadDark  ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgHeadLight  ?> 1%,<?php echo $bgHeadDark  ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgHeadLight  ?> 1%,<?php echo $bgHeadDark  ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgHeadLight  ?> 1%,<?php echo $bgHeadDark  ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgHeadLight  ?> 1%,<?php echo $bgHeadDark  ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgHeadLight  ?>', endColorstr='<?php echo $bgHeadDark  ?>',GradientType=0 ); /* IE6-9 */
+}
+
+.ui-accordion-content label
+{
+  color: <?php echo $bgHeadDark  ?>;
+  font-weight:bold;
+}
+
+.ui-accordion-content label.hint
+{
+  color: #0e0606;
+}
+
+.ui-accordion-content label.hint,
+.ui-accordion-content p.hint
+{
+  font-style:italic;
+}
+
+
+
+/* Message Pipe
+------------------------------------------------------------------------------*/
+
+ul.wgt-message-pipe li
+{
+  border:<?php echo $borderLayout ?>;
+}
+
+ul.wgt-message-pipe li div.title
+{
+  border-bottom:1px dotted #5c5c5c;
+  background-color:#CBCBCB;
+}
+
+ul.wgt-message-pipe li div.content
+{
+  border-bottom:1px dotted #5c5c5c;
+}
+
+ul.wgt-message-pipe li div.footer
+{
+  background-color:#F2F2F2;
+}
+
+ul.wgt-message-pipe li div.footer span
+{
+  color:#222222;
+}
+
+div.box-message a
+{
+  border-bottom:1px dotted #5c5c5c;
+}
+
+
+/*
+ * jQuery UI CSS Framework @VERSION
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Theming/API
+ */
+
+/* Layout helpers
+----------------------------------*/
+.ui-helper-hidden
+{
+  display: none;
+}
+
+.ui-helper-hidden-accessible
+{
+  position: absolute;
+  left: -99999999px;
+}
+
+.ui-helper-reset
+{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  line-height: 1.1;
+  text-decoration: none;
+  font-size: 100%;
+  list-style: none;
+}
+
+.ui-helper-clearfix:after
+{
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.ui-helper-clearfix
+{
+  display: inline-block;
+}
+
+/* required comment for clearfix to work in Opera \*/
+* html .ui-helper-clearfix
+{
+}
+
+.ui-helper-clearfix
+{
+  display:block;
+}
+/* end clearfix */
+
+.ui-helper-zfix
+{
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  opacity: 0;
+  filter:Alpha(Opacity=0);
+}
+
+
+/* Interaction Cues
+----------------------------------*/
+.ui-state-disabled
+{
+  cursor: default !important;
+}
+
+
+/* Icons
+----------------------------------*/
+
+/* states and images */
+.ui-icon
+{
+  display: block;
+  text-indent: -99999px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+}
+
+
+/* Misc visuals
+----------------------------------*/
+
+/* Overlays */
+.ui-widget-overlay
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+/* Component containers
+----------------------------------*/
+
+.ui-widget{}
+
+.ui-widget .ui-widget{}
+
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button
+{
+}
+
+/* Content
+----------------------------------*/
+
+.ui-widget-content
+{
+  border: <?php echo $borderLayout ?>;
+  background: <?php echo $bgContentDark ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgContentLight ?> 1%, <?php echo $bgContentDark ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgContentLight ?>), color-stop(100%,<?php echo $bgContentDark ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgContentLight ?> 1%,<?php echo $bgContentDark ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgContentLight ?> 1%,<?php echo $bgContentDark ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgContentLight ?> 1%,<?php echo $bgContentDark ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgContentLight ?> 1%,<?php echo $bgContentDark ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgContentLight ?>', endColorstr='<?php echo $bgContentDark ?>',GradientType=0 ); /* IE6-9 */
+  color: #222222;
+}
+
+
+/* Header
+----------------------------------*/
+
+.ui-widget-header
+{
+  border: <?php echo $borderLayout ?>;
+  color:           #fff;
+  font-weight:       <?php echo $fontWText ?>;
+  background: <?php echo $bgHeadDark ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgHeadLight ?> 1%, <?php echo $bgHeadDark ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgHeadLight ?>), color-stop(100%,<?php echo $bgHeadDark ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgHeadLight ?> 1%,<?php echo $bgHeadDark ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgHeadLight ?> 1%,<?php echo $bgHeadDark ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgHeadLight ?> 1%,<?php echo $bgHeadDark ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgHeadLight ?> 1%,<?php echo $bgHeadDark ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgHeadLight ?>', endColorstr='<?php echo $bgHeadDark ?>',GradientType=0 ); /* IE6-9 */
+}
+
+
+/* Interaction states
+----------------------------------*/
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default
+{
+  border:       1px solid #ccc;
+  font-weight:     <?php echo $fontWText ?>;
+  color:         #333;
+  background:     <?php echo  $bgStateDefaultLight ?>; /* Old browsers */
+  background:     -moz-linear-gradient(top,  <?php echo  $bgStateDefaultLight ?> 0%, <?php echo  $bgStateDefaultDark ?> 100%); /* FF3.6+ */
+  background:     -webkit-gradient(linear, left top, left bottom, color-stop(0%,<?php echo  $bgStateDefaultLight ?>), color-stop(100%,<?php echo  $bgStateDefaultDark ?>)); /* Chrome,Safari4+ */
+  background:     -webkit-linear-gradient(top,  <?php echo  $bgStateDefaultLight ?> 0%,<?php echo  $bgStateDefaultDark ?> 100%); /* Chrome10+,Safari5.1+ */
+  background:     -o-linear-gradient(top,  <?php echo  $bgStateDefaultLight ?> 0%,<?php echo  $bgStateDefaultDark ?> 100%); /* Opera 11.10+ */
+  background:     -ms-linear-gradient(top,  <?php echo  $bgStateDefaultLight ?> 0%,<?php echo  $bgStateDefaultDark ?> 100%); /* IE10+ */
+  background:     linear-gradient(to bottom,  <?php echo  $bgStateDefaultLight ?> 0%,<?php echo  $bgStateDefaultDark ?> 100%); /* W3C */
+  filter:       progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo  $bgStateDefaultLight ?>', endColorstr='<?php echo  $bgStateDefaultDark ?>',GradientType=0 ); /* IE6-9 */
+}
+
+.ui-state-default a,
+.ui-state-default a:link,
+.ui-state-default a:visited
+{
+  color: #333;
+  font-weight: <?php echo $fontWText ?>;
+  text-decoration: none;
+}
+
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus
+{
+  border: <?php echo $borderLayout ?>;
+  color: <?php echo $fontStateHover  ?>;
+  font-weight: <?php echo $fontWText ?>;
+  background: <?php echo $bgStateHoverLight  ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgStateHoverLight  ?> 1%, <?php echo $bgStateHoverDark  ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgStateHoverLight  ?>), color-stop(100%,<?php echo $bgStateHoverDark  ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgStateHoverLight  ?> 1%,<?php echo $bgStateHoverDark  ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgStateHoverLight  ?> 1%,<?php echo $bgStateHoverDark  ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgStateHoverLight  ?> 1%,<?php echo $bgStateHoverDark  ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgStateHoverLight  ?> 1%,<?php echo $bgStateHoverDark  ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgStateHoverLight  ?>', endColorstr='<?php echo $bgStateHoverDark  ?>',GradientType=0 ); /* IE6-9 */
+}
+
+.ui-state-hover a,
+.ui-state-hover a:hover
+{
+  color: <?php echo $bgHeadDark  ?>;
+  text-decoration: none;
+}
+
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+.wgt-dashboard-message
+{
+  border: <?php echo $borderLayout ?>;
+  color: <?php echo $fontStateActive  ?>;
+  font-weight: <?php echo $fontWText ?>;
+  background: <?php echo $bgStateActiveLight  ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgStateActiveLight  ?> 1%, <?php echo $bgStateActiveDark  ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgStateActiveLight  ?>), color-stop(100%,<?php echo $bgStateActiveDark  ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgStateActiveLight  ?> 1%,<?php echo $bgStateActiveDark  ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgStateActiveLight  ?> 1%,<?php echo $bgStateActiveDark  ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgStateActiveLight  ?> 1%,<?php echo $bgStateActiveDark  ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgStateActiveLight  ?> 1%,<?php echo $bgStateActiveDark  ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgStateActiveLight  ?>', endColorstr='<?php echo $bgStateActiveDark  ?>',GradientType=0 ); /* IE6-9 */
+}
+
+.ui-state-active a,
+.ui-state-active a:link,
+.ui-state-active a:visited
+{
+  color: <?php echo $fontStateActive  ?>;
+  font-weight: <?php echo $fontWText ?>;
+  text-decoration: none;
+}
+
+.ui-widget:active
+{
+  outline: none;
+}
+
+/* Interaction Cues
+----------------------------------*/
+
+.ui-state-highlight,
+.ui-widget-content .ui-state-highlight,
+.ui-widget-header .ui-state-highlight
+{
+  border: 1px solid #ffdea3;
+  color: <?php echo $fontStateHigh  ?>;
+  background: <?php echo $bgStateHighLight  ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgStateHighLight  ?> 1%, <?php echo $bgStateHighDark  ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgStateHighLight  ?>), color-stop(100%,<?php echo $bgStateHighDark  ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgStateHighLight  ?> 1%,<?php echo $bgStateHighDark  ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgStateHighLight  ?> 1%,<?php echo $bgStateHighDark  ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgStateHighLight  ?> 1%,<?php echo $bgStateHighDark  ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgStateHighLight  ?> 1%,<?php echo $bgStateHighDark  ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgStateHighLight  ?>', endColorstr='<?php echo $bgStateHighDark  ?>',GradientType=0 ); /* IE6-9 */
+}
+
+.ui-state-highlight a,
+.ui-widget-content .ui-state-highlight a,
+.ui-widget-header .ui-state-highlight a
+{
+  color: <?php echo $bgHeadDark  ?>;
+}
+
+.ui-state-error,
+.ui-widget-content .ui-state-error,
+.ui-widget-header .ui-state-error
+{
+  border: 1px solid <?php echo $bgHeadDark  ?>;
+  color: <?php echo $fontStateError  ?>;
+  background: <?php echo $bgStateErrorLight  ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgStateErrorLight  ?> 1%, <?php echo $bgStateErrorDark  ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgStateErrorLight  ?>), color-stop(100%,<?php echo $bgStateErrorDark  ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgStateErrorLight  ?> 1%,<?php echo $bgStateErrorDark  ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgStateErrorLight  ?> 1%,<?php echo $bgStateErrorDark  ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgStateErrorLight  ?> 1%,<?php echo $bgStateErrorDark  ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgStateErrorLight  ?> 1%,<?php echo $bgStateErrorDark  ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgStateErrorLight  ?>', endColorstr='<?php echo $bgStateErrorDark  ?>',GradientType=0 ); /* IE6-9 */
+}
+
+.ui-state-error a,
+.ui-widget-content .ui-state-error a,
+.ui-widget-header .ui-state-error a
+{
+  color: #faf500;
+}
+
+.ui-state-error-text,
+.ui-widget-content .ui-state-error-text,
+.ui-widget-header .ui-state-error-text
+{
+  color: #faf500;
+}
+
+.ui-state-warn,
+.ui-widget-content .ui-state-warn,
+.ui-widget-header .ui-state-warn
+{
+  border: <?php echo $borderStateWarn ?>;
+  color: <?php echo $fontStateWarn ?>;
+  background: <?php echo $bgStateWarnLight  ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  <?php echo $bgStateWarnLight  ?> 1%, <?php echo $bgStateWarnDark  ?> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,<?php echo $bgStateWarnLight  ?>), color-stop(100%,<?php echo $bgStateWarnDark  ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  <?php echo $bgStateWarnLight  ?> 1%,<?php echo $bgStateWarnDark  ?> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  <?php echo $bgStateWarnLight  ?> 1%,<?php echo $bgStateWarnDark  ?> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  <?php echo $bgStateWarnLight  ?> 1%,<?php echo $bgStateWarnDark  ?> 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  <?php echo $bgStateWarnLight  ?> 1%,<?php echo $bgStateWarnDark  ?> 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgStateWarnLight  ?>', endColorstr='<?php echo $bgStateWarnDark  ?>',GradientType=0 ); /* IE6-9 */
+}
+
+.ui-state-warn a,
+.ui-widget-content .ui-state-warn a,
+.ui-widget-header .ui-state-warn a
+{
+  color: <?php echo $fontStateWarn ?>;
+}
+
+.ui-state-warn-text,
+.ui-widget-content .ui-state-warn-text,
+.ui-widget-header .ui-state-warn-text
+{
+  color: <?php echo $fontStateWarn ?>;
+}
+
+.ui-priority-primary,
+.ui-widget-content .ui-priority-primary,
+.ui-widget-header .ui-priority-primary
+{
+  font-weight: <?php echo $fontWText ?>;
+}
+
+.ui-priority-secondary,
+.ui-widget-content .ui-priority-secondary,
+.ui-widget-header .ui-priority-secondary
+{
+  opacity: .7;
+  filter:Alpha(Opacity=70);
+  font-weight: <?php echo $fontWText ?>;
+}
+
+.ui-state-disabled,
+.ui-widget-content .ui-state-disabled,
+.ui-widget-header .ui-state-disabled
+{
+  opacity: .35;
+  filter:Alpha(Opacity=35);
+  background-image: none;
+}
+
+
+
+
+/* Misc visuals
+----------------------------------*/
+
+/* Corner radius */
+.ui-corner-tl
+{
+  -moz-border-radius-topleft: <?php echo $cornerRadius ?>;
+  -webkit-border-top-left-radius: <?php echo $cornerRadius ?>;
+  border-top-left-radius: <?php echo $cornerRadius ?>;
+}
+
+.ui-corner-tr
+{
+  -moz-border-radius-topright: <?php echo $cornerRadius ?>;
+  -webkit-border-top-right-radius: <?php echo $cornerRadius ?>;
+  border-top-right-radius: <?php echo $cornerRadius ?>;
+}
+
+.ui-corner-bl
+{
+  -moz-border-radius-bottomleft: <?php echo $cornerRadius ?>;
+  -webkit-border-bottom-left-radius: <?php echo $cornerRadius ?>;
+  border-bottom-left-radius: <?php echo $cornerRadius ?>;
+}
+
+.ui-corner-br
+{
+  -moz-border-radius-bottomright: <?php echo $cornerRadius ?>;
+  -webkit-border-bottom-right-radius: <?php echo $cornerRadius ?>;
+  border-bottom-right-radius: <?php echo $cornerRadius ?>;
+}
+
+.ui-corner-top
+{
+  -moz-border-radius-topleft: <?php echo $cornerRadius ?>;
+  -webkit-border-top-left-radius: <?php echo $cornerRadius ?>;
+  border-top-left-radius: <?php echo $cornerRadius ?>;
+  -moz-border-radius-topright: <?php echo $cornerRadius ?>;
+  -webkit-border-top-right-radius: <?php echo $cornerRadius ?>;
+  border-top-right-radius: <?php echo $cornerRadius ?>;
+}
+
+.ui-corner-bottom
+{
+  -moz-border-radius-bottomleft: <?php echo $cornerRadius ?>;
+  -webkit-border-bottom-left-radius: <?php echo $cornerRadius ?>;
+  border-bottom-left-radius: <?php echo $cornerRadius ?>;
+  -moz-border-radius-bottomright: <?php echo $cornerRadius ?>;
+  -webkit-border-bottom-right-radius: <?php echo $cornerRadius ?>;
+  border-bottom-right-radius: <?php echo $cornerRadius ?>;
+}
+
+.ui-corner-right
+{
+  -moz-border-radius-topright: <?php echo $cornerRadius ?>;
+  -webkit-border-top-right-radius: <?php echo $cornerRadius ?>;
+  border-top-right-radius: <?php echo $cornerRadius ?>;
+  -moz-border-radius-bottomright: <?php echo $cornerRadius ?>;
+  -webkit-border-bottom-right-radius: <?php echo $cornerRadius ?>;
+  border-bottom-right-radius: <?php echo $cornerRadius ?>;
+}
+
+.ui-corner-left
+{
+  -moz-border-radius-topleft: <?php echo $cornerRadius ?>;
+  -webkit-border-top-left-radius: <?php echo $cornerRadius ?>;
+  border-top-left-radius: <?php echo $cornerRadius ?>;
+  -moz-border-radius-bottomleft: <?php echo $cornerRadius ?>;
+  -webkit-border-bottom-left-radius: <?php echo $cornerRadius ?>;
+  border-bottom-left-radius: <?php echo $cornerRadius ?>;
+}
+
+.ui-corner-all
+{
+  -moz-border-radius: <?php echo $cornerRadius ?>;
+  -webkit-border-radius: <?php echo $cornerRadius ?>;
+  border-radius: <?php echo $cornerRadius ?>;
+}
+
+/* Overlays */
+.ui-widget-overlay
+{
+  background: #aaaaaa url(<?php echo $images ?>ui/ui-bg_diagonals-small_75_aaaaaa_40x40.png) 50% 50% repeat;
+  opacity: .30;
+  filter:Alpha(Opacity=30);
+}
+
+.ui-widget-shadow
+{
+  margin: 5px 0 0 5px;
+  padding: 0px;
+  background: #999999 url(<?php echo $images ?>ui/ui-bg_flat_55_999999_40x100.png) 50% 50% repeat;
+  opacity: .45;
+  filter:Alpha(Opacity=45);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/*
+ * jQuery UI Resizable @VERSION
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Resizable#theming
+ */
+.ui-resizable
+{
+  position: relative;
+}
+
+.ui-resizable-handle
+{
+  position: absolute;
+  font-size: 0.1px;
+  z-index: 99999;
+  display: block;
+}
+
+.ui-resizable-disabled .ui-resizable-handle,
+.ui-resizable-autohide .ui-resizable-handle
+{
+  display: none;
+}
+
+.ui-resizable-n
+{
+  cursor: n-resize;
+  height: 7px;
+  width: 100%;
+  top: -5px;
+  left: 0;
+}
+
+.ui-resizable-s
+{
+  cursor: s-resize;
+  height: 7px;
+  width: 100%;
+  bottom: -5px;
+  left: 0;
+}
+
+.ui-resizable-e
+{
+  cursor: e-resize;
+  width: 7px;
+  right: -5px;
+  top: 0;
+  height: 100%;
+}
+
+.ui-resizable-w
+{
+  cursor: w-resize;
+  width: 7px;
+  left: -5px;
+  top: 0;
+  height: 100%;
+}
+
+.ui-resizable-se
+{
+  cursor: se-resize;
+  width: 5px;
+  height: 5px;
+  right: 1px;
+  bottom: 1px;
+}
+
+.ui-resizable-sw
+{
+  cursor: sw-resize;
+  width: 9px;
+  height: 9px;
+  left: -5px;
+  bottom: -5px;
+}
+
+.ui-resizable-nw
+{
+  cursor: nw-resize;
+  width: 9px; height: 9px;
+  left: -5px;
+  top: -5px;
+}
+
+.ui-resizable-ne
+{
+  cursor: ne-resize;
+  width: 9px;
+  height: 9px; right: -5px; top: -5px;
+}
+
+/*
+ * jQuery UI Selectable @VERSION
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Selectable#theming
+ */
+.ui-selectable-helper
+{
+  position: absolute;
+  z-index: 100;
+  border:1px dotted black;
+}
+
+/*
+ * jQuery UI Accordion @VERSION
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Accordion#theming
+ */
+/* IE/Win - Fix animation bug - #4615 */
+.ui-accordion
+{
+  width: 100%;
+}
+
+.ui-accordion .ui-accordion-header
+{
+  cursor: pointer;
+  position: relative;
+  margin-top: 1px;
+  zoom: 1;
+}
+
+.ui-accordion .ui-accordion-li-fix
+{
+  display: inline;
+}
+
+.ui-accordion .ui-accordion-header-active
+{
+  border-bottom: 0 !important;
+}
+
+.ui-accordion .ui-accordion-header a
+{
+  display: block;
+  font-size: 1em;
+  padding: .5em .5em .5em .7em;
+}
+
+.ui-accordion-icons .ui-accordion-header a
+{
+  padding-left: 2.2em;
+}
+
+.ui-accordion .ui-accordion-header .ui-icon
+{
+  position: absolute;
+  left: .5em;
+  top: 50%;
+  /*margin-top: 5px;*/
+}
+
+.ui-accordion .ui-accordion-content
+{
+  padding: .8em 1.2em;
+  border-top: 0;
+  margin-top: 0px;
+  position: relative;
+  top: 1px;
+  margin-bottom: 2px;
+  overflow: auto;
+  display: none;
+  zoom: 1;
+}
+
+.ui-accordion .ui-accordion-content-active
+{
+  display: block;
+}
+
+/*
+ * jQuery UI Autocomplete @VERSION
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Autocomplete#theming
+ */
+.ui-autocomplete
+{
+  position: absolute;
+  cursor: default;
+}
+
+/* workarounds */
+* html .ui-autocomplete
+{
+  width:1px;
+} /* without this, the menu expands to 100% in IE6 */
+
+/*
+ * jQuery UI Menu @VERSION
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Menu#theming
+ */
+.ui-menu
+{
+  list-style:none;
+  padding: 2px;
+  margin: 0;
+  display:block;
+  float: left;
+}
+
+.ui-menu .ui-menu
+{
+  margin-top: -3px;
+}
+
+.ui-menu .ui-menu-item
+{
+  margin:0;
+  padding: 0;
+  zoom: 1;
+  float: left;
+  clear: left;
+  width: 100%;
+}
+
+.ui-menu .ui-menu-item a
+{
+  text-decoration:none;
+  display:block;
+  padding:.2em .4em;
+  line-height:1.0;
+  zoom:1;
+}
+
+.ui-menu .ui-menu-item a.ui-state-hover,
+.ui-menu .ui-menu-item a.ui-state-active
+{
+  font-weight: <?php echo $fontWText ?>;
+  margin: -1px;
+}
+
+/*
+ * jQuery UI Button @VERSION
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Button#theming
+ */
+.ui-button
+{
+  display: inline-block;
+  position: relative;
+  padding: 0;
+  margin-right: .1em;
+  text-decoration: none !important;
+  cursor: pointer;
+  text-align: center;
+  zoom: 1;
+  overflow: visible;
+} /* the overflow property removes extra width in IE */
+
+.ui-button-icon-only
+{
+  width: 2.2em;
+} /* to make room for the icon, a width needs to be set here */
+
+button.ui-button-icon-only
+{
+  width: 2.4em;
+} /* button elements seem to need a little more width */
+
+.ui-button-icons-only
+{
+  width: 3.4em;
+}
+
+button.ui-button-icons-only { width: 3.7em; }
+
+/*button text element */
+.ui-button .ui-button-text
+{
+  display: block;
+  line-height: 0.9;
+}
+
+.ui-button-text-only .ui-button-text
+{
+  padding: 2px .4em;
+}
+
+.ui-button-icon-only .ui-button-text,
+.ui-button-icons-only .ui-button-text
+{
+  padding: .3em; text-indent: -9999999px;
+}
+
+.ui-button-text-icon-primary .ui-button-text,
+.ui-button-text-icons .ui-button-text
+{
+  padding: 2px .5em 2px 2.1em;
+}
+
+.ui-button-text-icon-secondary .ui-button-text, .ui-button-text-icons .ui-button-text
+{
+  padding: 2px 2.1em 2px .5em;
+}
+
+.ui-button-text-icons .ui-button-text
+{
+  padding-left: 2.1em;
+  padding-right: 2.1em;
+}
+/* no icon support for input elements, provide padding by default */
+input.ui-button
+{
+  padding: 2px .5em;
+}
+
+/*button icon element(s) */
+.ui-button-icon-only .ui-icon,
+.ui-button-text-icon-primary .ui-icon,
+.ui-button-text-icon-secondary .ui-icon,
+.ui-button-text-icons .ui-icon,
+.ui-button-icons-only .ui-icon
+{
+  position: absolute; top: 50%;
+  margin-top: 5px;
+}
+
+.ui-button-icon-only .ui-icon
+{
+  left: 50%;
+  margin-left: 5px;
+}
+
+.ui-button-text-icon-primary .ui-button-icon-primary,
+.ui-button-text-icons .ui-button-icon-primary,
+.ui-button-icons-only .ui-button-icon-primary
+{
+  left: .4em;
+}
+
+.ui-button-text-icon-secondary .ui-button-icon-secondary,
+.ui-button-text-icons .ui-button-icon-secondary,
+.ui-button-icons-only .ui-button-icon-secondary
+{
+  right: .4em;
+}
+
+.ui-button-text-icons .ui-button-icon-secondary,
+.ui-button-icons-only .ui-button-icon-secondary
+{
+  right: .4em;
+}
+
+/*button sets*/
+.ui-buttonset
+{
+  margin-right: 7px;
+}
+
+.ui-buttonset .ui-button
+{
+  margin-left: 0;
+  margin-right: -.3em;
+}
+
+/* workarounds */
+button.ui-button::-moz-focus-inner
+{
+  border: 0;
+  padding: 0;
+} /* reset extra padding in Firefox */
+
+
+/*
+ * jQuery UI Dialog @VERSION
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Dialog#theming
+ */
+.ui-dialog
+{
+  position: absolute;
+  padding: .2em;
+  width: 300px;
+  overflow: hidden;
+}
+
+.ui-dialog .ui-dialog-titlebar
+{
+  padding: .2em 0.8em .2em;
+  position: relative;
+}
+
+.ui-dialog .ui-dialog-title
+{
+  float: left;
+  margin: .1em 16px .2em 0;
+}
+
+.ui-dialog .ui-dialog-titlebar-close
+{
+  position: absolute;
+  right: .3em;
+  top: 50%;
+  width: 19px;
+  margin: -10px 0 0 0;
+  padding: 1px;
+  height: 18px;
+}
+
+.ui-dialog .ui-dialog-titlebar-close span
+{
+  display: block;
+  margin: 1px;
+}
+
+.ui-dialog .ui-dialog-titlebar-close:hover,
+.ui-dialog .ui-dialog-titlebar-close:focus
+{
+  padding: 0;
+}
+
+.ui-dialog .ui-dialog-content
+{
+  position: relative;
+  border: 0;
+  /*padding: .5em 1em;*/
+  background: none;
+  overflow: auto;
+  zoom: 1;
+}
+
+.ui-dialog .ui-dialog-buttonpane
+{
+  text-align: left;
+  border-width: 1px 0 0 0;
+  background-image: none;
+  margin: .5em 0 0 0;
+  padding: .2em 0.8em .2em .3em;
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset
+{
+  float: right;
+}
+
+.ui-dialog .ui-dialog-buttonpane button
+{
+  margin: .5em .4em .5em 0;
+  cursor: pointer;
+}
+
+.ui-dialog .ui-resizable-se
+{
+  width: 14px;
+  height: 14px;
+  right: 3px;
+  bottom: 3px;
+}
+
+.ui-draggable .ui-dialog-titlebar
+{
+  cursor: move;
+}
+
+/*
+ * jQuery UI Slider @VERSION
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Slider#theming
+ */
+.ui-slider
+{
+  position: relative;
+  text-align: left;
+}
+
+.ui-slider .ui-slider-handle
+{
+  position: absolute;
+  z-index: 2;
+  width: 1.2em;
+  height: 1.2em;
+  cursor: default;
+}
+
+.ui-slider .ui-slider-range
+{
+  position: absolute;
+  z-index: 1;
+  font-size: .7em;
+  display: block;
+  border: 0;
+  background-position: 0 0;
+}
+
+.ui-slider-horizontal
+{
+  height: .8em;
+}
+
+.ui-slider-horizontal .ui-slider-handle
+{
+  top: -.3em;
+  margin-left: -.6em;
+}
+
+.ui-slider-horizontal .ui-slider-range
+{
+  top: 0;
+  height: 100%;
+}
+
+.ui-slider-horizontal .ui-slider-range-min
+{
+  left: 0;
+}
+
+.ui-slider-horizontal .ui-slider-range-max
+{
+  right: 0;
+}
+
+.ui-slider-vertical
+{
+  width: .8em;
+  height: 100px;
+}
+
+.ui-slider-vertical .ui-slider-handle
+{
+  left: -.3em;
+  margin-left: 0;
+  margin-bottom: -.6em;
+}
+
+.ui-slider-vertical .ui-slider-range
+{
+  left: 0;
+  width: 100%;
+}
+
+.ui-slider-vertical .ui-slider-range-min
+{
+  bottom: 0;
+}
+
+.ui-slider-vertical .ui-slider-range-max
+{
+  top: 0;
+}
+
+/*
+ * jQuery UI Tabs @VERSION
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Tabs#theming
+ */
+.ui-tabs
+{
+  position: relative;
+  padding: .2em; zoom: 1;
+} /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+
+.ui-tabs .ui-tabs-nav
+{
+  margin: 0;
+  padding: .2em .2em 0;
+}
+
+.ui-tabs .ui-tabs-nav li
+{
+  list-style: none;
+  float: left;
+  position: relative; top: 1px;
+  margin: 0 .2em 1px 0;
+  border-bottom: 0 !important;
+  padding: 0; white-space: nowrap;
+}
+
+.ui-tabs .ui-tabs-nav li a
+{
+  float: left;
+  padding: .5em 1em;
+  text-decoration: none;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected
+{
+  margin-bottom: 0;
+  padding-bottom: 1px;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a,
+.ui-tabs .ui-tabs-nav li.ui-state-disabled a,
+.ui-tabs .ui-tabs-nav li.ui-state-processing a
+{
+  cursor: text;
+}
+
+.ui-tabs .ui-tabs-nav li a,
+.ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a
+{
+  cursor: pointer;
+} /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+
+.ui-tabs .ui-tabs-panel
+{
+  display: block;
+  border-width: 0;
+  padding: 1em 1.4em;
+  background: none;
+}
+
+.ui-tabs .ui-tabs-hide
+{
+  display: none !important;
+}
+
+/*
+ * jQuery UI Datepicker @VERSION
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Datepicker#theming
+ */
+.ui-datepicker
+{
+  padding: .3em .3em 0;
+  width:250px;
+  height:220px;
+}
+
+.ui-datepicker .ui-datepicker-header
+{
+  position:relative;
+  padding:.2em 0;
+}
+
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next
+{
+  position:absolute;
+  top: 2px;
+  width: 1.8em;
+  height: 1.8em;
+}
+
+.ui-datepicker .ui-datepicker-prev-hover,
+.ui-datepicker .ui-datepicker-next-hover
+{
+  top: 1px;
+}
+
+.ui-datepicker .ui-datepicker-prev
+{
+  left:2px;
+}
+
+.ui-datepicker .ui-datepicker-next
+{
+  right:2px;
+}
+
+.ui-datepicker .ui-datepicker-prev-hover
+{
+  left:1px;
+}
+
+.ui-datepicker .ui-datepicker-next-hover
+{
+  right:1px;
+}
+
+.ui-datepicker .ui-datepicker-prev span,
+.ui-datepicker .ui-datepicker-next span
+{
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /*
+  margin-left: 5px;
+  margin-top: 5px;
+  */
+}
+
+.ui-datepicker .ui-datepicker-title
+{
+  margin: 0 2.3em;
+  line-height: 1.6em;
+  text-align: center;
+}
+
+.ui-datepicker .ui-datepicker-title select
+{
+  font-size:1em;
+  margin:1px 0;
+}
+
+.ui-datepicker select.ui-datepicker-month-year
+{
+  width: 100%;
+}
+
+.ui-datepicker select.ui-datepicker-month,
+.ui-datepicker select.ui-datepicker-year
+{
+  width: 49%;
+}
+
+.ui-datepicker table
+{
+  width: 100%;
+  font-size: .9em;
+  border-collapse: collapse;
+  margin:0 0 .4em;
+}
+
+.ui-datepicker th
+{
+  padding: .7em .3em;
+  text-align: center;
+  font-weight: <?php echo $fontWText ?>;
+  border: 0;
+}
+
+.ui-datepicker td
+{
+  border: 0;
+  padding: 1px;
+}
+
+.ui-datepicker td span, .ui-datepicker td a
+{
+  display: block;
+  padding: .2em;
+  text-align: right;
+  text-decoration: none;
+}
+
+.ui-datepicker .ui-datepicker-buttonpane
+{
+  background-image: none;
+  margin: .7em 0 0 0;
+  padding:0 .2em;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.ui-datepicker .ui-datepicker-buttonpane button
+{
+  float: right;
+  margin: .5em .2em .4em;
+  cursor: pointer;
+  padding: .2em .6em .3em .6em;
+  width:auto;
+  overflow:visible;
+}
+
+.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current
+{
+  float:left;
+}
+
+/* with multiple calendars */
+.ui-datepicker.ui-datepicker-multi
+{
+  width:auto;
+}
+
+.ui-datepicker-multi .ui-datepicker-group
+{
+  float:left;
+}
+
+.ui-datepicker-multi .ui-datepicker-group table
+{
+  width:95%;
+  margin:0 auto .4em;
+}
+
+.ui-datepicker-multi-2 .ui-datepicker-group
+{
+  width:50%;
+}
+
+.ui-datepicker-multi-3 .ui-datepicker-group
+{
+  width:33.3%;
+}
+
+.ui-datepicker-multi-4 .ui-datepicker-group
+{
+  width:25%;
+}
+
+.ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header
+{
+  border-left-width:0;
+}
+
+.ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header
+{
+  border-left-width:0;
+}
+
+.ui-datepicker-multi .ui-datepicker-buttonpane
+{
+  clear:left;
+}
+
+.ui-datepicker-row-break
+{
+  clear:both; width:100%;
+}
+
+/* RTL support */
+.ui-datepicker-rtl
+{
+  direction: rtl;
+}
+
+.ui-datepicker-rtl .ui-datepicker-prev
+{
+  right: 2px; left: auto;
+}
+
+.ui-datepicker-rtl .ui-datepicker-next
+{
+  left: 2px; right: auto;
+}
+
+.ui-datepicker-rtl .ui-datepicker-prev:hover
+{
+  right: 1px; left: auto;
+}
+
+.ui-datepicker-rtl .ui-datepicker-next:hover
+{
+  left: 1px; right: auto;
+}
+
+.ui-datepicker-rtl .ui-datepicker-buttonpane
+{
+  clear:right;
+}
+
+.ui-datepicker-rtl .ui-datepicker-buttonpane button
+{
+  float: left;
+}
+
+.ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current
+{
+  float:right;
+}
+
+.ui-datepicker-rtl .ui-datepicker-group
+{
+  float:right;
+}
+
+.ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header
+{
+  border-right-width:0; border-left-width:1px;
+}
+
+.ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header
+{
+  border-right-width:0;
+  border-left-width:1px;
+}
+
+/* IE6 IFRAME FIX (taken from datepicker 1.5.3 */
+.ui-datepicker-cover {
+    display: none; /*sorry for IE5*/
+    display/**/: block; /*sorry for IE5*/
+    position: absolute; /*must have*/
+    z-index: -1; /*must have*/
+    filter: mask(); /*must have*/
+    top: -4px; /*must have*/
+    left: -4px; /*must have*/
+    width: 200px; /*must have*/
+    height: 200px; /*must have*/
+}
+
+/*
+ * jQuery UI Progressbar @VERSION
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Progressbar#theming
+ */
+.ui-progressbar
+{
+  height:2em;
+  text-align: left;
+}
+
+.ui-progressbar .ui-progressbar-value
+{
+  margin: -1px;
+  height:100%;
+}
