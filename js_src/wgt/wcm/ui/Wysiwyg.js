@@ -191,7 +191,7 @@ $R.addAction( 'ui_wysiwyg', function( jNode ){
     hans: 'wurst',
   
     // Example content CSS (should be your site CSS)
-    content_css : $C.WEB_GW+"theme.php?list=cms",
+    content_css : $C.WEB_GW+"theme.php?l=list.cms",
   
     // Drop lists for link/image/media/template dialogs
     template_external_list_url : "lists/template_list.js",
