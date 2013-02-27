@@ -8,7 +8,7 @@
 * @projectUrl  : http://webfrap.net
 *
 * @licence     : BSD License see: LICENCE/BSD Licence.txt
-* 
+*
 * @version: @package_version@  Revision: @package_revision@
 *
 * Changes:
@@ -47,12 +47,12 @@ $files = array
   PATH_WGT.'js_src/vendor/jquery.mega_menu/jquery.mega_menu.js',
   PATH_WGT.'js_src/vendor/jquery.fullcalendar/jquery.fullcalendar.js',
   //PATH_WGT.'js_src/vendor/jquery.template/jquery.template.js',
-  
+
   // soon deprecated
   PATH_WGT.'js_src/vendor/jquery.treetable/jquery.treeTable.js',
   PATH_WGT.'js_src/vendor/jquery.sizes/jquery.sizes.js',
   //PATH_WGT.'js_src/vendor/jquery.context_menu/jquery.context_menu.js',
-  
+
   // add jquery ui components
   PATH_WGT.'js_src/vendor/jquery.ui/jquery.ui.core.js',
   PATH_WGT.'js_src/vendor/jquery.ui/jquery.ui.widget.js',
@@ -74,7 +74,7 @@ $files = array
   PATH_WGT.'js_src/vendor/jquery.ui/jquery.ui.accordion.js',
   PATH_WGT.'js_src/vendor/jquery.ui/jquery.ui.autocomplete.js',
   PATH_WGT.'js_src/vendor/jquery.ui/jquery.ui.menu.js',
-  
+
   // auf ui basierende jquery plugins
   PATH_WGT.'js_src/vendor/jquery.timepicker/jquery.timepicker.js',
   PATH_WGT.'js_src/vendor/jquery.dynatree/jquery.dynatree.js',
@@ -85,7 +85,7 @@ $files = array
   // add wgt jquery plugins
   PATH_WGT.'js_src/wgt/jquery/Menuselector.js', // deprecated
   PATH_WGT.'js_src/wgt/jquery/Ajaxfileupload.js',
-  
+
   // add widgets
   PATH_WGT.'js_src/wgt/widget/Grid.js',
   PATH_WGT.'js_src/wgt/widget/I18nInputList.js',
@@ -163,7 +163,7 @@ $files = array
   PATH_WGT.'js_src/wgt/wcm/ui/RadioTab.js',
   PATH_WGT.'js_src/wgt/wcm/ui/ButtonCheckMatrix.js',
   PATH_WGT.'js_src/wgt/wcm/ui/InputTextSync.js',
-  
+
   PATH_WGT.'js_src/wgt/wcm/control/Minidrop.js',
   PATH_WGT.'js_src/wgt/wcm/control/CheckButton.js',
   //PATH_WGT.'js_src/wgt/wcm/control/ContextMenu.js',
@@ -174,21 +174,21 @@ $files = array
   PATH_WGT.'js_src/wgt/wcm/control/WindowSelection.js',
   PATH_WGT.'js_src/wgt/wcm/control/Toggle.js',
   PATH_WGT.'js_src/wgt/wcm/control/SelectSwitch.js',
-  
-  
-  
+
+
+
   // feature
   PATH_WGT.'js_src/wgt/wcm/feature/Sortable.js',
-  
+
   // form
   PATH_WGT.'js_src/wgt/wcm/form/DynDefValue.js',
-  
+
   // Validation
   PATH_WGT.'js_src/wgt/wcm/valid/Required.js',
   PATH_WGT.'js_src/wgt/wcm/valid/Number.js',
   PATH_WGT.'js_src/wgt/wcm/valid/Int.js',
   PATH_WGT.'js_src/wgt/wcm/valid/Email.js',
- 
+
   // charts
   PATH_WGT.'js_src/wgt/wcm/chart/Area.js',
   PATH_WGT.'js_src/wgt/wcm/chart/Pie.js',
@@ -197,7 +197,7 @@ $files = array
   PATH_WGT.'js_src/wgt/wcm/chart/Rgraph.js',
   PATH_WGT.'js_src/wgt/wcm/chart/Hypertree.js',
   PATH_WGT.'js_src/wgt/wcm/chart/Spacetree.js',
-  
+
   // widgets
   PATH_WGT.'js_src/wgt/wcm/widget/Selectbox.js',
   PATH_WGT.'js_src/wgt/wcm/widget/Grid.js',
@@ -207,6 +207,8 @@ $files = array
   PATH_WGT.'js_src/wgt/wcm/widget/TagCloud.js',
   PATH_WGT.'js_src/wgt/wcm/widget/CommentTree.js',
 
+  // d3 charts
+  PATH_WGT.'js_src/wgt/wcm/graph/LineChart.js',
 
   PATH_WGT.'js_src/wgt/Desktop.js',
   PATH_WGT.'js_src/wgt/desktop/Message.js',
@@ -216,7 +218,7 @@ $files = array
   PATH_WGT.'js_src/wgt/Ui.js',
   //PATH_WGT.'js_src/wgt/ui/ActivInput.js',
   PATH_WGT.'js_src/wgt/ui/Tab.js',       // deprecated
-  PATH_WGT.'js_src/wgt/ui/Form.js',         
+  PATH_WGT.'js_src/wgt/ui/Form.js',
   PATH_WGT.'js_src/wgt/ui/Footer.js',      // deprecated
   //PATH_WGT.'js_src/wgt/ui/Calendar.js',  // deprecated
 
@@ -237,7 +239,7 @@ $files = array
 
   // Compatibility check
   PATH_WGT.'js_src/wgt/wgt/Compatibility.js',
-  
+
   // add init components
   PATH_WGT.'js_src/wgt/wgt/init/Request.js',
   PATH_WGT.'js_src/wgt/wgt/init/Windowtabs.js',

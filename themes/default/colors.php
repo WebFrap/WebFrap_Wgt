@@ -1,4 +1,4 @@
-/*<?php
+<?php
 
 // BODY Layout
 $bgContentLight = '#FFFFFF';
