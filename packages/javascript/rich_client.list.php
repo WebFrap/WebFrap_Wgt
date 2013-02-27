@@ -175,7 +175,9 @@ $files = array
   PATH_WGT.'js_src/wgt/wcm/control/Toggle.js',
   PATH_WGT.'js_src/wgt/wcm/control/SelectSwitch.js',
 
-
+  // d3 charts
+  PATH_WGT.'js_src/wgt/wcm/graph/LineChart.js',
+  PATH_WGT.'js_src/wgt/wcm/graph/BivariateArea.js',
 
   // feature
   PATH_WGT.'js_src/wgt/wcm/feature/Sortable.js',
