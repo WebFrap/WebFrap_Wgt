@@ -17,6 +17,7 @@ $R.addAction( 'ui_tree', function( jNode ){
   settings.imagePath = $C.imagePath+'wgt/';
 
   console.log('tree '+jNode.attr('id'));
+  console.log('minExpandLevel '+settings.minExpandLevel);
 
   settings.onActivate = function(node) {
     // Use <a> href and target attributes to load the content:
