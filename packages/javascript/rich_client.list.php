@@ -19,18 +19,7 @@
 
 $files = array
 (
-  /*
-  // extend javascript
-  PATH_WGT.'js_src/ext/ext.js.js',
 
-  PATH_WGT.'js_src/vendor/jquery/jquery.js',
-  PATH_WGT.'js_src/ext/ext.jquery.js',
-
-  PATH_WGT.'js_src/Wgt.js',
-
-  // add i18n data
-  PATH_WGT.'js_src/wgt/I18n.js',
-  */
   PATH_WGT.'js_src/i18n/i18n.de.js',
 
   // add thirdparty jquery plugins

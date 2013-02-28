@@ -5,11 +5,16 @@
 
 .wgt-panel
 {
-  height:32px;
+  height:30px;
   padding:3px;
   margin:0px !important;
   /*width:100%;*/
   overflow:hidden;
+}
+
+.wgt-panel.hx2
+{
+  height:60px;
 }
 
 div.wgt-panel div.inner
@@ -86,7 +91,7 @@ div.wgt-panel ul.progress li
 
 div.wgt-panel ul.progress
 {
-  vertical-align:middle;	
+  vertical-align:middle;
 }
 
 
