@@ -132,12 +132,12 @@ div.wgt-content_box>div.head button.wgt-button.append
 
 div.wgt-content_box.wgt-widget
 {
-  width:410px;
+  width:405px;
 }
 
 div.wgt-content_box.wgt-widget.w2x
 {
-  width:830px !important;
+  width:820px !important;
 }
 
 div.wgt-content_box.wgt-widget>div.content,
