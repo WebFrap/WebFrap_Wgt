@@ -1,5 +1,21 @@
 /*//////////////////////////////////////////////////////////////////////////////
-// List Layout
+// Box Layout
 //////////////////////////////////////////////////////////////////////////////*/
 
+.bl_menu
+{
+  position:absolute;
+  width:200px;
+  top:0px;
+  bottom:0px;
+  left:0px;
+}
 
+.bl_content
+{
+  position:absolute;
+  top:0px;
+  bottom:0px;
+  left:200px;
+  right:0px;
+}
