@@ -4,45 +4,45 @@
 }
 
 /* Overlay */
-#simplemodal-overlay 
+#simplemodal-overlay
 {
-  background-color:#000; 
+  background-color:#000;
   cursor:pointer;
 }
 
 /* Container */
-#simplemodal-container 
+#simplemodal-container
 {
-  min-height:360px; 
-  min-width:600px; 
-  color:#000000; 
-  background-color:#FAFAFA; 
-  border:1px solid #444; 
+  min-height:360px;
+  min-width:600px;
+  color:#000000;
+  background-color:#FAFAFA;
+  border:1px solid #444;
   padding:12px;
   -moz-box-shadow:5px 5px 5px #666;
   -webkit-box-shadow:5px 5px 5px #666;
   box-shadow:5px 5px 5px #666;
-  -moz-border-radius: 9px;
-  -webkit-border-radius: 9px;
-  -o-border-radius: 9px;
-  border-radius: 9px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
 }
 
-#simplemodal-container .simplemodal-data 
+#simplemodal-container .simplemodal-data
 {
   padding:8px;
 }
 
 
-#simplemodal-container a.modalCloseImg 
+#simplemodal-container a.modalCloseImg
 {
-  background:url(<?php echo $images ?>wgt/close_modal.png) no-repeat; 
-  width:22px; 
-  height:22px; 
-  display:inline; 
-  z-index:3200; 
-  position:absolute; 
-  top:5px; 
-  right:5px; 
+  background:url(<?php echo $images ?>wgt/close_modal.png) no-repeat;
+  width:22px;
+  height:22px;
+  display:inline;
+  z-index:3200;
+  position:absolute;
+  top:5px;
+  right:5px;
   cursor:pointer;
 }
