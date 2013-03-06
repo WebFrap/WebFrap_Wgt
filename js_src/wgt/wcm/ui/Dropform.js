@@ -7,19 +7,22 @@ $R.addAction( 'ui_dropform', function( jNode ){
 
   var source = jNode.find( 'var:first' ),
     props = {};
-  
+
   //console.log( 'before var' );
   if (  source.is( 'var' ) ){
     props =  $WGT.robustParseJSON( source.text() );
     source.remove();
   }
-  
+
   if( undefined === props.button ){
     props.button = 'Close';
   }else if( '' === props.button ){
     props.plain = true;
   }
-    
+
+  if( undefined === props.noBorder ){
+    props.noBorder = false;
+  }
 
   var menuWidth = 750,
     menuItems = [],
@@ -35,7 +38,7 @@ $R.addAction( 'ui_dropform', function( jNode ){
     };
 
   //console.log( 'before in size' );
-  
+
   // menu sizes
   if( undefined !== props.size && undefined !== sizes[props.size] ){
     //console.log( 'log in size '+props.size );
@@ -44,7 +47,7 @@ $R.addAction( 'ui_dropform', function( jNode ){
   }
 
   props.menuWidth = menuWidth;
-  
+
   if( props.url ){
 
     jNode.click( function( event ){
@@ -81,6 +84,7 @@ $R.addAction( 'ui_dropform', function( jNode ){
           button      : props.button,
           plain       : props.plain,
           globalClose : false,
+          noBorder    : props.noBorder,
           closeScroll : props.closeScroll,
           align : 'middle',
           overlayStyle: {"width":props.menuWidth+'px'},
@@ -121,6 +125,7 @@ $R.addAction( 'ui_dropform', function( jNode ){
       button      : props.button,
       plain 	   : props.plain,
       globalClose : false,
+      noBorder    : props.noBorder,
       closeScroll : props.closeScroll,
       overlayStyle:{"width":props.menuWidth+'px'},
       menuItems   : menuItems

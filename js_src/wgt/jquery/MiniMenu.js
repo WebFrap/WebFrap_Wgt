@@ -453,7 +453,12 @@
       codeCloseParent += '<var class="conf" >'+callerObj.attr('id')+'</var>';
     }
 
-    tplOverlay = '<div id="'+overlayID+'" class="template" style="position:absolute;" >'
+    var codeClass = '';
+    if( opts.noBorder ){
+      codeClass = ' nob';
+    }
+
+    tplOverlay = '<div id="'+overlayID+'" class="template '+codeClass+'" style="position:absolute;" >'
             +'  <div class="wgt-minimenu-content" style="padding:0px;" >'
             +'  </div>'
             + codeCloseParent
@@ -494,6 +499,7 @@
     overlayStyle  : {},
     menuItems     : null,
     plain         : false,
+    noBorder      : false,
     closeOnLeave  : false,
     globalClose   : true,     // soll das menü bei globalen clicks geschlossen werden?
     align         : 'left',
