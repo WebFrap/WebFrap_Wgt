@@ -4,18 +4,18 @@
 
 
 #wgt-dropform-overlay,
-.wgt-dropform-overlay 
+.wgt-dropform-overlay
 {
   /*width: 150px;*/
   position: absolute;
-  z-index: 1000;
+  z-index: 5000;
   display: none;
   padding:0px;
   -moz-box-shadow:5px 5px 5px #666;
   -webkit-box-shadow:5px 5px 5px #666;
-  box-shadow:5px 5px 5px #666;  
+  box-shadow:5px 5px 5px #666;
   border: 1px solid black;
-  border-radius: 9px;
+  border-radius: 4px;
   overflow:hidden;
 }
 
@@ -27,13 +27,13 @@
 }
 
 #wgt-dropform-overlay .ui-widget-header,
-.wgt-dropform-overlay .ui-widget-header 
+.wgt-dropform-overlay .ui-widget-header
 {
   padding: .2em;
 }
 
 #wgt-dropform-overlay .ui-widget-content,
-.wgt-dropform-overlay .ui-widget-content 
+.wgt-dropform-overlay .ui-widget-content
 {
    margin-top: .2em;
    margin-bottom: .1em;
@@ -47,16 +47,10 @@
   margin-top: 0;
 }
 
-#wgt-dropform-overlay .ptTimeSelectLeftPane.ui-widget-content,
-.wgt-dropform-overlay .ptTimeSelectLeftPane.ui-widget-content
-{
-  border-top:none;
-  border-bottom:none;
-  border-left:none;
-}
+
 
 #wgt-dropform-overlay .button-close,
-.wgt-dropform-overlay .button-close 
+.wgt-dropform-overlay .button-close
 {
   padding-top: .2em;
   padding-bottom: .2em;
@@ -64,7 +58,7 @@
 }
 
 #wgt-dropform-overlay .button-close a,
-.wgt-dropform-overlay .button-close a 
+.wgt-dropform-overlay .button-close a
 {
   display: block;
   padding: .2em;
@@ -74,7 +68,7 @@
 }
 
 #wgt-dropform-overlay .bottom,
-.wgt-dropform-overlay .bottom 
+.wgt-dropform-overlay .bottom
 {
   float: left;
   /*padding-top: .2em;

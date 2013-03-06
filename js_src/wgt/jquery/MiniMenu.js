@@ -187,9 +187,9 @@
 
       // Content of the overlay box
       $overlay.attr( 'id' , $targetId+'-mnm-overl' ).addClass( overlayID );
-      $overlay.find('.wgt-minimenu-content').html('<div></div>');
+      //$overlay.find('.wgt-minimenu-content').html('<div></div>');
 
-      var menuBody = $overlay.find('.wgt-minimenu-content > div');
+      var menuBody = $overlay.find('.wgt-minimenu-content');
 
       var builders = jQuery.fn.miniMenu.builders;
       // If there are any additional menu items to be shown ...
@@ -205,6 +205,7 @@
           }
 
           if( builders[item.type] !== undefined ){
+            console.log( "added new minimenu part "+item.type );
             builders[item.type]( item, menuBody, $target );
           }
           else{
@@ -434,6 +435,7 @@
       codeCloseParent = '',
       tplOverlay = '';
 
+    /*
     if( !opts.plain ){
       codeCloseButton = '    <div class="miniMenuCloseButton" >'
       +'      <a href="javascript: void(0);" onclick="jQuery.fn.miniMenu.close()"'
@@ -445,24 +447,14 @@
       +'      <br style="clear: both;" /><div></div>'
       +'    </div>';
     }
+    */
 
     if( opts.closeParent ){
       codeCloseParent += '<var class="conf" >'+callerObj.attr('id')+'</var>';
     }
 
     tplOverlay = '<div id="'+overlayID+'" class="template" style="position:absolute;" >'
-            +'  <div class="ui-widget ui-widget-content" style="padding: 0px;" >'
-            +'    <div class="wgt-border-bottom" >'
-            +'      <div class="wgt-minimenu-content"></div>'
-            +'      <div style="clear:both;"></div>'
-            +'    </div>'
-            + codeCloseButton
-            +'    <div class="wgt-clear xxsmall" ></div>'
-            //+'    <div class="bottom" ></div>'
-            /*+'    <!--[if lte IE 6.5]>'
-            +'    <iframe style="display:block; position:absolute;top: 0;left:0;z-index:-1;'
-            +'        filter:Alpha(Opacity=\'0\');width:3000px;height:3000px"></iframe>'
-            +'    <![endif]-->'*/
+            +'  <div class="wgt-minimenu-content" style="padding:0px;" >'
             +'  </div>'
             + codeCloseParent
             +'</div>';

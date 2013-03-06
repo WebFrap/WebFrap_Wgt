@@ -10,8 +10,8 @@
    * callback methodes to make this parser more extendable
    */
   $S.fn.miniMenu.builders['html'] = function( element, menuBody, targetElement ){
-    
-    var content = '<div class="miniMenuMenuButton" >'+ element.content + '</div>';
+
+    var content = element.content;
     menuBody.append( content );
   };
 

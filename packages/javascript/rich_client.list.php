@@ -218,8 +218,6 @@ $files = array
   PATH_WGT.'js_src/wgt/jquery/minimenu/ActivInput.js',
   PATH_WGT.'js_src/wgt/jquery/minimenu/Callback.js',
   PATH_WGT.'js_src/wgt/jquery/minimenu/Checklist.js',
-  PATH_WGT.'js_src/wgt/jquery/minimenu/ColorPicker.js',
-  PATH_WGT.'js_src/wgt/jquery/minimenu/DivColor.js',
   PATH_WGT.'js_src/wgt/jquery/minimenu/Html.js',
   PATH_WGT.'js_src/wgt/jquery/minimenu/ListItem.js',
   PATH_WGT.'js_src/wgt/jquery/minimenu/Reload.js',

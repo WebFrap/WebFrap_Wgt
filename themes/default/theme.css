@@ -122,7 +122,9 @@ div#wbf-content,
 div.wgt_window,
 table.wgt-table tbody,
 .wgt-content,
-.wgt-bg-control
+.wgt-bg-control,
+.wgt-minimenu-content,
+.wgt-dropform-overlay
 {
   background: <?php echo $bgContentDark ?>; /* Old browsers */
   background: -moz-linear-gradient(top,  <?php echo $bgContentLight ?> 1%, <?php echo $bgContentDark ?> 100%); /* FF3.6+ */
