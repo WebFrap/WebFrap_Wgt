@@ -253,8 +253,20 @@ div.wgt-content_box.wgt-comment_tree div.wgt-comment span.date
   font-style:italic;
 }
 
+div.wgt-content_box.wgt-comment_tree div.wgt-comment div.thumb
+{
+  width:50px;
+  float:left;
+}
+
 div.wgt-content_box.wgt-comment_tree div.wgt-comment div.content
 {
+  float:left;
   background-color:white;
   padding-bottom:5px;
+}
+
+div.wgt-content_box.wgt-comment_tree div.wgt-comment div.cntrl
+{
+  clear:both;
 }
