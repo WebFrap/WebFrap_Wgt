@@ -626,6 +626,19 @@ img.wgt-icon.xxlarge
   height:750px !important;
 }
 
+/* height range */
+.hr2_3x
+{
+  min-height:200px;
+  min-height:300px;  
+  overflow:auto;
+}
+
+
+.minh2x
+{
+  min-height:200px;
+}
 
 
 /*//////////////////////////////////////////////////////////////////////////////
