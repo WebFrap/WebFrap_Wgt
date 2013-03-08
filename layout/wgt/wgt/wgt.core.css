@@ -132,6 +132,11 @@ ul.rightline
   zoom: 1; /* FU IE */
 }
 
+.cl
+{
+  clear:left;
+}
+
 /* @imutable */
 div.width-auto,
 ul.width-auto
@@ -485,6 +490,17 @@ img.wgt-icon.xxlarge
 {
   width:125px !important;
 }
+
+.bw12
+{
+  width:150px !important;
+}
+
+.bw15
+{
+  width:190px !important;
+}
+
 
 .bw2
 {

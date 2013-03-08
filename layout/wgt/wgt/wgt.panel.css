@@ -78,6 +78,7 @@ div.wgt-panel label
 {
   display:block;
   float:left;
+  min-width:80px;
 }
 
 div.wgt-panel ul.progress li
