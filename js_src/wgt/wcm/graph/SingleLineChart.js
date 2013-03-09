@@ -8,7 +8,9 @@
  *
  * @author Dominik Bonsch <db@webfrap.net>
  */
-$R.addAction( 'line_chart', function( jNode ){
+$R.addAction( 'single_line_chart', function( jNode ){
+  
+  jNode.removeClass('wcm_single_line_chart');
 
   window.$B.loadModule('d3');
 
@@ -24,8 +26,6 @@ $R.addAction( 'line_chart', function( jNode ){
   var y = d3.scale.linear()
       .range([height, 0]);
 
-  var color = d3.scale.category10();
-  
   var xAxis = d3.svg.axis()
       .scale(x)
       .orient("bottom");
@@ -35,9 +35,8 @@ $R.addAction( 'line_chart', function( jNode ){
       .orient("left");
 
   var line = d3.svg.line()
-      .interpolate("basis")
       .x(function(d) { return x(d.date); })
-      .y(function(d) { return y(d.value); });
+      .y(function(d) { return y(d.close); });
 
   var svg = d3.select('#'+jNode.attr('id'))
       .append("svg")
@@ -51,23 +50,11 @@ $R.addAction( 'line_chart', function( jNode ){
 
   data.forEach( function(d) {
     d.date = parseDate(d.date);
-  });
-  
-  var gValues = color.domain().map(function(name) {
-    return {
-      name: name,
-      values: data.map(function(d) {
-        return {date: d.date, value: +d[name]};
-      })
-    };
+    d.close = +d.close;
   });
 
   x.domain(d3.extent(data, function(d) { return d.date; }));
-
-  y.domain([
-    d3.min(gValues, function(c) { return d3.min(c.values, function(v) { return v.value; }); }),
-    d3.max(gValues, function(c) { return d3.max(c.values, function(v) { return v.value; }); })
-  ]);
+  y.domain(d3.extent(data, function(d) { return d.close; }));
 
   svg.append("g")
       .attr("class", "x axis")
@@ -82,24 +69,12 @@ $R.addAction( 'line_chart', function( jNode ){
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Amount €");
+      .text("Price ($)");
 
-  var value = svg.selectAll(".value")
-      .data(gValues)
-    .enter().append("g")
-      .attr("class", "value");
-
-  value.append("path")
+  svg.append("path")
+      .datum(data)
       .attr("class", "line")
-      .attr("d", function(d) { return line(d.values); })
-      .style("stroke", function(d) { return color(d.name); });
-
-  value.append("text")
-      .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })
-      .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.value) + ")"; })
-      .attr("x", 3)
-      .attr("dy", ".35em")
-      .text(function(d) { return d.name; });
+      .attr("d", line);
 
 
 });
