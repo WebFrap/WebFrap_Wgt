@@ -168,6 +168,7 @@ $files = array
   PATH_WGT.'js_src/wgt/wcm/graph/SingleLineChart.js',
   PATH_WGT.'js_src/wgt/wcm/graph/LineChart.js',
   PATH_WGT.'js_src/wgt/wcm/graph/BivariateArea.js',
+  PATH_WGT.'js_src/wgt/wcm/graph/BulletChart.js',
 
   // feature
   PATH_WGT.'js_src/wgt/wcm/feature/Sortable.js',
