@@ -6,6 +6,8 @@
  * @author Dominik Bonsch <db@webfrap.net>
  */
 $R.addAction( 'area_chart', function( jNode ){
+  
+  jNode.removeClass('wcm_area_chart');
 
   window.$B.loadModule('d3');
 

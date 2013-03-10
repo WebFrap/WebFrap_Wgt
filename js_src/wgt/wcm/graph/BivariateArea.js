@@ -7,6 +7,7 @@
  */
 $R.addAction( 'bivariate_area', function( jNode ){
 
+  jNode.removeClass('wcm_bivariate_area');
   window.$B.loadModule('d3');
 
   var parseDate = d3.time.format("%Y-%m-%d").parse;

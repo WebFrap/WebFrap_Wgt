@@ -7,6 +7,7 @@
  */
 $R.addAction( 'line_chart', function( jNode ){
 
+  jNode.removeClass('wcm_line_chart');
   window.$B.loadModule('d3');
 
   var margin = {top: 20, right: 80, bottom: 30, left: 50},
