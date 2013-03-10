@@ -17,8 +17,8 @@
 
 
 
-$files = array
-(
+$files = array(
   PATH_WGT.'js_src/vendor/d3/d3.js',
+  PATH_WGT.'js_src/vendor/d3/plugin/bullet.js',
 );
 
