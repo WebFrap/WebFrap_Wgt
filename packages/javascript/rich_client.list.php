@@ -172,6 +172,7 @@ $files = array
   PATH_WGT.'js_src/wgt/wcm/graph/StackedAreaChart.js',
   PATH_WGT.'js_src/wgt/wcm/graph/AreaChart.js',
   PATH_WGT.'js_src/wgt/wcm/graph/DonutChart.js',
+  PATH_WGT.'js_src/wgt/wcm/graph/PieChart.js',
 
   // feature
   PATH_WGT.'js_src/wgt/wcm/feature/Sortable.js',
