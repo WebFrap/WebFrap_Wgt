@@ -4,7 +4,7 @@
 
 <label>Plugins</label>
 
-<table class="doc_grid" >
+<table class="doc-grid" >
   <thead>
     <tr>
       <th>Name</th>
