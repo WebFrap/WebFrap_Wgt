@@ -394,7 +394,7 @@
       el.click(function( e ){
 
         var cTarget =  $S(e.target);
-        if( cTarget.is('td') && !cTarget.is('.pos') ){
+        if( cTarget.is('td') && !cTarget.is('.pos,.ro,.nav,.sort') ){
 
           var ofs = cTarget.offset();
           var oW  = cTarget.outerWidth();
@@ -409,9 +409,11 @@
           var editLayer = $S('#wgt-edit-field-'+type);
 
           //console.log( cTarget.parentX('table').css('margin-top')+' type '+type+' '+cTarget.prop('class') );
-
+          /**/
+          editLayers.trigger('blur');
           editLayers.unbind('blur');
           editLayers.hide();
+          
 
           editLayer.css({
             left:ofs.left,
@@ -514,10 +516,11 @@
               cTarget.html( userInp );
               fieldName = cTarget.attr('name');
               self.changedData[fieldName] = userInp;
-              
-              console.log( "changed: "+fieldName+' to: '+userInp  );
-              
             }
+            
+            //console.log( "changed: "+fieldName+' to: '+userInp  );
+            editLayers.unbind('blur');
+            editLayers.hide();
             
           });
 

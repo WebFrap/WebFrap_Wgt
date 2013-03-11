@@ -130,6 +130,16 @@ table.wgt-grid.simple tbody tr td.pos
   filter:         progid:DXImageTransform.Microsoft.gradient( startColorstr='#F7F7F7', endColorstr='#DCDCDC',GradientType=1 ); /* IE6-9 */
 }
 
+table.wgt-grid .ui-sortable td.pos
+{
+  cursor:move;
+}
+
+.wgt-editlayer
+{
+  cursor:text;
+}
+
 div.wgt-grid-body td.pos.checked
 {
   background-color:#585858;
