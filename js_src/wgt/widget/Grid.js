@@ -446,13 +446,16 @@
 
           editLayer.blur(function(){
             
+            var userInp = '',
+              fieldName = '';
+            
             // wenn es eine neue Zeile ist
             if(cTarget.parent().is('.new')){
               
               editLayers.unbind('blur');
               editLayers.hide();
               
-              var userInp = '';
+              
               if( 'date' === type ){
                 
                 userInp = editLayer.find('input').val();
@@ -465,6 +468,7 @@
               // keine leeren
               if( '' === userInp.trim() )
                 return;
+              
               
               var tplRow = cTarget.parent().parent().find('tr.template')
                 .clone().removeClass('template');
@@ -486,12 +490,22 @@
               self.makeSelectable(el);
  
             } else {
+              
               if( 'date' === type ){
-                cTarget.html( editLayer.find('input').val() );
+                
+                userInp = editLayer.find('input').val();
+              
+              } else {
+                
+                userInp = editLayer.text();
               }
-              else{
-                cTarget.html( editLayer.html() );
-              }
+              
+              cTarget.html( userInp );
+              fieldName = cTarget.attr('name');
+              self.changedData[fieldName] = userInp;
+              
+              console.log( "changed: "+fieldName+' to: '+userInp  );
+              
             }
             
           });
@@ -511,6 +525,25 @@
 
       });
 
+    },
+    
+    /**
+     * Das Grid Element Editierbar machen
+     */
+    save: function(){
+
+      var el = this.element.parent(),
+        self = this,
+        editLayers = $S('.wgt-editlayer');
+      
+      var requestBody = '';
+      
+      for( var key in self.changedData ){
+
+        requestBody += '&'+key+'='+self.changedData[key];
+      }
+      
+      alert( 'changed: '+requestBody );
     },
 
     /**
@@ -1100,8 +1133,9 @@
     *
     */
    renderRowLayout: function(){
-
-     var rows = this.element.find( 'tbody > tr' ).not('.wgt-block-appear'),
+       
+     // nur auf dem ersten body
+     var rows = this.element.find( 'tbody:first > tr' ).not('.wgt-block-appear'),
        fact = 3,
        pos = 2,
        oldNode = $G.$WGT.getClassByPrefix( $S(rows.get(0)).prop('class'), 'node-', false  );
