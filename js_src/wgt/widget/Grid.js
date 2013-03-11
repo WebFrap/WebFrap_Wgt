@@ -456,7 +456,7 @@
               editLayers.hide();
               
               
-              if( 'date' === type ){
+              if ('date'===type) {
                 
                 userInp = editLayer.find('input').val();
               
@@ -477,14 +477,23 @@
                 $S(this).parent().remove();
               });
               
+              tplRow.find('td').each(function(){
+                var tmpNode = $S(this), 
+                  tmpName = tmpNode.attr('name');
+                
+                if (tmpName) {
+                  tmpNode.attr( 'name', tmpName.replace('{$new}','new-'+self.cCount) );
+                }
+                
+              });
+              
+              ++self.cCount;
+              
               var fIdx = cTarget.parent().find('td').index(cTarget);
               
-              if( 'date' === type ){
-                tplRow.find('td:eq('+fIdx+')').html( editLayer.find('input').val() );
-              }
-              else{
-                tplRow.find('td:eq('+fIdx+')').html( editLayer.html() );
-              }
+              tplRow.find('td:eq('+fIdx+')').html( userInp );
+              fieldName = cTarget.attr('name');
+              self.changedData[fieldName] = userInp;
               
               cTarget.parent().parent().parent().find('tbody:first').append(tplRow);
               self.makeSelectable(el);
