@@ -544,6 +544,7 @@
     save: function(){
 
       var el = this.element.parent(),
+        opt = this.options,
         self = this,
         editLayers = $S('.wgt-editlayer');
       
@@ -558,7 +559,9 @@
         requestBody += '&'+key+'='+self.changedData[key];
       }
       
-      alert( 'changed: '+requestBody );
+      $R.form( opt.save_form, null, {'data':self.changedData} );
+      
+      //alert( 'changed: '+requestBody );
     },
 
     /**
