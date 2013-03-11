@@ -466,8 +466,9 @@
               }
               
               // keine leeren
-              if( '' === userInp.trim() )
+              if( '' === userInp.trim() ){
                 return;
+              }
               
               
               var tplRow = cTarget.parent().parent().find('tr.template')
@@ -489,10 +490,11 @@
               
               ++self.cCount;
               
-              var fIdx = cTarget.parent().find('td').index(cTarget);
+              var fIdx = cTarget.parent().find('td').index(cTarget),
+                newField = tplRow.find('td:eq('+fIdx+')');
               
-              tplRow.find('td:eq('+fIdx+')').html( userInp );
-              fieldName = cTarget.attr('name');
+              newField.html( userInp );
+              fieldName = newField.attr('name');
               self.changedData[fieldName] = userInp;
               
               cTarget.parent().parent().parent().find('tbody:first').append(tplRow);
@@ -548,6 +550,10 @@
       var requestBody = '';
       
       for( var key in self.changedData ){
+        
+        if(undefined===self.changedData[key]){
+          continue;
+        }
 
         requestBody += '&'+key+'='+self.changedData[key];
       }
