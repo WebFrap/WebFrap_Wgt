@@ -46,9 +46,15 @@
     headCols: [],
 
     /**
-     * Array mit den Head Cols
+     * Object mit den den änderungen
      */
-    changedData: [],
+    changedData: {},
+
+    /**
+     * Counter mit den erstellten Datensätzen
+     * zum hochzählen
+     */
+    cCount: 0,
 
     /**
      * Referenz auf die erste row im grid
@@ -379,19 +385,26 @@
      */
     startEditMode: function(){
 
-      var el = this.element;
-      var editLayers = $S('.wgt-editlayer');
+      var el = this.element.parent(),
+        self = this,
+        editLayers = $S('.wgt-editlayer');
+      
+      console.log("start editmode");
 
       el.click(function( e ){
 
         var cTarget =  $S(e.target);
-        if( cTarget.is('td') ){
+        if( cTarget.is('td') && !cTarget.is('.pos') ){
 
           var ofs = cTarget.offset();
           var oW  = cTarget.outerWidth();
           var oH  = cTarget.outerHeight();
 
           var type = $G.$WGT.getClassByPrefix( cTarget.prop('class'), 'type_' );
+          
+          if( !type ){
+            type = 'text';
+          }
 
           var editLayer = $S('#wgt-edit-field-'+type);
 
@@ -407,32 +420,93 @@
             height:oH
           });
 
-          editLayer.show();
-          editLayer.focus();
-
           if( 'date' === type ){
             editLayer.find('input').val(cTarget.html());
           }
           else{
             editLayer.html( cTarget.html() );
+            
+            var range,selection;
+            if(document.createRange){//Firefox, Chrome, Opera, Safari, IE 9+
+            
+                range = document.createRange();//Create a range (a range is a like the selection but invisible)
+                range.selectNodeContents(editLayer.get(0));//Select the entire contents of the element with the range
+                range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
+                selection = window.getSelection();//get the selection object (allows you to change selection)
+                selection.removeAllRanges();//remove any selections already made
+                selection.addRange(range);//make the range you have just created the visible selection
+            } else if(document.selection) { //IE 8 and lower
+           
+                range = document.body.createTextRange();//Create a range (a range is a like the selection but invisible)
+                range.moveToElementText(editLayer.get(0));//Select the entire contents of the element with the range
+                range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
+                range.select();//Select the range (make it the visible selection
+            }
           }
 
           editLayer.blur(function(){
-            if( 'date' === type ){
-              cTarget.html( editLayer.find('input').val() );
+            
+            // wenn es eine neue Zeile ist
+            if(cTarget.parent().is('.new')){
+              
+              editLayers.unbind('blur');
+              editLayers.hide();
+              
+              var userInp = '';
+              if( 'date' === type ){
+                
+                userInp = editLayer.find('input').val();
+              
+              } else {
+                
+                userInp = editLayer.text();
+              }
+              
+              // keine leeren
+              if( '' === userInp.trim() )
+                return;
+              
+              var tplRow = cTarget.parent().parent().find('tr.template')
+                .clone().removeClass('template');
+              
+              tplRow.find('td.pos').html('<i class="icon-remove" ></i>').click(function(){
+                $S(this).parent().remove();
+              });
+              
+              var fIdx = cTarget.parent().find('td').index(cTarget);
+              
+              if( 'date' === type ){
+                tplRow.find('td:eq('+fIdx+')').html( editLayer.find('input').val() );
+              }
+              else{
+                tplRow.find('td:eq('+fIdx+')').html( editLayer.html() );
+              }
+              
+              cTarget.parent().parent().parent().find('tbody:first').append(tplRow);
+              self.makeSelectable(el);
+ 
+            } else {
+              if( 'date' === type ){
+                cTarget.html( editLayer.find('input').val() );
+              }
+              else{
+                cTarget.html( editLayer.html() );
+              }
             }
-            else{
-              cTarget.html( editLayer.html() );
-            }
+            
           });
 
           //editLayer.selection( 0, editLayer.text().length );
-
+          
+          editLayer.show();
           if( 'date' === type ){
             editLayer.find('input').datepicker('show');
           }
+          editLayer.focus();
 
-
+        } else {
+          editLayers.unbind('blur');
+          editLayers.hide();
         }
 
       });
@@ -855,8 +929,7 @@
 
       var fNum = this.element.parent().parent().parent().find('.wgt-num-entry');
 
-      if ( !fNum.length ) {
-        
+      if (!fNum.length) {
         return;
       }
 
@@ -873,7 +946,7 @@
 
       var fNum = this.element.parent().parent().parent().find('.wgt-num-entry');
 
-      if( !fNum.length ){
+      if (!fNum.length) {
         return;
       }
 
@@ -890,7 +963,7 @@
 
       var fNum = this.element.parent().parent().parent().find( '.wgt-num-entry' );
 
-      if( !fNum.length ){
+      if (!fNum.length) {
         console.log('Did not find wgt-num-entry');
         return;
       }

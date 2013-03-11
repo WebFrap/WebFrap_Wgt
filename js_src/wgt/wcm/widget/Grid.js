@@ -41,8 +41,6 @@ $R.addAction( 'widget_grid', function( jNode ){
     ? $WGT.robustParseJSON(cfgData.text())
     : {};
     
-  
-    
   try{
     jNode.grid( settings );
   }catch( exc ){
