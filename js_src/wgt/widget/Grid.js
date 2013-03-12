@@ -394,148 +394,148 @@
       el.click(function( e ){
 
         var cTarget =  $S(e.target);
-        if( cTarget.is('td') && !cTarget.is('.pos,.ro,.nav,.sort') ){
-
-          var ofs = cTarget.offset();
-          var oW  = cTarget.outerWidth();
-          var oH  = cTarget.outerHeight();
-
-          var type = $G.$WGT.getClassByPrefix( cTarget.prop('class'), 'type_' );
-          
-          if( !type ){
-            type = 'text';
-          }
-
-          var editLayer = $S('#wgt-edit-field-'+type);
-
-          //console.log( cTarget.parentX('table').css('margin-top')+' type '+type+' '+cTarget.prop('class') );
-          /**/
-          editLayers.trigger('blur');
+        if( !(cTarget.is('td') && !cTarget.is('.pos,.ro,.nav,.sort')) ){
           editLayers.unbind('blur');
           editLayers.hide();
+          return;
+        }
+
+        var ofs = cTarget.offset();
+        var oW  = cTarget.outerWidth();
+        var oH  = cTarget.outerHeight();
+
+        var type = $G.$WGT.getClassByPrefix( cTarget.prop('class'), 'type_' );
+        
+        if( !type ){
+          type = 'text';
+        }
+
+        var editLayer = $S('#wgt-edit-field-'+type);
+
+        //console.log( cTarget.parentX('table').css('margin-top')+' type '+type+' '+cTarget.prop('class') );
+        /**/
+        editLayers.trigger('blur');
+        editLayers.unbind('blur');
+        editLayers.hide();
+        
+
+        editLayer.css({
+          left:ofs.left,
+          top:ofs.top,
+          width:oW,
+          height:oH
+        });
+
+        if( 'date' === type ){
+          editLayer.find('input').val(cTarget.html());
+        }
+        else{
+          editLayer.html( cTarget.html() );
           
-
-          editLayer.css({
-            left:ofs.left,
-            top:ofs.top,
-            width:oW,
-            height:oH
-          });
-
-          if( 'date' === type ){
-            editLayer.find('input').val(cTarget.html());
+          var range,selection;
+          if(document.createRange){//Firefox, Chrome, Opera, Safari, IE 9+
+          
+              range = document.createRange();//Create a range (a range is a like the selection but invisible)
+              range.selectNodeContents(editLayer.get(0));//Select the entire contents of the element with the range
+              range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
+              selection = window.getSelection();//get the selection object (allows you to change selection)
+              selection.removeAllRanges();//remove any selections already made
+              selection.addRange(range);//make the range you have just created the visible selection
+          } else if(document.selection) { //IE 8 and lower
+         
+              range = document.body.createTextRange();//Create a range (a range is a like the selection but invisible)
+              range.moveToElementText(editLayer.get(0));//Select the entire contents of the element with the range
+              range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
+              range.select();//Select the range (make it the visible selection
           }
-          else{
-            editLayer.html( cTarget.html() );
+        }
+
+        editLayer.blur(function(){
+          
+          var userInp = '',
+            fieldName = '';
+          
+          // wenn es eine neue Zeile ist
+          if(cTarget.parent().is('.new')){
             
-            var range,selection;
-            if(document.createRange){//Firefox, Chrome, Opera, Safari, IE 9+
+            editLayers.unbind('blur');
+            editLayers.hide();
             
-                range = document.createRange();//Create a range (a range is a like the selection but invisible)
-                range.selectNodeContents(editLayer.get(0));//Select the entire contents of the element with the range
-                range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
-                selection = window.getSelection();//get the selection object (allows you to change selection)
-                selection.removeAllRanges();//remove any selections already made
-                selection.addRange(range);//make the range you have just created the visible selection
-            } else if(document.selection) { //IE 8 and lower
-           
-                range = document.body.createTextRange();//Create a range (a range is a like the selection but invisible)
-                range.moveToElementText(editLayer.get(0));//Select the entire contents of the element with the range
-                range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
-                range.select();//Select the range (make it the visible selection
+            
+            if ('date'===type) {
+              
+              userInp = editLayer.find('input').val();
+            
+            } else {
+              
+              userInp = editLayer.text();
             }
-          }
-
-          editLayer.blur(function(){
             
-            var userInp = '',
-              fieldName = '';
+            // keine leeren
+            if( '' === userInp.trim() ){
+              return;
+            }
             
-            // wenn es eine neue Zeile ist
-            if(cTarget.parent().is('.new')){
+            
+            var tplRow = cTarget.parent().parent().find('tr.template')
+              .clone().removeClass('template');
+            
+            tplRow.find('td.pos').html('<i class="icon-remove" ></i>').click(function(){
+              $S(this).parent().remove();
+            });
+            
+            tplRow.find('td').each(function(){
+              var tmpNode = $S(this), 
+                tmpName = tmpNode.attr('name');
               
-              editLayers.unbind('blur');
-              editLayers.hide();
-              
-              
-              if ('date'===type) {
-                
-                userInp = editLayer.find('input').val();
-              
-              } else {
-                
-                userInp = editLayer.text();
+              if (tmpName) {
+                tmpNode.attr( 'name', tmpName.replace('{$new}','new-'+self.cCount) );
               }
               
-              // keine leeren
-              if( '' === userInp.trim() ){
-                return;
-              }
-              
-              
-              var tplRow = cTarget.parent().parent().find('tr.template')
-                .clone().removeClass('template');
-              
-              tplRow.find('td.pos').html('<i class="icon-remove" ></i>').click(function(){
-                $S(this).parent().remove();
-              });
-              
-              tplRow.find('td').each(function(){
-                var tmpNode = $S(this), 
-                  tmpName = tmpNode.attr('name');
-                
-                if (tmpName) {
-                  tmpNode.attr( 'name', tmpName.replace('{$new}','new-'+self.cCount) );
-                }
-                
-              });
-              
-              ++self.cCount;
-              
-              var fIdx = cTarget.parent().find('td').index(cTarget),
-                newField = tplRow.find('td:eq('+fIdx+')');
-              
-              newField.html( userInp );
-              fieldName = newField.attr('name');
-              self.changedData[fieldName] = userInp;
-              
-              cTarget.parent().parent().parent().find('tbody:first').append(tplRow);
+            });
+            
+            ++self.cCount;
+            
+            var fIdx = cTarget.parent().find('td').index(cTarget),
+              newField = tplRow.find('td:eq('+fIdx+')');
+            
+            newField.html( userInp );
+            fieldName = newField.attr('name');
+            self.changedData[fieldName] = userInp;
+            
+            cTarget.parent().parent().parent().find('tbody:first').append(tplRow);
               self.makeSelectable(el);
  
             } else {
               
               if( 'date' === type ){
-                
-                userInp = editLayer.find('input').val();
               
-              } else {
-                
-                userInp = editLayer.text();
-              }
+              userInp = editLayer.find('input').val();
+            
+            } else {
               
-              cTarget.html( userInp );
-              fieldName = cTarget.attr('name');
-              self.changedData[fieldName] = userInp;
+              userInp = editLayer.text();
             }
             
-            //console.log( "changed: "+fieldName+' to: '+userInp  );
-            editLayers.unbind('blur');
-            editLayers.hide();
-            
-          });
-
-          //editLayer.selection( 0, editLayer.text().length );
-          
-          editLayer.show();
-          if( 'date' === type ){
-            editLayer.find('input').datepicker('show');
+            cTarget.html( userInp );
+            fieldName = cTarget.attr('name');
+            self.changedData[fieldName] = userInp;
           }
-          editLayer.focus();
-
-        } else {
+          
+          //console.log( "changed: "+fieldName+' to: '+userInp  );
           editLayers.unbind('blur');
           editLayers.hide();
+          
+        });
+
+        //editLayer.selection( 0, editLayer.text().length );
+        
+        editLayer.show();
+        if( 'date' === type ){
+          editLayer.find('input').datepicker('show');
         }
+        editLayer.focus();
+
 
       });
 
