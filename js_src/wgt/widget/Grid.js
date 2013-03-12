@@ -553,6 +553,11 @@
       
       var requestBody = '';
       
+      if (!self.changedData){
+        $D.message('nothing to save');
+        return;
+      }
+      
       for( var key in self.changedData ){
         
         if(undefined===self.changedData[key]){
@@ -562,7 +567,10 @@
         requestBody += '&'+key+'='+self.changedData[key];
       }
       
-      $R.form( opt.save_form, null, {'data':self.changedData} );
+      $R.form( opt.save_form, null, {'data':self.changedData,'success':function(){
+        // empty changed data
+        self.changedData = {};
+      }});
       
       //alert( 'changed: '+requestBody );
     },
