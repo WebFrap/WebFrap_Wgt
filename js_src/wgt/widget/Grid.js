@@ -577,6 +577,8 @@
       $R.form( opt.save_form, null, {'data':self.changedData,'success':function(){
         // empty changed data
         self.changedData = {};
+        self.reColorize();
+        self.syncColWidth();
       }});
       
       //alert( 'changed: '+requestBody );
