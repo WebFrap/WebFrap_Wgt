@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f708d28e-efd6-4330-98e8-908e6a83a9e7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/WebFrap_Wgt.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/js_src/vendor/d3/plugin/CodeFlowser.js" afterPath="$PROJECT_DIR$/js_src/vendor/d3/plugin/CodeFlowers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js_src/wgt/wcm/graph/CodeFlowerChart.js" afterPath="$PROJECT_DIR$/js_src/wgt/wcm/graph/CodeFlowerChart.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/javascript/d3.list.php" afterPath="$PROJECT_DIR$/packages/javascript/d3.list.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/javascript/rich_client.list.php" afterPath="$PROJECT_DIR$/packages/javascript/rich_client.list.php" />
-    </list>
+    <list default="true" id="f708d28e-efd6-4330-98e8-908e6a83a9e7" name="Default" comment="" />
     <ignored path="WebFrap_Wgt.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="f708d28e-efd6-4330-98e8-908e6a83a9e7" time="1363293967772" ignored="false" />
@@ -248,7 +237,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="24" width="1282" height="976" extended-state="7" />
+    <frame x="-1" y="24" width="1282" height="976" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
