@@ -159,7 +159,6 @@
           parentHeight -= 23;
         }
         
-        
         parentHeightStyle = ' style="height:'+(parentHeight)+'px;" ';
       }
 
@@ -225,7 +224,6 @@
       // store the head
       var headBar = ge.parent().parent().find('.wgt-grid-head');
       
-
       // add the scroll events
       var tmpBox    = ge.parent(),
         scrolling = false;
@@ -277,11 +275,9 @@
       
       var self=this,
         ge = this.element,
-        opt = this.options;
-      
-      var headOff = headBar.position();
-
-      var tbodyHeight = ge.parent().height() + headBar.height();
+        opt = this.options,
+        headOff = headBar.position(),
+        tbodyHeight = ge.parent().height() + headBar.height();
 
       
       // Resize für das Grid implementieren
@@ -304,19 +300,12 @@
       
       firstRow.each( function( idx ){
 
-        var actualCol    = $S(this),
-          actualHead   = $S( self.headCols.get(idx) );
-
-        var cWidth = actualHead.outerWidth();
-
-        //console.log( "Grid: col: "+idx+" width "+cWidth );
-
-        //actualCol.width(cWidth);
-        var nextPos = actualHead.outerWidth()+actualHead.offset().left-2;
-
-        // store the position on drag start
-        var startPos = null;
-        var mover    = null;
+        var actualCol = $S(this),
+          actualHead  = $S( self.headCols.get(idx) ),
+          cWidth = actualHead.outerWidth(),
+          nextPos = actualHead.outerWidth()+actualHead.offset().left-2,
+          startPos = null,
+          mover = null;
 
         $S( self.dragBars.get(idx) )
           .css( {top:headOff.top} )
@@ -360,10 +349,10 @@
 
               //var tw     = actualCol.width();
               //var mover  = $S(this);
-              var newPos  = mover.position().left;
-              var oldWith = actualCol.outerWidth();
-
-              var newWidth = (newPos-startPos);
+              var newPos  = mover.position().left,
+                oldWith = actualCol.outerWidth(),
+                newWidth = (newPos-startPos);
+              
               if( newWidth <= 40 && !actualCol.hasClass('pos') ) {
 
                 newWidth = 40;
@@ -675,7 +664,14 @@
     renderSearchCell: function( cNode, tmpWidth, opt  ){
 
       var searchBox = '',
-        searchName = cNode.attr('wgt_search');
+        searchName = cNode.attr('wgt_search'),
+        defVal = '<span>&nbsp;</span>',
+        defClass = '';
+      
+      if( cNode.is('.pos') ){
+        defVal = ' <i class="icon-search" ></i> ';
+        defClass = ' class="pos" ';
+      }
 
       if( searchName ){
 
@@ -704,7 +700,7 @@
       else{
 
         //width:'+(tmpWidth-opt.hpad)+'px;
-        searchBox = '<td style="text-align:center;" ><span>&nbsp;</td>';
+        searchBox = '<td '+defClass+' style="text-align:center;" >'+defVal+'</td>';
 
       }
 
@@ -724,24 +720,29 @@
 
       var nodeName  = cNode.attr('wgt_sort_name'),
         headTab   = '',
-        tmpNewWdth = null;
+        tmpNewWdth = null,
+        headClass = '';
+      
+        if( cNode.is('.pos') ){
+          headClass = ' class="pos" '
+        }
 
       if( nodeName ){
 
         var sortIcon  = opt.icon_sort_none, 
           sortClass = '',
-          sortVal = '';
-
-        var sortDir  = cNode.attr('wgt_sort');
+          sortVal = '',
+          sortDir  = cNode.attr('wgt_sort');
+        
         if( sortDir ){
 
           sortIcon  = opt['icon_sort_'+sortDir] === undefined? opt.icon_sort_none: opt['icon_sort_'+sortDir] ;
           sortClass = ' sort-'+sortDir;
           sortVal   = sortDir;
         }
-
+        
         tmpNewWdth = tmpWidth-opt.hpad;
-        headTab += "<th style=\"width:"+tmpNewWdth+"px;\" orig_width=\""+tmpNewWdth+"\" ><div style=\"width:"+tmpNewWdth+"px;\" >";
+        headTab += "<th "+headClass+" style=\"width:"+tmpNewWdth+"px;\" orig_width=\""+tmpNewWdth+"\" ><div style=\"width:"+tmpNewWdth+"px;\" >";
         headTab += "<p class=\"label\" >"+node.innerHTML+"</p>";
         headTab += "<p class=\"order"+sortClass+"\" >";
         headTab += "<i class=\""+sortIcon+" sort\" ></i>";
@@ -753,7 +754,7 @@
       else{
 
         tmpNewWdth = tmpWidth-opt.hpad;
-        headTab += "<th style=\"width:"+tmpNewWdth+"px;\" orig_width=\""+tmpNewWdth+"\" >"
+        headTab += "<th "+headClass+" style=\"width:"+tmpNewWdth+"px;\" orig_width=\""+tmpNewWdth+"\" >"
           +"<div style=\"width:"+tmpNewWdth+"px;\" ><p class=\"label\" >"+node.innerHTML+"</p></div>"
           +"</th>";
       }
