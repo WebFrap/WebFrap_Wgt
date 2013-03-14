@@ -1140,7 +1140,7 @@
      */
     reColorize: function(){
 
-      var rows = this.element.find( 'tbody > tr' ).not('.wgt-block-appear'),
+      var rows = this.element.find( 'tbody:first > tr' ).not('.wgt-block-appear'),
         fact = 3,
         pos = 2,
         oldNode = $G.$WGT.getClassByPrefix( $S(rows.get(0)).prop('class'), 'node-', false  );
