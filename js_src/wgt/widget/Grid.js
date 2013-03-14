@@ -224,9 +224,7 @@
 
       // store the head
       var headBar = ge.parent().parent().find('.wgt-grid-head');
-      var headOff = headBar.position();
-
-      var tbodyHeight = ge.parent().height() + headBar.height();
+      
 
       // add the scroll events
       var tmpBox    = ge.parent(),
@@ -256,6 +254,36 @@
       // the first Row
       this.firstRow = ge.find('thead th');
 
+      self.addResizeEvents( this.firstRow, headBar, gridBody );
+      
+      // nach dem Init nocheinmal sicher stellen das ResizeBars und Size
+      // auch in sync sind
+      self.syncColWidth();
+
+      if( opt.edit_able ){
+        self.startEditMode();
+      }
+
+      if( opt.load_urls !== {} ){
+        self.initLoaderEvent();
+      }
+
+    },//end buildGrid
+    
+    /**
+     * Die Resize Events hinzufügen
+     */
+    addResizeEvents: function( firstRow, headBar, gridBody ){
+      
+      var self=this,
+        ge = this.element,
+        opt = this.options;
+      
+      var headOff = headBar.position();
+
+      var tbodyHeight = ge.parent().height() + headBar.height();
+
+      
       // Resize für das Grid implementieren
       var helper    = ge.parent().parent().find('div.wgt-drag>div.helper');
 
@@ -273,11 +301,11 @@
         $D.scrollTrigger();
         //console.log('scroll '+gof.scrollLeft+'  '+gof.scrollTop);
       });
+      
+      firstRow.each( function( idx ){
 
-      this.firstRow.each( function( idx ){
-
-        var actualCol    = $S(this);
-        var actualHead   = $S( self.headCols.get(idx) );
+        var actualCol    = $S(this),
+          actualHead   = $S( self.headCols.get(idx) );
 
         var cWidth = actualHead.outerWidth();
 
@@ -366,19 +394,7 @@
 
       });
 
-      // nach dem Init nocheinmal sicher stellen das ResizeBars und Size
-      // auch in sync sind
-      self.syncColWidth();
-
-      if( opt.edit_able ){
-        self.startEditMode();
-      }
-
-      if( opt.load_urls !== {} ){
-        self.initLoaderEvent();
-      }
-
-    },//end buildGrid
+    },
 
     /**
      * Das Grid Element Editierbar machen
