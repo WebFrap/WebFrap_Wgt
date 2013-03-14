@@ -259,7 +259,7 @@
       self.syncColWidth();
 
       if( opt.edit_able ){
-        self.startEditMode();
+        self.startEditMode( jHeadTab );
       }
 
       if( opt.load_urls !== {} ){
@@ -388,28 +388,31 @@
     /**
      * Das Grid Element Editierbar machen
      */
-    startEditMode: function(){
+    startEditMode: function( jHeadTab ){
 
       var el = this.element.parent(),
         self = this,
         editLayers = $S('.wgt-editlayer');
       
       console.log("start editmode");
+      
+      jHeadTab.find('table').append(el.find('tbody.editor'));
 
-      el.click(function( e ){
+      el.parent().click(function( e ){
 
         var cTarget =  $S(e.target);
+        
         if( !(cTarget.is('td') && !cTarget.is('.pos,.ro,.nav,.sort')) ){
+          editLayers.trigger('blur');
           editLayers.unbind('blur');
           editLayers.hide();
           return;
         }
 
-        var ofs = cTarget.offset();
-        var oW  = cTarget.outerWidth();
-        var oH  = cTarget.outerHeight();
-
-        var type = $G.$WGT.getClassByPrefix( cTarget.prop('class'), 'type_' );
+        var ofs = cTarget.offset(),
+          oW  = cTarget.outerWidth(),
+          oH  = cTarget.outerHeight(),
+          type = $G.$WGT.getClassByPrefix( cTarget.prop('class'), 'type_' );
         
         if( !type ){
           type = 'text';
@@ -515,7 +518,7 @@
             fieldName = newField.attr('name');
             self.changedData[fieldName] = userInp;
             
-            cTarget.parent().parent().parent().find('tbody:first').append(tplRow);
+            el.find('tbody:first').prepend(tplRow);
               self.makeSelectable(el);
  
             } else {
@@ -849,37 +852,37 @@
 
         var cTarget = $S( e.target );
 
-        if( !cTarget.is('.wgt-loader') ){
+        if (!cTarget.is('.wgt-loader')) {
           cTarget = cTarget.parentX('.wgt-loader');
         }
 
-        if( !cTarget || !cTarget.is('.wgt-loader') ){
+        if (!cTarget || !cTarget.is('.wgt-loader') ){
           return;
         }
 
-        if( cTarget.is('.state-loaded') ){
+        if (cTarget.is('.state-loaded')) {
           return;
         }
 
         var loadUrl = opts.load_urls[cTarget.attr('wgt_source_key')];
 
-        if( cTarget.attr('wgt_eid') ){
+        if (cTarget.attr('wgt_eid')) {
           loadUrl += '&objid='+cTarget.attr('wgt_eid');
         }
 
-        if( cTarget.attr('wgt_param') ){
+        if (cTarget.attr('wgt_param')) {
           loadUrl += cTarget.attr('wgt_param');
         }
 
         var parentTr = cTarget.parentX('tr');
 
-        if( parentTr ){
+        if (parentTr) {
           loadUrl += '&p_row_id='+parentTr.attr('id')+'&p_row_pos='+parentTr.find('td.pos').text();
         }
 
         //console.log("data "+cTarget.attr('wgt_source_key')+" "+loadUrl );
 
-        $R.get( loadUrl );
+        $R.get(loadUrl);
 
         cTarget.addClass('state-loaded');
         cTarget.find('img').attr( 'src', $G.$C.WEB_ICONS+"xsmall/"+opts.icon_opened );
