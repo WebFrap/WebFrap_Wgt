@@ -178,6 +178,8 @@ $files = array
   PATH_WGT.'js_src/wgt/wcm/graph/NormStackedBarChart.js',
   PATH_WGT.'js_src/wgt/wcm/graph/CodeFlowerChart.js',
   PATH_WGT.'js_src/wgt/wcm/graph/MultiDonutChart.js',
+  PATH_WGT.'js_src/wgt/wcm/graph/ShowReelChart.js',
+  PATH_WGT.'js_src/wgt/wcm/graph/DifferenceArea.js',
 
   
   
