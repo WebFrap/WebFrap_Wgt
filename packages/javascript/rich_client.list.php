@@ -170,13 +170,17 @@ $files = array
   PATH_WGT.'js_src/wgt/wcm/graph/BivariateArea.js',
   PATH_WGT.'js_src/wgt/wcm/graph/BulletChart.js',
   PATH_WGT.'js_src/wgt/wcm/graph/StackedAreaChart.js',
-  PATH_WGT.'js_src/wgt/wcm/graph/StackedBarChart.js',
   PATH_WGT.'js_src/wgt/wcm/graph/AreaChart.js',
   PATH_WGT.'js_src/wgt/wcm/graph/DonutChart.js',
   PATH_WGT.'js_src/wgt/wcm/graph/PieChart.js',
   PATH_WGT.'js_src/wgt/wcm/graph/BarChart.js',
+  PATH_WGT.'js_src/wgt/wcm/graph/StackedBarChart.js',
+  PATH_WGT.'js_src/wgt/wcm/graph/NormStackedBarChart.js',
   PATH_WGT.'js_src/wgt/wcm/graph/CodeFlowerChart.js',
+  PATH_WGT.'js_src/wgt/wcm/graph/MultiDonutChart.js',
 
+  
+  
   // feature
   PATH_WGT.'js_src/wgt/wcm/feature/Sortable.js',
 
