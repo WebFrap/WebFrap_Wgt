@@ -180,8 +180,8 @@ $files = array
   PATH_WGT.'js_src/wgt/wcm/graph/MultiDonutChart.js',
   PATH_WGT.'js_src/wgt/wcm/graph/ShowReelChart.js',
   PATH_WGT.'js_src/wgt/wcm/graph/DifferenceArea.js',
+  PATH_WGT.'js_src/wgt/wcm/graph/BubbleChart.js',
 
-  
   
   // feature
   PATH_WGT.'js_src/wgt/wcm/feature/Sortable.js',
