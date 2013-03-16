@@ -141,6 +141,19 @@ table.wgt-grid .ui-sortable td.pos
   cursor:text;
 }
 
+.wgt-editlayer.number,
+.wgt-editlayer.money
+{
+  text-align:right;
+}
+
+.wgt-editlayer select
+{
+  width:100%;
+  border:0px;
+}
+
+
 div.wgt-grid-body td.pos.checked
 {
   background-color:#585858;

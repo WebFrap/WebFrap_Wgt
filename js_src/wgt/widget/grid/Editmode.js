@@ -99,6 +99,9 @@
         if( 'date' === type ){
           editLayer.find('input').val(cTarget.html());
         }
+        else if( 'select' === type ){
+          editLayer.find('select').val(cTarget.text());
+        }
         else{
           editLayer.html( cTarget.html() );
           
@@ -137,6 +140,10 @@
               
               userInp = editLayer.find('input').val();
             
+            } else if('select'===type) {
+              
+              userInp = editLayer.find('select').val();
+              
             } else {
               
               userInp = editLayer.text();
@@ -183,17 +190,21 @@
             el.find('tbody:first').prepend(tplRow);
               self.makeSelectable(el);
  
-            } else {
+          } else {
               
-              if( 'date' === type ){
+            if( 'date' === type ){
               
               userInp = editLayer.find('input').val();
             
+            } else if( 'select' === type ){
+              
+              userInp = editLayer.find('select').val();
+              
             } else {
               
               userInp = editLayer.text();
             }
-            
+          
             cTarget.html( userInp );
             fieldName = cTarget.attr('name');
             self.changedData[fieldName] = userInp;
