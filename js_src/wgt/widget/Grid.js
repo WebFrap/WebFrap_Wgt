@@ -32,6 +32,9 @@
 (function( $S, $G, undefined ) {
 
   "use strict";
+  
+  var $R = $G.$R,
+    $D = $G.$D;
 
   $S.widget( "wgt.grid", {
 
@@ -253,7 +256,7 @@
       // auch in sync sind
       self.syncColWidth();
 
-      if( opt.edit_able ){
+      if( opt.edit_able && self.startEditMode ){
         self.startEditMode( jHeadTab );
       }
 
@@ -443,7 +446,7 @@
       });
 
       jHeadTab.find('input.wcm_req_search,select.wcm_req_search').each(function(){
-        $G.$R.callAction( 'req_search', $S(this) );
+        $R.callAction( 'req_search', $S(this) );
       });
 
     },//end injectSortControls
@@ -948,7 +951,7 @@
       $S('form#'+formId).data('qsize',$S(element).val());
       $S('form#'+formId).data('start',0);
 
-      $G.$R.form(formId);
+      $R.form(formId);
 
     },//end this.pageSize
 
@@ -962,7 +965,7 @@
       $S('form#'+formId).data('qsize',$S(element).val());
       $S('form#'+formId).data('start',0);
 
-      $G.$R.form(formId);
+      $R.form(formId);
 
     }//end this.search
 
