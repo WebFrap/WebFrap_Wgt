@@ -69,6 +69,7 @@
     startEditMode: function( jHeadTab ){
 
       var el = this.element.parent(),
+        elId = this.element.attr('id'),
         self = this,
         editLayers = $S('.wgt-editlayer');
       
@@ -85,11 +86,18 @@
           return;
         }
         
+        editLayers.trigger('blur');
+        
         if( !(cTarget.is('td') && !cTarget.is('.pos,.ro,.nav,.sort')) ){
-          editLayers.trigger('blur');
+          //editLayers.trigger('blur');
           editLayers.unbind('blur');
           editLayers.hide();
           return;
+        }
+        
+        // eine temporär id zuweisen
+        if ( !cTarget.attr('id') ){
+          cTarget.attr('id','wgt-id-'+new Date().getTime());
         }
 
         var ofs = cTarget.offset(),
@@ -101,8 +109,12 @@
           type = 'text';
         }
         
-        console.log('#wgt-edit-field-'+type);
+        //console.log('#wgt-edit-field-'+type);
         self.activEditLayer = $S('#wgt-edit-field-'+type);
+        
+        // dem editlayer mitgeben welches feld befüllt werden soll,
+        // nötig bei rich ui widgets
+        self.activEditLayer.attr('wgt_target',cTarget.attr('id')).attr('wgt_list',elId);
 
         //console.log( cTarget.parentX('table').css('margin-top')+' type '+type+' '+cTarget.prop('class') );
         /**/
@@ -168,7 +180,7 @@
             
             } else if('select'===type) {
               
-              userInp = self.activEditLayer.find('select').val();
+              userInp  = self.activEditLayer.find('select').val();
               displTxt = self.activEditLayer.find('select option:selected').text();
               
             } else {
@@ -177,7 +189,7 @@
             }
             
             // keine leeren
-            if( displTxt && '' === displTxt.trim() ){
+            if( !displTxt || '' === displTxt.trim() ){
               return;
             }
             
@@ -215,7 +227,7 @@
             self.changedData[fieldName] = userInp;
             
             el.find('tbody:first').prepend(tplRow);
-              self.makeSelectable(el);
+            self.makeSelectable(el);
  
           } else {
               
@@ -248,9 +260,18 @@
         
         self.activEditLayer.show();
         if( 'date' === type ){
+          
           self.activEditLayer.find('input').datepicker('show');
+          self.activEditLayer.find('input').focus();
+          
+        } else if( 'select' === type ){
+          
+          self.activEditLayer.find('select').focus();
+          
+        } else {
+          
+          self.activEditLayer.focus();
         }
-        self.activEditLayer.focus();
 
 
       });
@@ -291,6 +312,21 @@
       }});
       
       //alert( 'changed: '+requestBody );
+    },
+    
+    /**
+     * In eine Zelle und gleichzeitig den changedData array schreiben
+     */
+    writeCell: function( cellId, value, text ){
+
+      var cell = $S('#'+cellId),
+        cellName = cell.attr('name');
+      
+      console.log('write cell n:'+cellName+' v: '+value+' t: '+text );
+      
+      self.changedData[cellName] = value;
+      cell.html(text);
+        
     }
  
   });
