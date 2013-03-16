@@ -48,6 +48,22 @@
     },
 
     /**
+     * Object mit den den Änderungen
+     */
+    changedData: {},
+
+    /**
+     * Counter mit den erstellten Datensätzen
+     * zum hochzählen
+     */
+    cCount: 0,
+    
+    /**
+     * der aktive Edit layer
+     */
+    activEditLayer: null,
+
+    /**
      * Das Grid Element Editierbar machen
      */
     startEditMode: function( jHeadTab ){
@@ -64,6 +80,11 @@
 
         var cTarget =  $S(e.target);
         
+        // wenn innerhalb des edit layers
+        if( self.activEditLayer && cTarget.parentX(self.activEditLayer) ){
+          return;
+        }
+        
         if( !(cTarget.is('td') && !cTarget.is('.pos,.ro,.nav,.sort')) ){
           editLayers.trigger('blur');
           editLayers.unbind('blur');
@@ -79,8 +100,9 @@
         if( !type ){
           type = 'text';
         }
-
-        var editLayer = $S('#wgt-edit-field-'+type);
+        
+        console.log('#wgt-edit-field-'+type);
+        self.activEditLayer = $S('#wgt-edit-field-'+type);
 
         //console.log( cTarget.parentX('table').css('margin-top')+' type '+type+' '+cTarget.prop('class') );
         /**/
@@ -89,7 +111,7 @@
         editLayers.hide();
         
 
-        editLayer.css({
+        self.activEditLayer.css({
           left:ofs.left,
           top:ofs.top,
           width:oW,
@@ -97,19 +119,22 @@
         });
 
         if( 'date' === type ){
-          editLayer.find('input').val(cTarget.html());
+          self.activEditLayer.find('input').val(cTarget.html());
         }
         else if( 'select' === type ){
-          editLayer.find('select').val(cTarget.text());
+          
+          self.activEditLayer.html($S('#'+cTarget.attr('data_source')).text());
+          self.activEditLayer.find('select').val(cTarget.attr('value'));
+          
         }
         else{
-          editLayer.html( cTarget.html() );
+          self.activEditLayer.html( cTarget.html() );
           
           var range,selection;
           if(document.createRange){//Firefox, Chrome, Opera, Safari, IE 9+
           
             range = document.createRange();//Create a range (a range is a like the selection but invisible)
-            range.selectNodeContents(editLayer.get(0));//Select the entire contents of the element with the range
+            range.selectNodeContents(self.activEditLayer.get(0));//Select the entire contents of the element with the range
             range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
             selection = window.getSelection();//get the selection object (allows you to change selection)
             selection.removeAllRanges();//remove any selections already made
@@ -118,15 +143,16 @@
           } else if(document.selection) { //IE 8 and lower
          
             range = document.body.createTextRange();//Create a range (a range is a like the selection but invisible)
-            range.moveToElementText(editLayer.get(0));//Select the entire contents of the element with the range
+            range.moveToElementText(self.activEditLayer.get(0));//Select the entire contents of the element with the range
             range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
             range.select();//Select the range (make it the visible selection
           }
         }
 
-        editLayer.blur(function(){
+        self.activEditLayer.blur(function(){
           
-          var userInp = '',
+          var userInp = '', 
+            displTxt = '',
             fieldName = '';
           
           // wenn es eine neue Zeile ist
@@ -138,19 +164,20 @@
             
             if ('date'===type) {
               
-              userInp = editLayer.find('input').val();
+              displTxt = userInp = self.activEditLayer.find('input').val();
             
             } else if('select'===type) {
               
-              userInp = editLayer.find('select').val();
+              userInp = self.activEditLayer.find('select').val();
+              displTxt = self.activEditLayer.find('select option:selected').text();
               
             } else {
               
-              userInp = editLayer.text();
+              displTxt = userInp = self.activEditLayer.text();
             }
             
             // keine leeren
-            if( '' === userInp.trim() ){
+            if( displTxt && '' === displTxt.trim() ){
               return;
             }
             
@@ -183,7 +210,7 @@
             var fIdx = cTarget.parent().find('td').index(cTarget),
               newField = tplRow.find('td:eq('+fIdx+')');
             
-            newField.html( userInp );
+            newField.html( displTxt );
             fieldName = newField.attr('name');
             self.changedData[fieldName] = userInp;
             
@@ -194,18 +221,19 @@
               
             if( 'date' === type ){
               
-              userInp = editLayer.find('input').val();
+              displTxt = userInp = self.activEditLayer.find('input').val();
             
             } else if( 'select' === type ){
               
-              userInp = editLayer.find('select').val();
+              userInp = self.activEditLayer.find('select').val();
+              displTxt = self.activEditLayer.find('select option:selected').text();
               
             } else {
               
-              userInp = editLayer.text();
+              displTxt = userInp = self.activEditLayer.text();
             }
           
-            cTarget.html( userInp );
+            cTarget.html( displTxt );
             fieldName = cTarget.attr('name');
             self.changedData[fieldName] = userInp;
           }
@@ -218,11 +246,11 @@
 
         //editLayer.selection( 0, editLayer.text().length );
         
-        editLayer.show();
+        self.activEditLayer.show();
         if( 'date' === type ){
-          editLayer.find('input').datepicker('show');
+          self.activEditLayer.find('input').datepicker('show');
         }
-        editLayer.focus();
+        self.activEditLayer.focus();
 
 
       });

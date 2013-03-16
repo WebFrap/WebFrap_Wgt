@@ -48,16 +48,6 @@
      */
     headCols: [],
 
-    /**
-     * Object mit den den änderungen
-     */
-    changedData: {},
-
-    /**
-     * Counter mit den erstellten Datensätzen
-     * zum hochzählen
-     */
-    cCount: 0,
 
     /**
      * Referenz auf die erste row im grid
