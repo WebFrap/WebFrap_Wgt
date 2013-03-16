@@ -32,9 +32,7 @@
 (function( $S, $G, undefined ) {
 
   "use strict";
-  
-  var $R = $G.$R,
-    $D = $G.$D;
+
 
   $S.widget( "wgt.grid", {
 
