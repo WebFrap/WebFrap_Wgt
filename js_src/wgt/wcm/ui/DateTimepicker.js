@@ -59,3 +59,29 @@ $R.addAction( 'ui_date_timepicker', function( jNode ){
     jNode.datetimepicker( "option", options );
 
 });
+
+$R.addAction( 'list_date_timepicker', function( jNode ){
+  
+  jNode.removeClass('wcm_list_date_timepicker');
+  
+  var settings = {
+      dateFormat: $C.formatDate,
+      changeMonth: true,
+      changeYear: true,
+      showWeek: true,
+      constrainInput: true,
+      buttonImageOnly: true,
+      onSelect:function( dateValue  ){
+        $S('#'+jNode.parentX('div').attr('wgt_list')).grid(
+          'writeCell', 
+          jNode.parentX('div').attr('wgt_target'), 
+          dateValue,
+          dateValue
+        );
+      }
+    };
+  
+  jNode.addClass('valid_date');
+  jNode.datetimepicker(settings);
+
+});

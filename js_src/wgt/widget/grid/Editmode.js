@@ -43,8 +43,8 @@
       // Editierbare Cells im Grid
       save_form: null,        // ID des Save Formulars bei editierbaren Tabellen
       edit_able: false,       // Flag ob
-      allow_insert: false    // Sollen neue Datensätze angelegt werden können
-      
+      allow_insert: false,    // Sollen neue Datensätze angelegt werden können
+      edit_hidden_def_values: {} // versteckte default Werte für das Editable grid, wichtig z.B bei Referenzen
     },
 
     /**
@@ -130,7 +130,7 @@
           height:oH
         });
 
-        if( 'date' === type ){
+        if( 'date' === type || 'datetime' === type  ){
           self.activEditLayer.find('input').val(cTarget.html());
         }
         else if( 'select' === type ){
@@ -174,7 +174,7 @@
             editLayers.hide();
             
             
-            if ('date'===type) {
+            if ('date'===type || 'datetime'===type) {
               
               displTxt = userInp = self.activEditLayer.find('input').val();
             
@@ -231,7 +231,7 @@
  
           } else {
               
-            if( 'date' === type ){
+            if( 'date' === type || 'datetime' === type ){
               
               displTxt = userInp = self.activEditLayer.find('input').val();
             
@@ -259,7 +259,7 @@
         //editLayer.selection( 0, editLayer.text().length );
         
         self.activEditLayer.show();
-        if( 'date' === type ){
+        if( 'date' === type || 'datetime' === type ){
           
           self.activEditLayer.find('input').datepicker('show');
           self.activEditLayer.find('input').focus();
