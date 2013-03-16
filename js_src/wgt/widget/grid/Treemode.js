@@ -35,27 +35,29 @@
   
   $S.widget( "wgt.grid", $S.wgt.grid, {
 
+
     /**
      * Grid als Treetable darstellen
      */
     treeMode: function( ){
-      
+
       //if( undefined === this.options.expandable )
         //this.options.expandable = false; // quick fix
-      
+
       this.element.treeTable(this.options);
     },
-    
+
     /**
      * Neu hinzugekommene Einträge in den Baum integrieren
      */
     refreshTree: function( ){
-      
+
       //if( undefined === this.options.expandable )
         //this.options.expandable = false; // quick fix
-      
+
       this.element.treeTable(this.options);
     }
+
  
   });
   

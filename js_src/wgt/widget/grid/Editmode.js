@@ -47,71 +47,212 @@
       
     },
 
-
     /**
      * Das Grid Element Editierbar machen
      */
-    startEditMode: function(){
+    startEditMode: function( jHeadTab ){
 
-      var el = this.element;
-      var editLayers = $S('.wgt-editlayer');
+      var el = this.element.parent(),
+        self = this,
+        editLayers = $S('.wgt-editlayer');
+      
+      console.log("start editmode");
+      
+      jHeadTab.find('table').append(el.find('tbody.editor'));
 
-      el.click(function( e ){
+      el.parent().click(function( e ){
 
         var cTarget =  $S(e.target);
-        if( cTarget.is('td') ){
-
-          var ofs = cTarget.offset();
-          var oW  = cTarget.outerWidth();
-          var oH  = cTarget.outerHeight();
-
-          var type = $G.$WGT.getClassByPrefix( cTarget.prop('class'), 'type_' );
-
-          var editLayer = $S('#wgt-edit-field-'+type);
-
-          //console.log( cTarget.parentX('table').css('margin-top')+' type '+type+' '+cTarget.prop('class') );
-
+        
+        if( !(cTarget.is('td') && !cTarget.is('.pos,.ro,.nav,.sort')) ){
+          editLayers.trigger('blur');
           editLayers.unbind('blur');
           editLayers.hide();
-
-          editLayer.css({
-            left:ofs.left,
-            top:ofs.top,
-            width:oW,
-            height:oH
-          });
-
-          editLayer.show();
-          editLayer.focus();
-
-          if( 'date' === type ){
-            editLayer.find('input').val(cTarget.html());
-          }
-          else{
-            editLayer.html( cTarget.html() );
-          }
-
-          editLayer.blur(function(){
-            if( 'date' === type ){
-              cTarget.html( editLayer.find('input').val() );
-            }
-            else{
-              cTarget.html( editLayer.html() );
-            }
-          });
-          
-          //editLayer.selection( 0, editLayer.text().length );
-
-          if( 'date' === type ){
-            editLayer.find('input').datepicker('show');
-          }
-
-
+          return;
         }
+
+        var ofs = cTarget.offset(),
+          oW  = cTarget.outerWidth(),
+          oH  = cTarget.outerHeight(),
+          type = $G.$WGT.getClassByPrefix( cTarget.prop('class'), 'type_' );
+        
+        if( !type ){
+          type = 'text';
+        }
+
+        var editLayer = $S('#wgt-edit-field-'+type);
+
+        //console.log( cTarget.parentX('table').css('margin-top')+' type '+type+' '+cTarget.prop('class') );
+        /**/
+        editLayers.trigger('blur');
+        editLayers.unbind('blur');
+        editLayers.hide();
+        
+
+        editLayer.css({
+          left:ofs.left,
+          top:ofs.top,
+          width:oW,
+          height:oH
+        });
+
+        if( 'date' === type ){
+          editLayer.find('input').val(cTarget.html());
+        }
+        else{
+          editLayer.html( cTarget.html() );
+          
+          var range,selection;
+          if(document.createRange){//Firefox, Chrome, Opera, Safari, IE 9+
+          
+            range = document.createRange();//Create a range (a range is a like the selection but invisible)
+            range.selectNodeContents(editLayer.get(0));//Select the entire contents of the element with the range
+            range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
+            selection = window.getSelection();//get the selection object (allows you to change selection)
+            selection.removeAllRanges();//remove any selections already made
+            selection.addRange(range);//make the range you have just created the visible selection
+          
+          } else if(document.selection) { //IE 8 and lower
+         
+            range = document.body.createTextRange();//Create a range (a range is a like the selection but invisible)
+            range.moveToElementText(editLayer.get(0));//Select the entire contents of the element with the range
+            range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
+            range.select();//Select the range (make it the visible selection
+          }
+        }
+
+        editLayer.blur(function(){
+          
+          var userInp = '',
+            fieldName = '';
+          
+          // wenn es eine neue Zeile ist
+          if(cTarget.parent().is('.new')){
+            
+            editLayers.unbind('blur');
+            editLayers.hide();
+            
+            
+            if ('date'===type) {
+              
+              userInp = editLayer.find('input').val();
+            
+            } else {
+              
+              userInp = editLayer.text();
+            }
+            
+            // keine leeren
+            if( '' === userInp.trim() ){
+              return;
+            }
+            
+            
+            var tplRow = cTarget.parent().parent().find('tr.template')
+              .clone().removeClass('template');
+            
+            var tmpRowId = tplRow.attr('id');
+          
+            if (tmpRowId) {
+              tplRow.attr( 'id', tmpRowId.replace('{$new}','new-'+self.cCount) );
+            }
+            
+            tplRow.find('td.pos').html('<i class="icon-remove" ></i>').click(function(){
+              $S(this).parent().remove();
+            });
+            
+            tplRow.find('td').each(function(){
+              var tmpNode = $S(this), 
+                tmpName = tmpNode.attr('name');
+              
+              if (tmpName) {
+                tmpNode.attr( 'name', tmpName.replace('{$new}','new-'+self.cCount) );
+              }
+              
+            });
+            
+            ++self.cCount;
+            
+            var fIdx = cTarget.parent().find('td').index(cTarget),
+              newField = tplRow.find('td:eq('+fIdx+')');
+            
+            newField.html( userInp );
+            fieldName = newField.attr('name');
+            self.changedData[fieldName] = userInp;
+            
+            el.find('tbody:first').prepend(tplRow);
+              self.makeSelectable(el);
+ 
+            } else {
+              
+              if( 'date' === type ){
+              
+              userInp = editLayer.find('input').val();
+            
+            } else {
+              
+              userInp = editLayer.text();
+            }
+            
+            cTarget.html( userInp );
+            fieldName = cTarget.attr('name');
+            self.changedData[fieldName] = userInp;
+          }
+          
+          //console.log( "changed: "+fieldName+' to: '+userInp  );
+          editLayers.unbind('blur');
+          editLayers.hide();
+          
+        });
+
+        //editLayer.selection( 0, editLayer.text().length );
+        
+        editLayer.show();
+        if( 'date' === type ){
+          editLayer.find('input').datepicker('show');
+        }
+        editLayer.focus();
+
 
       });
 
-    }//end startEditMode 
+    },
+    
+    /**
+     * Das Grid Element Editierbar machen
+     */
+    save: function(){
+
+      var el = this.element.parent(),
+        opt = this.options,
+        self = this,
+        editLayers = $S('.wgt-editlayer');
+      
+      var requestBody = '';
+      
+      if (!self.changedData){
+        $D.message('nothing to save');
+        return;
+      }
+      
+      for( var key in self.changedData ){
+        
+        if(undefined===self.changedData[key]){
+          continue;
+        }
+
+        requestBody += '&'+key+'='+self.changedData[key];
+      }
+      
+      $R.form( opt.save_form, null, {'data':self.changedData,'success':function(){
+        // empty changed data
+        self.changedData = {};
+        self.reColorize();
+        self.syncColWidth();
+      }});
+      
+      //alert( 'changed: '+requestBody );
+    }
  
   });
   
