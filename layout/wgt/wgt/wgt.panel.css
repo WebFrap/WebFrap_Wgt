@@ -74,7 +74,7 @@ div.wgt-panel ul.progress
 }
 
 
-div.wgt-panel label
+div.wgt-panel label.text
 {
   display:block;
   float:left;
