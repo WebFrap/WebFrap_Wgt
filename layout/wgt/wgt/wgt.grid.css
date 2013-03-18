@@ -139,6 +139,7 @@ table.wgt-grid .ui-sortable td.pos
 .wgt-editlayer
 {
   cursor:text;
+	overflow:auto;
 }
 
 .wgt-editlayer.number,
