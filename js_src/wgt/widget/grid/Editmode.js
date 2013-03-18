@@ -68,7 +68,8 @@
      */
     startEditMode: function( jHeadTab ){
 
-      var el = this.element.parent(),
+      var opts = this.options, 
+        el = this.element.parent(),
         elId = this.element.attr('id'),
         self = this,
         editLayers = $S('.wgt-editlayer');
@@ -88,8 +89,16 @@
         
         editLayers.trigger('blur');
         
+        // prüfen ob das feld überhaupt editierbar ist
         if( !(cTarget.is('td') && !cTarget.is('.pos,.ro,.nav,.sort')) ){
           //editLayers.trigger('blur');
+          editLayers.unbind('blur');
+          editLayers.hide();
+          return;
+        }
+        
+        // check ob die ganze reihe vielleicht readonly ist
+        if( cTarget.parent.is('.ro') ){
           editLayers.unbind('blur');
           editLayers.hide();
           return;
@@ -217,6 +226,14 @@
               
             });
             
+            // hinzufügen von default values, z.B in referenzen
+            if( opts.edit_hidden_def_values ){
+              for (var defValName in opts.edit_hidden_def_values) {
+                if( opts.edit_hidden_def_values.hasOwnProperty( defValName ) ) {
+                  self.changedData[defValName.replace('{$new}','new-'+self.cCount)] = opts.edit_hidden_def_values[defValName];
+                }
+              }
+            }
             ++self.cCount;
             
             var fIdx = cTarget.parent().find('td').index(cTarget),
