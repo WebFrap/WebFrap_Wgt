@@ -91,7 +91,7 @@
         editLayers.trigger('blur');
         
         // prüfen ob das feld überhaupt editierbar ist
-        if( !(cTarget.is('td') && !cTarget.is('.pos,.ro,.nav,.sort')) ){
+        if( !(cTarget.is('td') && !cTarget.is('.pos,.ro,.nav,.sort,.nav_split')) ){
           //editLayers.trigger('blur');
           editLayers.unbind('blur');
           editLayers.hide();
