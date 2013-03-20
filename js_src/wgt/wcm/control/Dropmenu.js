@@ -12,13 +12,17 @@ $R.addAction( 'control_dropmenu', function( jNode ){
   
   if( !cfgData.is('var') ){
     cfgData = $S('var#'+jNode.attr('id')+'-cfg-dropmenu');
+    
+    if(cfgData.length>1){
+      console.log("Found multiple confs "+jNode.attr('id')+' '+cfgData.length );
+      cfgData = $S(cfgData.get(0));
+    }
   }
   
   if( cfgData.is('var') ){
     settings = $WGT.robustParseJSON(cfgData.text());
     //cfgData.remove();
-  }
-  else{
+  } else {
     settings = {};
   }
 
