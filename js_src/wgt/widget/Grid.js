@@ -279,7 +279,9 @@
 
         headBar.css( 'marginLeft', '-'+gof.scrollLeft+'px' );
         ge.parent().parent().find('div.wgt-drag').css( 'marginLeft', '-'+gof.scrollLeft+'px' );
-
+        
+        // on scroll editoverlay schliesen
+        $S('#wbf-body').trigger('mousedown.editable_grid');
         $D.scrollTrigger();
         //console.log('scroll '+gof.scrollLeft+'  '+gof.scrollTop);
       });
