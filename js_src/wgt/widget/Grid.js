@@ -142,7 +142,10 @@
 
         parentHeight -= 20;
         if (opt.search_able) {
-          parentHeight -= 23;
+          parentHeight -= 28;
+        }
+        if (opt.edit_able) {
+          parentHeight -= 35;
         }
         
         parentHeightStyle = ' style="height:'+(parentHeight)+'px;" ';

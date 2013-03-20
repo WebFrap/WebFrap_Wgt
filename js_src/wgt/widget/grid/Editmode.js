@@ -84,7 +84,7 @@
         var cTarget =  $S(e.target);
         
         // wenn innerhalb des edit layers
-        if( self.activEditLayer && cTarget.parentX(self.activEditLayer) ){
+        if ( self.activEditLayer && cTarget.parentX(self.activEditLayer) ){
           return;
         }
         
@@ -158,7 +158,7 @@
           var range,
             selection;
           
-          if(document.createRange){//Firefox, Chrome, Opera, Safari, IE 9+
+          if (document.createRange) {//Firefox, Chrome, Opera, Safari, IE 9+
           
             range = document.createRange();//Create a range (a range is a like the selection but invisible)
             range.selectNodeContents(self.activEditLayer.get(0));//Select the entire contents of the element with the range
@@ -180,11 +180,11 @@
         $S('#wbf-body').bind('mousedown.editable_grid',function(e){
             
           var gTarget =  $S(e.target);
-          if( !self.activEditLayer ){
+          if ( !self.activEditLayer ){
             return;
           }
             
-          if( gTarget.is(self.activEditLayer) || gTarget.parentX(self.activEditLayer) ){
+          if ( gTarget.is(self.activEditLayer) || gTarget.parentX(self.activEditLayer) ){
             return;
           }
           editLayers.trigger('blur');
@@ -359,6 +359,8 @@
         self.syncColWidth();
       }});
       
+      this.element.find('td.changed').removeClass('changed');
+      
       //alert( 'changed: '+requestBody );
     },
     
@@ -374,6 +376,8 @@
       
       self.changedData[cellName] = value;
       cell.html(text);
+      cell.attr('value',value);
+      cell.addClass('changed');
         
     }
  
