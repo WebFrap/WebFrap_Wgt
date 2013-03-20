@@ -29,17 +29,16 @@
  * @author dominik bonsch <db@webfrap.net>
  * Editmode zum Grid hinzufügen
  */
-(function( $S, $G, undefined ) {
+(function($S, $G, undefined) {
   
   "use strict";
   
-  $S.widget( "wgt.grid", $S.wgt.grid, {
+  $S.widget("wgt.grid", $S.wgt.grid, {
     
     /**
      * Standard Options
      */
     options: {
-  
       // Editierbare Cells im Grid
       save_form: null,        // ID des Save Formulars bei editierbaren Tabellen
       edit_able: false,       // Flag ob
@@ -66,7 +65,7 @@
     /**
      * Das Grid Element Editierbar machen
      */
-    startEditMode: function( jHeadTab ){
+    startEditMode: function(jHeadTab){
 
       var opts = this.options, 
         el = this.element.parent(),
@@ -74,7 +73,7 @@
         self = this,
         editLayers = $S('.wgt-editlayer');
       
-      console.log("start editmode");
+      //console.log("start editmode");
       
       jHeadTab.find('table').append(el.find('tbody.editor'));
       
@@ -84,14 +83,14 @@
         var cTarget =  $S(e.target);
         
         // wenn innerhalb des edit layers
-        if ( self.activEditLayer && cTarget.parentX(self.activEditLayer) ){
+        if (self.activEditLayer && cTarget.parentX(self.activEditLayer)){
           return;
         }
         
         editLayers.trigger('blur');
         
         // prüfen ob das feld überhaupt editierbar ist
-        if( !(cTarget.is('td') && !cTarget.is('.pos,.ro,.nav,.sort,.nav_split')) ){
+        if (!(cTarget.is('td') && !cTarget.is('.pos,.ro,.nav,.sort,.nav_split'))){
           //editLayers.trigger('blur');
           editLayers.unbind('blur');
           editLayers.hide();
@@ -99,23 +98,23 @@
         }
         
         // check ob die ganze reihe vielleicht readonly ist
-        if( cTarget.parent().is('.ro') ){
+        if (cTarget.parent().is('.ro')){
           editLayers.unbind('blur');
           editLayers.hide();
           return;
         }
         
         // eine temporär id zuweisen
-        if ( !cTarget.attr('id') ){
+        if (!cTarget.attr('id')){
           cTarget.attr('id','wgt-id-'+new Date().getTime());
         }
 
         var ofs = cTarget.offset(),
           oW  = cTarget.outerWidth(),
           oH  = cTarget.outerHeight(),
-          type = $G.$WGT.getClassByPrefix( cTarget.prop('class'), 'type_' );
+          type = $G.$WGT.getClassByPrefix(cTarget.prop('class'), 'type_');
         
-        if( !type ){
+        if (!type) {
           type = 'text';
         }
         
@@ -126,11 +125,11 @@
         // nötig bei rich ui widgets
         self.activEditLayer.attr('wgt_target',cTarget.attr('id')).attr('wgt_list',elId);
 
-        //console.log( cTarget.parentX('table').css('margin-top')+' type '+type+' '+cTarget.prop('class') );
+        //console.log(cTarget.parentX('table').css('margin-top')+' type '+type+' '+cTarget.prop('class'));
         /**/
-        editLayers.trigger('blur');
-        editLayers.unbind('blur');
-        editLayers.hide();
+        editLayers.trigger('blur')
+          .unbind('blur')
+          .hide();
         
 
         self.activEditLayer.css({
@@ -140,20 +139,24 @@
           height:oH
         });
 
-        if( 'date' === type || 'datetime' === type  ){
+        if ('date' === type || 'datetime' === type  ){
           
           self.activEditLayer.find('input').val(cTarget.html());
           
-        } else if( 'select' === type ) {
+        } else if ('select' === type) {
           
           self.activEditLayer.html($S('#'+cTarget.attr('data_source')).text());
+          
+          if(!self.activEditLayer.find('option[value="'+cTarget.attr('value')+'"]').length){
+            self.activEditLayer.find('select').append('<option value="'+cTarget.attr('value')+'" >'+cTarget.text()+'</option>');
+          }
+          
           self.activEditLayer.find('select').val(cTarget.attr('value'));
-          console.log("set select value "+cTarget.attr('value'));
           
         }
         else{
           
-          self.activEditLayer.html( cTarget.html() );
+          self.activEditLayer.html(cTarget.html());
           
           var range,
             selection;
@@ -167,7 +170,7 @@
             selection.removeAllRanges();//remove any selections already made
             selection.addRange(range);//make the range you have just created the visible selection
           
-          } else if(document.selection) { //IE 8 and lower
+          } else if (document.selection) { //IE 8 and lower
          
             range = document.body.createTextRange();//Create a range (a range is a like the selection but invisible)
             range.moveToElementText(self.activEditLayer.get(0));//Select the entire contents of the element with the range
@@ -180,16 +183,16 @@
         $S('#wbf-body').bind('mousedown.editable_grid',function(e){
             
           var gTarget =  $S(e.target);
-          if ( !self.activEditLayer ){
+          if (!self.activEditLayer){
             return;
           }
             
-          if ( gTarget.is(self.activEditLayer) || gTarget.parentX(self.activEditLayer) ){
+          if (gTarget.is(self.activEditLayer) || gTarget.parentX(self.activEditLayer)){
             return;
           }
-          editLayers.trigger('blur');
-          editLayers.unbind('blur');
-          editLayers.hide();
+          editLayers.trigger('blur')
+            .unbind('blur')
+            .hide();
         });
 
         
@@ -203,17 +206,16 @@
             fieldName = '';
           
           // wenn es eine neue Zeile ist
-          if(cTarget.parent().is('.new')){
+          if (cTarget.parent().is('.new')){
             
-            editLayers.unbind('blur');
-            editLayers.hide();
+            editLayers.unbind('blur').hide();
             
             
             if ('date'===type || 'datetime'===type) {
               
               displTxt = userInp = self.activEditLayer.find('input').val();
             
-            } else if('select'===type) {
+            } else if ('select'===type) {
               
               userInp  = self.activEditLayer.find('select').val();
               displTxt = self.activEditLayer.find('select option:selected').text();
@@ -224,18 +226,19 @@
             }
             
             // keine leeren
-            if( !displTxt || '' === displTxt.trim() ){
+            if (!displTxt || '' === displTxt.trim()){
               return;
             }
             
             
             var tplRow = cTarget.parent().parent().find('tr.template')
-              .clone().removeClass('template');
+              .clone()
+              .removeClass('template');
             
             var tmpRowId = tplRow.attr('id');
           
             if (tmpRowId) {
-              tplRow.attr( 'id', tmpRowId.replace('{$new}','new-'+self.cCount) );
+              tplRow.attr('id', tmpRowId.replace('{$new}','new-'+self.cCount));
             }
             
             tplRow.find('td.pos').html('<i class="icon-remove" ></i>').click(function(){
@@ -247,15 +250,15 @@
                 tmpName = tmpNode.attr('name');
               
               if (tmpName) {
-                tmpNode.attr( 'name', tmpName.replace('{$new}','new-'+self.cCount) );
+                tmpNode.attr('name', tmpName.replace('{$new}','new-'+self.cCount));
               }
               
             });
             
             // hinzufügen von default values, z.B in referenzen
-            if( opts.edit_hidden_def_values ){
+            if (opts.edit_hidden_def_values){
               for (var defValName in opts.edit_hidden_def_values) {
-                if( opts.edit_hidden_def_values.hasOwnProperty( defValName ) ) {
+                if (opts.edit_hidden_def_values.hasOwnProperty(defValName)) {
                   self.changedData[defValName.replace('{$new}','new-'+self.cCount)] = opts.edit_hidden_def_values[defValName];
                 }
               }
@@ -265,7 +268,7 @@
             var fIdx = cTarget.parent().find('td').index(cTarget),
               newField = tplRow.find('td:eq('+fIdx+')');
             
-            newField.html( displTxt );
+            newField.html(displTxt);
             fieldName = newField.attr('name');
             self.changedData[fieldName] = userInp;
             
@@ -274,11 +277,11 @@
  
           } else {
               
-            if( 'date' === type || 'datetime' === type ){
+            if ('date' === type || 'datetime' === type) {
               
               displTxt = userInp = self.activEditLayer.find('input').val();
             
-            } else if( 'select' === type ){
+            } else if ('select' === type) {
               
               userInp = self.activEditLayer.find('select').val();
               displTxt = self.activEditLayer.find('select option:selected').text();
@@ -288,32 +291,30 @@
               displTxt = userInp = self.activEditLayer.text();
             }
             
-            if(undefined !==self.changedData[fieldName] && self.changedData[fieldName] === userInp)
+            if (undefined !==self.changedData[fieldName] && self.changedData[fieldName] === userInp)
               return;
           
-            cTarget.html( displTxt );
+            cTarget.html(displTxt);
             cTarget.addClass('changed');
             cTarget.attr('value',userInp);
             fieldName = cTarget.attr('name');
             self.changedData[fieldName] = userInp;
           }
           
-          //console.log( "changed: "+fieldName+' to: '+userInp  );
           self.activEditLayer = null;
           editLayers.unbind('blur');
           editLayers.hide();
           
         });
 
-        //editLayer.selection( 0, editLayer.text().length );
+        //editLayer.selection(0, editLayer.text().length);
         
         self.activEditLayer.show();
-        if( 'date' === type || 'datetime' === type ){
+        if ('date' === type || 'datetime' === type) {
           
-          self.activEditLayer.find('input').datepicker('show');
-          self.activEditLayer.find('input').focus();
+          self.activEditLayer.find('input').datepicker('show').focus();
           
-        } else if( 'select' === type ){
+        } else if ('select' === type) {
           
           self.activEditLayer.find('select').focus();
           
@@ -343,16 +344,16 @@
         return;
       }
       
-      for( var key in self.changedData ){
+      for (var key in self.changedData){
         
-        if(undefined===self.changedData[key]){
+        if (undefined===self.changedData[key]){
           continue;
         }
 
         requestBody += '&'+key+'='+self.changedData[key];
       }
       
-      $R.form( opt.save_form, null, {'data':self.changedData,'success':function(){
+      $R.form(opt.save_form, null, {'data':self.changedData,'success':function(){
         // empty changed data
         self.changedData = {};
         self.reColorize();
@@ -361,18 +362,18 @@
       
       this.element.find('td.changed').removeClass('changed');
       
-      //alert( 'changed: '+requestBody );
+      //alert('changed: '+requestBody);
     },
     
     /**
      * In eine Zelle und gleichzeitig den changedData array schreiben
      */
-    writeCell: function( cellId, value, text ){
+    writeCell: function(cellId, value, text){
 
       var cell = $S('#'+cellId),
         cellName = cell.attr('name');
       
-      console.log('write cell n:'+cellName+' v: '+value+' t: '+text );
+      console.log('write cell n:'+cellName+' v: '+value+' t: '+text);
       
       self.changedData[cellName] = value;
       cell.html(text);
@@ -383,5 +384,5 @@
  
   });
   
-}( jQuery, window ) );
+}(jQuery, window));
 
