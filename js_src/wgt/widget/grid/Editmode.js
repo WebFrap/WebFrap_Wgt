@@ -287,9 +287,13 @@
               
               displTxt = userInp = self.activEditLayer.text();
             }
+            
+            if(undefined !==self.changedData[fieldName] && self.changedData[fieldName] === userInp)
+              return;
           
             cTarget.html( displTxt );
             cTarget.addClass('changed');
+            cTarget.attr('value',userInp);
             fieldName = cTarget.attr('name');
             self.changedData[fieldName] = userInp;
           }
