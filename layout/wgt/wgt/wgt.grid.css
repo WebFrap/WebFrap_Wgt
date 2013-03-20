@@ -100,6 +100,13 @@ table.wgt-grid.simple tbody tr td
   vertical-align: top;
 }
 
+div.wgt-grid-body td.changed,
+table.wgt-grid.simple tbody tr td.changed
+{
+  border-bottom:1px solid #FF7746;
+	background-color:#FFECD0;
+}
+
 table.wgt-grid.simple
 {
   border-left:1px solid silver;

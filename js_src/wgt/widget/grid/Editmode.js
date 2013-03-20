@@ -77,8 +77,9 @@
       console.log("start editmode");
       
       jHeadTab.find('table').append(el.find('tbody.editor'));
+      
 
-      el.parent().click(function( e ){
+      el.parent().bind('click.edit_cell', function(e){
 
         var cTarget =  $S(e.target);
         
@@ -98,7 +99,7 @@
         }
         
         // check ob die ganze reihe vielleicht readonly ist
-        if( cTarget.parent.is('.ro') ){
+        if( cTarget.parent().is('.ro') ){
           editLayers.unbind('blur');
           editLayers.hide();
           return;
@@ -140,18 +141,23 @@
         });
 
         if( 'date' === type || 'datetime' === type  ){
+          
           self.activEditLayer.find('input').val(cTarget.html());
-        }
-        else if( 'select' === type ){
+          
+        } else if( 'select' === type ) {
           
           self.activEditLayer.html($S('#'+cTarget.attr('data_source')).text());
           self.activEditLayer.find('select').val(cTarget.attr('value'));
+          console.log("set select value "+cTarget.attr('value'));
           
         }
         else{
+          
           self.activEditLayer.html( cTarget.html() );
           
-          var range,selection;
+          var range,
+            selection;
+          
           if(document.createRange){//Firefox, Chrome, Opera, Safari, IE 9+
           
             range = document.createRange();//Create a range (a range is a like the selection but invisible)
@@ -169,8 +175,28 @@
             range.select();//Select the range (make it the visible selection
           }
         }
+        
+        // bei globalen klicks den editlayer entfernen
+        $S('#wbf-body').bind('mousedown.editable_grid',function(e){
+            
+          var gTarget =  $S(e.target);
+          if( !self.activEditLayer ){
+            return;
+          }
+            
+          if( gTarget.is(self.activEditLayer) || gTarget.parentX(self.activEditLayer) ){
+            return;
+          }
+          editLayers.trigger('blur');
+          editLayers.unbind('blur');
+          editLayers.hide();
+        });
 
+        
         self.activEditLayer.blur(function(){
+          
+          // global event entfernen
+          $S('#wbf-body').unbind('mousedown.editable_grid');
           
           var userInp = '', 
             displTxt = '',
@@ -263,11 +289,13 @@
             }
           
             cTarget.html( displTxt );
+            cTarget.addClass('changed');
             fieldName = cTarget.attr('name');
             self.changedData[fieldName] = userInp;
           }
           
           //console.log( "changed: "+fieldName+' to: '+userInp  );
+          self.activEditLayer = null;
           editLayers.unbind('blur');
           editLayers.hide();
           
@@ -303,9 +331,8 @@
       var el = this.element.parent(),
         opt = this.options,
         self = this,
-        editLayers = $S('.wgt-editlayer');
-      
-      var requestBody = '';
+        editLayers = $S('.wgt-editlayer'),
+        requestBody = '';
       
       if (!self.changedData){
         $D.message('nothing to save');
