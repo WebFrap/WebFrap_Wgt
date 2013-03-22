@@ -6,15 +6,15 @@
 <?php start_highlight(); ?>
 
 // gibt "class_key" zurück
-var cKey1 = $WGT.getClassByPrefix( 'prefix_class_key other_class', 'prefix_', true );
+var cKey1 = $WGT.getClassByPrefix('prefix_class_key other_class', 'prefix_', true);
 
 // gibt "prefix_class_key" zurück
-var cKey2 = $WGT.getClassByPrefix( 'prefix_class_key other_class', 'prefix_', false );
+var cKey2 = $WGT.getClassByPrefix('prefix_class_key other_class', 'prefix_', false);
 
 // gibt null zurück
-var cKey3 = $WGT.getClassByPrefix( 'prefix_class_key other_class', 'not_exists' );
+var cKey3 = $WGT.getClassByPrefix('prefix_class_key other_class', 'not_exists');
 
-<?php display_highlight( 'javascript' ); ?>
+<?php display_highlight('javascript'); ?>
 
 
 <label>robustParseJSON</label>
@@ -27,7 +27,7 @@ var jsonString = '['
   + '{"i":"42","v":"Antwort auf Alles"}'
   + ']';
 
-var jsonData = $WGT.robustParseJSON( jsonString );
+var jsonData = $WGT.robustParseJSON(jsonString);
 
 
-<?php display_highlight( 'javascript' ); ?>
+<?php display_highlight('javascript'); ?>

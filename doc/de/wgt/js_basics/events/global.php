@@ -18,9 +18,9 @@ wenn nichtmehr benötigt wieder zu entfernen
 <label>Beispiel</label>
 <?php start_highlight(); ?>
 
-(function( $S ) {
+(function($S) {
 
-  $S.widget( "wgt.demo_events", {
+  $S.widget("wgt.demo_events", {
 
 
     /**
@@ -28,7 +28,7 @@ wenn nichtmehr benötigt wieder zu entfernen
      */
     active: function(){
       
-      $S(document).bind( 'mouseup.demo_events', function(){
+      $S(document).bind('mouseup.demo_events', function(){
         // ok now we are active and the global event is required
       });
       
@@ -40,12 +40,12 @@ wenn nichtmehr benötigt wieder zu entfernen
     deactivate: function(){
       
       // ok fine, don't call us, we call you!
-      $S(document).unbind( 'mouseup.demo_events' );
+      $S(document).unbind('mouseup.demo_events');
     
     }//end deactivate */
 
   });
   
-}( jQuery ) );
+}(jQuery));
 
-<?php display_highlight( 'javascript' ); ?>
+<?php display_highlight('javascript'); ?>

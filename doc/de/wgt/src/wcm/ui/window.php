@@ -27,7 +27,7 @@
   <img class="icon xsmall" src="./icons/default/xsmall/webfrap/menu.png" />
 </button>
 
-<?php display_highlight( 'xml' ); ?>
+<?php display_highlight('xml'); ?>
 
 <label>Javascript</label>
 <?php start_highlight(); ?>
@@ -54,4 +54,4 @@
   <img class="icon xsmall" src="./icons/default/xsmall/webfrap/menu.png" />
 </button>
 
-<?php display_highlight( 'xml' ); ?>
+<?php display_highlight('xml'); ?>

@@ -13,7 +13,7 @@ in den Browser zu puschen ohne, dass der Browser diese expliziet behandeln muss.
 <?php start_highlight(); ?>
 <_..._>
 </_..._>
-<?php display_highlight( 'js' ); ?>
+<?php display_highlight('js'); ?>
 
 
 ## $R.put
@@ -34,7 +34,7 @@ Leider keine Fileuploads möglich im Moment
 this.put = function(requestUrl, requestData, params){
 …
 };
-<?php display_highlight( 'javascript' ); ?>
+<?php display_highlight('javascript'); ?>
 
 ## $R.post
 
@@ -53,7 +53,7 @@ Senden eines HTTP POST Requests an den Server.
 this.post = function(requestUrl, requestData, params){
 …
 };
-<?php display_highlight( 'javascript' ); ?>
+<?php display_highlight('javascript'); ?>
 
 
 
@@ -70,10 +70,10 @@ Senden eines HTTP DELETE Requests an den Server
  * @param  params
  * @return Json
  */
-this.del = function( requestUrl, params  ){
+this.del = function(requestUrl, params  ){
 …
 };
-<?php display_highlight( 'javascript' ); ?>
+<?php display_highlight('javascript'); ?>
 
 Parameter für Params:
 
@@ -82,7 +82,7 @@ Delete Request ein Confirm Window geöffnet.
 
 <?php start_highlight(); ?>
 $R.del('ajax.php?c=Some.Thing.toDelete&objid=32');
-<?php display_highlight( 'javascript' ); ?>
+<?php display_highlight('javascript'); ?>
 
 ## $R.form
 

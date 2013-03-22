@@ -9,9 +9,9 @@
 /**
  * @author dominik alexander bonsch <dominik.bonsch@webfrap.net>
  */
-(function( $S ) {
+(function($S) {
 
-  $S.widget( "wgt.hello_world", {
+  $S.widget("wgt.hello_world", {
       
     /**
     * Der einfache Text als Variable
@@ -33,14 +33,14 @@
         
         // das aktuelle element mit "hello world" ersetzen
         // tag ist konfigurierbar
-        this.element.replace( '<'+this.options.tag+'>'+this.text+'</'+this.options.tag+'>'  );
+        this.element.replace('<'+this.options.tag+'>'+this.text+'</'+this.options.tag+'>'  );
 
     }//end _create
 
   });
 
-}( jQuery ) );
-<?php display_highlight( 'javascript' ); ?>
+}(jQuery));
+<?php display_highlight('javascript'); ?>
 
 
 <label>Einbinden</label>
@@ -57,4 +57,4 @@ $S('#replace-me').hello_world();
 $S('#replace-me2').hello_world({'tag':'span'});
 </script>
 
-<?php display_highlight( 'javascript' ); ?>
+<?php display_highlight('javascript'); ?>
