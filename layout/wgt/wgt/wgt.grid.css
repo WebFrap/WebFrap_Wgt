@@ -252,6 +252,12 @@ div.wgt-grid-head tbody.editor td
 	cursor:text;
 }
 
+div.wgt-grid-head tbody.editor td.required
+{
+	border-bottom: 1px solid #FF7B2F;
+	background-color:#FFE8DA;
+}
+
 /* Drag & Drop for Resize */
 
 div.wgt-grid div.wgt-drag
