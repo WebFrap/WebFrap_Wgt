@@ -74,8 +74,10 @@
         editLayers = $S('.wgt-editlayer');
       
       //console.log("start editmode");
-      
-      jHeadTab.find('table').append(el.find('tbody.editor'));
+      // create verschieben wenn vorhanden
+      if( el.find('tbody.editor').length ){
+        jHeadTab.find('table').append(el.find('tbody.editor'));
+      }
       
 
       el.parent().bind('click.edit_cell', function(e){
