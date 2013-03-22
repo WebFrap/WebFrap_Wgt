@@ -11,7 +11,7 @@
 <?php start_highlight(); ?>
 var data = [1,2,3,4];
 
-for( var key=0; key < data.length; key++ ) {
+for ( var key=0; key < data.length; key++ ) {
   alert( data[key] );
 }
 <?php display_highlight( 'javascript' ); ?>
@@ -21,7 +21,7 @@ for( var key=0; key < data.length; key++ ) {
 <?php start_highlight(); ?>
 var data = {val1:1,val2:2};
 
-for( var key in data ) {
+for ( var key in data ) {
   alert( data[data] );
 }
 <?php display_highlight( 'javascript' ); ?>

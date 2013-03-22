@@ -13,14 +13,14 @@
 // index key plötzlich der index der äuseren schleife von der innerem mit incrementiert
 // wird
 
-for( var idx=1; idx<42; idx++ ){
+for ( var idx=1; idx<42; idx++ ){
 
-  if( !some_check( idx ) ){
+  if ( !some_check( idx ) ){
     // mit break kann die Schleife abgebrochen werden
     break;
   }
   
-  if( !another_check( idx ) ){
+  if ( !another_check( idx ) ){
     // mit continue kann der rest des codes übersprungen werden
     continue;
   }
