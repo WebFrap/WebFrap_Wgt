@@ -646,10 +646,24 @@ img.wgt-icon.xxlarge
 }
 
 /* height range */
+.hr1_2x
+{
+  min-height:100px;
+  max-height:200px;  
+  overflow:auto;
+}
+
+.hr15_25x
+{
+  min-height:150px;
+  max-height:250px;  
+  overflow:auto;
+}
+
 .hr2_3x
 {
   min-height:200px;
-  min-height:300px;  
+  max-height:300px;  
   overflow:auto;
 }
 

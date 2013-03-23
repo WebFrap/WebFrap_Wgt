@@ -90,6 +90,22 @@
    
     return rightArrowParents.join(joinBy)+' '+currentDate.getMinutes()+'.'+currentDate.getSeconds()+'.'+currentDate.getMilliseconds();
   };
+  
+  /**
+   * add Height
+   */
+  $S.fn.addHeight = function( height ){
+     $S(this).height( ($S(this).height()+height)+'px' );
+    return $S;
+  };
+  
+  /**
+   * add Height
+   */
+  $S.fn.subHeight = function( height ){
+     $S(this).height( ($S(this).height()-height)+'px' );
+    return $S;
+  };
 
   /**
    * Disable the textselection

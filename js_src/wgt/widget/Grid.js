@@ -142,7 +142,7 @@
 
         parentHeight -= 20;
         if (opt.search_able) {
-          parentHeight -= 28;
+          parentHeight -= 35;
         }
         if (opt.edit_able && ge.find('tbody.editor').length) {
           parentHeight -= 35;

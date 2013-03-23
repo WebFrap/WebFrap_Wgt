@@ -31,14 +31,14 @@
  */
 $R.addAction( 'ui_accordion_tab', function( jNode ){
   
-    var settings = {};
+    var settings = {icons:null};
     
     try{
       
       var cfgData = jNode.next();
       settings = cfgData.is('var')
         ? $WGT.robustParseJSON(cfgData.text())
-        : {autoHeight: true,fillSpace: true,animated: false};
+        : {autoHeight: true,fillSpace: true,animated: false,icons:null};
     }
     catch(err){
       
