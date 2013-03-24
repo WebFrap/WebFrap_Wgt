@@ -1395,6 +1395,12 @@ div.box-message a
   zoom: 1;
 }
 
+/*no padding version*/
+.ui-accordion .ui-accordion-content.np
+{
+  padding: 0px;
+}
+
 .ui-accordion .ui-accordion-content-active
 {
   display: block;

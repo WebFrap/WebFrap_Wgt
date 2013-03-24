@@ -7,6 +7,10 @@ ul.wgt-list.inline
 {
 	list-style:none;
 }
+ul.wgt-list li
+{
+  line-height:20px;
+}
 
 ul.wgt-list.inline li
 {
@@ -17,6 +21,18 @@ ul.wgt-list.inline li
   text-align:center;
 }
 
+ul.wgt-list.kv label
+{
+  display:block;
+  float:left;
+}
+
+ul.wgt-list.kv span
+{
+  display:block;
+  float:right;
+  text-align:right;
+}
 
 ul.wgt-assign-block
 {
@@ -35,5 +51,7 @@ ul.wgt-assign-block>li
   width: 135px;
   white-space:nowrap;
 }
+
+
 
 
