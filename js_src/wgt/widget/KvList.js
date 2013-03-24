@@ -77,7 +77,7 @@
       var self = this;
 
       this.element.appear(function(){
-        self.buildList();
+        self.buildList( self.element );
       });
 
     },//end _create
@@ -86,9 +86,11 @@
      * Die Standardmethode in welcher eine normale Tabelle zum Gridelement
      * umgebaut wird
      */
-    buildList: function(){
+    buildList: function( el ){
         
       this.startEditMode();
+      this.setDelEvents( el );
+      this.setCreateEvents();
 
     },//end buildList
 
@@ -276,11 +278,55 @@
     },
     
     /**
+     * Setzen der Delete Events
+     */
+    setDelEvents: function( el ){
+      
+      var delEvent = this._eventDelete;
+      el.find('.kvlac_del').bind('click',delEvent);
+      
+    },
+    
+    /**
+     * Setzen der Delete Events
+     */
+    _eventDelete: function(){
+      
+      $S(this).parentX('li').remove();
+      
+    },
+    
+    
+    /**
+     * Erstellen der Create Events
+     */
+    setCreateEvents: function(){
+      
+      var el = this.element,
+        self = this;
+      
+      el.find('ul.wgt-list.editor input.inp_label').bind('change',function(){
+        
+        var tplNode = el.find('ul.wgt-list.editor li.template').clone();
+        tplNode.removeClass('template')
+          .find('span.editable').text($S(this).val());
+        
+        tplNode.find('.kvlac_del').bind('click',self._eventDelete)
+        
+        el.find('ul.wgt-list.content').prepend(tplNode);
+        
+        $S(this).val('');
+        
+      });
+      
+    },
+    
+    /**
      * Das Grid Element Editierbar machen
      */
     save: function(){
 
-      var el = this.element.parent(),
+      var el = this.element,
         opt = this.options,
         self = this,
         editLayers = $S('.wgt-editlayer'),
