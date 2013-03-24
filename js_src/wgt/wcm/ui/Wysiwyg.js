@@ -165,6 +165,8 @@ $R.addAction( 'ui_wysiwyg', function( jNode ){
 
     $D.errorWindow( 'UI Error', 'Got undefined Editor mode '+settings.mode+', fallback to simple mode.' );
   }
+  
+  console.log( "w: "+settings.width+" h: "+settings.height );
 
   jNode.tinymce({
     
