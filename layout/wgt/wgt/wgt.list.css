@@ -21,10 +21,17 @@ ul.wgt-list.inline li
   text-align:center;
 }
 
-ul.wgt-list.kv label
+ul.wgt-list.kv li
+{
+  line-height:23px;
+}
+
+ul.wgt-list.kv label,
+ul.wgt-list.kv p
 {
   display:block;
   float:left;
+  clear:left;
 }
 
 ul.wgt-list.kv span
