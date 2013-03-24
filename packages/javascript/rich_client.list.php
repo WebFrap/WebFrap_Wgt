@@ -90,6 +90,7 @@ $files = array
   PATH_WGT.'js_src/wgt/widget/WindowSelection.js',
   PATH_WGT.'js_src/wgt/widget/TagCloud.js',
   PATH_WGT.'js_src/wgt/widget/CommentTree.js',
+  PATH_WGT.'js_src/wgt/widget/KvList.js',
 
   // add wgt core
   PATH_WGT.'js_src/wgt/jquery/ui/WgtTip.js',
@@ -216,6 +217,7 @@ $files = array
   PATH_WGT.'js_src/wgt/wcm/widget/I18nInputTab.js',
   PATH_WGT.'js_src/wgt/wcm/widget/TagCloud.js',
   PATH_WGT.'js_src/wgt/wcm/widget/CommentTree.js',
+  PATH_WGT.'js_src/wgt/wcm/widget/KvList.js',
 
   // d3 charts
   PATH_WGT.'js_src/wgt/wcm/graph/LineChart.js',

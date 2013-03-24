@@ -34,11 +34,11 @@ ul.wgt-list.kv p
   clear:left;
 }
 
-ul.wgt-list.kv span
+ul.wgt-list.kv span,
+ul.wgt-list.kv a
 {
   display:block;
   float:right;
-  text-align:right;
 }
 
 ul.wgt-assign-block
