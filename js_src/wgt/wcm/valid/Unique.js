@@ -7,13 +7,13 @@
  */
 $R.addAction( 'valid_unique', function( jNode ){
 
-  jNode.removeClass("wcm_unique");
+  jNode.removeClass("wcm_valid_unique");
   
   // nur auf textarea und inputs verwenden
   // bei selectboxen wäre das vermutlich bescheiden
   if( jNode.is('input') || jNode.is('textarea') ){
 
-    if( false == $R.get(jNode.attr('wgt_cksrv')) ){
+    if( false == $R.get(jNode.attr('wgt_cksrv')).data ){
       jNode.addClass( 'state-warn' );
       jNode.attr('title',"Value allready exists");
     }
