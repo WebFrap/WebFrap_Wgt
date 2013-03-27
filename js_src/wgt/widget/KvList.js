@@ -105,8 +105,6 @@
         self = this,
         editLayers = $S('.wgt-editlayer');
 
-      
-
       el.find('ul.content').bind('click.edit_list', function(e){
 
         var cTarget =  $S(e.target);

@@ -2,7 +2,7 @@
 
 // BODY Layout
 $bgContentLight = '#FFFFFF';
-$bgContentDark = '#FCFCFC';
+$bgContentDark = '#F6F6F6';
 
 $borderLayout = '1px solid #5c5c5c';
 
