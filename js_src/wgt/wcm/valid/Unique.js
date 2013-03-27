@@ -13,24 +13,37 @@ $R.addAction( 'valid_unique', function( jNode ){
   // bei selectboxen wäre das vermutlich bescheiden
   if( jNode.is('input') || jNode.is('textarea') ){
 
-    if( false == $R.get(jNode.attr('wgt_cksrv')).data ){
-      jNode.addClass( 'state-warn' );
-      jNode.attr('title',"Value allready exists");
-    }
-    else{
-      jNode.addClass( 'state-ok' );
-    }
-    
     jNode.bind( 'change.valid_unqiue', function(){
-      if( '' == ''+jNode.val() ){
-        jNode.removeClass( 'state-ok' );
-        jNode.addClass( 'state-warn' );
-        jNode.attr('title',"Value allready exists");
-      }
-      else{
-        jNode.removeClass( 'state-warn' );
-        jNode.addClass( 'state-ok' );
+      
+      if ('' == ''+jNode.val()) {
+        
+        jNode.removeClass('state-warn');
+        jNode.addClass('state-ok');
         jNode.attr('title',"Insert value");
+        
+        if(jNode.next().is('i.icon-ban-circle')){
+          jNode.next().is('i.icon-ban-circle').remove();
+        }
+        
+      } else {
+        
+        if (1 == $R.get(jNode.attr('wgt_cksrv')+'&val='+jNode.val()).data) {
+          
+          jNode.addClass( 'state-warn' );
+          jNode.attr('title',"Value allready exists");
+          jNode.after('<i class="icon-ban-circle" ></i>');
+        
+        } else {
+          
+          jNode.addClass( 'state-ok' );
+          jNode.removeClass('state-warn');
+          jNode.attr('title',"Insert value");
+          
+          if(jNode.next().is('i.icon-ban-circle')){
+            jNode.next().remove();
+          }
+          
+        }
       }
         
     });
