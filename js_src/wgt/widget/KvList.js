@@ -32,7 +32,6 @@
 
   "use strict";
 
-
   $S.widget( "wgt.kvList", {
 
 
@@ -47,6 +46,9 @@
       
       // Editierbare Cells im Grid
       save_form: null,        // ID des Save Formulars bei editierbaren Tabellen
+      srv_insert: null,       // Url für insert
+      srv_edit: null,         // Url für edit
+      srv_delete: null,       // Url für delete
       edit_able: false,       // Flag ob
       allow_insert: false,    // Sollen neue Datensätze angelegt werden können
       edit_hidden_def_values: {} // versteckte default Werte für das Editable grid, wichtig z.B bei Referenzen

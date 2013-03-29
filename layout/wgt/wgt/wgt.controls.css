@@ -19,6 +19,13 @@
   height:22px;
 }
 
+.wgt-button.save_first,
+.wgt-button2.save_first
+{
+  border: 1px solid #FF6614;
+  color: #FF6614;
+}
+
 .wgt-button.append,
 .wgt-button.right,
 .wgt-button2.append,
