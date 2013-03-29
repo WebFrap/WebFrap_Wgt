@@ -303,19 +303,49 @@
     setCreateEvents: function(){
       
       var el = this.element,
+        opts = this.options,
         self = this;
       
       el.find('ul.wgt-list.editor input.inp_label').bind('change',function(){
         
-        var tplNode = el.find('ul.wgt-list.editor li.template').clone();
-        tplNode.removeClass('template')
-          .find('span.editable').text($S(this).val());
+        var tplNode,
+        tmpRowId,
+        newName,
+        inp = $S(this);
         
-        tplNode.find('.kvlac_del').bind('click',self._eventDelete)
+        tplNode = el.find('ul.wgt-list.editor li.template').clone();
+        tplNode.removeClass('template')
+          .find('span.editable').text(inp.val());
+        
+        tplNode.find('.kvlac_del').bind('click',self._eventDelete);
+        
+        tmpRowId = tplNode.attr('id');
+        
+        if (tplNode) {
+          tplNode.attr('id', tmpRowId.replace('{$new}','new-'+self.cCount));
+        }
+
+        tplNode.find('.editable').each(function(){
+          newName =  $S(this).attr('name').replace('{$new}','new-'+self.cCount);
+          $S(this).attr('name', newName );
+        });
+        
+        self.changedData[newName] = inp.val();
+        
+        // hinzufügen von default values, z.B in referenzen
+        if (opts.edit_hidden_def_values){
+          for (var defValName in opts.edit_hidden_def_values) {
+            if (opts.edit_hidden_def_values.hasOwnProperty(defValName)) {
+              self.changedData[defValName.replace('{$new}','new-'+self.cCount)] = opts.edit_hidden_def_values[defValName];
+            }
+          }
+        }
+        ++self.cCount;
         
         el.find('ul.wgt-list.content').prepend(tplNode);
         
         $S(this).val('');
+
         
       });
       
@@ -345,6 +375,8 @@
 
         requestBody += '&'+key+'='+self.changedData[key];
       }
+      
+      console.log("save form "+opt.save_form);
       
       $R.form(opt.save_form, null, {'data':self.changedData,'success':function(){
         // empty changed data
