@@ -282,21 +282,23 @@
      */
     setDelEvents: function( el ){
       
-      var delEvent = this._eventDelete;
-      el.find('.kvlac_del').bind('click',delEvent);
+      var delEvent = this._eventDelete,
+        opts = this.options;
+      
+      el.find('.kvlac_del').not('init').bind('click',function(){
+        
+        var pX = $S(this).parentX('li'),
+          eid = pX.attr('eid');
+        
+        if (eid) {
+          $R.del(opts.srv_delete+pX.attr('eid'));
+        }
+        
+        pX.remove();
+      }).addClass('init');
       
     },
-    
-    /**
-     * Setzen der Delete Events
-     */
-    _eventDelete: function(){
-      
-      $S(this).parentX('li').remove();
-      
-    },
-    
-    
+
     /**
      * Erstellen der Create Events
      */
@@ -317,7 +319,17 @@
         tplNode.removeClass('template')
           .find('span.editable').text(inp.val());
         
-        tplNode.find('.kvlac_del').bind('click',self._eventDelete);
+        tplNode.find('.kvlac_del').bind('click',function(){
+          
+          var pX = $S(this).parentX('li'),
+            eid = pX.attr('eid');
+          
+          if (eid) {
+            $R.del(opts.srv_delete+pX.attr('eid'));
+          }
+          
+          pX.remove();
+        });
         
         tmpRowId = tplNode.attr('id');
         
