@@ -325,10 +325,21 @@
           tplNode.attr('id', tmpRowId.replace('{$new}','new-'+self.cCount));
         }
 
-        tplNode.find('.editable').each(function(){
-          newName =  $S(this).attr('name').replace('{$new}','new-'+self.cCount);
-          $S(this).attr('name', newName );
+        tplNode.find('.editable,input').each(function(){
+          
+          var tmpNd = $S(this);
+          
+          newName =  tmpNd.attr('name').replace('{$new}','new-'+self.cCount);
+          tmpNd.attr('name', newName );
+          
+          if (tmpNd.is('input')) {
+            tmpNd.addClass('asgd-'+opts.save_form);
+          }
+          
         });
+        
+        newName = tplNode.find('span.editable').attr('name');
+
         
         self.changedData[newName] = inp.val();
         
@@ -362,7 +373,7 @@
         editLayers = $S('.wgt-editlayer'),
         requestBody = '';
       
-      if (!self.changedData){
+      if (!self.changedData && !$S('.asgd-'+opt.save_form.length) ){
         $D.message('nothing to save');
         return;
       }
