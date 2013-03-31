@@ -10,9 +10,9 @@ $R.addAction( 'ui_progress', function( jNode ){
     jNode.progressbar({
       value: $S(this).val()
     });
-  }
-  else
-  {
+  
+  } else {
+    
     var size = parseInt(jNode.text());
     jNode.text('');
     jNode.height( '16' );
