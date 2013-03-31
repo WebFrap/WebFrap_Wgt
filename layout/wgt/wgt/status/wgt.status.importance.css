@@ -1,0 +1,7 @@
+
+.wgt-st-imp-low
+{
+  <?php echo $this->rBgGradient( $bgStateImpLowLight, $bgStateImpLowDark ) ?>
+}
+
+

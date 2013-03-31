@@ -604,6 +604,17 @@ table.wgt-grid tbody tr.row2
   background-color:#f8f8f8;
 }
 
+table.wgt-table tbody tr.good td.pos,
+table.wgt-grid tbody tr.good td.pos
+{
+  <?php echo $this->rBgGradient( $bgStateGoodLight, $bgStateGoodDark, false ) ?>
+}
+
+table.wgt-table tbody tr.bad td.pos,
+table.wgt-grid tbody tr.bad td.pos
+{
+  <?php echo $this->rBgGradient( $bgStateBadLight, $bgStateBadDark, false ) ?>
+}
 
 /* Panel
 ------------------------------------------------------------------------------*/

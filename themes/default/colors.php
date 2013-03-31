@@ -36,6 +36,15 @@ $bgStateErrorLight = '#BA1315';
 $bgStateErrorDark = '#6A0A0C';
 
 
+// good / bad
+
+$bgStateGoodLight = '#A5FFA5';
+$bgStateGoodDark = '#98EA98';
+
+$bgStateBadLight = '#EABAB2';
+$bgStateBadDark = '#EA9A8D';
+
+
 // FONTS
 $fontHighlight = '#fff';
 
