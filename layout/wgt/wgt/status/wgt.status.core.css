@@ -1,0 +1,67 @@
+i.min
+{
+  color:#C0FFFF;
+}
+
+i.low
+{
+  color:#C0FFC0;
+}
+
+i.avg
+{
+  color:#60CD60;
+}
+
+i.high
+{
+  color:#FFDCA8;
+}
+
+i.max
+{
+  color:#FF8000;
+}
+
+
+i.new
+{
+  color:#DCDCDC;
+}
+
+i.open
+{
+  color:#C0C0FF;
+}
+
+i.change
+{
+  color:#6098EC;
+}
+
+i.archive
+{
+  color:#A70000;
+}
+
+
+i.good
+{
+  color:#00C000;
+}
+
+
+i.mal
+{
+  color:#C00000;
+}
+
+i.attention
+{
+  color:#FFA858;
+}
+
+i.urgent
+{
+  color:#FFA858;
+}

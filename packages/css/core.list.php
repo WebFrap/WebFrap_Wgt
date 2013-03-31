@@ -78,6 +78,10 @@ $files = array
   PATH_WGT.'layout/wgt/jquery/jquery.star_rating.css',
   PATH_WGT.'layout/wgt/jquery/jquery.mega_menu.css',
   PATH_WGT.'layout/wgt/jquery/jquery.ui.datetimepicker.css',
+  
+  
+  PATH_WGT.'layout/wgt/wgt/status/wgt.status.core.css',
+  
 
 );
 
