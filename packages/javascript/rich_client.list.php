@@ -35,6 +35,7 @@ $files = array
   //PATH_WGT.'js_src/vendor/jquery.vert_mega_menu/jquery.vert_mega_menu.js',
   PATH_WGT.'js_src/vendor/jquery.mega_menu/jquery.mega_menu.js',
   PATH_WGT.'js_src/vendor/jquery.fullcalendar/jquery.fullcalendar.js',
+
   //PATH_WGT.'js_src/vendor/jquery.template/jquery.template.js',
 
   // soon deprecated
@@ -69,6 +70,7 @@ $files = array
   PATH_WGT.'js_src/vendor/jquery.dynatree/jquery.dynatree.js',
   PATH_WGT.'js_src/vendor/jquery.ui.datetimepicker/jquery.ui.datetimepicker.js',
   PATH_WGT.'js_src/vendor/jquery.ui.datetimepicker/jquery.ui.sliderAccess.js',
+  PATH_WGT.'js_src/vendor/jquery.ui.multiselect/jquery.ui.multiselect.js',
 
 
   // add wgt jquery plugins
@@ -157,7 +159,8 @@ $files = array
   PATH_WGT.'js_src/wgt/wcm/ui/RadioTab.js',
   PATH_WGT.'js_src/wgt/wcm/ui/ButtonCheckMatrix.js',
   PATH_WGT.'js_src/wgt/wcm/ui/InputTextSync.js',
-
+  PATH_WGT.'js_src/wgt/wcm/ui/MultiSelect.js',
+  
   PATH_WGT.'js_src/wgt/wcm/control/Minidrop.js',
   PATH_WGT.'js_src/wgt/wcm/control/CheckButton.js',
   //PATH_WGT.'js_src/wgt/wcm/control/ContextMenu.js',
