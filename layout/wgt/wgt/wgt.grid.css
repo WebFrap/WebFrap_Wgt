@@ -252,10 +252,18 @@ div.wgt-grid-head tbody.editor td
 	cursor:text;
 }
 
-div.wgt-grid-head tbody.editor td.required
+div.wgt-grid-head tbody.editor td.required,
+div.wgt-grid td.required
 {
 	border-bottom: 1px solid #FF7B2F;
-	background-color:#FFE8DA;
+	background-color:#E2FFDD;
+}
+
+/* @TODO da muss es was besseres geben */
+div.wgt-grid-head tbody.editor td.unique
+{
+  border-left: 1px solid #FF7B2F;
+  border-right: 1px solid #FF7B2F;	
 }
 
 /* Drag & Drop for Resize */
