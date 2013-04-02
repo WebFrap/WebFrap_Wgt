@@ -7,6 +7,9 @@ $R.addAction( 'ui_dropform', function( jNode ){
 
   var source = jNode.find( 'var:first' ),
     props = {};
+  
+  // entfernen der klasse
+  jNode.removeClass('wcm_ui_dropform');
 
   //console.log( 'before var' );
   if (  source.is( 'var' ) ){
@@ -103,7 +106,8 @@ $R.addAction( 'ui_dropform', function( jNode ){
     nodeId   = jNode.attr('id');
 
     overlayData = jNode.data( 'mini-menu-overlay' );
-
+      
+    // der nächste node muss als klasse die id des triggers haben
     if( !overlayData && nextNode.is( '.'+nodeId ) ){
       overlayData = nextNode.html();
       jNode.data( 'mini-menu-overlay', overlayData );
@@ -133,6 +137,5 @@ $R.addAction( 'ui_dropform', function( jNode ){
 
   }
 
-  jNode.removeClass('wcm_ui_dropform');
 
 });
