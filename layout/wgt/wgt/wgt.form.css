@@ -375,6 +375,12 @@ button.wgt-overlay.append.embed
   left: 150px;
 }
 
+button.wgt-overlay.append.embed.small
+{
+  top: 0px;
+  left: 90px;
+}
+
 input.wgt-behind,
 select.wgt-behind
 {

@@ -43,6 +43,7 @@
       icon: 'icon-angle-down',
       icon_alt: 'Open',
       type: 'simple',
+      "width": 'medium',
       data: [],
       data_source: null
     },
@@ -55,7 +56,9 @@
 
     _create: function() {
 
-      var self = this;
+      var self = this,
+        opts = this.options;
+      
       this.elemId    = this.element.attr('id');
       this.rNode     = this.element.get(0);
 
@@ -109,10 +112,10 @@
         el = this.element;
 
       var img = '<i class="icon-angle-down" ></i>';
-      var codeAfter = '<input class="wgt-overlay embed medium wgt-ignore" ';
+      var codeAfter = '<input class="wgt-overlay embed '+opts['width']+' wgt-ignore" ';
         codeAfter += ' value="'+( undefined !== this.rNode.options[this.rNode.selectedIndex] ? this.rNode.options[this.rNode.selectedIndex].innerHTML : '');
         codeAfter +=  '" type="text" name="display-'+el.attr('name')+'" id="display-'+this.elemId+'" />';
-        codeAfter +=  '<button id="trigger-'+this.elemId+'" class="wgt-button append wgt-overlay embed" >';
+        codeAfter +=  '<button id="trigger-'+this.elemId+'" class="wgt-button append wgt-overlay embed '+opts['width']+'" >';
         codeAfter +=  img +'</button>';
 
       el.wrap( '<div style="position:relative;" class="inline" />' )
