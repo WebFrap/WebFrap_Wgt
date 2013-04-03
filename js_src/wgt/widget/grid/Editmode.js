@@ -106,6 +106,53 @@
           return;
         }
         
+        // wenn click auf editor
+        if (cTarget.parentX('tbody.editor')){
+          
+          editLayers.unbind('blur');
+          editLayers.hide();
+
+          var tplRow = cTarget.parent().parent().find('tr.template')
+            .clone()
+            .removeClass('template');
+          
+          var tmpRowId = tplRow.attr('id');
+        
+          if (tmpRowId) {
+            tplRow.attr('id', tmpRowId.replace('{$new}','new-'+self.cCount));
+          }
+          
+          tplRow.find('td.pos').html('<i class="icon-remove" ></i>').click(function(){
+            $S(this).parent().remove();
+          });
+          
+          tplRow.find('td').each(function(){
+            var tmpNode = $S(this), 
+              tmpName = tmpNode.attr('name');
+            
+            if (tmpName) {
+              tmpNode.attr('name', tmpName.replace('{$new}','new-'+self.cCount));
+            }
+            
+          });
+          
+          // hinzufügen von default values, z.B in referenzen
+          if (opts.edit_hidden_def_values){
+            for (var defValName in opts.edit_hidden_def_values) {
+              if (opts.edit_hidden_def_values.hasOwnProperty(defValName)) {
+                self.changedData[defValName.replace('{$new}','new-'+self.cCount)] = opts.edit_hidden_def_values[defValName];
+              }
+            }
+          }
+          ++self.cCount;
+
+          
+          el.find('tbody:first').prepend(tplRow);
+          self.makeSelectable(el);
+          
+          return;
+        } // end click auf editor
+        
         // eine temporär id zuweisen
         if (!cTarget.attr('id')){
           cTarget.attr('id','wgt-id-'+new Date().getTime());
