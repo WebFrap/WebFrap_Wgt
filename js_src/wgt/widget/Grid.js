@@ -441,6 +441,10 @@
       jHeadTab.find('input.wcm_req_search,select.wcm_req_search').each(function(){
         $R.callAction( 'req_search', $S(this) );
       });
+      
+      jHeadTab.find('select.wcm_ui_multiselect_search').each(function(){
+        $R.callAction( 'ui_multiselect_search', $S(this) );
+      });
 
     },//end injectSortControls
 
@@ -469,24 +473,42 @@
           sName = '';
 
         if( 2 === tmp.length ){
+          
           sType = tmp[0];
           sName = tmp[1];
 
         }
         else{
+          
           sType = 'text';
           sName = searchName;
 
         }
+        
+        if( 'select' == sType ){
+          
+          var selectData = $S('#'+cNode.attr('wgt_ms_key'));
+          
+          //width:'+(tmpWidth-opt.hpad)+'px;
+          searchBox = ''.concat(
+              '<td style="text-align:center;" >',
+              '<select id="',cNode.attr('wgt_ms_key'),'-el" name="',sName,'" multiple="multiple" class="wcm_ui_multiselect_search search wgt-no-save fparam-',opt.search_form,'" style="width:100%" >',
+              selectData.text(),
+              '</select>',
+              '</td>'
+          );
+          
+        } else {
+          //width:'+(tmpWidth-opt.hpad)+'px;
+          searchBox = ''.concat(
+              '<td style="text-align:center;" >',
+              '<input type="',sType,'" name="',sName,'" class="wcm_req_search search wgt-no-save fparam-',opt.search_form,'" style="width:100%" />',
+              '</td>'
+          );
+        }
 
-        //width:'+(tmpWidth-opt.hpad)+'px;
-        searchBox = ''.concat(
-            '<td style="text-align:center;" >',
-            '<input type="'+sType+'" name="'+sName+'" class="wcm wcm_req_search search wgt-no-save fparam-'+opt.search_form+'" style="width:100%" />',
-            '</td>'
-        );
-      }
-      else{
+
+      } else {
 
         //width:'+(tmpWidth-opt.hpad)+'px;
         searchBox = '<td '+defClass+' style="text-align:center;" >'+defVal+'</td>';
