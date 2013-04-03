@@ -29,6 +29,7 @@ $.widget("ech.multiselect", {
               header: true,
               height: 175,
               minWidth: 225,
+              buttonWidth: null, // in case we want to set the with of the controll element to 100%
               classes: '',
               checkAllText: 'Check all',
               uncheckAllText: 'Uncheck all',
@@ -405,22 +406,36 @@ $.widget("ech.multiselect", {
               var width = this.element.outerWidth(),
                      o = this.options;
 
-              if( /\d/.test(o.minWidth) && width < o.minWidth){
-                     width = o.minWidth;
+              // check if there's fixed with
+              if( o.buttonWidth ){
+                  
+                  this.button.width( o.buttonWidth );
+              
+              } else {
+                  
+                  // set widths
+                  if ( /\d/.test(o.minWidth) && width < o.minWidth) {
+                      width = o.minWidth;
+                  }
+                      this.button.width( width );
               }
-
-              // set widths
-              this.button.width( width );
+              
+              
        },
 
        // set menu width
        _setMenuWidth: function(){
               var m = this.menu,
+                o = this.options,
                      width = this.button.outerWidth()-
                             parseInt(m.css('padding-left'),10)-
                             parseInt(m.css('padding-right'),10)-
                             parseInt(m.css('border-right-width'),10)-
                             parseInt(m.css('border-left-width'),10);
+              
+              if( /\d/.test(o.minWidth) && width < o.minWidth){
+                     width = o.minWidth;
+              }
 
               m.width( width || this.button.outerWidth() );
        },
