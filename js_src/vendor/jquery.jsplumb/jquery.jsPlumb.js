@@ -428,7 +428,7 @@
           o.unshift.apply(o, checkKey(defaultKeys[i]));
         
         return o;
-      }
+      };
 
       var _overlays = calculateOverlaysToAdd(params);//params.overlays || self._jsPlumb.Defaults.Overlays;
       if (_overlays) {
