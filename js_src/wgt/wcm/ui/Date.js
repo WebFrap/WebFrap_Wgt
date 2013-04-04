@@ -33,15 +33,28 @@ $R.addAction( 'ui_date', function( jNode ){
   
   jNode.removeClass('wcm_ui_date');
   
-  var node;
+  var node,
+    defSettings = {
+      dateFormat: $C.formatDate,
+      changeMonth: true,
+      changeYear: true,
+      showWeek: true,
+      constrainInput: true,
+      buttonImageOnly: true
+    },
+  settings = {};
   
   jNode.addClass('valid_date');
   
-  if( jNode.is("input") ){
+  if (jNode.is("input")) {
     
     node = jNode.next();
-  }
-  else{
+    
+    if (node.is('var')) {
+      
+    }
+    
+  } else {
 
     node = jNode.find('var.opt_options');
   }
@@ -50,8 +63,8 @@ $R.addAction( 'ui_date', function( jNode ){
   if( jNode.hasClass('wgt_default') ){
 
     jNode.datepicker();
-  }
-  else{
+    
+  } else{
 
     jNode.datepicker({
       dateFormat: $C.formatDate,
