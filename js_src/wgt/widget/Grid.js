@@ -344,16 +344,16 @@
                 oldWith = actualCol.outerWidth(),
                 newWidth = (newPos-startPos);
               
-              if( newWidth <= 40 && !actualCol.hasClass('pos') ) {
+              if (newWidth <= 40 && !actualCol.hasClass('pos')) {
 
                 newWidth = 40;
                 mover.offset( {left:actualHead.offset().left-40} );
               }
 
-              if( actualCol.hasClass('pos') ) {
+              if (actualCol.hasClass('pos')) {
 
-                newWidth = 30;
-                mover.offset( {left:actualHead.offset().left-30} );
+                newWidth = 60;
+                mover.offset( {left:actualHead.offset().left-60} );
               }
 
               actualCol.width(newWidth);
