@@ -7,36 +7,38 @@
 $R.addAction( 'ui_date_range', function( jNode ){
   
   jNode.removeClass('wcm_ui_date_range');
-  
-  var node;
-  
+
   jNode.addClass('valid_date');
-  
-  if( jNode.is("input") ){
+
+  var endNode = $S('#'+jNode.attr('wgt_end_node'));
+
     
-    node = jNode.next();
-  }
-  else{
-
-    node = jNode.find('var.opt_options');
-  }
-  
-  // if you want to use wgt default settings and not system settings
-  if( jNode.hasClass('wgt_default') ){
-
-    jNode.datepicker();
-  }
-  else{
-
     jNode.datepicker({
       dateFormat: $C.formatDate,
-      changeMonth: true,
-      changeYear: true,
       showWeek: true,
       constrainInput: true,
-      buttonImageOnly: true
+      buttonImageOnly: true,
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 3,
+      onClose: function( selectedDate ) {
+        endNode.datepicker( "option", "minDate", selectedDate );
+      }
     });
-  }
+    
+    endNode.datepicker({
+      dateFormat: $C.formatDate,
+      showWeek: true,
+      constrainInput: true,
+      buttonImageOnly: true,
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 3,
+      onClose: function( selectedDate ) {
+        jNode.datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+
 
   if( $S( '#'+jNode.attr('id')+'-ap-button' ).is('button') ){
     
@@ -44,15 +46,13 @@ $R.addAction( 'ui_date_range', function( jNode ){
       jNode.datepicker('show');
     });
   }
-
   
-  if( node ){
+  if( $S( '#'+endNode.attr('id')+'-ap-button' ).is('button') ){
     
-    var options = node.attr( 'options' );
-    options = $WGT.robustParseJSON( options );
+    $S( '#'+endNode.attr('id')+'-ap-button' ).click( function(){
+      endNode.datepicker('show');
+    });
   }
-  
-  if( Boolean(options) )
-    jNode.datepicker( "option", options );
+
 
 });

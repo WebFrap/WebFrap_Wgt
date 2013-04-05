@@ -42,21 +42,26 @@ $R.addAction( 'ui_date', function( jNode ){
       constrainInput: true,
       buttonImageOnly: true
     },
-  settings = {};
+    settings = {};
   
   jNode.addClass('valid_date');
   
   if (jNode.is("input")) {
     
     node = jNode.next();
-    
-    if (node.is('var')) {
-      
-    }
+    settings = node.is('var')
+      ? $S.extend({}, defSettings, $WGT.robustParseJSON(node.text()))
+      : defSettings;
+   
     
   } else {
 
     node = jNode.find('var.opt_options');
+    
+    settings = node.is('var')
+      ? $S.extend({}, defSettings, $WGT.robustParseJSON(node.text()))
+      : defSettings;
+    
   }
   
   // if you want to use wgt default settings and not system settings
@@ -64,7 +69,7 @@ $R.addAction( 'ui_date', function( jNode ){
 
     jNode.datepicker();
     
-  } else{
+  } else if( jNode.hasClass('wgt_multi') ){
 
     jNode.datepicker({
       dateFormat: $C.formatDate,
@@ -72,8 +77,14 @@ $R.addAction( 'ui_date', function( jNode ){
       changeYear: true,
       showWeek: true,
       constrainInput: true,
-      buttonImageOnly: true
+      buttonImageOnly: true,
+      numberOfMonths: 3,
+      showButtonPanel: true
     });
+    
+  } else{
+
+    jNode.datepicker(settings);
   }
 
   if( $S( '#'+jNode.attr('id')+'-ap-button' ).is('button') ){
