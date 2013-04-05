@@ -65,11 +65,11 @@ $R.addAction( 'ui_date', function( jNode ){
   }
   
   // if you want to use wgt default settings and not system settings
-  if( jNode.hasClass('wgt_default') ){
+  if (jNode.hasClass('wgt_default')) {
 
     jNode.datepicker();
     
-  } else if( jNode.hasClass('wgt_multi') ){
+  } else if (jNode.hasClass('wgt_multi')) {
 
     jNode.datepicker({
       dateFormat: $C.formatDate,
@@ -98,6 +98,7 @@ $R.addAction( 'ui_date', function( jNode ){
     });
   }
   
+  /*
   if( node ){
     
     var options = node.attr( 'options' );
@@ -106,6 +107,7 @@ $R.addAction( 'ui_date', function( jNode ){
   
   if( Boolean(options) )
     jNode.datepicker( "option", options );
+  */
 
 });
 
