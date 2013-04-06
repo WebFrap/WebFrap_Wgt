@@ -93,6 +93,7 @@ $files = array
   PATH_WGT.'js_src/wgt/widget/TagCloud.js',
   PATH_WGT.'js_src/wgt/widget/CommentTree.js',
   PATH_WGT.'js_src/wgt/widget/KvList.js',
+  PATH_WGT.'js_src/wgt/widget/SearchBuilder.js',
 
   // add wgt core
   PATH_WGT.'js_src/wgt/jquery/ui/WgtTip.js',
@@ -160,6 +161,7 @@ $files = array
   PATH_WGT.'js_src/wgt/wcm/ui/ButtonCheckMatrix.js',
   PATH_WGT.'js_src/wgt/wcm/ui/InputTextSync.js',
   PATH_WGT.'js_src/wgt/wcm/ui/MultiSelect.js',
+  PATH_WGT.'js_src/wgt/wcm/ui/SearchBuilder.js',
   
   PATH_WGT.'js_src/wgt/wcm/control/Minidrop.js',
   PATH_WGT.'js_src/wgt/wcm/control/CheckButton.js',
