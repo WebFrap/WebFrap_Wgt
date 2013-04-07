@@ -42,21 +42,96 @@
     options: {
 
       // technische Eigenschaften
-      grid_class: 'wgt-grid', // Klasse für die Deklaration als Grid Element
+      dkey: '', // Klasse für die Deklaration als Grid Element
     },
 
+    /**
+     * Counter mit den erstellten Datensätzen
+     * zum hochzählen
+     */
+    cCount: 1,
 
     /**
      * Setup / Constructor methode des Widgets
      */
     _create: function() {
 
-      var self = this;
-
+      this.init();
 
     },//end _create
 
-   
+    /**
+     * @param formId
+     * @param element
+     * @deprecated wird über wcm + forms geregelt
+     */
+    init: function( ){
+
+      var el = this.element,
+        o = this.options,
+        self = this;
+      
+      // button action
+      
+      var addEvent = function( e, el, o, parentId, depth ){
+
+        if(!depth)
+          depth = 0;
+        
+        var fNode = el.find('.wd-fields :selected');
+        
+        // den klick ignorieren wenn keine option gefunden wurde
+        // oder auf eine leere option geklick wurde
+        if ( !fNode.is('option') || !fNode.attr('type') ){
+          return;
+        }
+
+        var rawNode = $S('#wgt-tpl-search-'+fNode.attr('type')).text();
+        rawNode = rawNode.replace( /{\$pos}/g , self.cCount);
+        rawNode = rawNode.replace( /{\$dkey}/g, o.dkey);
+        
+        var newNode = $S(rawNode);
+        
+        newNode.find('.wa_remove_line').bind('click',function( ){
+          $S(this).parent().parent().remove();
+        });
+        
+        newNode.find('input.label').val(fNode.text());
+        newNode.find('input.field').val(fNode.val());
+        
+        newNode.find('select.wcm_widget_selectbox').each(function(){
+          $R.callAction( 'widget_selectbox', $S(this) );
+        });
+        
+        if ( parentId ) {
+          newNode.find('td:first').append('<input type="hidden" name="as['+self.cCount+'][parent]" value="'+parentId+'"  />');
+        }
+        
+        if( 2 === depth ){
+          newNode.find('td:first').prepend('&nbsp;&nbsp;&nbsp;<i class="icon-double-angle-right" ></i>');
+          newNode.find('.wa_search_add').remove();
+        } else if( depth ) {
+          newNode.find('td:first').prepend('&nbsp;<i class="icon-double-angle-right" ></i>');
+        }
+        
+        var tmpCounter = 0+self.cCount,
+          tempDepth = 1+depth;
+        
+        newNode.find('.wa_search_add').bind('click',function(e){
+          addEvent(e,el,o,tmpCounter,tempDepth);
+        });
+        
+        el.find('table.search-container tbody').append( newNode );
+        
+        ++self.cCount;
+        
+      };
+      
+      el.find('.wa_add_line').bind('click',function(e){
+        addEvent(e,el,o);
+      });
+
+    },//end this.search 
 
     /**
      * @param formId
