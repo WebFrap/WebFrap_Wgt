@@ -101,12 +101,17 @@
         newNode.find('input.label').val(fNode.text());
         newNode.find('input.field').val(fNode.val());
         
+        
+        
         newNode.find('select.wcm_widget_selectbox').each(function(){
           $R.callAction( 'widget_selectbox', $S(this) );
         });
         
         if ( parentId ) {
           newNode.find('td:first').append('<input type="hidden" name="as['+self.cCount+'][parent]" value="'+parentId+'"  />');
+          newNode.addClass('n-'+self.cCount+' '+'p-'+parentId);
+        } else {
+          newNode.addClass('n-'+self.cCount);
         }
         
         newNode.find(':input').addClass('fparam-'+o.search_form);
@@ -126,9 +131,28 @@
         });
         
         if ( parentId ) {
-          newNode.find('td:first').append('<input type="hidden" name="as['+self.cCount+'][parent]" value="'+parentId+'"  />');
-        } elsev 
-        el.find('table.search-container tbody').append( newNode );
+          
+          if ( el.find('.p-'+parentId).length ){
+            var tmpL = el.find('.p-'+parentId+':last' );
+            
+            if( tmpL.length ){
+              var tmpId = tmpL.getActionClass('n',true,'-');
+              
+              if ( el.find('.p-'+tmpId).length ){
+                el.find('.p-'+tmpId+':last' ).after(newNode);
+              } else {
+                tmpL.after(newNode);
+              }
+              
+            }
+            
+          } else {
+            el.find('.n-'+parentId).after( newNode );
+          }
+          
+        } else {
+          el.find('table.search-container tbody').append( newNode );
+        }
         
         ++self.cCount;
         
@@ -150,6 +174,25 @@
       this.cCount = val;
 
     },//end setCounter
+    
+    /**
+     * Setzen des Counter Values
+     * Wir später für save & load benötigt
+     * @param  val int
+     */
+    reset: function( ){
+
+      this.cCount = 1;
+
+    },//end setCounter
+    
+    /**
+     * Aufbauen des Suchformulars aus einem Save String
+     * @param  val int
+     */
+    buildEntriesByData: function( struct ){
+
+    },//end buildEntriesByData
 
     /**
      * @param formId

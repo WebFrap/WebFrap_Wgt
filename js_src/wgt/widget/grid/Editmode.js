@@ -119,7 +119,7 @@
           var tmpRowId = tplRow.attr('id');
         
           if (tmpRowId) {
-            tplRow.attr('id', tmpRowId.replace('{$new}','new-'+self.cCount));
+            tplRow.attr('id', tmpRowId.replace(/{\$new}/g,'new-'+self.cCount));
           }
           
           tplRow.find('td.pos').html('<i class="icon-remove" ></i>').click(function(){
