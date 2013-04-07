@@ -43,6 +43,7 @@
 
       // technische Eigenschaften
       dkey: '', // Klasse für die Deklaration als Grid Element
+      search_form: '', // die ID des Suchformulars
     },
 
     /**
@@ -90,6 +91,7 @@
         rawNode = rawNode.replace( /{\$pos}/g , self.cCount);
         rawNode = rawNode.replace( /{\$dkey}/g, o.dkey);
         
+        
         var newNode = $S(rawNode);
         
         newNode.find('.wa_remove_line').bind('click',function( ){
@@ -107,6 +109,8 @@
           newNode.find('td:first').append('<input type="hidden" name="as['+self.cCount+'][parent]" value="'+parentId+'"  />');
         }
         
+        newNode.find(':input').addClass('fparam-'+o.search_form);
+        
         if( 2 === depth ){
           newNode.find('td:first').prepend('&nbsp;&nbsp;&nbsp;<i class="icon-double-angle-right" ></i>');
           newNode.find('.wa_search_add').remove();
@@ -121,6 +125,9 @@
           addEvent(e,el,o,tmpCounter,tempDepth);
         });
         
+        if ( parentId ) {
+          newNode.find('td:first').append('<input type="hidden" name="as['+self.cCount+'][parent]" value="'+parentId+'"  />');
+        } elsev 
         el.find('table.search-container tbody').append( newNode );
         
         ++self.cCount;
