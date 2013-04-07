@@ -132,6 +132,17 @@
       });
 
     },//end this.search 
+    
+    /**
+     * Setzen des Counter Values
+     * Wir später für save & load benötigt
+     * @param  val int
+     */
+    setCounter: function( val ){
+
+      this.cCount = val;
+
+    },//end setCounter
 
     /**
      * @param formId
