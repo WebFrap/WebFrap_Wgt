@@ -43,7 +43,7 @@
 
       // technische Eigenschaften
       dkey: '', // Klasse für die Deklaration als Grid Element
-      search_form: '', // die ID des Suchformulars
+      search_form: '' // die ID des Suchformulars
     },
 
     /**
