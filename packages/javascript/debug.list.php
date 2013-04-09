@@ -19,6 +19,6 @@
 
 $files = array
 (
-  PATH_WGT.'js_src/wgt/Debug.js'
+  //PATH_WGT.'js_src/wgt/Debug.js'
 );
 

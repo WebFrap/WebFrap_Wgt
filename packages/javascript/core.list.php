@@ -17,8 +17,7 @@
 
 $jsconf = PATH_GW.'js_conf/conf.js';
 
-$files = array
-(
+$files = array(
   // extend javascript
   PATH_WGT.'js_src/ext/ext.js.js',
 
@@ -26,7 +25,8 @@ $files = array
   PATH_WGT.'js_src/ext/ext.jquery.js',
 
   PATH_WGT.'js_src/Wgt.js',
-
+  PATH_WGT.'js_src/wgt/Debug.js',
+    
   // add i18n data
   PATH_WGT.'js_src/wgt/I18n.js',
 
