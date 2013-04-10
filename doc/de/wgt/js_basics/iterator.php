@@ -21,8 +21,11 @@ for (var key=0; key < data.length; key++) {
 <?php start_highlight(); ?>
 var data = {val1:1,val2:2};
 
-for (var key in data) {
-  alert(data[data]);
+for (var prop in data) {
+  // es muss geprüft werden ob prop existiert
+  if (data.hasOwnProperty(prop)) {
+    // prop is not inherited
+  }
 }
 <?php display_highlight('javascript'); ?>
 

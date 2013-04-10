@@ -43,6 +43,7 @@ if (!Array.indexOf) {
   */
 }
 
+/*
 if (!Array.remove) {
   Array.prototype.remove = function(from, to) {
     var rest = this.slice((to || from) + 1 || this.length);
@@ -50,6 +51,7 @@ if (!Array.remove) {
     return this.push.apply(this, rest);
   };
 }
+*/
 
 if(typeof String.prototype.trim !== 'function') {
   String.prototype.trim = function() {

@@ -116,13 +116,29 @@
             .clone()
             .removeClass('template');
           
-          var tmpRowId = tplRow.attr('id');
+          var tmpRowId = tplRow.attr('id'),
+            indexCheck = '[new-'+self.cCount+']'; // checkstring um den savedata array cleanen zu können
         
           if (tmpRowId) {
             tplRow.attr('id', tmpRowId.replace(/{\$new}/g,'new-'+self.cCount));
           }
           
+          tplRow.attr('eid','new-'+self.cCount);
+          
+          // remove event
           tplRow.find('td.pos').html('<i class="icon-remove" ></i>').click(function(){
+            
+            var tmpStack = {};
+            
+            for (var prop in self.changedData) {
+              // es muss geprüft werden ob prop existier
+              if (self.changedData.hasOwnProperty(prop)) {
+                if( !prop.indexOf(indexCheck)){
+                  tmpStack[prop] = self.changedData[prop];
+                }
+              }
+            }
+            self.changedData = tmpStack;
             $S(this).parent().remove();
           });
           
@@ -412,6 +428,29 @@
       this.element.find('td.changed').removeClass('changed');
       
       //alert('changed: '+requestBody);
+    },
+    
+    /**
+     * Datensatz aus dem save Index werfen. 
+     * Ist nötig wenn der Datensatz gelöscht wurde, vorher jedoch im Editor
+     * bearbeitet und nicht gespeichert wurde
+     * 
+     * @param indexCheck
+     */
+    dropFromSavedata :function( indexCheck ){
+      
+      var tmpStack = {};
+      
+      for (var prop in self.changedData) {
+        // es muss geprüft werden ob prop existier
+        if (self.changedData.hasOwnProperty(prop)) {
+          if( !prop.indexOf('['+indexCheck+']')){
+            tmpStack[prop] = self.changedData[prop];
+          }
+        }
+      }
+      self.changedData = tmpStack;
+      
     },
     
     /**
