@@ -43,10 +43,18 @@ if (!Array.indexOf) {
   */
 }
 
+if (!Array.remove) {
+  Array.prototype.remove = function(from, to) {
+    var rest = this.slice((to || from) + 1 || this.length);
+    this.length = from < 0 ? this.length + from : from;
+    return this.push.apply(this, rest);
+  };
+}
+
 if(typeof String.prototype.trim !== 'function') {
   String.prototype.trim = function() {
     return this.replace(/^\s+|\s+$/g, ''); 
-  }
+  };
 }
 
 var $console = {
@@ -82,7 +90,7 @@ var $console = {
       
     }
     
-}//end console
+};//end console
 
 /**
  * Shortcut für document.getElementById
