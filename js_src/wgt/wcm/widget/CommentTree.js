@@ -33,11 +33,14 @@ $R.addAction( 'widget_comment_tree', function( jNode ){
   if( $C.DEBUG.WCM.WIDGET )
     console.log( 'wcm widget_comment_tree path: ' +jNode.getNodePath('/')  );
   
+  var settings = {},
+    cfgData;
+  
   // laden der wysiwyg konfiguration
   try{
     
-    var cfgData = jNode.find( 'var#'+jNode.attr('id')+'-cfg-comment_tree' );
-    var settings = cfgData.is( 'var' )
+    cfgData = jNode.find( 'var#'+jNode.attr('id')+'-cfg-comment_tree' );
+    settings = cfgData.is( 'var' )
       ? $WGT.robustParseJSON(cfgData.text())
       : {};
   }
