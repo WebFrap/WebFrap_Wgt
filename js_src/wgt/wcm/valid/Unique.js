@@ -30,6 +30,7 @@ $R.addAction( 'valid_unique', function( jNode ){
         if (1 == $R.get(jNode.attr('wgt_cksrv')+'&val='+jNode.val()).data) {
           
           jNode.addClass( 'state-warn' );
+          jNode.removeClass( 'state-ok' );
           jNode.attr('title',"Value allready exists");
           jNode.after('<i class="icon-ban-circle" ></i>');
         
