@@ -114,7 +114,7 @@
           newNode.addClass('n-'+self.cCount);
         }
         
-        newNode.find(':input').addClass('fparam-'+o.search_form);
+        newNode.find(':input').addClass('fparam-'+o.search_form+' as');
         
         if( 2 === depth ){
           newNode.find('td:first').prepend('&nbsp;&nbsp;&nbsp;<i class="icon-double-angle-right" ></i>');
