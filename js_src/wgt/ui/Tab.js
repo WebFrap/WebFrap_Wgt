@@ -432,7 +432,7 @@
         }
       }
       catch( err ) {
-        console.error( 'Tab code Failed Code: '+tab.script+' '+err.description );
+        console.error( 'Tab code Failed Code: '+tab.script+' '+err );
       }
 
       var position = headContainer.find(".tab_container .tab").length-1;

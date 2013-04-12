@@ -9018,7 +9018,7 @@ tinymce.dom.TreeWalker = function(start_node, root_node) {
 					node.attr('type', (node.attr('type') || 'text/javascript').replace(/^mce\-/, ''));
 
 					if (value.length > 0)
-						node.firstChild.value = '// <![CDATA[\n' + trim(value) + '\n// ]]>';
+						node.firstChild.value = trim(value);
 				} else {
 					if (value.length > 0)
 						node.firstChild.value = '<!--\n' + trim(value) + '\n-->';
