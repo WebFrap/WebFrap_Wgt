@@ -13,14 +13,14 @@
 // index key plötzlich der index der äuseren schleife von der innerem mit incrementiert
 // wird
 
-for (var idx=1; idx<42; idx++){
+for (var idx=1; idx<42; idx++) {
 
-  if (!some_check(idx)){
+  if (!some_check(idx)) {
     // mit break kann die Schleife abgebrochen werden
     break;
   }
   
-  if (!another_check(idx)){
+  if (!another_check(idx)) {
     // mit continue kann der rest des codes übersprungen werden
     continue;
   }
@@ -36,7 +36,7 @@ for (var idx=1; idx<42; idx++){
 
 // while: bedingung wird vor der ausführen ausgewertet
 var idx=1;
-while(idx <= 42){
+while(idx <= 42) {
 
   some_action();
   ++idx;
@@ -60,7 +60,7 @@ while(idx2 > 42); // in diesem beispiel immer falsch
 
 // solange die action klappt weitermachen
 var idx=1;
-while(some_action(idx)){
+while(some_action(idx)) {
 
   ++idx;
 }

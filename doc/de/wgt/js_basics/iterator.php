@@ -38,10 +38,10 @@ for (var prop in data) {
 var dataAr = [1,2,3,4];
 var dataObj = {val1:1,val2:2};
 
-$S.each(dataAr, function(index, value){
+$S.each(dataAr, function(index, value) {
 });
 
-$S.each(dataObj, function(key, value){
+$S.each(dataObj, function(key, value) {
 });
 
 <?php display_highlight('javascript'); ?>

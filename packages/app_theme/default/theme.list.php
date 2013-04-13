@@ -30,7 +30,7 @@ $files = array(
 );
 
 
-foreach($files as $file)
+foreach ($files as $file)
 {
   include $file;
   echo NL;

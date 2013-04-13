@@ -31,7 +31,7 @@ Leider keine Fileuploads möglich im Moment
  * @param requestData {}, der DataBody das PUT requests
  * @param params {}, zusätzliche Parameter / Events
  */
-this.put = function(requestUrl, requestData, params){
+this.put = function(requestUrl, requestData, params) {
 …
 };
 <?php display_highlight('javascript'); ?>
@@ -50,7 +50,7 @@ Senden eines HTTP POST Requests an den Server.
  * @param requestData {}, der DataBody das POST requests
  * @param params {}, zusätzliche Parameter / Events
  */
-this.post = function(requestUrl, requestData, params){
+this.post = function(requestUrl, requestData, params) {
 …
 };
 <?php display_highlight('javascript'); ?>
@@ -70,7 +70,7 @@ Senden eines HTTP DELETE Requests an den Server
  * @param  params
  * @return Json
  */
-this.del = function(requestUrl, params  ){
+this.del = function(requestUrl, params  ) {
 …
 };
 <?php display_highlight('javascript'); ?>
