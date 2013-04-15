@@ -355,16 +355,15 @@
      * @param formUrl
      * @param params
      */
-    this.form = function( formId, formUrl, params ){
+    this.form = function(formId, formUrl, params){
 
-      if( undefined === params ){
+      if (undefined === params) {
         params = {};
       }
 
       console.log( "Request by Form ID "+formId+' found '+$S('#'+formId).length  );
 
-      if( params.search ){
-
+      if (params.search) {
         this.cleanFormParams( formId );
       }
 
@@ -442,16 +441,24 @@
         return;
       }
 
-      var formMethod = form.attr('method');
+      var formMethod = '';
+      
+      if (params.method) {
+        
+        formMethod = params.method.toLowerCase();
+        
+      } else {
+        
+        formMethod = form.attr('method');
 
-      if( !formMethod ){
-        console.log( 'Missing method in form '+formId );
-        return;
+        if (!formMethod) {
+          console.log( 'Missing method in form '+formId );
+          return;
+        }
+
+        formMethod = formMethod.toLowerCase();
       }
-
-      formMethod = formMethod.toLowerCase();
-
-
+      
       // clean form data
       if( params.clean === true ){
 
@@ -526,8 +533,8 @@
         });
 
         return response;
-      }
-      else{
+        
+      } else {
 
         var formFields  = form.find(":input").not(":submit").not(":reset").not(".wgt-ignore").not('.asgd-'+formId).not('.fparam-'+formId);
         var formData    = formFields.serialize();
@@ -555,7 +562,7 @@
         */
 
         var externFields = $S('.asgd-'+formId).not('.flag-template');
-        if( externFields.length > 0 ){
+        if (externFields.length > 0) {
 
           formData += '&'+externFields.serialize();
 
@@ -565,7 +572,7 @@
 
         }
 
-        if( 'post' === formMethod ){
+        if ('post' === formMethod) {
 
           response = $R.post(
             formUrl+formParams.url,
@@ -577,8 +584,7 @@
             params.callback();
           }
 
-        }
-        else if( 'put' === formMethod ){
+        } else if( 'put' === formMethod ){
 
           response = $R.put(
             formUrl+formParams.url,
@@ -590,8 +596,7 @@
             params.callback();
           }
 
-        }
-        else{
+        } else {
 
           response = $R.get(
             formUrl+formParams.url+'&'+formData+formParams.post,

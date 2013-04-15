@@ -43,7 +43,8 @@
 
       // technische Eigenschaften
       dkey: '', // Klasse für die Deklaration als Grid Element
-      search_form: '' // die ID des Suchformulars
+      search_form: '', // die ID des Suchformulars
+      save_service: '' // speichern einer suche
     },
 
     /**
@@ -161,7 +162,15 @@
       el.find('.wa_add_line').bind('click',function(e){
         addEvent(e,el,o);
       });
-
+      
+      el.find('.wa_save_filter').bind('click',function(e){
+        self.saveSearch();
+      });
+      
+      el.find('.wa_reset_filter').bind('click',function(e){
+        self.resetFilter();
+      });
+      
     },//end this.search 
     
     /**
@@ -193,6 +202,29 @@
     buildEntriesByData: function( struct ){
 
     },//end buildEntriesByData
+    
+    /**
+     * Speichern der Suche
+     */
+    saveSearch: function( ){
+      
+      var opts = this.options;
+      
+      $R.form(opts.search_form, opts.save_service,{'method':'post'});
+      
+    },//end saveSearch
+    
+    /**
+     * Speichern der Suche
+     */
+    resetFilter: function( ){
+      
+      var el = this.element;  
+      
+      el.find('table.search-container tbody').replace('<tbody />');
+      el.find('input.filter_name').val('');
+      
+    },//end resetFilter
 
     /**
      * @param formId
