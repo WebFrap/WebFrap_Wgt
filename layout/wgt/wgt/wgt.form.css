@@ -152,6 +152,7 @@ div.wgt-fake-input
   height:22px;
 	padding:2px;
   background-color:#F8F8F8;
+	vertical-align:baseline;
 }
 
 textarea
@@ -160,6 +161,7 @@ textarea
   width:250px;
   padding:2px;
   background-color:#F8F8F8;
+  vertical-align:baseline;	
 }
 
 input.ar

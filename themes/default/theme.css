@@ -310,9 +310,7 @@ fieldset
   background: -ms-linear-gradient(top,  <?php echo $bgHeadHiLight  ?> 1%,<?php echo $bgHeadHiDark  ?> 100%); /* IE10+ */
   background: linear-gradient(to bottom,  <?php echo $bgHeadHiLight  ?> 1%,<?php echo $bgHeadHiDark  ?> 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bgHeadHiLight  ?>', endColorstr='<?php echo $bgHeadHiDark  ?>',GradientType=0 ); /* IE6-9 */
-
   color: <?php echo $fontHighlight  ?>;
-  font-weight: <?php echo $fontWText ?>;
   border-radius: <?php echo $cornerRadius ?>;
 }
 
@@ -341,7 +339,6 @@ fieldset
 .wgt-button2.append
 {
   color: <?php echo $fontButton ?>;
-  font-weight: <?php echo $fontWText ?>;
   border-radius: <?php echo $cornerRadius ?>;
   border: 1px solid #A8A8A8;/* !important*/
   background: <?php echo $bgButtonLight ?>; /* Old browsers */
