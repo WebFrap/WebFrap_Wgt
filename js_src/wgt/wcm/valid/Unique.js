@@ -17,7 +17,7 @@ $R.addAction( 'valid_unique', function( jNode ){
       
       if ('' == ''+jNode.val()) {
         
-        jNode.removeClass('state-warn');
+        jNode.removeClass('not-unique');
         jNode.addClass('state-ok');
         jNode.attr('title',"Insert value");
         
@@ -29,7 +29,7 @@ $R.addAction( 'valid_unique', function( jNode ){
         
         if (1 == $R.get(jNode.attr('wgt_cksrv')+'&val='+jNode.val()).data) {
           
-          jNode.addClass( 'state-warn' );
+          jNode.addClass( 'not-unique' );
           jNode.removeClass( 'state-ok' );
           jNode.attr('title',"Value allready exists");
           jNode.after('<i class="icon-ban-circle" ></i>');
@@ -37,7 +37,7 @@ $R.addAction( 'valid_unique', function( jNode ){
         } else {
           
           jNode.addClass( 'state-ok' );
-          jNode.removeClass('state-warn');
+          jNode.removeClass('not-unique');
           jNode.attr('title',"Insert value");
           
           if(jNode.next().is('i.icon-ban-circle')){

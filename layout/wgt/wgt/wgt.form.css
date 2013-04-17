@@ -501,7 +501,15 @@ div.wgt-fake-input.state-invalid
 input.state-warn,
 textarea.state-warn,
 select.state-warn,
-div.wgt-fake-input.state-warn
+div.wgt-fake-input.state-warn,
+input.not-unique,
+textarea.not-unique,
+select.not-unique,
+div.wgt-fake-input.not-unique,
+input.state-ok.not-unique,
+textarea.state-ok.not-unique,
+select.state-ok.not-unique,
+div.wgt-fake-input.state-ok.not-unique
 {
   border: 1px dashed #FF8000 !important;
 }
