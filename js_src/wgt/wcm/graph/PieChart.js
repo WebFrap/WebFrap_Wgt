@@ -67,7 +67,7 @@ $R.addAction( 'pie_chart', function( jNode ){
       .style("fill", function(d) { return color(d.data.key); });
 
   g.append("text")
-      .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+      .attr("transform", function(d) { return "translate(" + (arc.centroid(d)+50) + ")"; })
       .attr("dy", ".35em")
       .style("text-anchor", "middle")
       .text(function(d) { return d.data.key; });

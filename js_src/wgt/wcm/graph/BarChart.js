@@ -4,7 +4,7 @@
 {
  "xl":"",
  "yl":"Label",
- "values":"letter,frequency\n
+ "values":"key,value\n
 A,.08167\n
 B,.01492\n
 C,.02780\n
@@ -87,11 +87,11 @@ $R.addAction( 'bar_chart', function( jNode ){
   jNode.find('var').remove();
   
   data.forEach(function(d) {
-    d.frequency = +d.frequency;
+    d.value = +d.value;
   });
 
-  x.domain(data.map(function(d) { return d.letter; }));
-  y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
+  x.domain(data.map(function(d) { return d.key; }));
+  y.domain([0, d3.max(data, function(d) { return d.value; })]);
 
   svg.append("g")
       .attr("class", "x axis")
@@ -106,14 +106,14 @@ $R.addAction( 'bar_chart', function( jNode ){
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Frequency");
+      .text("value");
 
   svg.selectAll(".bar")
       .data(data)
     .enter().append("rect")
       .attr("class", "bar")
-      .attr("x", function(d) { return x(d.letter); })
+      .attr("x", function(d) { return x(d.key); })
       .attr("width", x.rangeBand())
-      .attr("y", function(d) { return y(d.frequency); })
-      .attr("height", function(d) { return height - y(d.frequency); });
+      .attr("y", function(d) { return y(d.value); })
+      .attr("height", function(d) { return height - y(d.value); });
 });
