@@ -80,9 +80,9 @@ $files = array
   // add widgets
   PATH_WGT.'js_src/wgt/widget/Grid.js',
   PATH_WGT.'js_src/wgt/widget/grid/Editmode.js',
-  
-  
-  
+
+
+
   PATH_WGT.'js_src/wgt/widget/I18nInputList.js',
   PATH_WGT.'js_src/wgt/widget/I18nInputTab.js',
   PATH_WGT.'js_src/wgt/widget/Dropmenu.js',
@@ -162,7 +162,7 @@ $files = array
   PATH_WGT.'js_src/wgt/wcm/ui/InputTextSync.js',
   PATH_WGT.'js_src/wgt/wcm/ui/MultiSelect.js',
   PATH_WGT.'js_src/wgt/wcm/ui/SearchBuilder.js',
-  
+
   PATH_WGT.'js_src/wgt/wcm/control/Minidrop.js',
   PATH_WGT.'js_src/wgt/wcm/control/CheckButton.js',
   //PATH_WGT.'js_src/wgt/wcm/control/ContextMenu.js',
@@ -192,7 +192,7 @@ $files = array
   PATH_WGT.'js_src/wgt/wcm/graph/DifferenceArea.js',
   PATH_WGT.'js_src/wgt/wcm/graph/BubbleChart.js',
 
-  
+
   // feature
   PATH_WGT.'js_src/wgt/wcm/feature/Sortable.js',
 
@@ -204,6 +204,7 @@ $files = array
   PATH_WGT.'js_src/wgt/wcm/valid/Number.js',
   PATH_WGT.'js_src/wgt/wcm/valid/Int.js',
   PATH_WGT.'js_src/wgt/wcm/valid/Email.js',
+  PATH_WGT.'js_src/wgt/wcm/valid/Unique.js',
 
   // charts
   PATH_WGT.'js_src/wgt/wcm/chart/Area.js',
