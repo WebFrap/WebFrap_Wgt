@@ -45,6 +45,11 @@
      * Array mit den Head Cols
      */
     headCols: [],
+    
+    /**
+     * Array mit den Cols des Footers, soweit vorhanden
+     */
+    footCols: [],
 
 
     /**
@@ -209,9 +214,21 @@
       ge.parent().wrap( '<div class="body-scroll" '+scrollHeightStyle+' >' );
       ge.parent().before(jHeadTab);
       ge.parent().before(resizeBox);
-
+      
       // store the head
       var headBar = ge.parent().parent().find('.wgt-grid-head');
+      var footBar = null;
+      
+      if (ge.find('tbody.sum').length) {
+        ge.parent().after("<div class=\"wgt-grid-foot\" ><div><table>");
+        ge.parent().parent().find('div.wgt-grid-foot>div>table').append(ge.find('tbody.sum'));
+        
+        footBar = ge.parent().parent().find('div.wgt-grid-foot');
+        
+        self.footCols = ge.parent().parent().find('div.wgt-grid-foot tr:first td');
+      }
+
+
       
       // add the scroll events
       var tmpBox    = ge.parent(),
@@ -220,6 +237,10 @@
       tmpBox.get(0).onscroll = function(){
         scrolling = true;
         headBar.scrollLeft(this.scrollLeft);
+        
+        if (footBar.length)
+          footBar.scrollLeft(this.scrollLeft);
+        
       };
 
       tmpBox.mouseup(function(){
@@ -260,7 +281,7 @@
     /**
      * Die Resize Events hinzufügen
      */
-    addResizeEvents: function( firstRow, headBar, gridBody ){
+    addResizeEvents: function( firstRow, headBar, gridBody, footBar ){
       
       var self=this,
         ge = this.element,
@@ -281,6 +302,10 @@
         var gof = gridBody.get(0);
 
         headBar.css( 'marginLeft', '-'+gof.scrollLeft+'px' );
+        
+        if(footBar)
+          footBar.css( 'marginLeft', '-'+gof.scrollLeft+'px' );
+        
         ge.parent().parent().find('div.wgt-drag').css( 'marginLeft', '-'+gof.scrollLeft+'px' );
         
         // on scroll editoverlay schliesen
@@ -293,7 +318,6 @@
 
         var actualCol = $S(this),
           actualHead  = $S( self.headCols.get(idx) ),
-          cWidth = actualHead.outerWidth(),
           nextPos = actualHead.outerWidth()+actualHead.offset().left-2,
           startPos = null,
           mover = null;
@@ -535,7 +559,7 @@
         headClass = '';
       
         if( cNode.is('.pos') ){
-          headClass = ' class="pos" '
+          headClass = ' class="pos" ';
         }
 
       if( nodeName ){
@@ -619,6 +643,11 @@
           var newWidth = cWidth -6 ;//-(self.options.hpad+1);
           actualHead.width( newWidth ).parent().width( newWidth );
           //actualHead.width(cWidth-15);
+          
+          if (self.footCols) {
+            var fCell = $S(self.footCols.get(idx));
+            fCell.width( newWidth );
+          }
 
         });
       }
@@ -653,7 +682,7 @@
     initLoaderEvent: function(){
 
       var el = this.element,
-        opts = this.options
+        opts = this.options,
         self = this;
 
       el.click( function( e ){
@@ -843,8 +872,6 @@
       this.reColorize();
     },//end this.cleanFilter
 
-
-
     /**
      *
      */
@@ -912,7 +939,6 @@
        row.addClass('row'+((fact%2)+1));
 
      });
-
 
    },//end renderRowLayout
 

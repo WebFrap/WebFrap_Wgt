@@ -120,7 +120,8 @@ table.wgt-grid.simple tbody tr td
 
 div.wgt-grid-body td.pos,
 table.wgt-grid.simple tbody tr td.pos,
-div.wgt-grid-head table tbody td.pos
+div.wgt-grid-head table tbody td.pos,
+div.wgt-grid-foot table tbody td.pos
 {
   background-color:silver;
   font-weight: bold;
@@ -316,6 +317,7 @@ div.wgt-grid-body table tbody
 }
 
 div.wgt-grid-body table tbody td,
+div.wgt-grid-foot table tbody td,
 div.wgt-grid-body table thead th,
 div.wgt-grid-head table thead th
 {
