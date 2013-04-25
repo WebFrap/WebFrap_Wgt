@@ -644,7 +644,7 @@
           actualHead.width( newWidth ).parent().width( newWidth );
           //actualHead.width(cWidth-15);
           
-          if (self.footCols) {
+          if (self.footCols.length) {
             var fCell = $S(self.footCols.get(idx));
             fCell.width( newWidth );
           }
