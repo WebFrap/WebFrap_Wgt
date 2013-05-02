@@ -80,12 +80,11 @@ $files = array
   PATH_WGT.'layout/wgt/jquery/jquery.ui.datetimepicker.css',
   PATH_WGT.'layout/wgt/jquery/jquery.multiselect.css',
   PATH_WGT.'layout/wgt/wgt/status/wgt.status.core.css',
-  
+
 
 );
 
-foreach ($files as $file)
-{
+foreach ($files as $file) {
   include $file;
   echo NL;
 }
