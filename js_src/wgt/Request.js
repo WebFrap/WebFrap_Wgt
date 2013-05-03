@@ -1004,10 +1004,9 @@
 
         }
 
-      }
-      else{
+      } else {
 
-        try{
+        try {
 
 
           self.lastRequest = $S.ajax({
@@ -1034,8 +1033,7 @@
 
           requestData.status = 0;
 
-        }
-        catch( exc ){
+        } catch( exc ){
 
           // error handling
           console.error( 'Request failed '+exc.message );
