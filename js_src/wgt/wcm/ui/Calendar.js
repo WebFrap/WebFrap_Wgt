@@ -36,6 +36,10 @@ $R.addAction( 'ui_calendar', function( jNode ){
   
   jNode.appear(function(){
     
+
+    var calId = jNode.attr('id'),
+    	tmpId = calId.substring( 4, calId.length );
+	  
     var defSettings = {
         header: {
             left: 'prevYear,prev,today,next,nextYear',
@@ -48,7 +52,7 @@ $R.addAction( 'ui_calendar', function( jNode ){
           // Event verschieben
           alert(
               event.title + " was moved " +
-              event.start.toString("yyyy-mm-dd") + " new start "
+              event.start.toString("yyyy-mm-dd HH:ii") + " new start "
           );
   
         },
@@ -57,7 +61,7 @@ $R.addAction( 'ui_calendar', function( jNode ){
           // Event
           alert(
               event.title + " was resized " +
-              event.start.toString("yyyy-mm-dd") + " new start "
+              event.start.toString("yyyy-mm-dd HH:ii") + " new start "
           );
   
         }
@@ -73,7 +77,7 @@ $R.addAction( 'ui_calendar', function( jNode ){
     
     settings.events = function(start, end, callback) {
     	
-    	var data = $R.get('ajax.php?c=Webfrap.Calendar.search&start='+Math.round(start.getTime() / 1000)+'&end='+Math.round(end.getTime() / 1000),{},true);
+    	var data = $R.get('ajax.php?c=Webfrap.Calendar.search&calendar'+calId+'=&start='+Math.round(start.getTime() / 1000)+'&end='+Math.round(end.getTime() / 1000),{},true);
     	
     	console.dir(data.data);
     	
@@ -82,8 +86,6 @@ $R.addAction( 'ui_calendar', function( jNode ){
     	callback(data.data);
     };
     
-    var tmpId = jNode.attr('id');
-    tmpId = tmpId.substring( 4, tmpId.length );
     
     var formObj = $S('#wgt-form-'+tmpId); ;
 
