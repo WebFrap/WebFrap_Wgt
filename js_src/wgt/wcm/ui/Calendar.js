@@ -73,8 +73,13 @@ $R.addAction( 'ui_calendar', function( jNode ){
     
     settings.events = function(start, end, callback) {
     	
-    	var data = $R.get('service.php?c=Webfrap.Calendar.search&start='+Math.round(start.getTime() / 1000)+'&end='+Math.round(end.getTime() / 1000));
-    	callback(data);
+    	var data = $R.get('ajax.php?c=Webfrap.Calendar.search&start='+Math.round(start.getTime() / 1000)+'&end='+Math.round(end.getTime() / 1000),{},true);
+    	
+    	console.dir(data.data);
+    	
+    	//alert(data.data[0]['title']);
+    	
+    	callback(data.data);
     };
     
     var tmpId = jNode.attr('id');
@@ -86,7 +91,7 @@ $R.addAction( 'ui_calendar', function( jNode ){
     var calendarObj = jNode.fullCalendar(settings);
   
     // das calendar objekt wird an ein formular gebunden
-    formObj.data( 'wgt-calendar' , calendarObj );
+    //formObj.data( 'wgt-calendar' , calendarObj );
   });
   
   
