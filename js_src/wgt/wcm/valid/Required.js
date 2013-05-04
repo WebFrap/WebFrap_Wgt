@@ -36,7 +36,6 @@ $R.addAction( 'valid_required', function( jNode ){
 
     var slctVal = ''+jNode.find(':selected').attr('value');
     if( '' == slctVal.trim() ){
-      $S('#display-'+jNode.attr('id')).removeClass( 'state-ok' );
       $S('#display-'+jNode.attr('id')).addClass( 'state-warn' );
     }
     else{
