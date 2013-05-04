@@ -77,7 +77,7 @@ $R.addAction( 'ui_calendar', function( jNode ){
     
     settings.events = function(start, end, callback) {
     	
-    	var data = $R.get('ajax.php?c=Webfrap.Calendar.search&calendar'+calId+'=&start='+Math.round(start.getTime() / 1000)+'&end='+Math.round(end.getTime() / 1000),{},true);
+    	var data = $R.get('ajax.php?c=Webfrap.Calendar.search&calendar='+calId+'=&start='+Math.round(start.getTime() / 1000)+'&end='+Math.round(end.getTime() / 1000),{},true);
     	
     	console.dir(data.data);
     	

@@ -13,10 +13,9 @@ $R.addAction( 'valid_required', function( jNode ){
   // nur auf textarea und inputs verwenden
   if( jNode.is('input') || jNode.is('textarea') ){
 
-    if( '' == ''+jNode.val().trim() ){
+    if ( '' == ''+jNode.val().trim() ){
       jNode.addClass( 'state-warn' );
-    }
-    else{
+    } else{
       jNode.addClass( 'state-ok' );
     }
     
@@ -24,8 +23,7 @@ $R.addAction( 'valid_required', function( jNode ){
       if( '' == ''+jNode.val() ){
         jNode.removeClass( 'state-ok' );
         jNode.addClass( 'state-warn' );
-      }
-      else{
+      } else{
         jNode.removeClass( 'state-warn' );
         jNode.addClass( 'state-ok' );
       }
