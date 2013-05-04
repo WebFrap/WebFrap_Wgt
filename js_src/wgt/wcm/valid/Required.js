@@ -33,8 +33,9 @@ $R.addAction( 'valid_required', function( jNode ){
     });
   
   } else if(jNode.is('select')) {
-    
-    if( '' == ''+jNode.find(':selected').attr('value') ){
+
+    var slctVal = ''+jNode.find(':selected').attr('value');
+    if( '' == slctVal.trim() ){
       $S('#display-'+jNode.attr('id')).removeClass( 'state-ok' );
       $S('#display-'+jNode.attr('id')).addClass( 'state-warn' );
     }
@@ -44,7 +45,7 @@ $R.addAction( 'valid_required', function( jNode ){
     
     jNode.bind( 'change.valid_required', function(){
       
-      var slctVal = ''+jNode.find(':selected').attr('value');
+      slctVal = ''+jNode.find(':selected').attr('value');
       if( '' == slctVal.trim() ){
         $S('#display-'+jNode.attr('id')).removeClass( 'state-ok' );
         $S('#display-'+jNode.attr('id')).addClass( 'state-warn' );
