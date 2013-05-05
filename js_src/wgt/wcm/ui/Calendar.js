@@ -64,10 +64,9 @@ $R.addAction( 'ui_calendar', function( jNode ){
         },
         eventResize: function(event,dayDelta,minuteDelta,revertFunc) {
         
-          // Event
-          alert(
-              event.title + " was resized " +
-              event.start.toString("yyyy-mm-dd HH:ii") + " new start "
+          $R.put( 'ajax.php?c=Webfrap.Calendar.move&calendar='+calId,
+              {'start':moment(event.start).format("YYYY-MM-DD HH:mm")+':00',
+               'end':moment(event.end).format("YYYY-MM-DD HH:mm")+':00'}
           );
   
         }
