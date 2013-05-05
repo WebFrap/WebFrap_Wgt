@@ -238,7 +238,7 @@
         scrolling = true;
         headBar.scrollLeft(this.scrollLeft);
         
-        if (footBar.length)
+        if (footBar && footBar.length)
           footBar.scrollLeft(this.scrollLeft);
         
       };

@@ -1374,7 +1374,7 @@ div.box-message a
 {
   display: block;
   font-size: 1em;
-  padding: .5em .5em .5em .7em;
+  /*padding: .5em .5em .5em .7em;*/
 }
 
 .ui-accordion-icons .ui-accordion-header a

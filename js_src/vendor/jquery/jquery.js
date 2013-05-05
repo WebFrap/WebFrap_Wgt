@@ -4676,7 +4676,8 @@ Sizzle.uniqueSort = function( results ) {
        return results;
 };
 
-Sizzle.error = function( msg ) {
+Sizzle.error = function( msg ) {  
+  console.trace();
        throw new Error( "Syntax error, unrecognized expression: " + msg );
 };
 

@@ -36,7 +36,6 @@ $R.addAction( 'ui_calendar', function( jNode ){
   
   jNode.appear(function(){
     
-
     var calId = jNode.attr('id'),
     	tmpId = calId.substring( 4, calId.length );
 	  
@@ -78,16 +77,11 @@ $R.addAction( 'ui_calendar', function( jNode ){
     settings.events = function(start, end, callback) {
     	
     	var data = $R.get('ajax.php?c=Webfrap.Calendar.search&calendar='+calId+'=&start='+Math.round(start.getTime() / 1000)+'&end='+Math.round(end.getTime() / 1000),{},true);
-    	
-    	console.dir(data.data);
-    	
-    	//alert(data.data[0]['title']);
-    	
     	callback(data.data);
     };
     
     
-    var formObj = $S('#wgt-form-'+tmpId); ;
+    var formObj = $S('#wgt-form-'+tmpId);
 
     // erstellen des calendar nodes
     var calendarObj = jNode.fullCalendar(settings);

@@ -34,7 +34,6 @@ $files = array
   PATH_WGT.'js_src/vendor/jquery.hoverIntent/jquery.hoverIntent.js',
   //PATH_WGT.'js_src/vendor/jquery.vert_mega_menu/jquery.vert_mega_menu.js',
   PATH_WGT.'js_src/vendor/jquery.mega_menu/jquery.mega_menu.js',
-  PATH_WGT.'js_src/vendor/jquery.fullcalendar/jquery.fullcalendar.js',
 
   //PATH_WGT.'js_src/vendor/jquery.template/jquery.template.js',
 
@@ -71,6 +70,7 @@ $files = array
   PATH_WGT.'js_src/vendor/jquery.ui.datetimepicker/jquery.ui.datetimepicker.js',
   PATH_WGT.'js_src/vendor/jquery.ui.datetimepicker/jquery.ui.sliderAccess.js',
   PATH_WGT.'js_src/vendor/jquery.ui.multiselect/jquery.ui.multiselect.js',
+  PATH_WGT.'js_src/vendor/jquery.fullcalendar/jquery.fullcalendar.js',
 
 
   // add wgt jquery plugins
