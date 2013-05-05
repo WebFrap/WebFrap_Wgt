@@ -122,6 +122,9 @@
         var $arrow = '<span class="wgt-mega-menu-icon"></span>';
         var clParentLi = clParent+'-li';
         var menuWidth = $wgtMegaMenuObj.outerWidth();
+        var doc = $S(document),
+          winW      = doc.width()-40,
+          winH      = doc.height()-40;
      
         $('> li',$wgtMegaMenuObj).each(function(){
 
@@ -135,12 +138,16 @@
             var pos = $(this).position();
             var pl = pos.left;
             var iw = $('.subcnt',this).outerWidth(true);
-              
+            
             var newPos = pl - (iw/2);
             if( newPos < 0 ){
               newPos = 0;
             }
-
+            
+            if( (pl + iw) > winW ){
+              newPos = winW - iw;
+            }
+            
             $('.'+clContainer,this).css('left', newPos+'px');
             
           }
