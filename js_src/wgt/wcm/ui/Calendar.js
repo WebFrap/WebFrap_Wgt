@@ -48,11 +48,18 @@ $R.addAction( 'ui_calendar', function( jNode ){
         editable: true,
         eventDrop: function(event,dayDelta,minuteDelta,allDay,revertFunc) {
           
-          // Event verschieben
+          $R.put( 'ajax.php?c=Webfrap.Calendar.move&calendar='+calId,
+                {'start':moment(event.start).format("YYYY-MM-DD HH:mm")+':00',
+                 'end':moment(event.end).format("YYYY-MM-DD HH:mm")+':00'}
+          );
+          
+          // Event verschieben 
+          /*
           alert(
+              
               event.title + " was moved " +
               event.start.toString("yyyy-mm-dd HH:ii") + " new start "
-          );
+          );*/
   
         },
         eventResize: function(event,dayDelta,minuteDelta,revertFunc) {
@@ -76,7 +83,11 @@ $R.addAction( 'ui_calendar', function( jNode ){
     
     settings.events = function(start, end, callback) {
     	
-    	var data = $R.get('ajax.php?c=Webfrap.Calendar.search&calendar='+calId+'=&start='+Math.round(start.getTime() / 1000)+'&end='+Math.round(end.getTime() / 1000),{},true);
+    	var data = $R.get(
+    	    'ajax.php?c=Webfrap.Calendar.search&calendar='+calId
+    	    +'=&start='+Math.round(start.getTime() / 1000)
+    	    +'&end='+Math.round(end.getTime() / 1000),{},true
+    	);
     	callback(data.data);
     };
     
