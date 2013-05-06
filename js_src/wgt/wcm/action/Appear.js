@@ -126,7 +126,7 @@ $R.addAction( 'req_appear', function( jNode ){
   
     jNode.appear(function(){
       
-      $R.get( jNode.attr('wgt_src') );
+      $R.get( jNode.attr('wgt_src'),{async:true} );
       jNode.unbind( 'click.action_appear' );
 
     });
