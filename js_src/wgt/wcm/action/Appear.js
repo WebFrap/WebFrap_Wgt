@@ -126,7 +126,7 @@ $R.addAction( 'req_appear', function( jNode ){
   
     jNode.appear(function(){
       
-      $R.get( jNode.attr('wgt_src'),{async:true} );
+      $R.get( jNode.attr('wgt_src'),{async:true}, true );
       jNode.unbind( 'click.action_appear' );
 
     });
@@ -137,11 +137,10 @@ $R.addAction( 'req_appear', function( jNode ){
     jNode.bind( 'click.action_appear', function(){
       
       jNode.unbind( 'click.action_appear' );
-      $R.get( jNode.attr('wgt_src'),{async:true} );
+      $R.get( jNode.attr('wgt_src'),{async:true}, true );
     });
   
-  }
-  catch( err ){
+  } catch( err ){
     
     $D.errorWindow( err );
     return false;
