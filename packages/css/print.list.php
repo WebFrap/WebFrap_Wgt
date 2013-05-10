@@ -17,8 +17,8 @@
 
 echo '@charset "utf-8";'.NL;
 
-$files = array
-(
+$files = array(
+  PATH_WGT.'wgt/browser/normalize.css',
   PATH_WGT.'layout/print/print.core.css',
 );
 

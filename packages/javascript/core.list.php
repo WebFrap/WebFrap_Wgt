@@ -8,7 +8,7 @@
 * @projectUrl  : http://webfrap.net
 *
 * @licence     : BSD License see: LICENCE/BSD Licence.txt
-* 
+*
 * @version: @package_version@  Revision: @package_revision@
 *
 * Changes:
@@ -27,9 +27,8 @@ $files = array(
 
   PATH_WGT.'js_src/Wgt.js',
   PATH_WGT.'js_src/wgt/Debug.js',
-    
+
   // add i18n data
   PATH_WGT.'js_src/wgt/I18n.js',
-
 );
 

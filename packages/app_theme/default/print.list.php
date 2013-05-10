@@ -18,18 +18,12 @@
 echo '@charset "utf-8";'.NL;
 
 $files = array(
-  PATH_WGT.'wgt/browser/normalize.css',
 
-  // layout
-  PATH_WGT.'layout/wgt/layout/backend/layout.css',
-
-  // layout
-  PATH_THEME.'themes/default/theme.css',
-  PATH_THEME.'themes/default/icons.css',
 );
 
 
-foreach ($files as $file) {
+foreach ($files as $file)
+{
   include $file;
   echo NL;
 }
