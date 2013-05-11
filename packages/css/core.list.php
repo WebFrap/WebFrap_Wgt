@@ -82,6 +82,9 @@ $files = array
   PATH_WGT.'layout/wgt/wgt/status/wgt.status.core.css',
 
 
+  PATH_WGT.'js_src/vendor/nvd3/src/nv.d3.css',
+
+
 );
 
 foreach ($files as $file) {

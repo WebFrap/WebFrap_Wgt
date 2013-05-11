@@ -193,6 +193,10 @@ $files = array
   PATH_WGT.'js_src/wgt/wcm/graph/BubbleChart.js',
 
 
+  // nv d3 charts
+  PATH_WGT.'js_src/wgt/wcm/graph/NvLineChart.js',
+
+
   // feature
   PATH_WGT.'js_src/wgt/wcm/feature/Sortable.js',
 
