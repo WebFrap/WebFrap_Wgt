@@ -1,9 +1,41 @@
 body
 {
+  size:210mm 297mm;  
+}
+
+
+div.page
+{
+  width:210mm;
+  height:297mm;  
+  padding-top:1.5cm;
+  padding-bottom:1.5cm;
+  padding-left:2.5cm;
+  padding-right:0.5cm;  
+  border:1px dotted silver;  
+}
+
+/*
+body
+{
   size:210mm 297mm;
   margin-top:1.5cm;
   margin-bottom:1.5cm;
   margin-left:2.5cm;
   margin-right:0.5cm;
   font-family: "Times New Roman", Times, serif;
+  border:1px dotted silver;
+}
+*/
+
+
+.template,
+.meta,
+.hidden,
+.settings,
+.box_template,
+var
+{
+  /* Markierungsklasse für Vorlagen, wir vor dem Anzeigen gelöscht */
+  display: none;
 }
