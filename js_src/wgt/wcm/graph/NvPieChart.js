@@ -12,11 +12,11 @@ $R.addAction( 'nv_pie_chart', function( jNode ){
   window.$B.loadModule('d3');
 
   var data = window.$B.robustParseJSON(jNode.find('var').text());
-  console.log(jNode.find('var').text());
+  console.dir(data);
   jNode.find('var').remove();
   jNode.html('<svg style="height:500px;">');
   
-  
+
   /** data format
 [
   {
@@ -50,4 +50,5 @@ $R.addAction( 'nv_pie_chart', function( jNode ){
     return chart;
   });
  
+  
 });
