@@ -198,6 +198,8 @@ $files = array
   PATH_WGT.'js_src/wgt/wcm/graph/NvPieChart.js',
   PATH_WGT.'js_src/wgt/wcm/graph/NvDonutChart.js',
   PATH_WGT.'js_src/wgt/wcm/graph/NvScatterChart.js',
+  PATH_WGT.'js_src/wgt/wcm/graph/NvStackedAreaChart.js',
+
 
 
   // feature
