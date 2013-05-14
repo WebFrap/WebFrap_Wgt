@@ -62,8 +62,7 @@ $R.addAction( 'control_toggle', function( jNode ){
         });
       }
         
-    }
-    else{
+    } else{
 
       if( showNot ){
         evTNode.each(function(){
@@ -75,8 +74,9 @@ $R.addAction( 'control_toggle', function( jNode ){
             actBox.show();
           }
         });
-      }
-      else{
+      
+      } else{
+        
         evTNode.each(function(){
           
           actBox = $S(this);
