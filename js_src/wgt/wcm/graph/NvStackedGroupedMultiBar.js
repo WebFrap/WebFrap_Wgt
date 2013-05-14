@@ -5,9 +5,9 @@
  *
  * @author Dominik Bonsch <db@webfrap.net>
  */
-$R.addAction( 'nv_stacked_grouped', function( jNode ){
+$R.addAction( 'nv_sg_mbar_chart', function( jNode ){
   
-  jNode.removeClass('wcm_nv_stacked_grouped');
+  jNode.removeClass('wcm_nv_sg_mbar_chart');
 
   window.$B.loadModule('d3');
 
@@ -39,7 +39,7 @@ $R.addAction( 'nv_stacked_grouped', function( jNode ){
     
     chart.yAxis
       .tickFormat(d3.format(data.y.format));
-    
+
     d3.select('#'+jNode.attr('id')+' svg')
       .datum(data.data)
       .transition().duration(500).call(chart);
@@ -49,7 +49,5 @@ $R.addAction( 'nv_stacked_grouped', function( jNode ){
     return chart;
   });
   
-
-
- 
 });
+
