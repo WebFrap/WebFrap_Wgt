@@ -351,9 +351,18 @@
 
     /**
      * Abschicken eines Formulars als ajax request
-     * @param formId
-     * @param formUrl
-     * @param params
+     * @param string formId
+     * @param string formUrl
+     * @param Array params
+     *  @property boolean search 
+     *  @property string check.title 
+     *  @property string check.message 
+     *  @property function statusCallback
+     *  @property function sucess
+     *  @property function error
+     *  @property boolean clean
+     *  @property string append
+     *  @property string formNs
      */
     this.form = function(formId, formUrl, params){
 
@@ -382,7 +391,7 @@
 
       var response = null;
 
-      if( undefined !== params.confirm  ){
+      if (undefined !== params.confirm) {
 
         $D.confirmWindow(
           params.confirm.title,
@@ -486,7 +495,7 @@
       });
       */
 
-      var formParams  = this.appendFormParams( form );
+      var formParams  = this.appendFormParams( form, params.formNs );
 
       /*
       if($S.ajaxFileUpload)
@@ -618,7 +627,7 @@
     /**
      * @param formId
      */
-    this.appendFormParams = function( formId ){
+    this.appendFormParams = function( formId, formNs ){
 
 
       var form,
@@ -634,7 +643,7 @@
         form  = formId;
         formId = form.attr('id');
       }
-
+      
       var start = form.data('start');
       if( start !== undefined && start !== null ){
         data.url += '&start='+start;
@@ -655,8 +664,18 @@
         data.url += '&next='+next;
       }
 
+      
+      var formSelect = ".fparam-"+formId;
+      
+      if(formNs){
+        
+        //alert('formNs '+formNs);
+        
+        formSelect += ",.fparam-"+formNs;
+      }
+      
       // felder auslesen, die als zusätzliche parameter an eine form gehängt werden
-      var addParams = $S( ".fparam-"+formId );
+      var addParams = $S( formSelect );
       if( addParams.length ){
 
         data.url += '&'+addParams.serialize();
