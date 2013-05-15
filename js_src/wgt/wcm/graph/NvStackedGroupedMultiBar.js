@@ -35,7 +35,7 @@ $R.addAction( 'nv_sg_mbar_chart', function( jNode ){
     var chart = nv.models.multiBarChart();
      
     chart.xAxis
-      .tickFormat(d3.format(data.x.format));
+      .tickFormat(function(d) { return d; });//d3.format(data.x.format)
     
     chart.yAxis
       .tickFormat(d3.format(data.y.format));
