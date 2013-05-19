@@ -164,10 +164,13 @@
      * Den Desktop neu laden
      */
     this.refresh = function( ){
-
-      var tmp = this.timestamp;
-      this.timestamp = Date.now();
-      $R.get( 'ajax.php?c=Webfrap.Desktop.refresh&timestamp='+tmp, {}, true );
+      
+      // nur wenn der desktop da ist
+      if($S('#desktop-panel-message').is('a')){
+        var tmp = this.timestamp;
+        this.timestamp = Date.now();
+        $R.get( 'ajax.php?c=Webfrap.Desktop.refresh&timestamp='+tmp, {}, true );
+      }
 
     };
 
