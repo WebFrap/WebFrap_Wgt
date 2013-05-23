@@ -451,7 +451,7 @@
           }
         }
       }
-      self.changedData = tmpStack;
+      this.changedData = tmpStack;
       
     },
     
@@ -465,7 +465,7 @@
       
       console.log('write cell n:'+cellName+' v: '+value+' t: '+text);
       
-      self.changedData[cellName] = value;
+      this.changedData[cellName] = value;
       cell.html(text);
       cell.attr('value',value);
       cell.addClass('changed');
