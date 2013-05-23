@@ -91,21 +91,6 @@
         
         editLayers.trigger('blur');
         
-        // prüfen ob das feld überhaupt editierbar ist
-        if (!(cTarget.is('td') && !cTarget.is('.pos,.ro,.nav,.sort,.nav_split'))){
-          //editLayers.trigger('blur');
-          editLayers.unbind('blur');
-          editLayers.hide();
-          return;
-        }
-        
-        // check ob die ganze reihe vielleicht readonly ist
-        if (cTarget.parent().is('.ro')){
-          editLayers.unbind('blur');
-          editLayers.hide();
-          return;
-        }
-        
         // wenn click auf editor
         if (cTarget.parentX('tbody.editor')){
           
@@ -168,6 +153,23 @@
           
           return;
         } // end click auf editor
+        
+        // prüfen ob das feld überhaupt editierbar ist
+        if (!(cTarget.is('td') && !cTarget.is('.pos,.ro,.nav,.sort,.nav_split'))){
+          //editLayers.trigger('blur');
+          editLayers.unbind('blur');
+          editLayers.hide();
+          return;
+        }
+        
+        // check ob die ganze reihe vielleicht readonly ist
+        if (cTarget.parent().is('.ro')){
+          editLayers.unbind('blur');
+          editLayers.hide();
+          return;
+        }
+        
+
         
         // eine temporär id zuweisen
         if (!cTarget.attr('id')){
