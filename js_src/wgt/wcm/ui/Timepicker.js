@@ -59,3 +59,28 @@ $R.addAction( 'ui_timepicker', function( jNode ){
     jNode.timepicker( "option", options );
 
 });
+
+
+$R.addAction( 'list_timepicker', function( jNode ){
+  
+  jNode.removeClass('wcm_list_timepicker');
+  
+  var settings = {
+      onSelect:function( dateValue  ){
+        $S('#'+jNode.parentX('div').attr('wgt_list')).grid(
+          'writeCell', 
+          jNode.parentX('div').attr('wgt_target'), 
+          dateValue,
+          dateValue
+        );
+      }
+    };
+  
+  jNode.addClass('valid_time');
+  jNode.timepicker(settings);
+  
+  jNode.click( function(){
+    jNode.timepicker('show');
+  });
+
+});

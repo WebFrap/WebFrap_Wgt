@@ -188,6 +188,11 @@
         //console.log('#wgt-edit-field-'+type);
         self.activEditLayer = $S('#wgt-edit-field-'+type);
         
+        if(!self.activEditLayer.length){
+          console.log('missing layer #wgt-edit-field-'+type);
+          return;
+        }
+        
         // dem editlayer mitgeben welches feld befüllt werden soll,
         // nötig bei rich ui widgets
         self.activEditLayer.attr('wgt_target',cTarget.attr('id')).attr('wgt_list',elId);
