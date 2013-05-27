@@ -155,7 +155,7 @@
         } // end click auf editor
         
         // prüfen ob das feld überhaupt editierbar ist
-        if (!(cTarget.is('td') && !cTarget.is('.pos,.ro,.nav,.sort,.nav_split'))){
+        if (!(cTarget.is('td,input') && !cTarget.is('.pos,.ro,.nav,.sort,.nav_split'))){
           //editLayers.trigger('blur');
           editLayers.unbind('blur');
           editLayers.hide();
@@ -211,7 +211,7 @@
           height:oH
         });
 
-        if ('date' === type || 'datetime' === type  ){
+        if ('date' === type || 'datetime' === type ){
           
           self.activEditLayer.find('input').val(cTarget.html());
           
@@ -225,8 +225,11 @@
           
           self.activEditLayer.find('select').val(cTarget.attr('value'));
           
-        }
-        else{
+        } else if ('check' === type) {
+
+        	self.activEditLayer.html(cTarget.html());
+            
+        } else {
           
           self.activEditLayer.html(cTarget.html());
           
@@ -292,6 +295,16 @@
               userInp  = self.activEditLayer.find('select').val();
               displTxt = self.activEditLayer.find('select option:selected').text();
               
+            } else if ('check'===type) {
+                
+	        	if (self.activEditLayer.find('input').is(':checked')) {
+	        	  userInp = 't';
+	          	} else {
+	          	  userInp = 'f';
+	          	}
+	        	
+            	displTxt = cTarget.html();
+                
             } else {
               
               displTxt = userInp = self.activEditLayer.text();
@@ -358,7 +371,17 @@
               userInp = self.activEditLayer.find('select').val();
               displTxt = self.activEditLayer.find('select option:selected').text();
               
-            } else {
+            } else if ('check' === type) {
+                
+	        	if (self.activEditLayer.find('input').is(':checked')) {
+	        	  userInp = 't';
+	          	} else {
+	          	  userInp = 'f';
+	          	}
+	        	
+            	displTxt = cTarget.html();
+                
+            }  else {
               
               displTxt = userInp = self.activEditLayer.text();
             }
@@ -390,14 +413,50 @@
           
           self.activEditLayer.find('select').focus();
           
-        } else {
+        } else if ('check' === type) {
+            
+            self.activEditLayer.find('input').focus();
+            
+      }  else {
           
           self.activEditLayer.focus();
         }
 
 
       });
+        
+      self.addKeyEvents(opts,el,elId);
+    },
+    
+    /**
+     * keyboard events definieren
+     */
+    addKeyEvents: function(opts,el,elId){
+    	
+      el.parent().on('keydown', function(e){
+    	  
+        var keyCode = e.keyCode || e.which; 
+    	console.log("got keycode "+keyCode );
+        alert("got keycode "+keyCode );
 
+        if (keyCode !== 9) { 
+          return true;
+        } 
+        
+        e.preventDefault(); 
+        // call custom function here
+      
+        var cTarget =  $S(e.target);
+            
+        // wenn innerhalb des edit layers
+        if (self.activEditLayer && cTarget.parentX(self.activEditLayer)){
+          return;
+        }
+        
+        alert('bin da');
+        
+      });
+      
     },
     
     /**
