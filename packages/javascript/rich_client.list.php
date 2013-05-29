@@ -27,7 +27,6 @@ $files = array
   PATH_WGT.'js_src/vendor/jquery.toaster/jquery.toaster.js',
   PATH_WGT.'js_src/vendor/jquery.colorpicker/jquery.colorpicker.js',
   PATH_WGT.'js_src/vendor/jquery.star_rating/jquery.star_rating.js',
-  PATH_WGT.'js_src/vendor/jquery.monthpicker/jquery.monthpicker.js',
   PATH_WGT.'js_src/vendor/jquery.cookie/jquery.cookie.js',
   PATH_WGT.'js_src/vendor/jquery.mousewheel/jquery.mousewheel.js',
   PATH_WGT.'js_src/vendor/jquery.modal/jquery.modal.js',
@@ -70,6 +69,7 @@ $files = array
   PATH_WGT.'js_src/vendor/jquery.ui.datetimepicker/jquery.ui.datetimepicker.js',
   PATH_WGT.'js_src/vendor/jquery.ui.datetimepicker/jquery.ui.sliderAccess.js',
   PATH_WGT.'js_src/vendor/jquery.ui.multiselect/jquery.ui.multiselect.js',
+  PATH_WGT.'js_src/vendor/jquery.monthpicker/jquery.monthpicker.js',
   PATH_WGT.'js_src/vendor/jquery.fullcalendar/jquery.fullcalendar.js',
 
 
@@ -80,8 +80,6 @@ $files = array
   // add widgets
   PATH_WGT.'js_src/wgt/widget/Grid.js',
   PATH_WGT.'js_src/wgt/widget/grid/Editmode.js',
-
-
 
   PATH_WGT.'js_src/wgt/widget/I18nInputList.js',
   PATH_WGT.'js_src/wgt/widget/I18nInputTab.js',
@@ -215,15 +213,6 @@ $files = array
   PATH_WGT.'js_src/wgt/wcm/valid/Email.js',
   PATH_WGT.'js_src/wgt/wcm/valid/Unique.js',
 
-  // charts
-  PATH_WGT.'js_src/wgt/wcm/chart/Area.js',
-  PATH_WGT.'js_src/wgt/wcm/chart/Pie.js',
-  PATH_WGT.'js_src/wgt/wcm/chart/Hbar.js',
-  PATH_WGT.'js_src/wgt/wcm/chart/Bar.js',
-  PATH_WGT.'js_src/wgt/wcm/chart/Rgraph.js',
-  PATH_WGT.'js_src/wgt/wcm/chart/Hypertree.js',
-  PATH_WGT.'js_src/wgt/wcm/chart/Spacetree.js',
-
   // widgets
   PATH_WGT.'js_src/wgt/wcm/widget/Selectbox.js',
   PATH_WGT.'js_src/wgt/wcm/widget/Grid.js',
@@ -234,8 +223,6 @@ $files = array
   PATH_WGT.'js_src/wgt/wcm/widget/CommentTree.js',
   PATH_WGT.'js_src/wgt/wcm/widget/KvList.js',
 
-  // d3 charts
-  PATH_WGT.'js_src/wgt/wcm/graph/LineChart.js',
 
   PATH_WGT.'js_src/wgt/Desktop.js',
   PATH_WGT.'js_src/wgt/desktop/Message.js',
