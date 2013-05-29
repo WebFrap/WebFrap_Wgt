@@ -520,6 +520,15 @@
     },
     
     /**
+     * Leeren des Save Indexes
+     */
+    emptySavedata :function(  ){
+
+      this.changedData = {};
+      
+    },
+    
+    /**
      * In eine Zelle und gleichzeitig den changedData array schreiben
      */
     writeCell: function(cellId, value, text){
