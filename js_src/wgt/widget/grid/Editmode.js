@@ -154,8 +154,16 @@
           return;
         } // end click auf editor
         
+        if (cTarget.is('input')) {
+          if (cTarget.is(':checked')) {
+            userInp = 't';
+          } else {
+            userInp = 'f';
+          }
+        }
+        
         // prüfen ob das feld überhaupt editierbar ist
-        if (!(cTarget.is('td,input') && !cTarget.is('.pos,.ro,.nav,.sort,.nav_split'))){
+        if (!(cTarget.is('td') && !cTarget.is('.pos,.ro,.nav,.sort,.nav_split'))){
           //editLayers.trigger('blur');
           editLayers.unbind('blur');
           editLayers.hide();
@@ -184,6 +192,7 @@
         if (!type) {
           type = 'text';
         }
+
         
         //console.log('#wgt-edit-field-'+type);
         self.activEditLayer = $S('#wgt-edit-field-'+type);
@@ -227,7 +236,7 @@
           
         } else if ('check' === type) {
 
-        	self.activEditLayer.html(cTarget.html());
+          self.activEditLayer.html(cTarget.html());
             
         } else {
           
@@ -297,13 +306,13 @@
               
             } else if ('check'===type) {
                 
-	        	if (self.activEditLayer.find('input').is(':checked')) {
-	        	  userInp = 't';
-	          	} else {
-	          	  userInp = 'f';
-	          	}
-	        	
-            	displTxt = cTarget.html();
+            if (self.activEditLayer.find('input').is(':checked')) {
+              userInp = 't';
+              } else {
+                userInp = 'f';
+              }
+            
+              displTxt = cTarget.html();
                 
             } else {
               
@@ -373,13 +382,13 @@
               
             } else if ('check' === type) {
                 
-	        	if (self.activEditLayer.find('input').is(':checked')) {
-	        	  userInp = 't';
-	          	} else {
-	          	  userInp = 'f';
-	          	}
-	        	
-            	displTxt = cTarget.html();
+              if (self.activEditLayer.find('input').is(':checked')) {
+                userInp = 't';
+              } else {
+                userInp = 'f';
+              }
+            
+              displTxt = cTarget.html();
                 
             }  else {
               
@@ -417,9 +426,17 @@
             
             self.activEditLayer.find('input').focus();
             
-      }  else {
+        } else {
           
           self.activEditLayer.focus();
+          self.activEditLayer.bind('keyup',function(){
+            if($S(this).hasScrollBar()){
+              $S(this).addWidth(20);
+              console.log('scrollbar');
+            } else {
+              console.log('no scrollbar');
+            }
+          });
         }
 
 
@@ -432,11 +449,11 @@
      * keyboard events definieren
      */
     addKeyEvents: function(opts,el,elId){
-    	
+      
       el.parent().on('keydown', function(e){
-    	  
+        
         var keyCode = e.keyCode || e.which; 
-    	console.log("got keycode "+keyCode );
+        console.log("got keycode "+keyCode );
         alert("got keycode "+keyCode );
 
         if (keyCode !== 9) { 

@@ -321,7 +321,7 @@ div.wgt-grid-foot table tbody td,
 div.wgt-grid-body table thead th,
 div.wgt-grid-head table thead th
 {
-  overflow: hidden;
+  overflow: hidden !important;
   border-right:1px solid white;
   padding:0px;
 }

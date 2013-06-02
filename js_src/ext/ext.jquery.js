@@ -45,6 +45,20 @@
    
     return nodeC.split(" ");
   };
+  
+  /**
+   * check if an element has a scroll bar
+   */
+  $S.fn.hasScrollBar = function() {
+    //note: clientHeight= height of holder
+    //scrollHeight= we have content till this height
+    var _elm = $S(this)[0];
+    var _hasScrollBar = false; 
+    if ((_elm.clientHeight < _elm.scrollHeight) || (_elm.clientWidth < _elm.scrollWidth)) {
+        _hasScrollBar = true;
+    }
+    return _hasScrollBar;
+  };
 
   
   /**
@@ -100,10 +114,26 @@
   };
   
   /**
-   * add Height
+   * sub Height
    */
   $S.fn.subHeight = function( height ){
      $S(this).height( ($S(this).height()-height)+'px' );
+    return $S;
+  };
+  
+  /**
+   * add width
+   */
+  $S.fn.addWidth = function( width ){
+     $S(this).width( ($S(this).width()+width)+'px' );
+    return $S;
+  };
+  
+  /**
+   * sub width
+   */
+  $S.fn.subWidth = function( width ){
+     $S(this).width( ($S(this).width()-width)+'px' );
     return $S;
   };
 
