@@ -1,5 +1,5 @@
 
-nv.models.linePlusBarChartSAP = function() {
+nv.models.stackedGrouped_lineBar = function() {
 
   //============================================================
   // Public Variables with Default Settings
@@ -40,12 +40,12 @@ nv.models.linePlusBarChartSAP = function() {
     .stacked(false)
     ;
   lines
-    .clipEdge(false)
+    .clipEdge(true)
     .padData(true)
     ;
   xAxis
     .orient('bottom')
-    .tickPadding(7)
+    .tickPadding(5)
     .tickFormat(function(d) { return d })
     ;
   yAxis
