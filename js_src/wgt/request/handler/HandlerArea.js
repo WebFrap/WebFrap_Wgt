@@ -32,6 +32,13 @@
          $S(selector).val( text );
        }
      },
+     'value_change':function(selector,text){
+       
+       if($S(selector).length>0){
+         $S(selector).val( text );
+         $S(selector).change();
+       }
+     },
      'html':function(selector,text){
 
        if($S(selector).length>0){

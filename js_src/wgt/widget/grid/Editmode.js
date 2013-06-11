@@ -155,11 +155,37 @@
         } // end click auf editor
         
         if (cTarget.is('input')) {
-          if (cTarget.is(':checked')) {
-            userInp = 't';
-          } else {
-            userInp = 'f';
+          
+          if(cTarget.is('input.gredit')){
+            return;
           }
+          
+          cTarget.addClass('gredit');
+          
+          // entweder es ist eine checkbox
+          if(cTarget.is('input:checkbox')){
+            
+            var userInp;
+            cTarget.change(function(){
+              if (cTarget.is(':checked')) {
+                userInp = 't';
+              } else {
+                userInp = 'f';
+              }
+              
+              self.changedData[cTarget.parent().attr('name')] = userInp;
+            }); 
+          }
+          
+          // bei window elementen
+          if(cTarget.is('input.wgt_window')){
+            cTarget.parent().find('input:hidden').change(function(){
+              self.changedData[cTarget.parent().attr('name')] = $S(this).val();
+            }); 
+          }
+         
+          
+          return;
         }
         
         // prüfen ob das feld überhaupt editierbar ist
@@ -193,6 +219,9 @@
           type = 'text';
         }
 
+        if( 'window' === type || 'check' === type ){
+          return 
+        }
         
         //console.log('#wgt-edit-field-'+type);
         self.activEditLayer = $S('#wgt-edit-field-'+type);
@@ -234,6 +263,16 @@
           
           self.activEditLayer.find('select').val(cTarget.attr('value'));
           
+        } else if ('window' === type) {
+            
+            self.activEditLayer.html($S('#'+cTarget.attr('data_source')).text());
+            
+            if(!self.activEditLayer.find('option[value="'+cTarget.attr('value')+'"]').length){
+              self.activEditLayer.find('select').append('<option value="'+cTarget.attr('value')+'" >'+cTarget.text()+'</option>');
+            }
+            
+            self.activEditLayer.find('select').val(cTarget.attr('value'));
+            
         } else if ('check' === type) {
 
           self.activEditLayer.html(cTarget.html());
