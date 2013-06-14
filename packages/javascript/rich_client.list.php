@@ -63,6 +63,9 @@ $files = array
   PATH_WGT.'js_src/vendor/jquery.ui/jquery.ui.autocomplete.js',
   PATH_WGT.'js_src/vendor/jquery.ui/jquery.ui.menu.js',
 
+  // jquery ui extensions
+  PATH_WGT.'js_src/ext/jquery.ui/accordion.js',
+
   // auf ui basierende jquery plugins
   PATH_WGT.'js_src/vendor/jquery.timepicker/jquery.timepicker.js',
   PATH_WGT.'js_src/vendor/jquery.dynatree/jquery.dynatree.js',
@@ -71,6 +74,8 @@ $files = array
   PATH_WGT.'js_src/vendor/jquery.ui.multiselect/jquery.ui.multiselect.js',
   PATH_WGT.'js_src/vendor/jquery.monthpicker/jquery.monthpicker.js',
   PATH_WGT.'js_src/vendor/jquery.fullcalendar/jquery.fullcalendar.js',
+
+
 
 
   // add wgt jquery plugins

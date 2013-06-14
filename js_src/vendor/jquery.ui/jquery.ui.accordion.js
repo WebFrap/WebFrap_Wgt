@@ -314,11 +314,12 @@ $.widget( "ui.accordion", {
 			this.headers.each(function() {
 				maxHeight -= $( this ).outerHeight( true );
 			});
-
+			
+			///TODO check why i need to add the -5 to fix the height
 			this.headers.next()
 				.each(function() {
 					$( this ).height( Math.max( 0, maxHeight -
-						$( this ).innerHeight() + $( this ).height() ) );
+						$( this ).innerHeight() + $( this ).height() -5 ) );
 				})
 				.css( "overflow", "auto" );
 		} else if ( heightStyle === "auto" ) {
