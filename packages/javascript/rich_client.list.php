@@ -175,6 +175,7 @@ $files = array
   PATH_WGT.'js_src/wgt/wcm/control/Dropmenu.js',
   PATH_WGT.'js_src/wgt/wcm/control/WindowSelection.js',
   PATH_WGT.'js_src/wgt/wcm/control/Toggle.js',
+  PATH_WGT.'js_src/wgt/wcm/control/ToggleAccordion.js',
   PATH_WGT.'js_src/wgt/wcm/control/SelectSwitch.js',
 
   // d3 charts

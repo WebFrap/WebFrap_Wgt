@@ -143,11 +143,21 @@
           </li>
           <li><a href="content.php?page=WebFrap_Wgt:wgt.src.wcm.control.desc" target="main" class="clink" >Control</a>
             <ul>
-              <li><a href="content.php?page=WebFrap_Wgt:wgt.src.wcm.control.access_dataset" target="main" class="clink" >AccessDataset</a></li>
-              <li><a href="content.php?page=WebFrap_Wgt:wgt.src.wcm.control.check_button" target="main" class="clink" >CheckButton</a></li>
+              <li><a href="content.php?page=WebFrap_Wgt:wgt.src.wcm.control.access_dataset" target="main" class="clink" >Access Dataset</a></li>
+              <li><a href="content.php?page=WebFrap_Wgt:wgt.src.wcm.control.button" target="main" class="clink" >Button</a></li>
+              <li><a href="content.php?page=WebFrap_Wgt:wgt.src.wcm.control.button_set" target="main" class="clink" >Buttonset</a></li>
+              <li><a href="content.php?page=WebFrap_Wgt:wgt.src.wcm.control.check_button" target="main" class="clink" >Check Button</a></li>
               <li><a href="content.php?page=WebFrap_Wgt:wgt.src.wcm.control.confirm" target="main" class="clink" >Confirm</a></li>
-              <li><a href="content.php?page=WebFrap_Wgt:wgt.src.wcm.control.context_menu" target="main" class="clink" >ContextMenu</a></li>
+              <li><a href="content.php?page=WebFrap_Wgt:wgt.src.wcm.control.contact_user" target="main" class="clink" >Contact User</a></li>
+              <li><a href="content.php?page=WebFrap_Wgt:wgt.src.wcm.control.context_menu" target="main" class="clink" >Context Menu</a></li>
+              <li><a href="content.php?page=WebFrap_Wgt:wgt.src.wcm.control.dropmenu" target="main" class="clink" >Dropmenu</a></li>
               <li><a href="content.php?page=WebFrap_Wgt:wgt.src.wcm.control.minidrop" target="main" class="clink" >Minidrop</a></li>
+              <li><a href="content.php?page=WebFrap_Wgt:wgt.src.wcm.control.select_switch" target="main" class="clink" >Select Switch</a></li>
+              <li><a href="content.php?page=WebFrap_Wgt:wgt.src.wcm.control.show_docu" target="main" class="clink" >Show Docu</a></li>
+              <li><a href="content.php?page=WebFrap_Wgt:wgt.src.wcm.control.split_button" target="main" class="clink" >Split Button</a></li>
+              <li><a href="content.php?page=WebFrap_Wgt:wgt.src.wcm.control.toggle" target="main" class="clink" >Toggle</a></li>
+              <li><a href="content.php?page=WebFrap_Wgt:wgt.src.wcm.control.toggle_accordion" target="main" class="clink" >ToogleAccordion</a></li>
+              <li><a href="content.php?page=WebFrap_Wgt:wgt.src.wcm.control.window_selection" target="main" class="clink" >Window Selection</a></li>
             </ul>
           </li>
           <li><a href="content.php?page=WebFrap_Wgt:wgt.src.wcm.feature.desc" target="main" class="clink" >Feature</a>

@@ -73,9 +73,12 @@
         return;
       }
       
+      console.log("in hide acc "+idx);
+      
       if (!head.is(':visible')) {
         return;
       }
+      console.log("hide acc "+idx);
       head.hide();
       this.blocks.addHeight(28);
       
@@ -88,9 +91,12 @@
         return;
       }
       
+      console.log("in show acc "+idx);
+      
       if (head.is(':visible')) {
         return;
       }
+      console.log("show acc "+idx);
       head.show();
       this.blocks.subHeight(28);
       
@@ -107,17 +113,33 @@
       
     },
     
-    _getHead(): function(idx){
+    _getHead: function(idx){
+      
+      var head = null;
+      
       if (!this.blocks.length) {
         this.blocks = this.element.find('.ui-accordion-content');
       }
       
-      var head = this.element.find( ".ui-accordion-header:eq("+idx+")" );
-      
-      if(!head.length){
-        console.log('accordion '+this.element.attr('id')+' has no head number: '+idx);
-        return null;
+      if (!isNaN(idx)) {
+
+        head = this.element.find( ".ui-accordion-header:eq("+idx+")" );
+        
+        if(!head.length){
+          console.log('accordion '+this.element.attr('id')+' has no head number: '+idx);
+          return null;
+        }
+        
+      } else {
+        
+        head = this.element.find( 'a[tab="'+idx+'"]' ).parent();
+        if (!head.length) {
+          console.log('accordion '+this.element.attr('id')+' has no head key: '+idx);
+          return null;
+        }
       }
+      
+
       return head;
     }
  
