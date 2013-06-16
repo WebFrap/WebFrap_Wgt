@@ -27,11 +27,13 @@ $R.addAction( 'toggle_accordion', function( jNode ){
 
   var showNot = jNode.attr('wgt_not') === '!'?true:false, // invert the visibility
     trgtSrc = jNode.attr('wgt_acc'),
-    accKey  = jNode.attr('wgt_ac_key');
+    accKey  = jNode.attr('wgt_acc_key');
 
   
   // hide & show action
   var triggerA = function(){
+    
+    console.log('toggle_accordion '+trgtSrc+' '+accKey);
     
     var evTNode = $S(trgtSrc);
 
