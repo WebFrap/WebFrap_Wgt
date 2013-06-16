@@ -99,8 +99,7 @@ $R.addAction( 'ui_dropform', function( jNode ){
 
     });
 
-  }
-  else{
+  } else {
 
     nextNode = jNode.next();
     nodeId   = jNode.attr('id');
@@ -126,13 +125,13 @@ $R.addAction( 'ui_dropform', function( jNode ){
     });
 
     jNode.miniMenu({
-      button      : props.button,
-      plain 	   : props.plain,
+      button : props.button,
+      plain : props.plain,
       globalClose : false,
-      noBorder    : props.noBorder,
+      noBorder : props.noBorder,
       closeScroll : props.closeScroll,
       overlayStyle:{"width":props.menuWidth+'px'},
-      menuItems   : menuItems
+      menuItems : menuItems
     });
 
   }
