@@ -31,7 +31,7 @@ F,.02288
 }
  */
 
-/*
+/**
  * WGT Web Gui Toolkit
  * http://webfrap.net/WGT
  * 

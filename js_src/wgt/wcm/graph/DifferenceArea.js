@@ -16,7 +16,7 @@ date   New York      San Francisco
 20111012      61.8   61.5 
  */
 
-/*
+/**
  * WGT Web Gui Toolkit
  * http://webfrap.net/WGT
  * 

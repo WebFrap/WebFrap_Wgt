@@ -17,7 +17,7 @@ DC,36352,50439,25225,75569,193557,140043,70648"
 }
  */
 
-/*
+/**
  * WGT Web Gui Toolkit
  * http://webfrap.net/WGT
  *

@@ -1608,7 +1608,7 @@ var dateFormatters = {
 fc.dateFormatters = dateFormatters;
 
 
-/* thanks jQuery UI (https://github.com/jquery/jquery-ui/blob/master/ui/jquery.ui.datepicker.js)
+/** thanks jQuery UI (https://github.com/jquery/jquery-ui/blob/master/ui/jquery.ui.datepicker.js)
  * 
  * Set as calculateWeek to determine the week of the year based on the ISO 8601 definition.
  * @param  date  Date - the date to get the week for

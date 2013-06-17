@@ -1,4 +1,4 @@
-/*
+/**
  * jQuery.appear
  * http://code.google.com/p/jquery-appear/
  * 

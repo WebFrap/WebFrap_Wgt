@@ -29,7 +29,7 @@ MSFT,Sep 2001,20.82"
 }
  */
 
-/*
+/**
  * WGT Web Gui Toolkit
  * http://webfrap.net/WGT
  *

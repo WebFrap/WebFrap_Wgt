@@ -23,7 +23,7 @@
 ]
 */
 
-/*
+/**
  * WGT Web Gui Toolkit
  *
  * http://webfrap.net/WGT
