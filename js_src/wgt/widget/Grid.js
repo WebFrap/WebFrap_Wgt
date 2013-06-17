@@ -156,6 +156,8 @@
         parentHeightStyle = ' style="height:'+(parentHeight)+'px;" ';
       }
 
+      
+
       // Einträge Selektiebar machen
       if( opt.select_able ){
         this.makeSelectable( ge );
@@ -214,6 +216,16 @@
       ge.parent().wrap( '<div class="body-scroll" '+scrollHeightStyle+' >' );
       ge.parent().before(jHeadTab);
       ge.parent().before(resizeBox);
+      
+      
+      var headHeight = 30;
+      if (opt.search_able) {
+        headHeight += 23;
+      }
+      if (opt.edit_able && ge.find('tbody.editor').length) {
+        headHeight += 23;
+      }
+      jHeadTab.css('height',headHeight+'px');
       
       // store the head
       var headBar = ge.parent().parent().find('.wgt-grid-head');

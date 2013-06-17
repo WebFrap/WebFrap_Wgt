@@ -535,8 +535,7 @@ table.wgt-grid thead span
   text-decoration: none;
 }
 
-div.wgt-grid-head,
-div.wgt-grid-head table thead th
+div.wgt-grid-head table thead
 {
   color: #fff !important;
   font-weight: bold;
