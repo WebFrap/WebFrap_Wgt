@@ -78,7 +78,8 @@ $R.addAction( 'toggle_accordion', function( jNode ){
   };
   
   // initial check
-  triggerA();
+  
+  $R.oneTimePostAjax(triggerA);
   
   // toggle vissibility on change of the state
   jNode.bind( 'change', triggerA );
