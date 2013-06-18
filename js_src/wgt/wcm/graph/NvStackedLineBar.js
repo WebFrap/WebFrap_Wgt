@@ -1,10 +1,3 @@
-/* jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true, undef:true, unused:true, curly:true, browser:true, devel:true, jquery:true, indent:4, maxerr:50 */
-/*
- * WGT Web Gui Toolkit
- * http://webfrap.net/WGT
- *
- * @author Dominik Bonsch <db@webfrap.net>
- */
 $R.addAction( 'nv_stacked_line_bar', function( jNode ){
   
   jNode.removeClass('wcm_nv_stacked_line_bar');
@@ -57,10 +50,10 @@ $R.addAction( 'nv_stacked_line_bar', function( jNode ){
             .y(function(d) { return d.y });
         
         chart.xAxis
-        .tickFormat(function(d, i) {
-            return d3.time.format("%b %y")(new Date(d));
-         } )
-         .rotateLabels(-45);
+            .tickFormat(function(d) {
+                return d3.time.format("%b %y")(new Date(d));
+             } )
+             .rotateLabels(-45);
         
         chart.yAxis
             .tickFormat(d3.format(',.1f'))
