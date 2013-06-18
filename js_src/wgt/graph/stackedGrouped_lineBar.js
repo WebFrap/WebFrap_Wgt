@@ -12,7 +12,7 @@ nv.models.stackedGrouped_lineBar = function() {
     , legend = nv.models.legend()
     , controls = nv.models.legend()
     ;
-
+  
   var margin = {top: 30, right: 60, bottom: 50, left: 60}
     , width = null
     , height = null
@@ -40,17 +40,17 @@ nv.models.stackedGrouped_lineBar = function() {
     .stacked(false)
     ;
   lines
-    .clipEdge(true)
-    .padData(true)
+    .clipEdge(false)
+    //.padData(true)
     ;
   xAxis
     .orient('bottom')
-    .tickPadding(5)
-    .tickFormat(function(d) { return d })
+    //.tickFormat(function(d) { return d })
     ;
+  
   yAxis
     .orient('left')
-    .tickFormat(d3.format(',.1f'))
+    //.tickFormat(d3.format(',.1f'))
     ;
 
   //============================================================
@@ -129,13 +129,9 @@ nv.models.stackedGrouped_lineBar = function() {
       // Setup Scales
 
       var dataBars = data.filter(function(d) { return !d.disabled && d.bar; });
-      var dataLines = data.filter(function(d) { return !d.bar; }); // removed the !d.disabled clause here to fix Issue #240
+      var dataLines = data.filter(function(d) { return !d.bar; });
 
-      //x = xAxis.scale();
-       //x = dataLines.filter(function(d) { return !d.disabled; }).length && dataLines.filter(function(d) { return !d.disabled; })[0].values.length ? lines.xScale() : bars.xScale();
       x = bars.xScale();
-      
-      //x = dataLines.filter(function(d) { return !d.disabled; }).length ? lines.xScale() : bars.xScale(); //old code before change above
       y = bars.yScale();
 
       //------------------------------------------------------------
@@ -385,7 +381,7 @@ nv.models.stackedGrouped_lineBar = function() {
 
   d3.rebind(chart, lines, 'defined', 'size', 'clipVoronoi', 'interpolate');
   //TODO: consider rebinding x, y and some other stuff, and simply do soemthign lile bars.x(lines.x()), etc.
-  //d3.rebind(chart, lines, 'x', 'y', 'size', 'xDomain', 'yDomain', 'forceX', 'forceY', 'interactive', 'clipEdge', 'clipVoronoi', 'id');
+  d3.rebind(chart, lines, 'x', 'y', 'size', 'xDomain', 'yDomain', 'forceX', 'forceY', 'interactive', 'clipEdge', 'clipVoronoi', 'id');
 
   chart.x = function(_) {
     if (!arguments.length) return getX;
