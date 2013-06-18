@@ -11,8 +11,8 @@ nv.models.stackedLineBar = function() {
         left : 60
     };
     var color = d3.scale.category20().range();
-    var width = null;
-    var height = null;
+    var width = 900;
+    var height = 500;
     var showLegend = true;
     var tooltips = true;
     var tooltip = function(key, x, y, e, graph) {

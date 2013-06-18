@@ -14,8 +14,8 @@ nv.models.stackedGrouped_lineBar = function() {
     ;
   
   var margin = {top: 30, right: 60, bottom: 50, left: 60}
-    , width = null
-    , height = null
+    , width = 900
+    , height = 500
     , getX = function(d) { return d.x; }
     , getY = function(d) { return d.y; }
     , color = nv.utils.defaultColor()
