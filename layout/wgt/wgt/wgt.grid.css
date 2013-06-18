@@ -436,7 +436,8 @@ td.type_splitb
 td.type_date,
 td.type_time,
 td.type_timestamp,
-td.type_number
+td.type_number,
+td.type_money
 {
   text-align: right;
 }
