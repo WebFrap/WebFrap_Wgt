@@ -219,7 +219,7 @@
           type = 'text';
         }
 
-        if( 'window' === type || 'check' === type ){
+        if( 'window' === type || 'check' === type || 'element' === type  ){
           return 
         }
         
@@ -572,6 +572,20 @@
         }
       }
       this.changedData = tmpStack;
+      
+    },
+    
+    /**
+     * Datensatz aus dem save Index werfen. 
+     * Ist nötig wenn der Datensatz gelöscht wurde, vorher jedoch im Editor
+     * bearbeitet und nicht gespeichert wurde
+     * 
+     * @param indexCheck
+     */
+    writeSavedata :function( name, value ){
+      
+      console.log("name:"+name+" value: "+value);
+      this.changedData[name] = value;
       
     },
     
