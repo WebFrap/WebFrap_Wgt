@@ -47,7 +47,7 @@ $R.addAction( 'ui_status_picker', function( jNode ){
     jNode.html(self.find('i').clone());
     
     if(grid){
-      grid.grid('writeSavedata',jNode.parent().attr('name'),self.attr('value'));
+      grid.grid('writeSavedata',jNode.parent().parent().attr('name'),self.attr('value'));
     }
     
     return false;

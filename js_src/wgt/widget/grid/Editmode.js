@@ -96,17 +96,18 @@
           
           editLayers.unbind('blur');
           editLayers.hide();
+            
+          console.log('search for #'+elId+'-editor-tpl');
+          var tplRow = $S('#'+elId+'-editor-tpl').text();
 
-          var tplRow = cTarget.parent().parent().find('tr.template')
-            .clone()
-            .removeClass('template');
-          
-          var tmpRowId = tplRow.attr('id'),
-            indexCheck = '[new-'+self.cCount+']'; // checkstring um den savedata array cleanen zu können
+          //console.dir(tplRow);
+         
+          var indexCheck = '[new-'+self.cCount+']'; // checkstring um den savedata array cleanen zu können
         
-          if (tmpRowId) {
-            tplRow.attr('id', tmpRowId.replace(/{\$new}/g,'new-'+self.cCount));
-          }
+          tplRow = tplRow.replace(/{\$new}/g,'new-'+self.cCount);
+
+          tplRow = $S(tplRow); 
+          
           
           tplRow.attr('eid','new-'+self.cCount);
           
@@ -127,6 +128,7 @@
             $S(this).parent().remove();
           });
           
+          /*
           tplRow.find('td').each(function(){
             var tmpNode = $S(this), 
               tmpName = tmpNode.attr('name');
@@ -136,6 +138,7 @@
             }
             
           });
+          */
           
           // hinzufügen von default values, z.B in referenzen
           if (opts.edit_hidden_def_values){
@@ -150,6 +153,8 @@
           
           el.find('tbody:first').prepend(tplRow);
           self.makeSelectable(el);
+          
+          $R.eventAfterAjaxRequest(false,'wcmt');
           
           return;
         } // end click auf editor
@@ -408,7 +413,7 @@
             el.find('tbody:first').prepend(tplRow);
             self.makeSelectable(el);
             
-            $R.eventAfterAjaxRequest(false,'wcmt');
+            
  
           } else {
               
