@@ -122,7 +122,7 @@ $R.addAction( 'project_effort_chart', function( jNode ){
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Effort in person days");
+      .text("Effort [PM]  ");
   
   // X-Grid
   chart.append("g")         
