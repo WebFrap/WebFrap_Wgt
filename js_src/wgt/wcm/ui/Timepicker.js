@@ -3,7 +3,6 @@
 /**
  * @author dominik alexander bonsch <db@webfrap.net>
  */
-
 $R.addAction( 'ui_timepicker', function( jNode ){
   
   jNode.removeClass('wcm_ui_timepicker');

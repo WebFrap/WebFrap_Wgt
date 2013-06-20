@@ -46,6 +46,5 @@ $R.addAction( 'widget_kvlist', function( jNode ){
 
   
   console.log('kvlist reder duration ' + $DBG.duration( renderTime ) );
-  
-  
+    
 });
