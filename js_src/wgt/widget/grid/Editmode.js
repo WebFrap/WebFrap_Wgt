@@ -407,6 +407,8 @@
             
             el.find('tbody:first').prepend(tplRow);
             self.makeSelectable(el);
+            
+            $R.eventAfterAjaxRequest(false,'wcmt');
  
           } else {
               
@@ -493,7 +495,7 @@
         
         var keyCode = e.keyCode || e.which; 
         console.log("got keycode "+keyCode );
-        alert("got keycode "+keyCode );
+        //alert("got keycode "+keyCode );
 
         if (keyCode !== 9) { 
           return true;

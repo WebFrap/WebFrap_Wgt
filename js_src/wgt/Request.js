@@ -1155,9 +1155,14 @@
    /**
     *
     */
-    this.eventAfterAjaxRequest = function( background ) {
+    this.eventAfterAjaxRequest = function( background, prefix ) {
 
       var startTime = $DBG.start();
+      
+      if(!prefix){
+        prefix = 'wcm';
+      }
+        
 
       var callback  = null,
         length    = this.afterAjaxRequest.length,
@@ -1183,7 +1188,7 @@
 
 
       // disable Links and use ajax instead (and remove class)
-      allActions = $S(".wcm");
+      allActions = $S("."+prefix);
       allActions.each(function(){
 
 
@@ -1215,7 +1220,7 @@
         }
 
       });
-      allActions.removeClass("wcm");
+      allActions.removeClass(prefix);
 
       length = this.poolOtPostAray.length;
       for (var iter = 0; iter < length; ++iter) {
