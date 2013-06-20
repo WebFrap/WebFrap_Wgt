@@ -35,6 +35,8 @@ $R.addAction( 'project_effort_chart', function( jNode ){
   var demand = graphData[2].values;
   graphData[2].color = "green";
   
+  var isDataAvailiable = actual.length > 0;
+  
   var margin = {top: 30, right: 100, bottom: 100, left: 50},
       width = parseInt(d3.select("#" + jNode.attr("id")).style("width")) - margin.left - margin.right,
       height = parseInt(d3.select("#" + jNode.attr("id")).style("height")) - margin.top - margin.bottom;
@@ -100,6 +102,7 @@ $R.addAction( 'project_effort_chart', function( jNode ){
   xScale.domain(demand.map(function(d) { return d.x; }));
   yScale.domain([0, d3.round(d3.max(demand, function(d) { return d.y; }))]);
   
+  if(isDataAvailiable) {
   // X-Achse
   chart.append("g")
       .attr("class", "x axis")
@@ -211,5 +214,22 @@ $R.addAction( 'project_effort_chart', function( jNode ){
           return text;
     });
 
+  } else {
+  	chart.append("g")
+	.append("rect")
+	.attr("x", 0)
+	.attr("y", 0)
+	.attr("width", width)
+	.attr("height", height)
+	.style("stroke", "red")
+	.style("fill", "white");
+
+chart.append("g")
+	.append("text")
+	.text("No data available")
+	.attr("dx", width / 2)
+    .attr("dy", height / 2)
+    .attr("font-size", 45);
+  }
  
 });
