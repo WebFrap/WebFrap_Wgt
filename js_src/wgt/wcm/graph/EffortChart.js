@@ -6,7 +6,7 @@ $R.addAction( 'project_effort_chart', function( jNode ){
 
   var data = window.$B.robustParseJSON(jNode.find('var').text());
   
-  console.log(jNode.find('var').text());
+  //console.log(jNode.find('var').text());
   
   jNode.find('var').remove();
   
@@ -49,15 +49,15 @@ $R.addAction( 'project_effort_chart', function( jNode ){
   // Check if there is any data
   var isDataAvailiable = actual.length > 0 || plan.length > 0 || demand.length > 0;
   
-  var maxAvailableWidth = d3.select("#wgt-chart-project_effort_chart").style("width");
-  var maxAvailableHeight = d3.select("#wgt-chart-project_effort_chart").style("height");
+  var maxAvailableWidth = d3.select("#wgt-chart-project_effort_chart").property("clientWidth");
+  var maxAvailableHeight = d3.select("#wgt-chart-project_effort_chart").property("clientHeight");
   
   // Maximum width of a bar
   var maxBarWidth = 30
   
-  console.log("###############");
-  console.log(d3.select("#wgt-chart-project_effort_chart").property());
-  console.log(maxAvailableHeight);
+  //console.log("###############");
+  //console.log(d3.select("#wgt-chart-project_effort_chart").property());
+  //console.log(maxAvailableHeight);
     
   var margin = {top: 30, right: 100, bottom: 100, left: 50},
       width = 1500 - margin.left - margin.right,
