@@ -5,9 +5,12 @@ $R.addAction( 'project_effort_chart', function( jNode ){
   window.$B.loadModule('d3');
 
   var data = window.$B.robustParseJSON(jNode.find('var').text());
+  
   console.log(jNode.find('var').text());
+  
   jNode.find('var').remove();
-  jNode.html('<svg style="height:500px;">');
+  
+  jNode.html('<svg style="height:100%;">');
   
   
   /** data format
@@ -24,6 +27,8 @@ $R.addAction( 'project_effort_chart', function( jNode ){
     }
    */
   
+  // Setup data
+  
   var graphData = data.data;
   
   var actual = graphData[0].values;
@@ -35,11 +40,28 @@ $R.addAction( 'project_effort_chart', function( jNode ){
   var demand = graphData[2].values;
   graphData[2].color = "green";
   
-  var isDataAvailiable = actual.length > 0;
+  // Check for max values
   
+  var maxActual = d3.max(actual, function(d) { return d.y });
+  var maxPlan = d3.max(plan, function(d) { return d.y })
+  var maxDemand = d3.max(demand, function(d) { return d.y })
+  
+  // Check if there is any data
+  var isDataAvailiable = actual.length > 0 || plan.length > 0 || demand.length > 0;
+  
+  var maxAvailableWidth = d3.select("#wgt-chart-project_effort_chart").style("width");
+  var maxAvailableHeight = d3.select("#wgt-chart-project_effort_chart").style("height");
+  
+  // Maximum width of a bar
+  var maxBarWidth = 30
+  
+  console.log("###############");
+  console.log(d3.select("#wgt-chart-project_effort_chart").property());
+  console.log(maxAvailableHeight);
+    
   var margin = {top: 30, right: 100, bottom: 100, left: 50},
-      width = parseInt(d3.select("#" + jNode.attr("id")).style("width")) - margin.left - margin.right,
-      height = parseInt(d3.select("#" + jNode.attr("id")).style("height")) - margin.top - margin.bottom;
+      width = 1500 - margin.left - margin.right,
+      height = 500 - margin.top - margin.bottom;
 
   var inputDateFormat = d3.time.format("%Y-%m-%d").parse;
   var outputDateFormat = d3.time.format("%b-%y");
@@ -100,7 +122,9 @@ $R.addAction( 'project_effort_chart', function( jNode ){
  
   // Finde min und max für die Einteilung der Achse
   xScale.domain(demand.map(function(d) { return d.x; }));
-  yScale.domain([0, d3.round(d3.max(demand, function(d) { return d.y; }))]);
+  yScale.domain([0, d3.round(d3.max([maxActual, maxPlan, maxDemand]))]);
+  
+  var calculatedBarWidth = xScale.rangeBand();
   
   if(isDataAvailiable) {
   // X-Achse
@@ -162,7 +186,7 @@ $R.addAction( 'project_effort_chart', function( jNode ){
       .append("rect")
       .attr("class", "actual")
       .attr("x", function(d) { return xScale(d.x); })
-      .attr("width", xScale.rangeBand())
+      .attr("width", calculatedBarWidth)
       .attr("y", function(d) { return yScale(d.y); })
       .attr("height", function(d) { return height - yScale(d.y); })
       .style("fill", "steelblue")
@@ -178,11 +202,20 @@ $R.addAction( 'project_effort_chart', function( jNode ){
       .append("rect")
       .attr("class", "plan")
       .attr("x", function(d) { return xScale(d.x); })
-      .attr("width", xScale.rangeBand())
+      .attr("width", calculatedBarWidth)
       .attr("y", function(d) { return yScale(d.y) - actualHeight; })
       .attr("height", function(d) { return height - yScale(d.y); })
       .style("fill", "orange")
       .style("opacity", "0.8");
+  
+  // Check if bars are not too wide and shift them if they are
+  if(calculatedBarWidth > 30) {
+  	var barWidth = ((calculatedBarWidth - maxBarWidth) / 2 );
+  	
+  	chart.selectAll("rect")
+  		.attr("x", function(d) { return xScale(d.x) + barWidth; })
+  		.attr("width", maxBarWidth);
+  }
       
   var legend = chart.append("g")
       .attr("class", "legend")
