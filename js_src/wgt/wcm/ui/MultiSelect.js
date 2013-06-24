@@ -29,6 +29,7 @@ $R.addAction( 'ui_multiselect_search', function( jNode ){
     ? $WGT.robustParseJSON(cfgData.text())
     : {
       'buttonWidth':"96%",
+      'noneSelectedText':"Filter",
       close: function(){
         $R.form( formId, null, {success:function(){ jNode.focus(); }} );
       }
