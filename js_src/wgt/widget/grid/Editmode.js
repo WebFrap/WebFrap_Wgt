@@ -43,13 +43,10 @@
       save_form: null,        // ID des Save Formulars bei editierbaren Tabellen
       edit_able: false,       // Flag ob
       allow_insert: false,    // Sollen neue Datensätze angelegt werden können
-      edit_hidden_def_values: {} // versteckte default Werte für das Editable grid, wichtig z.B bei Referenzen
+      edit_hidden_def_values: {}, // versteckte default Werte für das Editable grid, wichtig z.B bei Referenzen
+      changedData: {}
     },
 
-    /**
-     * Object mit den den Änderungen
-     */
-    changedData: {},
 
     /**
      * Counter mit den erstellten Datensätzen
@@ -79,7 +76,7 @@
         jHeadTab.find('table').append(el.find('tbody.editor'));
       }
       
-      self.changedData[elId] = {};
+      opts.changedData = {};
       
 
       el.parent().bind('click.edit_cell', function(e){
@@ -118,15 +115,15 @@
             
             var tmpStack = {};
             
-            for (var prop in self.changedData[elId]) {
+            for (var prop in opts.changedData) {
               // es muss geprüft werden ob prop existier
-              if (self.changedData[elId].hasOwnProperty(prop)) {
+              if (opts.changedData.hasOwnProperty(prop)) {
                 if( !prop.indexOf(indexCheck)){
-                  tmpStack[prop] = self.changedData[elId][prop];
+                  tmpStack[prop] = opts.changedData[prop];
                 }
               }
             }
-            self.changedData[elId] = tmpStack;
+            opts.changedData = tmpStack;
             $S(this).parent().remove();
           });
           
@@ -146,7 +143,7 @@
           if (opts.edit_hidden_def_values){
             for (var defValName in opts.edit_hidden_def_values) {
               if (opts.edit_hidden_def_values.hasOwnProperty(defValName)) {
-                self.changedData[elId][defValName.replace('{$new}','new-'+self.cCount)] = opts.edit_hidden_def_values[defValName];
+                opts.changedData[defValName.replace('{$new}','new-'+self.cCount)] = opts.edit_hidden_def_values[defValName];
               }
             }
           }
@@ -180,14 +177,14 @@
                 userInp = 'f';
               }
               
-              self.changedData[elId][cTarget.parent().attr('name')] = userInp;
+              opts.changedData[cTarget.parent().attr('name')] = userInp;
             }); 
           }
           
           // bei window elementen
           if(cTarget.is('input.wgt_window')){
             cTarget.parent().find('input:hidden').change(function(){
-              self.changedData[elId][cTarget.parent().attr('name')] = $S(this).val();
+              opts.changedData[cTarget.parent().attr('name')] = $S(this).val();
             }); 
           }
          
@@ -399,7 +396,7 @@
             if (opts.edit_hidden_def_values){
               for (var defValName in opts.edit_hidden_def_values) {
                 if (opts.edit_hidden_def_values.hasOwnProperty(defValName)) {
-                  self.changedData[elId][defValName.replace('{$new}','new-'+self.cCount)] = opts.edit_hidden_def_values[defValName];
+                  opts.changedData[defValName.replace('{$new}','new-'+self.cCount)] = opts.edit_hidden_def_values[defValName];
                 }
               }
             }
@@ -410,7 +407,7 @@
             
             newField.html(displTxt);
             fieldName = newField.attr('name');
-            self.changedData[elId][fieldName] = userInp;
+            opts.changedData[fieldName] = userInp;
             
             el.find('tbody:first').prepend(tplRow);
             self.makeSelectable(el);
@@ -443,14 +440,14 @@
               displTxt = userInp = self.activEditLayer.text();
             }
             
-            if (undefined !==self.changedData[elId][fieldName] && self.changedData[elId][fieldName] === userInp)
+            if (undefined !==opts.changedData[fieldName] && opts.changedData[fieldName] === userInp)
               return;
           
             cTarget.html(displTxt);
             cTarget.addClass('changed');
             cTarget.attr('value',userInp);
             fieldName = cTarget.attr('name');
-            self.changedData[elId][fieldName] = userInp;
+            opts.changedData[fieldName] = userInp;
           }
           
           self.activEditLayer = null;
@@ -530,28 +527,28 @@
 
       var el = this.element.parent(),
         elId = this.element.attr('id'),
-        opt = this.options,
+        opts = this.options,
         self = this,
         editLayers = $S('.wgt-editlayer'),
         requestBody = '';
       
-      if (!self.changedData[elId]){
+      if (!opts.changedData){
         $D.message('nothing to save');
         return;
       }
       
-      for (var key in self.changedData[elId]){
+      for (var key in opts.changedData){
         
-        if (undefined===self.changedData[elId][key]){
+        if (undefined===opts.changedData[key]){
           continue;
         }
 
-        requestBody += '&'+key+'='+self.changedData[elId][key];
+        requestBody += '&'+key+'='+opts.changedData[key];
       }
       
-      $R.form(opt.save_form, null, {'data':self.changedData[elId],'success':function(){
+      $R.form(opts.save_form, null, {'data':opts.changedData,'success':function(){
         // empty changed data
-        self.changedData[elId] = {};
+        opts.changedData = {};
         self.reColorize();
         self.syncColWidth();
       }});
@@ -571,17 +568,17 @@
     dropFromSavedata :function( indexCheck ){
       
       var tmpStack = {},
-        elId = this.element.attr('id');
+        opts = this.options;
       
-      for (var prop in self.changedData[elId]) {
+      for (var prop in opts.changedData) {
         // es muss geprüft werden ob prop existier
-        if (self.changedData[elId].hasOwnProperty(prop)) {
+        if (opts.changedData.hasOwnProperty(prop)) {
           if( !prop.indexOf('['+indexCheck+']')){
-            tmpStack[prop] = self.changedData[elId][prop];
+            tmpStack[prop] = opts.changedData[prop];
           }
         }
       }
-      this.changedData[elId] = tmpStack;
+      opts.changedData = tmpStack;
       
     },
     
@@ -594,10 +591,9 @@
      */
     writeSavedata :function( name, value ){
       
-      var elId = this.element.attr('id');
-      
+     
       console.log("name:"+name+" value: "+value);
-      this.changedData[elId][name] = value;
+      this.options.changedData[name] = value;
       
     },
     
@@ -606,8 +602,7 @@
      */
     emptySavedata :function(  ){
 
-      elId = this.element.attr('id');
-      this.changedData[elId] = {};
+      this.options.changedData = {};
       
     },
     
@@ -622,7 +617,7 @@
       
       console.log('write cell n:'+cellName+' v: '+value+' t: '+text);
       
-      this.changedData[elId][cellName] = value;
+      this.options.changedData[cellName] = value;
       cell.html(text);
       cell.attr('value',value);
       cell.addClass('changed');
