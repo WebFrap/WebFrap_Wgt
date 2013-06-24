@@ -1,0 +1,42 @@
+path {
+    stroke-width: 2;
+    fill: none;
+}
+
+.axis path,.axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+.legend {
+   padding: 5px;
+   font: 12px sans-serif;
+   background: yellow;
+   box-shadow: 2px 2px 1px #888;
+}
+
+.grid .tick {
+    stroke: lightgrey;
+    opacity: 0.7;
+}
+.grid path {
+      stroke-width: 0;
+}
+
+div.tooltip {   
+    position: absolute;
+    text-align: center;
+    width: 75px;
+    height: 35px;
+    padding: 2px;
+    font: 13px Arial;
+    background: white;
+    background-color: white;
+    border-width: 2px;
+    border-color: grey;
+    border-radius: 8px;
+    border-style:solid;
+    pointer-events: none;
+}
