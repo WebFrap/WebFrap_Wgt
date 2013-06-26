@@ -20,9 +20,16 @@ $R.addAction('project_effort_chart', function(jNode) {
 
     // Setup data
     var layers = data.data;
+    
+    var idChart = jNode.attr("id");
+    
+    var idParent = document.getElementById(idChart).parentNode.parentNode.id;
+    
+    var outerWidth = d3.select("#" + idParent).style("width");
+    var outerHeight = d3.select("#" + idParent).style("height");
 
-    var innerWidth = window.innerWidth - 250;
-    var innerHeight = window.innerHeight - 450;
+    var innerWidth = parseInt(outerWidth) - 100;
+    var innerHeight = parseInt(outerHeight) - 200;
 
     var margin = {
 	top : 30,
@@ -30,8 +37,8 @@ $R.addAction('project_effort_chart', function(jNode) {
 	bottom : 50,
 	left : 50
     };
-    var width = 1200 - margin.left - margin.right;
-    var height = 500 - margin.top - margin.bottom;
+    var width = innerWidth - margin.left - margin.right;
+    var height = innerHeight - margin.top - margin.bottom;
 
     var inputDateFormat = d3.time.format("%Y-%m-%d").parse;
     var outputDateFormat = d3.time.format("%b-%y");
@@ -112,9 +119,11 @@ $R.addAction('project_effort_chart', function(jNode) {
 
     var isDataAvailiable = layers.category.length > 0;
 
-    var xScale = d3.scale.ordinal().rangeRoundBands([ 0, width ], .1);
+    var xScale = d3.scale.ordinal()
+    	.rangeRoundBands([ 0, width ], .1);
 
-    var yScale = d3.scale.linear().range([ height, 0 ]);
+    var yScale = d3.scale.linear()
+    	.range([ height, 0 ]);
 
     xScale.domain(graphCategory);
     yScale.domain([ 0, d3.round(d3.max(seriesMax)) ]);
@@ -158,7 +167,7 @@ $R.addAction('project_effort_chart', function(jNode) {
 	// Append Axis, Grid, Description
 	// #####################################################################
 
-	var chart = d3.select("#" + jNode.attr("id"))
+	var chart = d3.select("#" + idChart)
 		.append("svg")
 		.attr("class", "chart")
 		.attr("width", width + margin.left + margin.right)
@@ -195,7 +204,10 @@ $R.addAction('project_effort_chart', function(jNode) {
 
 	var calculatedBarWidth = xScale.rangeBand();
 
-	chart.selectAll(".actual").data(actual.values).enter().append("rect")
+	chart.selectAll(".actual")
+		.data(actual.values)
+		.enter()
+		.append("rect")
 		.attr("class", "actual").attr("x", function(d) {
 		    return xScale(d.x);
 		}).attr("width", calculatedBarWidth).attr("y", function(d) {
@@ -206,16 +218,19 @@ $R.addAction('project_effort_chart', function(jNode) {
 		    return actual.color;
 		});
 
-	chart.selectAll(".plan").data(plan.values).enter().append("rect").attr(
+	chart.selectAll(".plan")
+		.data(plan.values)
+		.enter().append("rect")
+		.attr(
 		"class", "plan").attr("x", function(d) {
-	    return xScale(d.x);
-	}).attr("width", calculatedBarWidth).attr("y", function(d) {
-	    return yScale(d.y + d.y0);
-	}).attr("height", function(d) {
-	    return height - yScale(d.y);
-	}).style("fill", function(d) {
-	    return plan.color;
-	});
+		    return xScale(d.x);
+        	}).attr("width", calculatedBarWidth).attr("y", function(d) {
+        	    return yScale(d.y + d.y0);
+        	}).attr("height", function(d) {
+        	    return height - yScale(d.y);
+        	}).style("fill", function(d) {
+        	    return plan.color;
+        	});
 
 	// ####################################################################
 	// Adjust bar width if necessary
@@ -224,53 +239,76 @@ $R.addAction('project_effort_chart', function(jNode) {
 	if (calculatedBarWidth > 30) {
 	    var barWidth = ((calculatedBarWidth - maxBarWidth) / 2);
 
-	    chart.selectAll("rect").attr("x", function(d) {
-		return xScale(d.x) + barWidth;
-	    }).attr("width", maxBarWidth);
+	    chart.selectAll("rect")
+	    	.attr("x", function(d) {
+	    	    return xScale(d.x) + barWidth;
+	    	}).attr("width", maxBarWidth);
 	}
 
 	// ####################################################################
 	// Append line
 	// ####################################################################
 
-	chart.append("path").attr("class", "line").attr("d",
-		line(demand.values)).style("stroke", function(d) {
-	    return demand.color;
-	}).style("opacity", "0.8");
+	chart.append("path")
+		.attr("class", "line")
+		.attr("d", line(demand.values))
+		.style("stroke", function(d) {
+		    return demand.color;
+		}).style("opacity", "0.8");
 
 	// ####################################################################
 	// Append legend
 	// ####################################################################
 
-	var legend = chart.append("g").attr("class", "legend").attr("height",
-		100).attr("width", 100).attr("transform", "translate(-20,50)");
+	var legend = chart.append("g")
+		.attr("class", "legend")
+		.attr("height", 100)
+		.attr("width", 100)
+		.attr("transform", "translate(-20,50)");
 
-	legend.selectAll("rect").data(layers.data).enter().append("rect").attr(
-		"x", width + 50).attr("y", function(d, i) {
-	    return i * 20;
-	}).attr("width", 10).attr("height", 10).style("fill", function(d) {
-	    return d.color;
-	});
+	legend.selectAll("rect")
+		.data(layers.data)
+		.enter()
+		.append("rect")
+		.attr("x", width + 50)
+		.attr("y", function(d, i) {
+		    return i * 20;
+		})
+		.attr("width", 10)
+		.attr("height", 10)
+		.style("fill", function(d) {
+		    return d.color;
+		});
 
-	legend.selectAll("text").data(layers.data).enter().append("text").attr(
-		"x", width + 65).attr("y", function(d, i) {
-	    return i * 20 + 9;
-	}).text(function(d) {
-	    return d.name;
-	});
+	legend.selectAll("text")
+		.data(layers.data)
+		.enter()
+		.append("text")
+		.attr("x", width + 65).attr("y", function(d, i) {
+		    return i * 20 + 9;
+		}).text(function(d) {
+		    return d.name;
+		});
     } else {
-	var chart = d3.select("#" + jNode.attr("id")).append("svg")
-		.attr("class", "chart").attr("width",
-			width + margin.left + margin.right).attr("height",
-			height + margin.top + margin.bottom);
+	var chart = d3.select("#" + idChart)
+		.append("svg")
+		.attr("class", "chart")
+		.attr("width", width + margin.left + margin.right)
+		.attr("height",	height + margin.top + margin.bottom);
 
-	chart.append("rect").attr("x", 0).attr("y", 0).attr("width", width)
-		.attr("height", height).style("stroke", "red").style("fill",
-			"white");
+	chart.append("rect")
+		.attr("x", 0)
+		.attr("y", 0)
+		.attr("width", width)
+		.attr("height", height)
+		.style("stroke", "red").style("fill", "white");
 
-	chart.append("text").text("No data available").attr("x", width / 2)
-		.attr("y", height / 2).attr("font-size", 45).style(
-			"text-anchor", "middle");
+	chart.append("text")
+		.text("No data available")
+		.attr("x", width / 2)
+		.attr("y", height / 2)
+		.attr("font-size", 45)
+		.style("text-anchor", "middle");
     }
 
 });
