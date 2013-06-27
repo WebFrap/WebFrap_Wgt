@@ -412,7 +412,7 @@
             el.find('tbody:first').prepend(tplRow);
             self.makeSelectable(el);
             
-            
+            self.syncColWidth();
  
           } else {
               
@@ -448,7 +448,10 @@
             cTarget.attr('value',userInp);
             fieldName = cTarget.attr('name');
             opts.changedData[fieldName] = userInp;
+            
+            self.syncColWidth();
           }
+          
           
           self.activEditLayer = null;
           editLayers.unbind('blur');

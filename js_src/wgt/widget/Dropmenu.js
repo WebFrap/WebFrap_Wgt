@@ -81,10 +81,10 @@
         ge = this.element,
         opts = this.options;
 
-      if( ge.hasClass('wgt-dpm.init') )
+      if( ge.hasClass('wgt-dpm-init') )
         return;
 
-      ge.addClass('wgt-dpm.init')
+      ge.addClass('wgt-dpm-init')
 
       var dropBoxId = ge.attr( 'wgt_drop_box' );
       var dropBox   = $S( '#'+dropBoxId );
