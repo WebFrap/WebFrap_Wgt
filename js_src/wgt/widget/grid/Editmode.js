@@ -332,7 +332,7 @@
             displTxt = '',
             fieldName = '';
           
-          // wenn es eine neue Zeile ist
+          // Hinzufügen einer neuen Zeile 
           if (cTarget.parent().is('.new')){
             
             editLayers.unbind('blur').hide();
@@ -413,7 +413,8 @@
             self.makeSelectable(el);
             
             self.syncColWidth();
- 
+           
+          // ENDE hinzufügen einer neue Zeile
           } else {
               
             if ('date' === type || 'datetime' === type) {
