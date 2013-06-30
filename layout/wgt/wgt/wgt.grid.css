@@ -463,6 +463,8 @@ td.no_oflw
 .wgt-grid_menu
 {
   height:20px;
+  width:40px;
+  float:left;
 }
 
 

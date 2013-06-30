@@ -81,7 +81,8 @@
 
       el.parent().bind('click.edit_cell', function(e){
 
-        var cTarget =  $S(e.target);
+        var cTarget =  $S(e.target),
+          type = null;
         
         // wenn innerhalb des edit layers
         if (self.activEditLayer && cTarget.parentX(self.activEditLayer)){
@@ -90,105 +91,16 @@
         
         editLayers.trigger('blur');
         
-        // wenn click auf editor
+        
         if (cTarget.parentX('tbody.editor')){
-          
-          editLayers.unbind('blur');
-          editLayers.hide();
-            
-          console.log('search for #'+elId+'-editor-tpl');
-          var tplRow = $S('#'+elId+'-editor-tpl').text();
-
-          //console.dir(tplRow);
-         
-          var indexCheck = '[new-'+self.cCount+']'; // checkstring um den savedata array cleanen zu können
-        
-          tplRow = tplRow.replace(/{\$new}/g,'new-'+self.cCount);
-
-          tplRow = $S(tplRow); 
-          
-          
-          tplRow.attr('eid','new-'+self.cCount);
-          
-          // remove event
-          tplRow.find('td.pos').html('<i class="icon-remove" ></i>').click(function(){
-            
-            var tmpStack = {};
-            
-            for (var prop in opts.changedData) {
-              // es muss geprüft werden ob prop existier
-              if (opts.changedData.hasOwnProperty(prop)) {
-                if( !prop.indexOf(indexCheck)){
-                  tmpStack[prop] = opts.changedData[prop];
-                }
-              }
-            }
-            opts.changedData = tmpStack;
-            $S(this).parent().remove();
-          });
-          
-          /*
-          tplRow.find('td').each(function(){
-            var tmpNode = $S(this), 
-              tmpName = tmpNode.attr('name');
-            
-            if (tmpName) {
-              tmpNode.attr('name', tmpName.replace('{$new}','new-'+self.cCount));
-            }
-            
-          });
-          */
-          
-          // hinzufügen von default values, z.B in referenzen
-          if (opts.edit_hidden_def_values){
-            for (var defValName in opts.edit_hidden_def_values) {
-              if (opts.edit_hidden_def_values.hasOwnProperty(defValName)) {
-                opts.changedData[defValName.replace('{$new}','new-'+self.cCount)] = opts.edit_hidden_def_values[defValName];
-              }
-            }
-          }
-          ++self.cCount;
-
-          
-          el.find('tbody:first').prepend(tplRow);
-          self.makeSelectable(el);
-          
-          $R.eventAfterAjaxRequest(false,'wcmt');
-          
+          // hinzufügen einer neuen Zeile
+          self.createNew(elId, editLayers);
           return;
-        } // end click auf editor
+        } 
         
+        // beim klick auf ein inputelement wird das event gesondert behandelt
         if (cTarget.is('input')) {
-          
-          if(cTarget.is('input.gredit')){
-            return;
-          }
-          
-          cTarget.addClass('gredit');
-          
-          // entweder es ist eine checkbox
-          if(cTarget.is('input:checkbox')){
-            
-            var userInp;
-            cTarget.change(function(){
-              if (cTarget.is(':checked')) {
-                userInp = 't';
-              } else {
-                userInp = 'f';
-              }
-              
-              opts.changedData[cTarget.parent().attr('name')] = userInp;
-            }); 
-          }
-          
-          // bei window elementen
-          if(cTarget.is('input.wgt_window')){
-            cTarget.parent().find('input:hidden').change(function(){
-              opts.changedData[cTarget.parent().attr('name')] = $S(this).val();
-            }); 
-          }
-         
-          
+          self._addInputEvent(cTarget, opts);
           return;
         }
         
@@ -207,114 +119,25 @@
           return;
         }
         
-
-        
-        // eine temporär id zuweisen
-        if (!cTarget.attr('id')){
-          cTarget.attr('id','wgt-id-'+new Date().getTime());
-        }
-
-        var ofs = cTarget.offset(),
-          oW  = cTarget.outerWidth(),
-          oH  = cTarget.outerHeight(),
-          type = $G.$WGT.getClassByPrefix(cTarget.prop('class'), 'type_');
+        // erstellen des editlayers
+        type = self._createEditlayer(elId, cTarget, editLayers);
         
         if (!type) {
-          type = 'text';
-        }
-
-        if( 'window' === type || 'check' === type || 'element' === type  ){
-          return 
-        }
-        
-        //console.log('#wgt-edit-field-'+type);
-        self.activEditLayer = $S('#wgt-edit-field-'+type);
-        
-        if(!self.activEditLayer.length){
-          console.log('missing layer #wgt-edit-field-'+type);
           return;
         }
         
-        // dem editlayer mitgeben welches feld befüllt werden soll,
-        // nötig bei rich ui widgets
-        self.activEditLayer.attr('wgt_target',cTarget.attr('id')).attr('wgt_list',elId);
-
-        //console.log(cTarget.parentX('table').css('margin-top')+' type '+type+' '+cTarget.prop('class'));
-        /**/
-        editLayers.trigger('blur')
-          .unbind('blur')
-          .hide();
-        
-
-        self.activEditLayer.css({
-          left:ofs.left,
-          top:ofs.top,
-          width:oW,
-          height:oH
-        });
-
-        if ('date' === type || 'datetime' === type ){
-          
-          self.activEditLayer.find('input').val(cTarget.html());
-          
-        } else if ('select' === type) {
-          
-          self.activEditLayer.html($S('#'+cTarget.attr('data_source')).text());
-          
-          if(!self.activEditLayer.find('option[value="'+cTarget.attr('value')+'"]').length){
-            self.activEditLayer.find('select').append('<option value="'+cTarget.attr('value')+'" >'+cTarget.text()+'</option>');
-          }
-          
-          self.activEditLayer.find('select').val(cTarget.attr('value'));
-          
-        } else if ('window' === type) {
-            
-            self.activEditLayer.html($S('#'+cTarget.attr('data_source')).text());
-            
-            if(!self.activEditLayer.find('option[value="'+cTarget.attr('value')+'"]').length){
-              self.activEditLayer.find('select').append('<option value="'+cTarget.attr('value')+'" >'+cTarget.text()+'</option>');
-            }
-            
-            self.activEditLayer.find('select').val(cTarget.attr('value'));
-            
-        } else if ('check' === type) {
-
-          self.activEditLayer.html(cTarget.html());
-            
-        } else {
-          
-          self.activEditLayer.html(cTarget.html());
-          
-          var range,
-            selection;
-          
-          if (document.createRange) {//Firefox, Chrome, Opera, Safari, IE 9+
-          
-            range = document.createRange();//Create a range (a range is a like the selection but invisible)
-            range.selectNodeContents(self.activEditLayer.get(0));//Select the entire contents of the element with the range
-            range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
-            selection = window.getSelection();//get the selection object (allows you to change selection)
-            selection.removeAllRanges();//remove any selections already made
-            selection.addRange(range);//make the range you have just created the visible selection
-          
-          } else if (document.selection) { //IE 8 and lower
-         
-            range = document.body.createTextRange();//Create a range (a range is a like the selection but invisible)
-            range.moveToElementText(self.activEditLayer.get(0));//Select the entire contents of the element with the range
-            range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
-            range.select();//Select the range (make it the visible selection
-          }
-        }
         
         // bei globalen klicks den editlayer entfernen
-        $S('#wbf-body').bind('mousedown.editable_grid',function(e){
-            
+        $S('#wbf-body').bind('mousedown.editable_grid', function(e) {
+          
+          // keine aktion wenn kein editlayer aktiv ist
           var gTarget =  $S(e.target);
-          if (!self.activEditLayer){
+          if (!self.activEditLayer) { 
             return;
           }
-            
-          if (gTarget.is(self.activEditLayer) || gTarget.parentX(self.activEditLayer)){
+          
+          // bei clicks in den editlayer keine aktion
+          if (gTarget.is(self.activEditLayer) || gTarget.parentX(self.activEditLayer)) {
             return;
           }
           editLayers.trigger('blur')
@@ -322,173 +145,16 @@
             .hide();
         });
 
-        
-        self.activEditLayer.blur(function(){
-          
-          // global event entfernen
-          $S('#wbf-body').unbind('mousedown.editable_grid');
-          
-          var userInp = '', 
-            displTxt = '',
-            fieldName = '';
-          
-          // Hinzufügen einer neuen Zeile 
-          if (cTarget.parent().is('.new')){
-            
-            editLayers.unbind('blur').hide();
-            
-            
-            if ('date'===type || 'datetime'===type) {
-              
-              displTxt = userInp = self.activEditLayer.find('input').val();
-            
-            } else if ('select'===type) {
-              
-              userInp  = self.activEditLayer.find('select').val();
-              displTxt = self.activEditLayer.find('select option:selected').text();
-              
-            } else if ('check'===type) {
-                
-            if (self.activEditLayer.find('input').is(':checked')) {
-              userInp = 't';
-              } else {
-                userInp = 'f';
-              }
-            
-              displTxt = cTarget.html();
-                
-            } else {
-              
-              displTxt = userInp = self.activEditLayer.text();
-            }
-            
-            // keine leeren
-            if (!displTxt || '' === displTxt.trim()){
-              return;
-            }
-            
-            
-            var tplRow = cTarget.parent().parent().find('tr.template')
-              .clone()
-              .removeClass('template');
-            
-            var tmpRowId = tplRow.attr('id');
-          
-            if (tmpRowId) {
-              tplRow.attr('id', tmpRowId.replace('{$new}','new-'+self.cCount));
-            }
-            
-            tplRow.find('td.pos').html('<i class="icon-remove" ></i>').click(function(){
-              $S(this).parent().remove();
-            });
-            
-            tplRow.find('td').each(function(){
-              var tmpNode = $S(this), 
-                tmpName = tmpNode.attr('name');
-              
-              if (tmpName) {
-                tmpNode.attr('name', tmpName.replace('{$new}','new-'+self.cCount));
-              }
-              
-            });
-            
-            // hinzufügen von default values, z.B in referenzen
-            if (opts.edit_hidden_def_values){
-              for (var defValName in opts.edit_hidden_def_values) {
-                if (opts.edit_hidden_def_values.hasOwnProperty(defValName)) {
-                  opts.changedData[defValName.replace('{$new}','new-'+self.cCount)] = opts.edit_hidden_def_values[defValName];
-                }
-              }
-            }
-            ++self.cCount;
-            
-            var fIdx = cTarget.parent().find('td').index(cTarget),
-              newField = tplRow.find('td:eq('+fIdx+')');
-            
-            newField.html(displTxt);
-            fieldName = newField.attr('name');
-            opts.changedData[fieldName] = userInp;
-            
-            el.find('tbody:first').prepend(tplRow);
-            self.makeSelectable(el);
-            
-            self.syncColWidth();
-           
-          // ENDE hinzufügen einer neue Zeile
-          } else {
-              
-            if ('date' === type || 'datetime' === type) {
-              
-              displTxt = userInp = self.activEditLayer.find('input').val();
-            
-            } else if ('select' === type) {
-              
-              userInp = self.activEditLayer.find('select').val();
-              displTxt = self.activEditLayer.find('select option:selected').text();
-              
-            } else if ('check' === type) {
-                
-              if (self.activEditLayer.find('input').is(':checked')) {
-                userInp = 't';
-              } else {
-                userInp = 'f';
-              }
-            
-              displTxt = cTarget.html();
-                
-            }  else {
-              
-              displTxt = userInp = self.activEditLayer.text();
-            }
-            
-            if (undefined !==opts.changedData[fieldName] && opts.changedData[fieldName] === userInp)
-              return;
-          
-            cTarget.html(displTxt);
-            cTarget.addClass('changed');
-            cTarget.attr('value',userInp);
-            fieldName = cTarget.attr('name');
-            opts.changedData[fieldName] = userInp;
-            
-            self.syncColWidth();
-          }
-          
-          
-          self.activEditLayer = null;
-          editLayers.unbind('blur');
-          editLayers.hide();
-          
-        });
-
-        //editLayer.selection(0, editLayer.text().length);
-        
-        self.activEditLayer.show();
-        if ('date' === type || 'datetime' === type) {
-          
-          self.activEditLayer.find('input').datepicker('show').focus();
-          
-        } else if ('select' === type) {
-          
-          self.activEditLayer.find('select').focus();
-          
-        } else if ('check' === type) {
-            
-            self.activEditLayer.find('input').focus();
-            
-        } else {
-          
-          self.activEditLayer.focus();
-          self.activEditLayer.bind('keyup',function(){
-            if($S(this).hasScrollBar()){
-              $S(this).addWidth(20);
-              console.log('scrollbar');
-            } else {
-              console.log('no scrollbar');
-            }
+        // zurückschreiben der werte aus den editlayern in die cols / den speicher array
+        if (self.activEditLayer) {
+          self.activEditLayer.blur(function() {
+            self._editorBlur(cTarget, editLayers, type);
           });
         }
 
-
+        // anzeigen des editlayers
+        self._showEditlayer(type);
+     
       });
         
       self.addKeyEvents(opts,el,elId);
@@ -499,6 +165,7 @@
      */
     addKeyEvents: function(opts,el,elId){
       
+      /*
       el.parent().on('keydown', function(e){
         
         var keyCode = e.keyCode || e.which; 
@@ -519,9 +186,246 @@
           return;
         }
         
-        
       });
+      */
       
+    },
+    
+    /**
+     * keyboard events definieren
+     */
+    _addInputEvent: function(cTarget, opts){
+      
+      if(cTarget.is('input.gredit')){
+        return;
+      }
+      
+      cTarget.addClass('gredit');
+      
+      // entweder es ist eine checkbox
+      if(cTarget.is('input:checkbox')){
+        
+        var userInp;
+        cTarget.change(function(){
+          if (cTarget.is(':checked')) {
+            userInp = 't';
+          } else {
+            userInp = 'f';
+          }
+          
+          opts.changedData[cTarget.parent().attr('name')] = userInp;
+        }); 
+      }
+      
+      // bei window elementen
+      if(cTarget.is('input.wgt_window')){
+        cTarget.parent().find('input:hidden').change(function(){
+          console.log('input name: '+cTarget.parent().attr('name')+' val: '+$S(this).val());
+          opts.changedData[cTarget.parent().attr('name')] = $S(this).val();
+        }); 
+      }
+     
+    },
+    
+    /**
+     * keyboard events definieren
+     */
+    _editorBlur: function(cTarget, editLayers, type){
+      
+      
+      var userInp = '', 
+        self = this,
+        opts = this.options,
+        displTxt = '',
+        fieldName = '';
+      
+      // global event entfernen
+      $S('#wbf-body').unbind('mousedown.editable_grid');
+
+      
+      if ('date' === type || 'datetime' === type) {
+        
+        displTxt = userInp = self.activEditLayer.find('input').val();
+      
+      } else if ('select' === type) {
+        
+        userInp = self.activEditLayer.find('select').val();
+        displTxt = self.activEditLayer.find('select option:selected').text();
+        
+      } else if ('check' === type) {
+          
+        if (self.activEditLayer.find('input').is(':checked')) {
+          userInp = 't';
+        } else {
+          userInp = 'f';
+        }
+      
+        displTxt = cTarget.html();
+          
+      }  else {
+        
+        displTxt = userInp = self.activEditLayer.text();
+      }
+      
+      if (undefined !==opts.changedData[fieldName] && opts.changedData[fieldName] === userInp)
+        return;
+    
+      cTarget.html(displTxt);
+      cTarget.addClass('changed');
+      cTarget.attr('value',userInp);
+      fieldName = cTarget.attr('name');
+      opts.changedData[fieldName] = userInp;
+      
+      self.syncColWidth();
+    
+      self.activEditLayer = null;
+      editLayers.unbind('blur');
+      editLayers.hide();
+     
+    },
+    
+    /**
+     * Erstellen des Editor Overlays
+     */
+    _createEditlayer: function(elId, cTarget, editLayers){
+      
+      var self = this,
+        opts = this.options;
+      
+      // eine temporär id zuweisen
+      if (!cTarget.attr('id')){
+        cTarget.attr('id','wgt-id-'+new Date().getTime());
+      }
+
+      var ofs = cTarget.offset(),
+        oW  = cTarget.outerWidth(),
+        oH  = cTarget.outerHeight(),
+        type = $G.$WGT.getClassByPrefix(cTarget.prop('class'), 'type_');
+      
+      if (!type) {
+        type = 'text';
+      }
+
+      if( 'window' === type || 'check' === type || 'element' === type  ){
+        return type;
+      }
+      
+      //console.log('#wgt-edit-field-'+type);
+      self.activEditLayer = $S('#wgt-edit-field-'+type);
+      
+      if(!self.activEditLayer.length){
+        console.log('missing layer #wgt-edit-field-'+type);
+        return null;
+      }
+      
+      // dem editlayer mitgeben welches feld befüllt werden soll,
+      // nötig bei rich ui widgets
+      self.activEditLayer.attr('wgt_target',cTarget.attr('id')).attr('wgt_list',elId);
+
+      //console.log(cTarget.parentX('table').css('margin-top')+' type '+type+' '+cTarget.prop('class'));
+      /* vorhandene editlayer schliesen und werte zurückschreiben */
+      editLayers.trigger('blur')
+        .unbind('blur')
+        .hide();
+      
+
+      self.activEditLayer.css({
+        left:ofs.left,
+        top:ofs.top,
+        width:oW,
+        height:oH
+      });
+
+      if ('date' === type || 'datetime' === type ){
+        
+        self.activEditLayer.find('input').val(cTarget.html());
+        
+      } else if ('select' === type) {
+        
+        self.activEditLayer.html($S('#'+cTarget.attr('data_source')).text());
+        
+        if(!self.activEditLayer.find('option[value="'+cTarget.attr('value')+'"]').length){
+          self.activEditLayer.find('select').append('<option value="'+cTarget.attr('value')+'" >'+cTarget.text()+'</option>');
+        }
+        
+        self.activEditLayer.find('select').val(cTarget.attr('value'));
+        
+      } else if ('window' === type) {
+          
+          self.activEditLayer.html($S('#'+cTarget.attr('data_source')).text());
+          
+          if(!self.activEditLayer.find('option[value="'+cTarget.attr('value')+'"]').length){
+            self.activEditLayer.find('select').append('<option value="'+cTarget.attr('value')+'" >'+cTarget.text()+'</option>');
+          }
+          
+          self.activEditLayer.find('select').val(cTarget.attr('value'));
+          
+      } else if ('check' === type) {
+
+        self.activEditLayer.html(cTarget.html());
+          
+      } else {
+        
+        self.activEditLayer.html(cTarget.html());
+        
+        var range,
+          selection;
+        
+        if (document.createRange) {//Firefox, Chrome, Opera, Safari, IE 9+
+        
+          range = document.createRange();//Create a range (a range is a like the selection but invisible)
+          range.selectNodeContents(self.activEditLayer.get(0));//Select the entire contents of the element with the range
+          range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
+          selection = window.getSelection();//get the selection object (allows you to change selection)
+          selection.removeAllRanges();//remove any selections already made
+          selection.addRange(range);//make the range you have just created the visible selection
+        
+        } else if (document.selection) { //IE 8 and lower 
+          /* HMM let me say it sooo: FCK IE < 9
+          range = document.body.createTextRange();//Create a range (a range is a like the selection but invisible)
+          range.moveToElementText(self.activEditLayer.get(0));//Select the entire contents of the element with the range
+          range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
+          range.select();//Select the range (make it the visible selection
+          */
+        }
+      }
+      
+      // type muss zurück gegeben werden
+      return type;
+      
+    },
+    
+    /**
+     * Anzeigen und fokusieren des aktuellen edit layers
+     */
+    _showEditlayer: function(type){
+      
+      if(!this.activEditLayer){
+        return;
+      }
+      
+      this.activEditLayer.show();
+      if ('date' === type || 'datetime' === type) {
+        
+        this.activEditLayer.find('input').datepicker('show').focus();
+        
+      } else if ('select' === type) {
+        
+        this.activEditLayer.find('select').focus();
+        
+      } else if ('check' === type) {
+          
+        this.activEditLayer.find('input').focus();
+          
+      } else {
+        
+        this.activEditLayer.focus();
+        this.activEditLayer.bind('keyup',function(){
+          if($S(this).hasScrollBar()){
+            $S(this).addWidth(20);
+          }
+        });
+      }
     },
     
     /**
@@ -625,6 +529,112 @@
       cell.html(text);
       cell.attr('value',value);
       cell.addClass('changed');
+        
+    },
+    
+    /**
+     * In eine Zelle und gleichzeitig den changedData array schreiben
+     */
+    writeCellByTd: function(tdNode, value, text){
+
+      var cell = $S('#'+cellId),
+        elId = this.element.attr('id'),
+        cellName = cell.attr('name');
+      
+      console.log('write cell n:'+cellName+' v: '+value+' t: '+text);
+      
+      this.options.changedData[cellName] = value;
+      cell.html(text);
+      cell.attr('value',value);
+      cell.addClass('changed');
+        
+    },
+    
+    /**
+     * In eine Zelle und gleichzeitig den changedData array schreiben
+     */
+    readCellByTd: function(tdNode){
+
+        
+    },
+    
+    /**
+     * In eine Zelle und gleichzeitig den changedData array schreiben
+     */
+    cloneRow: function(toCopy){
+      
+      var elId = this.element.attr('id'),
+        editLayers = $S('.wgt-editlayer'),
+        oldRow = $S(toCopy).parentX('tr');
+
+      var newRow = this.createNew(elId, editLayers);
+      
+      console.log();
+      
+      oldRow.find('td').each(function(idx,node){
+        console.log('got idx: '+idx);
+      });
+        
+    },
+    
+    /**
+     * In eine Zelle und gleichzeitig den changedData array schreiben
+     */
+    createNew: function(elId, editLayers){
+      
+      var self = this,
+        el = this.element,
+        opts = this.options;
+
+      editLayers.unbind('blur');
+      editLayers.hide();
+        
+      console.log('search for #'+elId+'-editor-tpl');
+      var tplRow = $S('#'+elId+'-editor-tpl').text();
+
+      //console.dir(tplRow);
+     
+      var indexCheck = '[new-'+self.cCount+']'; // checkstring um den savedata array cleanen zu können
+    
+      tplRow = tplRow.replace(/{\$new}/g,'new-'+self.cCount);
+      tplRow = $S(tplRow); 
+      tplRow.attr('eid','new-'+self.cCount);
+      
+      // remove event
+      tplRow.find('td.pos').html('<i class="icon-remove" ></i>').click(function(){
+        
+        var tmpStack = {};
+        
+        for (var prop in opts.changedData) {
+          // es muss geprüft werden ob prop existier
+          if (opts.changedData.hasOwnProperty(prop)) {
+            if( !prop.indexOf(indexCheck)){
+              tmpStack[prop] = opts.changedData[prop];
+            }
+          }
+        }
+        opts.changedData = tmpStack;
+        $S(this).parent().remove();
+      });
+
+      
+      // hinzufügen von default values, z.B in referenzen
+      if (opts.edit_hidden_def_values){
+        for (var defValName in opts.edit_hidden_def_values) {
+          if (opts.edit_hidden_def_values.hasOwnProperty(defValName)) {
+            opts.changedData[defValName.replace('{$new}','new-'+self.cCount)] = opts.edit_hidden_def_values[defValName];
+          }
+        }
+      }
+      ++self.cCount;
+
+      
+      el.find('tbody:first').prepend(tplRow);
+      self.makeSelectable(el);
+      
+      $R.eventAfterAjaxRequest(false,'wcmt');
+      
+      return tplRow;
         
     }
  
