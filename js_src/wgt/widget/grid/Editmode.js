@@ -58,6 +58,11 @@
      * der aktive Edit layer
      */
     activEditLayer: null,
+    
+    /**
+     * Welche tds sollen ignoriert werden?
+     */
+    ignorePattern: '.pos,.ro,.nav,.sort,.nav_split',
 
     /**
      * Das Grid Element Editierbar machen
@@ -105,7 +110,7 @@
         }
         
         // prüfen ob das feld überhaupt editierbar ist
-        if (!(cTarget.is('td') && !cTarget.is('.pos,.ro,.nav,.sort,.nav_split'))){
+        if (!(cTarget.is('td') && !cTarget.is(self.ignorePattern))){
           //editLayers.trigger('blur');
           editLayers.unbind('blur');
           editLayers.hide();
@@ -300,7 +305,7 @@
       var ofs = cTarget.offset(),
         oW  = cTarget.outerWidth(),
         oH  = cTarget.outerHeight(),
-        type = $G.$WGT.getClassByPrefix(cTarget.prop('class'), 'type_');
+        type = $WGT.getClassByPrefix(cTarget.prop('class'), 'type_');
       
       if (!type) {
         type = 'text';
@@ -440,7 +445,7 @@
         editLayers = $S('.wgt-editlayer'),
         requestBody = '';
       
-      if (!opts.changedData){
+      if (!opts.changedData) {
         $D.message('nothing to save');
         return;
       }
@@ -537,25 +542,79 @@
      */
     writeCellByTd: function(tdNode, value, text){
 
-      var cell = $S('#'+cellId),
-        elId = this.element.attr('id'),
-        cellName = cell.attr('name');
-      
-      console.log('write cell n:'+cellName+' v: '+value+' t: '+text);
-      
-      this.options.changedData[cellName] = value;
-      cell.html(text);
-      cell.attr('value',value);
-      cell.addClass('changed');
+      var tdNode = $S(tdNode), 
+      type = this._getCellType(tdNode),
+      name = tdNode.attr('name');
+  
+      if ('window' === type) {
         
+        tdNode.find('input:hidden').val(value);
+        tdNode.find('input').not(':hidden').val(text);
+      
+      } if ('check' === type) {
+        
+        if(value){
+          tdNode.find('input').attr('checked','checked');
+        }
+        
+      } else {
+        
+        tdNode.html(text);
+        tdNode.attr('value',value);
+      }
+      
+
+      tdNode.addClass('changed');
+      this.options.changedData[name] = value;
+
     },
     
     /**
      * In eine Zelle und gleichzeitig den changedData array schreiben
      */
     readCellByTd: function(tdNode){
-
         
+      var tdNode = $S(tdNode), 
+        type = this._getCellType(tdNode),
+        value = null,
+        text = null;
+    
+      
+      if ('date' === type || 'datetime' === type || 'text' === type) {
+        
+        value = text = tdNode.html();
+      
+      } else if('select' === type||'window' === type) {
+        
+        text = $S('#'+tdNode.attr('data_source')).text();
+        value = tdNode.attr('value');  
+        
+      } else if('check' === type) {
+        
+        value = text = tdNode.find('input').is(':checked');  
+      }
+      
+      return {
+        'name': tdNode.attr('name'),
+        'value': value,
+        'text': text
+      };
+      
+    },
+    
+    /**
+     * @param cTarget DomNode oder jQuery objekt eines 'td's 
+     */
+    _getCellType: function(cTarget){
+      
+
+      var type = $WGT.getClassByPrefix(cTarget.prop('class'), 'type_');
+      if(!type){
+        type = 'text';
+      }
+      
+      return type;
+      
     },
     
     /**
@@ -565,15 +624,32 @@
       
       var elId = this.element.attr('id'),
         editLayers = $S('.wgt-editlayer'),
-        oldRow = $S(toCopy).parentX('tr');
+        oldRows = $S(toCopy).parentX('tr').find('td'),
+        self = this;
 
       var newRow = this.createNew(elId, editLayers);
       
-      console.log();
       
-      oldRow.find('td').each(function(idx,node){
-        console.log('got idx: '+idx);
+      newRow.find('td').each(function(idx,node){
+        var tNode = $S(this),
+          oldNode = null,
+          data = {};
+        
+        if(tNode.is(self.ignorePattern)){
+          return;
+        }
+        
+        
+        oldNode = oldRows.get(idx);
+        
+        data = self.readCellByTd(oldNode);
+        self.writeCellByTd(tNode, data.value, data.text);
+
+        console.log('write in '+idx+' val: '+data.value+' text: '+data.text  );
+        
       });
+      
+      self.syncColWidth();
         
     },
     
