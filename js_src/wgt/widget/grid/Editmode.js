@@ -42,6 +42,7 @@
       // Editierbare Cells im Grid
       save_form: null,        // ID des Save Formulars bei editierbaren Tabellen
       edit_able: false,       // Flag ob
+      append_bottom: false,       // Flag ob
       allow_insert: false,    // Sollen neue Datensätze angelegt werden können
       edit_hidden_def_values: {}, // versteckte default Werte für das Editable grid, wichtig z.B bei Referenzen
       changedData: {}
@@ -99,7 +100,7 @@
         
         if (cTarget.parentX('tbody.editor')){
           // hinzufügen einer neuen Zeile
-          self.createNew(elId, editLayers);
+          self.createNew( editLayers);
           return;
         } 
         
@@ -627,7 +628,7 @@
         oldRows = $S(toCopy).parentX('tr').find('td'),
         self = this;
 
-      var newRow = this.createNew(elId, editLayers);
+      var newRow = this.createNew(editLayers);
       
       
       newRow.find('td').each(function(idx,node){
@@ -651,16 +652,22 @@
       
       self.syncColWidth();
         
+      console.dir(this.options.changedData);
     },
     
     /**
      * In eine Zelle und gleichzeitig den changedData array schreiben
      */
-    createNew: function(elId, editLayers){
+    createNew: function(editLayers){
       
       var self = this,
         el = this.element,
+        elId = el.attr('id'), 
         opts = this.options;
+      
+      if (undefined===editLayers) {
+        editLayers = $S('.wgt-editlayer');
+      }
 
       editLayers.unbind('blur');
       editLayers.hide();
@@ -704,8 +711,11 @@
       }
       ++self.cCount;
 
-      
-      el.find('tbody:first').prepend(tplRow);
+      if (opts.append_bottom) {
+        el.find('tbody:first').append(tplRow);
+      } else {
+        el.find('tbody:first').prepend(tplRow);
+      }
       self.makeSelectable(el);
       
       $R.eventAfterAjaxRequest(false,'wcmt');
