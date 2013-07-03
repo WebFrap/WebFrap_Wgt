@@ -37,6 +37,7 @@ $R.addAction('project_effort_chart', function(jNode) {
 	bottom : 50,
 	left : 50
     };
+    
     var width = innerWidth - margin.left - margin.right;
     var height = innerHeight - margin.top - margin.bottom;
 
