@@ -54,3 +54,7 @@ div.tooltip {
     border-style:solid;
     pointer-events: none;
 }
+
+.controls {
+    cursor: hand; cursor: pointer;
+}

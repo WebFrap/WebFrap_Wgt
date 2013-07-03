@@ -520,23 +520,26 @@ var Chart = function (args) {
 
     var drawNoData = function () {
 
+        var w = width + margin.left + margin.right;
+        var h = height + margin.top + margin.bottom;
+        
         var noData = d3.select(element)
             .append("svg")
             .attr("class", "chart")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
+            .attr("width", w)
+            .attr("height", h)
             .append("g");
 
         noData.append("rect")
-            .attr("width", width)
-            .attr("height", height)
+            .attr("width", w)
+            .attr("height", h)
             .style("stroke", "red")
             .style("fill", "white");
 
         noData.append("text")
             .text("No Data available")
-            .attr("x", width / 2)
-            .attr("y", height / 2)
+            .attr("x", w / 2)
+            .attr("y", h / 2)
             .attr("font-size", 45)
             .style("text-anchor", "middle");
 
@@ -632,7 +635,7 @@ var Chart = function (args) {
     this.setData = function (data) {
         element = data.options.element || "body";
 
-        //category = data.category;
+        category = data.category;
         rawSeries = data.series;
         description = data.description;
         options = data.options;
@@ -652,7 +655,7 @@ var Chart = function (args) {
     };
 
     this.render = function () {
-        if (category && rawSeries && options) {
+        if (category && category.length > 0 && rawSeries && rawSeries.length > 0 && options) {
             draw();
         } else {
             drawNoData();
