@@ -24,6 +24,7 @@ var Chart = function (args) {
 
     var xScale = d3.scale.ordinal();
     var yScale = d3.scale.linear();
+    var color = null;
 
     var xAxis = d3.svg.axis();
     var yAxis = d3.svg.axis();
@@ -142,6 +143,8 @@ var Chart = function (args) {
 
         yScale.range([height, 0])
             .domain([0, seriesMax]);
+        
+        color = series.length > 10 ? d3.scale.category20() : d3.scale.category10();
 
     };
 
@@ -318,7 +321,7 @@ var Chart = function (args) {
                 .attr("height", function (d) {
                     return height - yScale(d.y);
                 })
-                .style("fill", bar.color)
+                .style("fill", bar.color || color(bar.name))
                 .style("opacity", 0.8);
         });
 
@@ -381,7 +384,7 @@ var Chart = function (args) {
                 return height - yScale(d.y);
             })
             .style("fill", function (d) {
-                return d.color;
+                return d.color || color(d.name);
             })
             .style("opacity", 0.8);
 
@@ -450,7 +453,7 @@ var Chart = function (args) {
             lines.append("path")
                 .attr("class", line.name)
                 .attr("d", generateLine(line.series))
-                .style("stroke", line.color)
+                .style("stroke", line.color || color(line.name))
                 .style("opacity", 0.8);
         });
 
@@ -501,7 +504,7 @@ var Chart = function (args) {
             .attr("width", 10)
             .attr("height", 10)
             .style("fill", function (d) {
-                return d.color;
+                return d.color || color(d.name);
             });
 
         legend.selectAll("text")
@@ -595,7 +598,7 @@ var Chart = function (args) {
                 .attr("cy", function (d) {
                     return yScale(d.y);
                 })
-                .style("fill", line.color)
+                .style("fill", line.color || color(line.name))
                 .style("opacity", 0)
                 .on("mouseover", function (d) {
 
