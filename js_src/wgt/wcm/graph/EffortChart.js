@@ -7,19 +7,8 @@ $R.addAction('project_effort_chart', function(jNode)
 
     var data = window.$B.robustParseJSON(jNode.find('var').text());
 
-    // console.log(jNode.find('var').text());
-
     jNode.find('var').remove();
 
-    // jNode.html('<svg style="height:100%;">');
-
-    /**
-     * data format { "x":{"label":"Label X-Axis","format":d3_format},
-     * "y":{"Label Y-Axis","format":d3_format}, "data":[ {
-     * "values":["x":int,"y":int], "key":"Line label", "color":"#hexvaue", } ], }
-     */
-
-    // Setup data
     var d = data.data;
 
     var idChart = jNode.attr("id");
