@@ -536,11 +536,10 @@ var Chart = function (args) {
         noData.append("rect")
             .attr("width", w)
             .attr("height", h)
-            .style("stroke", "red")
             .style("fill", "white");
 
         noData.append("text")
-            .text("No Data available")
+            .text(options.error || "No Data available")
             .attr("x", w / 2)
             .attr("y", h / 2)
             .attr("font-size", 45)
