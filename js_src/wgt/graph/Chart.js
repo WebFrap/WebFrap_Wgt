@@ -250,7 +250,7 @@ var Chart = function (args) {
         }
 
         drawAxisX(options.rotateCategory);
-        drawAxisY(description.y);
+        drawAxisY(description);
 
         if (options.grid) {
             drawGrid();
