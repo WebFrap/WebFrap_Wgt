@@ -90,7 +90,10 @@
       search_form: null,      // ID des Suchformulars / Paging / Datenquelle
 
       // Treeeigenschaften des Grids
-      expandable: false       // Flag ob der Baum colapsable ist
+      expandable: false,       // Flag ob der Baum colapsable ist
+      
+      // statefull elements
+      gridCont: null
     },
 
 
@@ -171,6 +174,7 @@
       ge.wrap('<div class="wgt-grid-body '+opt.height+'" id="'+ge.attr('id')+'-body" '+parentHeightStyle+' />');
 
       gridBody = $S( '#'+ge.attr('id')+'-body' );
+      opt.gridCont = gridBody;
 
       // erstellen einer head zeile + resize bar pro alter col
       oldHCols.each( function(){

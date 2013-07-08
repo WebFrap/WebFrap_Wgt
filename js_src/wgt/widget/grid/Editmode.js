@@ -717,7 +717,7 @@
         el.find('tbody:first').prepend(tplRow);
       }
       self.makeSelectable(el);
-      el.find('div.wgt-grid-body').scrollTo(tplRow);
+      opts.gridCont.scrollTo(tplRow);
       
       
       $R.eventAfterAjaxRequest(false,'wcmt');
