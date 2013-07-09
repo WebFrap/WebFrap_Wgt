@@ -698,6 +698,8 @@
         }
         opts.changedData = tmpStack;
         $S(this).parent().remove();
+        self.reColorize();
+        self.syncColWidth();
       });
 
       

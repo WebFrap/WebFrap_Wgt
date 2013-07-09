@@ -416,8 +416,6 @@
 
     },
 
-
-
     /**
      * Berechnen der korrekten position für die Drag Bar Elemente
      * Werden für das Resizing der Cols benötigt
