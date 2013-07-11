@@ -14,6 +14,7 @@ var Chart = function (args) {
 
     var dataset = [];
     var currentDataset = 0;
+    var datasetCount = 0;
 
     var category = null;
     var rawSeries = null;
@@ -482,6 +483,25 @@ var Chart = function (args) {
             .on("click", function (d) {
                 toggleAggregate();
             });
+        
+        control.append("circle")
+            .attr("r", 5)
+            .attr("cx", 200)
+            .attr("cy", -20)
+            .style("fill", options.aggregate ? "black" : "white")
+            .style("stroke", "black")
+            .style("stroke-width", 2)
+            .on("click", function (d) {
+                nextDataset();
+            });
+
+        control.append("text")
+            .attr("x", 210)
+            .attr("y", -15)
+            .text("Value/Funding")
+            .on("click", function (d) {
+                nextDataset();
+            });
 
     };
 
@@ -645,6 +665,7 @@ var Chart = function (args) {
 
     this.addData = function (data) {
         dataset.push(data);
+        datasetCount++;
 
         if (dataset.length == 1) {
             this.setData(dataset[currentDataset]);
@@ -652,8 +673,30 @@ var Chart = function (args) {
 
     };
 
-    this.nextDataset = function () {
-        this.setData(dataset[currentDataset++]);
+    var nextDataset = function () {
+        if (currentDataset < datasetCount) {
+            var data = dataset[currentDataset++];
+            
+            element = data.options.element || "body";
+
+            category = data.category;
+            rawSeries = data.series;
+            description = data.description;
+            options = data.options;
+            draw(true);
+            
+        } else {
+            var data = dataset[currentDataset--];
+            
+            element = data.options.element || "body";
+
+            category = data.category;
+            rawSeries = data.series;
+            description = data.description;
+            options = data.options;
+            draw(true);
+        }
+        
     };
 
     this.render = function () {
