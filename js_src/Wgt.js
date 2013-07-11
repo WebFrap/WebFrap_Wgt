@@ -572,6 +572,9 @@ window.$S = jQuery.noConflict();
 
 })(window);
 
+window.$MOM = moment;
+window.$NUM = numeral;
+
 /* 
  * Error Handling 
  * @see https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Error 

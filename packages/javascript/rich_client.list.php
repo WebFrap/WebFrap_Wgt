@@ -85,6 +85,7 @@ $files = array
   // add widgets
   PATH_WGT.'js_src/wgt/widget/Grid.js',
   PATH_WGT.'js_src/wgt/widget/grid/Editmode.js',
+  PATH_WGT.'js_src/wgt/widget/grid/Formula.js',
 
   PATH_WGT.'js_src/wgt/widget/I18nInputList.js',
   PATH_WGT.'js_src/wgt/widget/I18nInputTab.js',

@@ -95,7 +95,7 @@
       // statefull elements
       gridCont: null
     },
-
+    
 
     /**
      * Setup / Constructor methode des Widgets
@@ -286,6 +286,10 @@
 
       if( opt.edit_able && self.startEditMode ){
         self.startEditMode( jHeadTab );
+      }
+      
+      if( opt.calc_able && self.initFormuars ){
+        self.initFormuars();
       }
 
       if( opt.load_urls !== {} ){
