@@ -73,7 +73,7 @@
         }
       
         if (row.attr('recalc')) {
-          opts.idxMaprecalcMap[pos] = true;
+          opts.recalcMap[pos] = true;
         }
       
         if (formula) {
