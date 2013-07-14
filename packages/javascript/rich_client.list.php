@@ -31,7 +31,7 @@ $files = array
   PATH_WGT.'js_src/vendor/jquery.mousewheel/jquery.mousewheel.js',
   PATH_WGT.'js_src/vendor/jquery.modal/jquery.modal.js',
   PATH_WGT.'js_src/vendor/jquery.hoverIntent/jquery.hoverIntent.js',
-  PATH_WGT.'js_src/vendor/jquery.scroll_to/jquery.scroll_to.js',
+  PATH_WGT.'js_src/vendor/jquery.srcoll_to/jquery.scroll_to.js',
   //PATH_WGT.'js_src/vendor/jquery.vert_mega_menu/jquery.vert_mega_menu.js',
   PATH_WGT.'js_src/vendor/jquery.mega_menu/jquery.mega_menu.js',
 
