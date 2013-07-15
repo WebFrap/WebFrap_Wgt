@@ -23,7 +23,9 @@ $files = array(
 
   PATH_WGT.'js_src/vendor/jquery/jquery.js',
   PATH_WGT.'js_src/ext/ext.jquery.js',
+
   PATH_WGT.'js_src/vendor/moment.js/moment.js',
+  PATH_WGT.'js_src/vendor/numeral.js/numeral.js',
 
   PATH_WGT.'js_src/Wgt.js',
   PATH_WGT.'js_src/wgt/Debug.js',

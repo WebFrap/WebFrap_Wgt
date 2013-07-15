@@ -31,6 +31,7 @@ $files = array
   PATH_WGT.'js_src/vendor/jquery.mousewheel/jquery.mousewheel.js',
   PATH_WGT.'js_src/vendor/jquery.modal/jquery.modal.js',
   PATH_WGT.'js_src/vendor/jquery.hoverIntent/jquery.hoverIntent.js',
+  PATH_WGT.'js_src/vendor/jquery.srcoll_to/jquery.scroll_to.js',
   //PATH_WGT.'js_src/vendor/jquery.vert_mega_menu/jquery.vert_mega_menu.js',
   PATH_WGT.'js_src/vendor/jquery.mega_menu/jquery.mega_menu.js',
 
@@ -85,6 +86,7 @@ $files = array
   // add widgets
   PATH_WGT.'js_src/wgt/widget/Grid.js',
   PATH_WGT.'js_src/wgt/widget/grid/Editmode.js',
+  PATH_WGT.'js_src/wgt/widget/grid/Formula.js',
 
   PATH_WGT.'js_src/wgt/widget/I18nInputList.js',
   PATH_WGT.'js_src/wgt/widget/I18nInputTab.js',

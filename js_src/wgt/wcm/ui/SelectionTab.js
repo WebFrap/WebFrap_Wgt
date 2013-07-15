@@ -117,5 +117,6 @@ $R.addAction( 'ui_selection_tab', function( jNode ){
     }
       
     jNode.removeClass( 'wcm_ui_selection_tab' );
-
+      
+    triggerAct();
 });
