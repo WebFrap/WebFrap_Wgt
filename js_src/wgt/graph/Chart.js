@@ -220,7 +220,7 @@ var Chart = function (args) {
      * Draw the elemts according to the given, external options. If it's a redraw, some steps can
      * be skipped.
      */
-    var draw = function (redraw) {
+    var draw = function (redraw, parse) {
 
         if (redraw) {
             resetChart();
@@ -232,7 +232,7 @@ var Chart = function (args) {
             aggregateSeries();
         }
 
-        if (options.seriesInputFormat && !redraw) {
+        if (options.seriesInputFormat && parse) {
 
             parseCategory(options.seriesInputFormat);
 
@@ -277,8 +277,12 @@ var Chart = function (args) {
             drawLegend();
         }
 
-        if (options.controls) {
+        if (options.controlsAggregate) {
             drawControlAggregate();
+        }
+        
+        if (options.controlsBudgetFunding) {
+            drawControlBudgetFunding();
         }
 
     };
@@ -484,11 +488,18 @@ var Chart = function (args) {
                 toggleAggregate();
             });
         
+    };
+    
+    var drawControlBudgetFunding = function () {
+
+        var control = chart.append("g")
+            .attr("class", "controls");
+        
         control.append("circle")
             .attr("r", 5)
             .attr("cx", 200)
             .attr("cy", -20)
-            .style("fill", options.aggregate ? "black" : "white")
+            .style("fill", "white")
             .style("stroke", "black")
             .style("stroke-width", 2)
             .on("click", function (d) {
@@ -498,7 +509,7 @@ var Chart = function (args) {
         control.append("text")
             .attr("x", 210)
             .attr("y", -15)
-            .text("Value/Funding")
+            .text(currentDataset == 0 ? "Funding" :"Budget")
             .on("click", function (d) {
                 nextDataset();
             });
@@ -646,10 +657,10 @@ var Chart = function (args) {
 
         if (options.aggregate) {
             options.aggregate = false;
-            draw(true);
+            draw(true, false);
         } else {
             options.aggregate = true;
-            draw(true);
+            draw(true, false);
         }
 
     };
@@ -674,8 +685,11 @@ var Chart = function (args) {
     };
 
     var nextDataset = function () {
+        
+        currentDataset++;
+        
         if (currentDataset < datasetCount) {
-            var data = dataset[currentDataset++];
+            var data = dataset[currentDataset];
             
             element = data.options.element || "body";
 
@@ -683,10 +697,11 @@ var Chart = function (args) {
             rawSeries = data.series;
             description = data.description;
             options = data.options;
-            draw(true);
+            draw(true, true);
             
         } else {
-            var data = dataset[currentDataset--];
+            currentDataset = 0;
+            var data = dataset[currentDataset];
             
             element = data.options.element || "body";
 
@@ -694,14 +709,14 @@ var Chart = function (args) {
             rawSeries = data.series;
             description = data.description;
             options = data.options;
-            draw(true);
+            draw(true, true);
         }
         
     };
 
     this.render = function () {
         if (category && category.length > 0 && rawSeries && rawSeries.length > 0 && options) {
-            draw();
+            draw(false, true);
         } else {
             drawNoData();
         }
@@ -712,7 +727,7 @@ var Chart = function (args) {
         if (options.group) {
             options.stack = true;
             options.group = false;
-            draw(true);
+            draw(true, false);
         }
 
     };
@@ -722,7 +737,7 @@ var Chart = function (args) {
         if (options.stack) {
             options.stack = false;
             options.group = true;
-            draw(true);
+            draw(true, false);
         }
 
     };
