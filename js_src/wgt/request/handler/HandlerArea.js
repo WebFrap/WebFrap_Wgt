@@ -45,6 +45,8 @@
          $S(selector).html( text );
        }
      }, 
+     'inc':function(selector,text){$S(selector).text((parseInt($S(selector).text())+1));},  
+     'dec':function(selector,text){$S(selector).text((parseInt($S(selector).text())-1));},  
      'addClass':function(selector,text){$S(selector).addClass( text );},  
      'before':function(selector,text){$S(selector).before( text );}, 
      'after':function(selector,text){$S(selector).after( text );},
