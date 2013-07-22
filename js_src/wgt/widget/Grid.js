@@ -145,7 +145,7 @@
         
         // hier noch ein check für create
           
-        parentHeight -= 32;
+        parentHeight -= 27;
         scrollHeightStyle = ' style="height:'+(parentHeight)+'px;" ';
 
         parentHeight -= 20;
@@ -222,7 +222,7 @@
       ge.parent().before(resizeBox);
       
       
-      var headHeight = 30;
+      var headHeight = 25;
       if (opt.search_able) {
         headHeight += 23;
       }
