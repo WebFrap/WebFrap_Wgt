@@ -44,29 +44,29 @@
       icon_alt: 'Open',
       type: 'simple',
       "width": 'medium',
+      elemId:null,
+      asgdForm:null,
       data: [],
       data_source: null
     },
 
-    elemId:null,
 
     rNode:null,
 
-    asgdForm:null,
 
     _create: function() {
 
       var self = this,
-        opts = this.options;
+        opts = this.options,
+        rNode     = this.element.get(0);
       
-      this.elemId    = this.element.attr('id');
-      this.rNode     = this.element.get(0);
+      opts.elemId    = this.element.attr('id');
 
-      this.asgdForm  = $G.$B.getClassByPrefix( 'asgd-', this.element.prop('class'), true );
+      opts.asgdForm  = $G.$B.getClassByPrefix( 'asgd-', this.element.prop('class'), true );
 
       // soll die selectbox hübsch dekoriert werden?
       if( typeof this.options.decorate !== 'undefined' && true === this.options.decorate ){
-        this.decorate();
+        this.decorate(rNode);
       }
 
 
@@ -77,8 +77,7 @@
           if( !self.element.attr('loaded') ){
 
             var active = self.element.find('option:first').attr('value');
-
-            var formData = $S('#'+self.asgdForm).data(self.options.data_source);
+            var formData = $S('#'+opts.asgdForm).data(self.options.data_source);
 
             if( !formData ){
 
@@ -90,7 +89,7 @@
                 formData += '<option value="'+sourceData[key].i+'" >'+sourceData[key].v+'</option>';
               }
 
-              $S('#'+self.asgdForm).data(self.options.data_source,formData);
+              $S('#'+opts.asgdForm).data(self.options.data_source,formData);
 
             }
 
@@ -105,17 +104,25 @@
 
     },
 
-    decorate: function() {
+    decorate: function( rNode ) {
 
       var self = this,
         opts = this.options,
-        el = this.element;
+        el = this.element,
+        codeRo = '',
+        classRo = '';
+      
+      if (el.is('.wgt-readonly')){
+        codeRo = ' readonly="readonly" ';
+        classRo = ' wgt-readonly';
+      }
 
       var img = '<i class="icon-angle-down" ></i>';
-      var codeAfter = '<input class="wgt-overlay embed '+opts['width']+' wgt-ignore" ';
-        codeAfter += ' value="'+( undefined !== this.rNode.options[this.rNode.selectedIndex] ? this.rNode.options[this.rNode.selectedIndex].innerHTML : '');
-        codeAfter +=  '" type="text" name="display-'+el.attr('name')+'" id="display-'+this.elemId+'" />';
-        codeAfter +=  '<button id="trigger-'+this.elemId+'" class="wgt-button append wgt-overlay embed '+opts['width']+'" >';
+      var codeAfter = '<input class="wgt-overlay embed '+opts['width']+' wgt-ignore '+classRo+'" ';
+        codeAfter += ' value="'+( undefined !== rNode.options[rNode.selectedIndex] ? rNode.options[rNode.selectedIndex].innerHTML : '');
+        codeAfter += codeRo;
+        codeAfter +=  '" type="text" name="display-'+el.attr('name')+'" id="display-'+opts.elemId+'" />';
+        codeAfter +=  '<button id="trigger-'+opts.elemId+'" class="wgt-button append wgt-overlay embed '+opts['width']+'" >';
         codeAfter +=  img +'</button>';
 
       el.wrap( '<div style="position:relative;" class="inline" />' )
@@ -127,8 +134,8 @@
 
       el.bind( 'click.wgt_selectbox',  function(){
 
-        if( undefined !== self.rNode.options[self.rNode.selectedIndex] ){
-          $S( 'input#display-'+self.elemId).val( self.rNode.options[self.rNode.selectedIndex].innerHTML );
+        if( undefined !== rNode.options[rNode.selectedIndex] ){
+          $S( 'input#display-'+self.elemId).val( rNode.options[rNode.selectedIndex].innerHTML );
         }else{
           $S( 'input#display-'+self.elemId).val( '' );
         }
@@ -136,7 +143,7 @@
 
       el.bind( 'keyup.wgt_selectbox', function( event ){
         if( event.which === $G.key.RETURN ){
-          $S( 'input#display-'+self.elemId).val( self.rNode.options[self.rNode.selectedIndex].innerHTML );
+          $S( 'input#display-'+self.elemId).val( rNode.options[rNode.selectedIndex].innerHTML );
         }
       });
 
@@ -145,7 +152,6 @@
     loadData: function( sourceId ) {
 
       var tmp = $S( '#'+sourceId );
-
       return tmp.is('var') ? $G.$B.robustParseJSON(tmp.text()) : [];
 
     },
@@ -158,7 +164,6 @@
       }
 
       this.element.find('option').attr('selected',null);
-
       this.element.find('option[value="'+id+'"]:first').attr('selected', 'selected');
     },
 
