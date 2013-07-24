@@ -215,12 +215,10 @@
 
       this.injectSortControls( jHeadTab );
 
-
       // den neuen kopf sowie die resize box vor die tabelle kopieren
       ge.parent().wrap( '<div class="body-scroll" '+scrollHeightStyle+' >' );
       ge.parent().before(jHeadTab);
       ge.parent().before(resizeBox);
-      
       
       var headHeight = 25;
       if (opt.search_able) {
@@ -244,8 +242,6 @@
         self.footCols = ge.parent().parent().find('div.wgt-grid-foot tr:first td');
       }
 
-
-      
       // add the scroll events
       var tmpBox    = ge.parent(),
         scrolling = false;
@@ -280,9 +276,6 @@
 
       self.addResizeEvents( this.firstRow, headBar, gridBody );
       
-      // nach dem Init nocheinmal sicher stellen das ResizeBars und Size
-      // auch in sync sind
-      self.syncColWidth();
 
       if( opt.edit_able && self.startEditMode ){
         self.startEditMode( jHeadTab );
@@ -295,6 +288,9 @@
       if( opt.load_urls !== {} ){
         self.initLoaderEvent();
       }
+      // nach dem Init nocheinmal sicher stellen das ResizeBars und Size
+      // auch in sync sind
+      self.syncColWidth();
 
     },//end buildGrid
     
