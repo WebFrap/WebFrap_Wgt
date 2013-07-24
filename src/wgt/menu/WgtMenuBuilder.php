@@ -145,16 +145,18 @@ class WgtMenuBuilder
   /**
    * @param int $objid
    * @param array $row
+   * @param string $value
+   * @param array $actions
    * @return string
    */
-  public function getActionUrl($id, $row, $value = null)
+  public function getActionUrl($id, $row, $value = null, $actions = array('edit', 'show'))
   {
 
     $urlExt = '&amp;target_id='.$this->parentId
       .$this->accessPath
       .($this->refId?'&amp;refid='.$this->refId:null);
 
-    $actions = array('edit', 'show');
+    //$actions = array('edit', 'show');
 
     foreach ($actions as $action) {
       

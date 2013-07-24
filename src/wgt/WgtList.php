@@ -805,26 +805,33 @@ abstract class WgtList extends WgtAbstract
    * @param string $id
    * @param array $row
    * @param string $key
+   * @param array $actions
    *
    * @return string
    */
-  public function getActionUrl($id, $row, $key = 'default')
+  public function getActionUrl($id, $row, $key = 'default', $actions = array('edit','show'))
   {
 
+    if (is_null($key))
+      $key = 'default';
+    
     if ($this->bTypeSingle) {
+      
       // wenn der builder noch nicht existiert erstellen wir hier einfach
       // schnell beim ersten aufruf ein default objekt
       if (!$this->menuBuilder)
         $this->loadMenuBuilder();
 
-      return $this->menuBuilder->getActionUrl($id, $row);
+      return $this->menuBuilder->getActionUrl($id, $row, null, $actions);
+      
     } else {
+      
       // wenn der builder noch nicht existiert erstellen wir hier einfach
       // schnell beim ersten aufruf ein default objekt
       if (!$this->menuBuilder[$key])
         $this->loadMenuBuilder($key);
 
-      return $this->menuBuilder[$key]->getActionUrl($id, $row);
+      return $this->menuBuilder[$key]->getActionUrl($id, $row, null, $actions);
     }
 
 
