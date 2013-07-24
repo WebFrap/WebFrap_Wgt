@@ -119,8 +119,8 @@
 
       var img = '<i class="icon-angle-down" ></i>';
       var codeAfter = '<input class="wgt-overlay embed '+opts['width']+' wgt-ignore '+classRo+'" ';
-        codeAfter += ' value="'+( undefined !== rNode.options[rNode.selectedIndex] ? rNode.options[rNode.selectedIndex].innerHTML : '');
         codeAfter += codeRo;
+        codeAfter += ' value="'+( undefined !== rNode.options[rNode.selectedIndex] ? rNode.options[rNode.selectedIndex].innerHTML : '');
         codeAfter +=  '" type="text" name="display-'+el.attr('name')+'" id="display-'+opts.elemId+'" />';
         codeAfter +=  '<button id="trigger-'+opts.elemId+'" class="wgt-button append wgt-overlay embed '+opts['width']+'" >';
         codeAfter +=  img +'</button>';
@@ -135,15 +135,15 @@
       el.bind( 'click.wgt_selectbox',  function(){
 
         if( undefined !== rNode.options[rNode.selectedIndex] ){
-          $S( 'input#display-'+self.elemId).val( rNode.options[rNode.selectedIndex].innerHTML );
+          $S( 'input#display-'+opts.elemId).val( rNode.options[rNode.selectedIndex].innerHTML );
         }else{
-          $S( 'input#display-'+self.elemId).val( '' );
+          $S( 'input#display-'+opts.elemId).val( '' );
         }
       });
 
       el.bind( 'keyup.wgt_selectbox', function( event ){
         if( event.which === $G.key.RETURN ){
-          $S( 'input#display-'+self.elemId).val( rNode.options[rNode.selectedIndex].innerHTML );
+          $S( 'input#display-'+opts.elemId).val( rNode.options[rNode.selectedIndex].innerHTML );
         }
       });
 
