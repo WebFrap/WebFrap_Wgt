@@ -491,6 +491,7 @@ table.wgt-table tbody tr.title
 {
   color:white;
   font-weight:bold;
+  height:28px;
 }
 
 table.wgt-grid tbody tr td.child,
