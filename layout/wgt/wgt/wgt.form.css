@@ -394,6 +394,14 @@ select.wgt-behind
   cursor:pointer;
 }
 
+input.wgt-behind.wgt-readonly,
+select.wgt-behind.wgt-readonly
+{
+  position: auto;
+  z-index: 0;
+  cursor:not-allowed; 
+}
+
 input.wgt-behind.small,
 select.wgt-behind.small
 {

@@ -604,6 +604,39 @@
     },
     
     /**
+     * In eine Zelle und gleichzeitig den changedData array schreiben
+     */
+    readCellContentByTd: function(tdNode){
+        
+      var tdNode = $S(tdNode), 
+        type = this._getCellType(tdNode),
+        value = null,
+        text = null;
+    
+      
+      if ('date' === type || 'datetime' === type || 'text' === type) {
+        
+        value = text = tdNode.html();
+      
+      } else if('select' === type||'window' === type) {
+        
+        text = tdNode.html();
+        value = tdNode.attr('value');  
+        
+      } else if('check' === type) {
+        
+        value = text = tdNode.find('input').is(':checked');  
+      }
+      
+      return {
+        'name': tdNode.attr('name'),
+        'value': value,
+        'text': text
+      };
+      
+    },
+    
+    /**
      * @param cTarget DomNode oder jQuery objekt eines 'td's 
      */
     _getCellType: function(cTarget){
@@ -643,7 +676,7 @@
         
         oldNode = oldRows.get(idx);
         
-        data = self.readCellByTd(oldNode);
+        data = self.readCellContentByTd(oldNode);
         self.writeCellByTd(tNode, data.value, data.text);
 
         console.log('write in '+idx+' val: '+data.value+' text: '+data.text  );

@@ -215,12 +215,10 @@
 
       this.injectSortControls( jHeadTab );
 
-
       // den neuen kopf sowie die resize box vor die tabelle kopieren
       ge.parent().wrap( '<div class="body-scroll" '+scrollHeightStyle+' >' );
       ge.parent().before(jHeadTab);
       ge.parent().before(resizeBox);
-      
       
       var headHeight = 25;
       if (opt.search_able) {
@@ -244,8 +242,6 @@
         self.footCols = ge.parent().parent().find('div.wgt-grid-foot tr:first td');
       }
 
-
-      
       // add the scroll events
       var tmpBox    = ge.parent(),
         scrolling = false;
@@ -280,9 +276,6 @@
 
       self.addResizeEvents( this.firstRow, headBar, gridBody );
       
-      // nach dem Init nocheinmal sicher stellen das ResizeBars und Size
-      // auch in sync sind
-      self.syncColWidth();
 
       if( opt.edit_able && self.startEditMode ){
         self.startEditMode( jHeadTab );
@@ -295,6 +288,9 @@
       if( opt.load_urls !== {} ){
         self.initLoaderEvent();
       }
+      // nach dem Init nocheinmal sicher stellen das ResizeBars und Size
+      // auch in sync sind
+      self.syncColWidth();
 
     },//end buildGrid
     
@@ -447,6 +443,7 @@
 
     /**
      * Injizieren der Sortelements in den Tabellenhead
+     * @param jHeadTab
      */
     injectSortControls: function( jHeadTab ){
 
@@ -496,31 +493,30 @@
      * @param tmpWidth int Weite der aktuellen col
      * @param opt Object Options Object
      */
-    renderSearchCell: function( cNode, tmpWidth, opt  ){
+    renderSearchCell: function( cNode, tmpWidth, opt) {
 
       var searchBox = '',
         searchName = cNode.attr('wgt_search'),
         defVal = '<span>&nbsp;</span>',
         defClass = '';
       
-      if( cNode.is('.pos') ){
+      if (cNode.is('.pos')) {
         defVal = ' <i class="icon-search" ></i> ';
         defClass = ' class="pos" ';
       }
 
-      if( searchName ){
+      if (searchName) {
 
         var tmp   = searchName.split(':'),
           sType = '',
           sName = '';
 
-        if( 2 === tmp.length ){
+        if (2 === tmp.length) {
           
           sType = tmp[0];
           sName = tmp[1];
 
-        }
-        else{
+        } else {
           
           sType = 'text';
           sName = searchName;
@@ -576,18 +572,18 @@
         tmpNewWdth = null,
         headClass = '';
       
-        if( cNode.is('.pos') ){
+        if (cNode.is('.pos')) {
           headClass = ' class="pos" ';
         }
 
-      if( nodeName ){
+      if (nodeName) {
 
         var sortIcon  = opt.icon_sort_none, 
           sortClass = '',
           sortVal = '',
           sortDir  = cNode.attr('wgt_sort');
         
-        if( sortDir ){
+        if (sortDir) {
 
           sortIcon  = opt['icon_sort_'+sortDir] === undefined? opt.icon_sort_none: opt['icon_sort_'+sortDir] ;
           sortClass = ' sort-'+sortDir;
@@ -603,8 +599,7 @@
         headTab += "</p>";
         headTab += "</div></th>";
 
-      }
-      else{
+      } else {
 
         tmpNewWdth = tmpWidth-opt.hpad;
         headTab += "<th "+headClass+" style=\"width:"+tmpNewWdth+"px;\" orig_width=\""+tmpNewWdth+"\" >"
@@ -650,7 +645,7 @@
 
       var self = this;
 
-      if( this.firstRow ){
+      if (this.firstRow) {
 
         this.firstRow.each(function(idx){
 
@@ -684,7 +679,7 @@
         return;
       }
 
-      if( undefined !== this.loadUrls[key]  ){
+      if (undefined !== this.loadUrls[key] ) {
         
         $R.get( this.loadUrls[key]+append );
 
