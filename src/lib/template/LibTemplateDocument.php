@@ -67,10 +67,10 @@ class LibTemplateDocument extends LibTemplatePresenter
 
     $className   = $key.'_View';
 
-    if (!Webfrap::classLoadable($className))
+    if (!Webfrap::classExists($className))
       $className = 'View'.$key;
 
-    if (!Webfrap::classLoadable($className))
+    if (!Webfrap::classExists($className))
       throw new LibTemplate_Exception('Requested nonexisting View: '.$key);
 
     $this->subView  = new $className();

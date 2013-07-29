@@ -134,7 +134,7 @@ class LibTemplateCli extends Pbase
 
     $className = $key.'_View';
 
-    if (!Webfrap::loadable($className))
+    if (!Webfrap::classExists($className))
       throw new LibTemplate_Exception('Requested nonexisting View '.$key);
 
     $this->subView  = new $className();

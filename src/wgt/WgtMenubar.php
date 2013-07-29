@@ -65,7 +65,7 @@ abstract class WgtMenubar extends Base
 
     $modelName = 'Model'.$modelName;
     if (!isset($this->models[$key]  )) {
-      if (Webfrap::classLoadable($modelName)) {
+      if (Webfrap::classExists($modelName)) {
         $this->models[$key] = new $modelName();
       } else {
         throw new Controller_Exception('Internal Error','Failed to load Submodul: '.$modelName);
