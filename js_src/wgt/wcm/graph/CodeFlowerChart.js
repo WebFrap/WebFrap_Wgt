@@ -19,7 +19,7 @@ $R.addAction( 'code_flower_chart', function( jNode ){
   jNode.find('var').remove();
   flowerGraph.update(graphData);
 
-  /**/
+  
 
 });
 

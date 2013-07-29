@@ -280,7 +280,7 @@
         
         
       
-     }); /**/
+     });
      
      // nodes speichern
      this.nodes = nodes;

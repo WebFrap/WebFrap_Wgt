@@ -148,7 +148,7 @@
         self.activEditLayer.attr('wgt_target',cTarget.attr('id')).attr('wgt_list',elId);
 
         //console.log(cTarget.parentX('table').css('margin-top')+' type '+type+' '+cTarget.prop('class'));
-        /**/
+        
         editLayers.trigger('blur')
           .unbind('blur')
           .hide();
