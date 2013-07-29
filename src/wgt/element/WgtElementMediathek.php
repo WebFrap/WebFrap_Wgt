@@ -164,7 +164,7 @@ class WgtElementMediathek extends WgtAbstract
     // setup der icons
     $this->icons['delete'] = $this->icon('control/delete.png', 'Delete');
     $this->icons['add']    = $this->icon('control/add.png', 'Add');
-    $this->icons['search'] = $this->icon('control/search.png', 'Search');
+    $this->icons['search'] = '<i class="icon-search" ></i>';;
 
     $this->icons['level_public'] = $this->icon
     (

@@ -75,7 +75,7 @@ class WgtElementDesktopSearch extends WgtAbstract
     $formId   = "wgt_form-{$id}";
     $tableId  = "wgt_table-{$id}";
 
-    $iconSearch = $this->icon('control/search.png', 'Search');
+    $iconSearch = '<i class="icon-search" ></i>';;
 
     $html = <<<HTML
 
