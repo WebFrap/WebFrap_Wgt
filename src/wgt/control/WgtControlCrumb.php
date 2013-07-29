@@ -49,14 +49,13 @@ class WgtControlCrumb
    * @param array $paths
    * @param string $url
    */
-  public function setPathCrumb($paths, $url)
+  public function setPathCrumb($paths, $url = null)
   {
 
     $this->data = array();
 
     foreach ($paths as $path => $label) {
-      $this->data[] = array
-      (
+      $this->data[] = array(
         $label,
         $url.$path,
         ''

@@ -247,8 +247,13 @@ class WgtMaintab extends LibTemplatePublisher
   public function setLabel($label, $size = 35, $append = '...'  )
   {
     $this->label = SParserString::shortLabel($label, $size, $append  );
+    
+    if(!$this->title){
+      $this->title = $this->label;
+    }
+  
   }//end public function setLabel */
-
+  
   /**
    * @param string $tabId
    */
