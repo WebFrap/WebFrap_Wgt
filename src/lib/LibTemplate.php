@@ -584,7 +584,7 @@ abstract class LibTemplate extends BaseChild
     $uiName       = ucfirst($uiName);
     $className    = $uiName.'_Ui';
 
-    if (Webfrap::classLoadable($className)) {
+    if (Webfrap::classExists($className)) {
       
       $ui = new $className($this);
       $ui->setView($this);
@@ -640,9 +640,9 @@ abstract class LibTemplate extends BaseChild
     $modelNameOld = 'Model'.$modelKey;
 
     if (!isset($this->models[$key])) {
-      if (Webfrap::classLoadable($modelName)) {
+      if (Webfrap::classExists($modelName)) {
         $this->models[$key] = new $modelName($this);
-      } elseif (Webfrap::classLoadable($modelNameOld)) {
+      } elseif (Webfrap::classExists($modelNameOld)) {
         $this->models[$key] = new $modelNameOld($this);
       } else {
         throw new LibTemplate_Exception('Internal Error','Failed to load Submodul: '.$modelName);
@@ -725,9 +725,9 @@ abstract class LibTemplate extends BaseChild
         $className    = ucfirst($subName).'_View';
         $classNameOld = 'View'.ucfirst($subName);
 
-        if (!WebFrap::classLoadable($className)) {
+        if (!WebFrap::classExists($className)) {
           $className = $classNameOld;
-          if (!WebFrap::classLoadable($className)) {
+          if (!WebFrap::classExists($className)) {
             throw new LibTemplate_Exception('Requested noexisting view '.ucfirst($subName));
           }
         }
@@ -764,7 +764,7 @@ abstract class LibTemplate extends BaseChild
 
     $className = $classKey.'_View';
 
-    if (!Webfrap::classLoadable($className))
+    if (!Webfrap::classExists($className))
       throw new LibTemplate_Exception("The requested View {$className} not exists");
 
     $area = new $className();
@@ -907,10 +907,10 @@ abstract class LibTemplate extends BaseChild
     $className    = $type.'_Form';
     $classNameOld = 'WgtForm'.$type;
 
-    if (!WebFrap::classLoadable($className)) {
+    if (!WebFrap::classExists($className)) {
       // fall back to old name convention
       $className = $classNameOld;
-      if (!WebFrap::classLoadable($className))
+      if (!WebFrap::classExists($className))
         throw new LibTemplate_Exception('Requested noexisting form '.$type);
     }
 
@@ -938,7 +938,7 @@ abstract class LibTemplate extends BaseChild
 
     $className    = $type.'_Form';
 
-    if (!WebFrap::classLoadable($className)) {
+    if (!WebFrap::classExists($className)) {
       throw new LibTemplate_Exception('Requested noexisting form '.$type);
     }
 
@@ -970,10 +970,10 @@ abstract class LibTemplate extends BaseChild
       $className     = $type;
       $classNameOld  = 'Wgt'.$type;
 
-      if (!WebFrap::loadable($className)) {
+      if (!Webfrap::classExists($className)) {
         $className = $classNameOld;
 
-        if (!WebFrap::loadable($className))
+        if (!Webfrap::classExists($className))
           throw new WgtItemNotFound_Exception('Item '.$className.' is not loadable');
       }
 
@@ -1044,7 +1044,7 @@ abstract class LibTemplate extends BaseChild
 
       $className     = $type.'_Element';
 
-      if (!WebFrap::loadable($className))
+      if (!Webfrap::classExists($className))
         throw new WgtItemNotFound_Exception('Element '.$className.' is not loadable');
 
       $object        = new $className($key);
@@ -1100,10 +1100,10 @@ abstract class LibTemplate extends BaseChild
       $className     = $type.'_Widget';
       $classNameOld  = 'WgtWidget'.$type;
 
-      if (!WebFrap::loadable($className)) {
+      if (!Webfrap::classExists($className)) {
         $className = $classNameOld;
 
-        if (!WebFrap::loadable($className))
+        if (!Webfrap::classExists($className))
           throw new WgtItemNotFound_Exception('Widget '.$className.' is not loadable');
       }
 
@@ -1142,7 +1142,7 @@ abstract class LibTemplate extends BaseChild
     } else {
       $className = 'WgtInput'.ucfirst($type);
 
-      if (!WebFrap::loadable($className)) {
+      if (!Webfrap::classExists($className)) {
         throw new WgtItemNotFound_Exception('Class '.$className.' was not found');
       } else {
         $object = new $className($key);
@@ -1177,9 +1177,9 @@ abstract class LibTemplate extends BaseChild
       if ($type) {
 
         $className  = ucfirst($type).'_Maintab_View';
-        if (!Webfrap::classLoadable($className)) {
+        if (!Webfrap::classExists($className)) {
           $className  = ucfirst($type).'_Maintab';
-          if (!Webfrap::classLoadable($className)) {
+          if (!Webfrap::classExists($className)) {
             throw new LibTemplate_Exception('requested nonexisting tab '.$type);
           }
         }
@@ -2461,7 +2461,7 @@ abstract class LibTemplate extends BaseChild
 
     $className = $key.'_View';
 
-    if (!Webfrap::loadable($className)) {
+    if (!Webfrap::classExists($className)) {
       throw new LibTemplate_Exception('Requested nonexisting View '.$key);
     }
 

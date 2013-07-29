@@ -626,7 +626,7 @@ HTML;
       $attributes['id']     = "wgt-input-{$id}";
     }
 
-    if (!Webfrap::classLoadable($elementKey))
+    if (!Webfrap::classExists($elementKey))
       return '<!-- Missing '.$elementKey.' -->';
 
     $selectBoxNode = new $elementKey();
@@ -698,7 +698,7 @@ HTML;
       $attributes['id']     = "wgt-input-{$id}";
     }
 
-    if (!Webfrap::classLoadable($elementKey))
+    if (!Webfrap::classExists($elementKey))
       return '<!-- Missing '.$elementKey.' -->';
 
     $selectBoxNode = new $elementKey();

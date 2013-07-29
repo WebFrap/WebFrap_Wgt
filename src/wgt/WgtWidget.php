@@ -88,11 +88,11 @@ abstract class WgtWidget extends PBase
     $modelNameOld = 'Model'.$modelKey;
 
     if (!isset($this->models[$key]  )) {
-      if (!Webfrap::classLoadable($modelName)) {
+      if (!Webfrap::classExists($modelName)) {
 
         $modelName = $modelNameOld;
 
-        if (!Webfrap::classLoadable($modelName))
+        if (!Webfrap::classExists($modelName))
           throw new Controller_Exception('Internal Error','Failed to load Submodul: '.$modelName);
 
       }

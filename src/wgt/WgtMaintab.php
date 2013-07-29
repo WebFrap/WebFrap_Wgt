@@ -347,7 +347,7 @@ class WgtMaintab extends LibTemplatePublisher
 
       $className  = ucfirst($type).'_Maintab_Menu';
 
-      if (!Webfrap::classLoadable($className)  ) {
+      if (!Webfrap::classExists($className)  ) {
         throw new LibTemplate_Exception('requested nonexisting menu '.$type);
       }
 

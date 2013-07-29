@@ -117,6 +117,16 @@ a [class*=" icon-"] {
   border-radius: 2px;
 }
 
+.icon-1_5x {
+  font-size: 1.5em;
+}
+.icon-1_5x.icon-border {
+  border-width: 1px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+
 .icon-2x {
   font-size: 2em;
 }

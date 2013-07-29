@@ -303,9 +303,8 @@ class Wgt
   {
     $className = 'Wgt'.ucfirst($type);
 
-    if (!WebFrap::loadable($className)) {
-      Error::addError
-      (
+    if (!Webfrap::classExists($className)) {
+      Error::addError(
         'Class '.$className.' was not found',
         'WgtItemNotFound_Exception'
       );
@@ -536,10 +535,9 @@ class Wgt
 
     $className = 'WgtSelectbox'.$name;
 
-    if (!Webfrap::classLoadable($className)) {
-      Error::addError
-      (
-      'Class '.$className.' is not loadable'
+    if (!Webfrap::classExists($className)) {
+      Error::addError(
+        'Class '.$className.' is not loadable'
       );
 
       return null;
