@@ -46,7 +46,6 @@ class WgtMaintabCustom extends WgtMaintab
   
     $iconMenu     = '<i class="icon-reorder" ></i>';
     $iconClose    = '<i class="icon-close" ></i>';
-    $iconBookmark = '<i class="icon-bookmark" ></i>';
   
     $menu          = $this->newMenu($this->id.'_dropmenu');
   
@@ -64,7 +63,7 @@ class WgtMaintabCustom extends WgtMaintab
 <div class="wgt-dropdownbox" id="{$this->id}_dropmenu" >
   <ul>
     <li>
-      <a class="wgtac_bookmark" >{$iconBookmark} {$this->i18n->l('Bookmark', 'wbf.label')}</a>
+      <a class="wgtac_bookmark" ><i class="icon-bookmark" ></i> {$this->i18n->l('Bookmark', 'wbf.label')}</a>
     </li>
   </ul>
   <ul>
