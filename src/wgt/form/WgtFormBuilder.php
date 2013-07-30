@@ -1501,7 +1501,7 @@ HTML
     {$addInput}
     {$langSelector}
 
-    <button class="wgt-button wgta-append" tabindex="-1" >{$iconAdd} Add Language</button>
+    <button class="wgt-button wgta-append" tabindex="-1" ><i class="icon-plus-sign" ></i> Add Language</button>
   </div>
 
   <div class="right bw3" >
@@ -1601,7 +1601,7 @@ HTML;
       <option>Select a language</option>
     </select>
 
-    <button class="wgt-button wgta-append" tabindex="-1" >{$iconAdd} Add Language</button>
+    <button class="wgt-button wgta-append" tabindex="-1" ><i class="icon-plus-sign" ></i> Add Language</button>
   </div>
 
   <div class="wgt-clear xxsmall" ></div>

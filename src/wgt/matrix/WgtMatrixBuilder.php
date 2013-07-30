@@ -305,7 +305,7 @@ HTML;
 
     /*
 
-    <button class="wgt-button" onclick="\$R.get('{$this->addURL}');" >{$iconAdd} Create</button>
+    <button class="wgt-button" onclick="\$R.get('{$this->addURL}');" ><i class="icon-plus-sign" ></i> Create</button>
     &nbsp;|&nbsp;&nbsp;
      */
 
