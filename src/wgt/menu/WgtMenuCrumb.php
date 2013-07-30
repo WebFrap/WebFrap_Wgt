@@ -39,7 +39,7 @@ class WgtMenuCrumb extends WgtMenuEntryAbstract
     $icon = '';
 
     if ($this->icon) {
-      $icon = '<img src="'.View::$iconsWeb.'xsmall/'.$this->icon.'" class="icon xsmall" />'.NL;
+      $icon = '<i class="'.$this->icon.'" ></i>'.NL;
     }
 
     return '<li style="vertical-align:middle;" ><a class="'.$this->class.'" '.$title.' href="'.$url.'">'.$icon.$this->text.' '.$this->seperator.' </a></li>';
