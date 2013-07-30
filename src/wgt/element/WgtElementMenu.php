@@ -102,9 +102,7 @@ class WgtElementMenu extends WgtMenu
       $icon = '';
 
       if ('' != trim($src)) {
-        $icon = '<img class="icon xsmall" '.
-        ' src="'.$baseFolder.$src.'" '.
-        ' alt="'.$text.'"  /> ';
+        $icon = '<i class="'.$src.'" ></i> ';
       }
 
       $entries[] = '<li><a  class="wcm wcm_req_ajax" href="'.$url.'" >'.$icon.$text.'</a></li>';
