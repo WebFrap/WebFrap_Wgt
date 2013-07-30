@@ -99,7 +99,7 @@ function Data(series, category, settings) {
 
     var getSeriesMax = function (series) {
         var seriesMax = d3.max(series);                
-        max = seriesMax > max ? Math.ceil(seriesMax) : max;
+        max = seriesMax > max ? Math.ceil(seriesMax) * 1.1 : max;
     };
 
     var aggregateSeries = function () {
