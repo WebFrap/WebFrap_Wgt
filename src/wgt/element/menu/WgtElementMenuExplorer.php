@@ -112,37 +112,36 @@ class WgtElementMenuExplorer extends WgtElementMenu
       $text = trim($pic[WgtMenu::TEXT]) != '' ? $pic[WgtMenu::TEXT].'<br />' : '';
 
       if (Wgt::ACTION == $pic[WgtMenu::TYPE]) {
-        $link = $text.'<img class="icon large cursor" '.
-                    ' src="'.$this->baseFolder.$pic[WgtMenu::ICON].'" '.
+        
+        $link = $text.'<i class="'.$pic[WgtMenu::ICON].' icon-3x cursor" '.
                     ' onclick="'.$pic[WgtMenu::ACTION].'" '.
-                    ' alt="'.$pic[WgtMenu::TITLE].'" '.
-                    ' title="'.$pic[WgtMenu::TITLE].'" />';
+                    ' title="'.$pic[WgtMenu::TITLE].'" ></i>';
       } elseif (Wgt::URL == $pic[WgtMenu::TYPE]) {
-        $icon = '<img class="icon large" '.
-                    ' src="'.$this->baseFolder.$pic[WgtMenu::ICON].'" '.
-                    ' alt="'.$pic[WgtMenu::TITLE].'" '.
-                    ' title="'.$pic[WgtMenu::TITLE].'" />';
+        
+        $icon = '<i class="'.$pic[WgtMenu::ICON].' icon-3x cursor" '.
+                    ' onclick="'.$pic[WgtMenu::ACTION].'" '.
+                    ' title="'.$pic[WgtMenu::TITLE].'" ></i>';
 
         $link = '<a style="border:0px;" href="'.$pic[WgtMenu::ACTION].'" >'.$icon.'<p>'.$text.'</p></a>';
       } elseif (Wgt::AJAX == $pic[WgtMenu::TYPE]) {
-        $icon = '<img class="icon large" '.
-                    ' src="'.$this->baseFolder.$pic[WgtMenu::ICON].'" '.
-                    ' alt="'.$pic[WgtMenu::TITLE].'" '.
-                    ' title="'.$pic[WgtMenu::TITLE].'" />';
+        
+        $icon = '<i class="'.$pic[WgtMenu::ICON].' icon-3x cursor" '.
+                    ' onclick="'.$pic[WgtMenu::ACTION].'" '.
+                    ' title="'.$pic[WgtMenu::TITLE].'" ></i>';
 
         $link = '<a class="wcm wcm_req_ajax" style="border:0px;" href="'.$pic[WgtMenu::ACTION].'" >'.$icon.'<p>'.$text.'</p></a>';
       } elseif (Wgt::WINDOW == $pic[WgtMenu::TYPE]) {
-        $icon = '<img class="icon large" '.
-                    ' src="'.$this->baseFolder.$pic[WgtMenu::ICON].'" '.
-                    ' alt="'.$pic[WgtMenu::TITLE].'" '.
-                    ' title="'.$pic[WgtMenu::TITLE].'" />';
+        
+        $icon = '<i class="'.$pic[WgtMenu::ICON].' icon-3x cursor" '.
+                    ' onclick="'.$pic[WgtMenu::ACTION].'" '.
+                    ' title="'.$pic[WgtMenu::TITLE].'" ></i>';
 
         $link = '<a class="wcm wcm_req_ajax" style="border:0px;" href="'.$pic[WgtMenu::ACTION].'" >'.$icon.'<p>'.$text.'</p></a>';
       } else {
-        $icon = '<img class="icon large" '.
-                    ' src="'.$this->baseFolder.$pic[WgtMenu::ICON].'" '.
-                    ' alt="'.$pic[WgtMenu::TITLE].'" '.
-                    ' title="'.$pic[WgtMenu::TITLE].'" />';
+        
+        $icon = '<i class="'.$pic[WgtMenu::ICON].' icon-3x cursor" '.
+                    ' onclick="'.$pic[WgtMenu::ACTION].'" '.
+                    ' title="'.$pic[WgtMenu::TITLE].'" ></i>';
 
         $link = '<a class="wcm wcm_req_ajax" style="border:0px;" href="'.$pic[WgtMenu::ACTION].'" >'.$icon.'<p>'.$text.'</p></a>';
       }
@@ -155,5 +154,4 @@ class WgtElementMenuExplorer extends WgtElementMenu
 
   }//end protected function renderListEntry */
 
-} // end class WgtMenuFolder
-
+} // end class WgtElementMenuExplorer

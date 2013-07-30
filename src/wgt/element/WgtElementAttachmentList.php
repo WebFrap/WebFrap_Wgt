@@ -155,8 +155,8 @@ class WgtElementAttachmentList extends WgtAbstract
       $view->addElement($name, $this);
 
     // setup der icons
-    $this->icons['link']   = $this->icon('control/attachment_link.png', 'Link');
-    $this->icons['file']   = $this->icon('control/attachment_file.png', 'File');
+    $this->icons['link'] = '<i class="icon-external-link " ></i>';
+    $this->icons['file'] = '<i class="icon-file-alt" ></i>';
     $this->icons['edit'] = $this->icon('control/edit.png', 'Edit');
 
     $this->icons['level_public'] = $this->icon(
