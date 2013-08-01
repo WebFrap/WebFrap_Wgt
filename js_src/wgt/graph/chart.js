@@ -98,8 +98,13 @@ function Data(series, category, settings) {
     };
 
     var getSeriesMax = function (series) {
-        var seriesMax = d3.max(series);                
-        max = seriesMax > max ? Math.ceil(seriesMax) * 1.1 : max;
+        var seriesMax = d3.max(series);
+        
+        if(_settings.aggregate) {
+        	max = seriesMax > max ? Math.ceil(seriesMax) : max;
+        } else {
+        	max += seriesMax * 0.6;
+        }
     };
 
     var aggregateSeries = function () {
@@ -365,7 +370,7 @@ var StackedBar = function() {
 
         series.map(function (bar, i) {
 
-            bars.selectAll(bar.name)
+            bars.selectAll(".bar")
                 .data(bar.series)
                 .enter()
                 .append("rect")
@@ -765,6 +770,62 @@ function BudgetReportControl() {
     
 };
 
+function ActualPlanSeparator() {
+	
+	this.draw = function(chart) {
+		
+		var svg = chart.svg;
+				
+		var settings = chart.currentSetting;
+		
+		var category = settings.data.category;
+		
+		var height = settings.dimension.height;
+		
+		var xScale = settings.xScale;
+		
+		var xPos = null;
+		
+		var today = new Date();
+		
+		var planStart = new Date(today.getYear() + 1900, today.getMonth(), 1);
+		
+		var lastElementCategory = category[category.length - 1];
+			
+		xPos = xScale(planStart);
+		
+		if(planStart <= lastElementCategory) {
+			var separator = svg.append("g")
+			.attr("class", "ActualPlanSeparator");
+	
+			separator.append("rect")
+				.attr("width", 2)
+				.attr("height", height + 20)
+				.style("fill", "black")
+				.attr("x", xPos);
+			
+			separator.append("text")
+				.text("Actuals")
+				.attr("x", xPos - 90)
+				.attr("y", height + 40)
+				.attr("font-size", 15);
+			
+			separator.append("text")
+				.text("Planned")
+				.attr("x", xPos + 30)
+				.attr("y", height + 40)
+				.attr("font-size", 15);
+		}
+				
+	};
+	
+	this.redraw = function(chart) {
+        chart.svg.selectAll("g.ActualPlanSeparator").remove();
+        this.draw(chart);
+    };
+	
+};
+
 function EffortChart(args) {
     
     var chart = new Chart();
@@ -819,6 +880,7 @@ function BudgetChart(args) {
     chart.addComponent(new Legend());
     chart.addComponent(new AggregationControl());
     chart.addComponent(new BudgetReportControl());
+    chart.addComponent(new ActualPlanSeparator());
     
     this.addData = function(args) {
         
