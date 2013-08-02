@@ -60,7 +60,7 @@ class WgtProcessFormSlice_Rating extends WgtProcessFormSlice
 
     $iconStatus   = $this->icon($statusData->icon , $statusData->label);
     $iconHistory  = $this->icon('process/history.png', 'History');
-    $iconDetails  = $this->icon('control/mask.png', 'Details');
+    $iconDetails  = '<i class="icon-list-alt" ></i>';
 
     $edges        = $this->process->getActiveEdges();
     $responsibles = $this->process->getActiveResponsibles();
