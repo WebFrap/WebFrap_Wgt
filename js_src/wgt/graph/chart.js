@@ -53,7 +53,7 @@ var Settings = function(args) {
             .domain(data.category);
                 
         yScale.range([dimension.height, 0])
-            .domain([0, data.max]);
+            .domain([data.min, data.max]);
         
         return {
             xScale : xScale,
@@ -75,6 +75,7 @@ function Data(series, category, settings) {
     var _settings = settings;
     var isDataAvailable = series.length > 0 && category.length > 0;
     
+    var min = 0;
     var max = 0;
     
     var mergeSeriesCategory = function () {
@@ -99,9 +100,14 @@ function Data(series, category, settings) {
 
     var getSeriesMax = function (series) {
         var seriesMax = d3.max(series);
+        var seriesMin = d3.min(series);
+        
+        if(seriesMin < min) {
+        	min = seriesMin;
+        }
         
         if(_settings.aggregate) {
-        	max = seriesMax > max ? Math.ceil(seriesMax) : max;
+        	max = seriesMax > max ? seriesMax : max;
         } else {
         	max += seriesMax * 0.6;
         }
@@ -130,7 +136,8 @@ function Data(series, category, settings) {
     return {
         series :  _series,
         category : _category,
-        max : max,
+        min : Math.ceil(min),
+        max : Math.ceil(max),
         isDataAvailable : isDataAvailable,
         barSeries : _series.filter(function (d) { return d.type == "bar"; }),
         lineSeries : _series.filter(function (d) { return d.type == "line"; })
@@ -220,9 +227,13 @@ var XAxis = function() {
     this.draw = function(chart) {
         
         var settings = chart.currentSetting;
+        var data = settings.data;
         var scale = settings.xScale;
         var dimension = settings.dimension;
         var format = settings.options.categoryOutputFormat;
+        
+        // This is serious magic.
+        var translate = data.min < 0 ? dimension.height * (data.max / (data.max - data.min)) : dimension.height;
         
         var svg = chart.svg;
         
@@ -235,7 +246,7 @@ var XAxis = function() {
         
         svg.append("g")
             .attr("class", "x axis")
-            .attr("transform", "translate(0," + dimension.height + ")")
+            .attr("transform", "translate(0," + translate + ")")
             .call(axis);
         
         if(settings.options.rotateCategory) {
@@ -343,16 +354,48 @@ var StackedBar = function() {
     
     var maxBarWidth = 30;
     
+    var lastValue = 0;
+    
+    var month = [];
+        
     var stack = d3.layout.stack()
         .offset("zero")
         .values(function (d) {
             return d.series;
+        })
+        .out(function(d, y0, y) {
+        	
+        	// Reset if month changes
+        	if(month.indexOf(d.x) < 0) {
+        		month.push(d.x);
+        		lastValue = 0;
+        	}
+        	
+        	// true if ancestor y was negative
+        	if(lastValue > 0) {
+        		d.y0 = y0 + lastValue;
+        		d.y = y;
+        		
+        		// reset
+        		lastValue = 0;
+        		
+        	} else {
+        		d.y = y;
+        		d.y0 = y0;
+        	}
+        	
+        	// true if current y < 0
+        	if(y < 0) {
+        		lastValue = Math.abs(y);
+        	}
+        	        	
         });
     
     this.draw = function (chart) {
         
         var settings = chart.currentSetting;
         var svg = chart.svg;
+        var data = settings.data;
         var dimension = settings.dimension;
         var xScale = settings.xScale;
         var yScale = settings.yScale;
@@ -380,10 +423,10 @@ var StackedBar = function() {
                 })
                 .attr("width", barWidth)
                 .attr("y", function (d) {
-                    return yScale(d.y + d.y0);
+                	return d.y >= 0 ? yScale(d.y + d.y0) : yScale(0);
                 })
                 .attr("height", function (d) {
-                    return dimension.height - yScale(d.y);
+                    return d.y > 0 ? dimension.height - yScale(d.y + data.min) : yScale(d.y + data.max);
                 })
                 .style("fill", color(bar.name))
                 .style("opacity", 0.8);
@@ -610,6 +653,7 @@ function Tooltip() {
     
     this.redraw = function(chart) {
         d3.select("div.tooltip").remove();
+        chart.svg.selectAll("g.lineDots").remove();
         this.draw(chart);
     };
     
@@ -792,7 +836,8 @@ function ActualPlanSeparator() {
 		
 		var lastElementCategory = category[category.length - 1];
 			
-		xPos = xScale(planStart);
+		// 2px Bar width
+		xPos = xScale(planStart) - 2;
 		
 		if(planStart <= lastElementCategory) {
 			var separator = svg.append("g")
