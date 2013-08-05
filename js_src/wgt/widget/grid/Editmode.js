@@ -549,14 +549,20 @@
   
       if ('window' === type) {
         
-        tdNode.find('input:hidden').val(value);
-        tdNode.find('input').not(':hidden').val(text);
+        if(value !== undefined){
+          tdNode.find('input:hidden').val(value);
+          tdNode.find('input').not(':hidden').val(text);
+        }
       
-      } if ('check' === type) {
+      } else if ('check' === type) {
         
         if(value){
           tdNode.find('input').attr('checked','checked');
         }
+        
+      } else if ('element' === type) {
+        
+
         
       } else {
         
@@ -566,7 +572,11 @@
       
 
       tdNode.addClass('changed');
-      this.options.changedData[name] = value;
+      if(null===value){
+        this.options.changedData[name] = '';
+      } else {
+        this.options.changedData[name] = value;
+      }
 
     },
     
@@ -585,10 +595,15 @@
         
         value = text = tdNode.html();
       
-      } else if('select' === type||'window' === type) {
+      } else if('select' === type) {
         
         text = $S('#'+tdNode.attr('data_source')).text();
         value = tdNode.attr('value');  
+        
+      } else if('window' === type) {
+        
+        text = tdNode.find('input').not(':hidden').val();  
+        value = tdNode.find('input:hidden').val();  
         
       } else if('check' === type) {
         
@@ -618,10 +633,15 @@
         
         value = text = tdNode.html();
       
-      } else if('select' === type||'window' === type) {
+      } else if('select' === type) {
         
         text = tdNode.html();
         value = tdNode.attr('value');  
+        
+      } else if('window' === type) {
+        
+        text = tdNode.find('input').not(':hidden').val();
+        value = tdNode.find('input:hidden').val();
         
       } else if('check' === type) {
         
@@ -672,7 +692,6 @@
         if(tNode.is(self.ignorePattern)){
           return;
         }
-        
         
         oldNode = oldRows.get(idx);
         
