@@ -109,7 +109,7 @@ function Data(series, category, settings) {
         if(_settings.aggregate) {
         	max = seriesMax > max ? seriesMax : max;
         } else {
-        	max += seriesMax * 0.6;
+        	max += seriesMax * 0.7;
         }
     };
 
