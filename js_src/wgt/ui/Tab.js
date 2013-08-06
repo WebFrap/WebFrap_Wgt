@@ -1090,7 +1090,7 @@
       }
       
       // trigger subrequests
-      self.jObject.find('form.wgt-sub_reqest').each(function(){
+      jObject.find('form.wgt-sub_reqest').each(function(){
         $R.form($S(this).attr('id'));
       });
       
