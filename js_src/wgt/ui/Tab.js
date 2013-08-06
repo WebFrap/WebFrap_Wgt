@@ -11,9 +11,9 @@
  * //////////////////////////////////////////////////////////////////////////////
  */
 
-/**
- * @author dominik alexander bonsch <db@webfrap.net>
- */
+ /**
+  * @author dominik alexander bonsch <db@webfrap.net>
+  */
   $UI.fn.tab = {
 
     create: function( containerId, params ){
@@ -236,7 +236,7 @@
         tabData.text = '';
         var tabIcon = tabObj.attr("wgt_icon");
         if( tabIcon )
-          tabData.text += '<img alt="'+tabObj.attr("title")+'" src="'+$C.WEB_ICONS+tabIcon+'" /> ';
+          tabData.text += '<i class="'+tabIcon+'" ></i>';
 
         tabData.text += tabObj.attr("title");
 
@@ -331,7 +331,7 @@
           $S(this).removeClass('ui-state-highlight');
         }
       });
-      var span = $S("<span style='position:relative; color:#2E6E9E; top:0px;left:-1px'>>></span>");
+      var span = $S("<span style='position:relative; color:#2E6E9E; top:0px;left:-1px'><i class=\"icon-double-angle-right\" ></i></span>");
       var label = $S("<label style='position:relative; color:#2E6E9E; top:10px;left:-1px'>"+num_hidden+"</label>");
       newimg.append(span);
       newimg.append(label);
@@ -517,6 +517,18 @@
       }
 
     };// end this.removeTab
+    
+    /**
+     * trigger the save function on the tab
+     *
+     * @param tabKey
+     */
+    this.saveTab = function( tabKey ){
+
+      var tabCont = bodyContainer.find("#"+tabKey);
+      return tabCont.data('wgt-tab-obj').save();
+        
+    };// end this.saveTab
 
     /**
      * @param tabKey
@@ -989,6 +1001,11 @@
     var closeEvent = {};
 
     /**
+     * @var
+     */
+    var saveEvent = {};
+
+    /**
      * flag to check if there where changes on formelements in the tab
      *
      * @var boolean
@@ -1046,7 +1063,59 @@
       return true;
 
     };// end function onClose */
+    
+    
+    /**
+     * @param name
+     * @param callBack
+     */
+    this.onSave = function( name , callBack ){
 
+      saveEvent[name] = callBack;
+
+      return true;
+
+    };// end function onSave */
+
+    /**
+     * Trigger the main save function on the tab
+     */
+    this.save = function(callbacks){
+      
+      var self = this,
+        success = true;
+      
+      if (undefined === callbacks){
+        callbacks = {};
+      }
+      
+      //Overwrite me to register to the closing event;
+      for( var eventKey in saveEvent ){
+
+        var callback = saveEvent[eventKey];
+        try{
+
+          callback( self, tabId );
+        }
+        catch( e ){
+          
+          if (undefined !== callbacks.fail) {
+            callbacks.fail(self, tabId);
+          }
+          
+          $D.errorWindow( e.name, e.message );
+          return false;
+        }
+      }
+      
+      if (undefined !== callbacks.success) {
+        callbacks.success(self, tabId);
+      }
+
+      return true;
+
+    };// end function save */
+    
     /**
      * @return $S
      */
