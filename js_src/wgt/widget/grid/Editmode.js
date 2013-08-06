@@ -447,7 +447,6 @@
         requestBody = '';
       
       if (!opts.changedData) {
-        $D.message('nothing to save');
         return;
       }
       
@@ -458,6 +457,10 @@
         }
 
         requestBody += '&'+key+'='+opts.changedData[key];
+      }
+      
+      if(''===requestBody){
+        return;
       }
       
       $R.form(opts.save_form, null, {'data':opts.changedData,'success':function(){
