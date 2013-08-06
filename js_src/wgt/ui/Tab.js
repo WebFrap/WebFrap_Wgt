@@ -1089,6 +1089,11 @@
         callbacks = {};
       }
       
+      // trigger subrequests
+      self.jObject.find('form.wgt-sub_reqest').each(function(){
+        $R.form($S(this).attr('id'));
+      });
+      
       //Overwrite me to register to the closing event;
       for( var eventKey in saveEvent ){
 
