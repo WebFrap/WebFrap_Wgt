@@ -78,7 +78,7 @@ function Data(series, category, settings) {
     var min = 0;
     var max = 0;
     
-    var mergeSeriesCategory = function () {
+    function mergeSeriesCategory() {
         _series.map(function (node) {
 
             getSeriesMax(node.series);
@@ -90,6 +90,7 @@ function Data(series, category, settings) {
                 };
             });
         });
+        
     };
     
     var parseCategory = function (format) {
@@ -98,19 +99,20 @@ function Data(series, category, settings) {
         });
     };
 
-    var getSeriesMax = function (series) {
+    function getSeriesMax(series) {
         var seriesMax = d3.max(series);
-        var seriesMin = d3.min(series);
         
-        if(seriesMin < min) {
-        	min = seriesMin;
-        }
+        var seriesMin = d3.min(series);
+                
+        min += seriesMin < min ? seriesMin : 0;
         
         if(_settings.aggregate) {
-        	max = seriesMax > max ? seriesMax : max;
+        	// Maximum Single Value
+        	max += seriesMax > max ? seriesMax : 0;
         } else {
-        	max += seriesMax * 0.7;
+        	max += seriesMax * 0.65;
         }
+                
     };
 
     var aggregateSeries = function () {
