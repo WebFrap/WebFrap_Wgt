@@ -31,7 +31,7 @@ $R.addAction('project_effort_chart', function(jNode)
     
     effortData.description = "Effort [PM]";
 
-    var effortChart = new EffortChart();
+    var effortChart = Graph.EffortChart;;
     
     effortChart.addData(effortData);
     

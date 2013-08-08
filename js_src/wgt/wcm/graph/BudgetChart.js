@@ -6,10 +6,11 @@ $R.addAction('project_budget_chart', function(jNode)
     var data = window.$B.robustParseJSON(jNode.find('var').text());
 
     jNode.find('var').remove();
-
-    var budgetData = data.budget;
     
-    var fundingData = data.funding;
+    var budget = data.data.budget;
+    var funding = data.data.funding;
+    var directBudget = data.data.directBudget;
+    var directFunding = data.data.directFunding;
     
     var idChart = jNode.attr("id");
     
@@ -20,28 +21,48 @@ $R.addAction('project_budget_chart', function(jNode)
     var innerWidth = parent.clientWidth - 20;
     var innerHeight = parent.clientHeight - 80;
 
-    budgetData.options = {
+    budget.options = {
             element : "#" + element.id
             };
     
-    budgetData.dimension = {
+    budget.dimension = {
             width : innerWidth,
             height : innerHeight
     }
     
-    fundingData.options = {
+    funding.options = {
             element : "#" + element.id
             };
     
-    fundingData.dimension = {
+    funding.dimension = {
             width : innerWidth,
             height : innerHeight
     }
     
-    var budgetChart = new BudgetChart();
+    directBudget.options = {
+            element : "#" + element.id
+            };
     
-    budgetChart.addData(budgetData);
-    budgetChart.addData(fundingData);
+    directBudget.dimension = {
+            width : innerWidth,
+            height : innerHeight
+    }
+    
+    directFunding.options = {
+            element : "#" + element.id
+            };
+    
+    directFunding.dimension = {
+            width : innerWidth,
+            height : innerHeight
+    }
+    
+    var budgetChart = Graph.BudgetChart;
+    
+    budgetChart.addData(budget);
+    budgetChart.addData(funding);
+    budgetChart.addData(directBudget);
+    budgetChart.addData(directFunding);
     
     budgetChart.draw();
 
