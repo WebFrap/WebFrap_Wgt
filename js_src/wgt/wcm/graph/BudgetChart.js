@@ -57,7 +57,7 @@ $R.addAction('project_budget_chart', function(jNode)
             height : innerHeight
     }
     
-    var budgetChart = Graph.BudgetChart;
+    var budgetChart = new Graph.BudgetChart();
     
     budgetChart.addData(budget);
     budgetChart.addData(funding);

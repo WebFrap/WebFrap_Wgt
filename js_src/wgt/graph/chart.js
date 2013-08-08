@@ -187,80 +187,73 @@ Graph = function() {
 
         var settings = [];
 
+        var currentSettings = null;
+
         var settingsCount = 0;
 
-        var self = this;
+        var settingsIndex = 0;
 
-        this.settingsIndex = 0;
+        var svg = null;
 
-        this.currentSetting = null;
-
-        this.svg = null;
-
-        this.addComponent = function(component) {
+        function addComponent(component) {
             components.push(component);
         };
 
-        this.clearComponents = function() {
+        function clearComponents() {
+
             components = [];
+
         };
 
-        this.addSettings = function(setting) {
+        function addSettings(setting) {
             settings.push(setting);
 
-            self.currentSetting = settings[this.settingsIndex].setup();
+            if (settingsCount == 0) {
+                currentSettings = settings[settingsIndex].setup();
+            }
 
             settingsCount++;
         };
 
-        this.toggleAggregate = function() {
-            self.currentSetting.options.aggregate = !self.currentSetting.options.aggregate;
+        function toggleAggregate() {
 
-            self.currentSetting = settings[this.settingsIndex].setup();
+            var self = this;
+            currentSettings.options.aggregate = !currentSettings.options.aggregate;
+
+            currentSettings = settings[settingsIndex].setup();
 
             components.forEach(function(d) {
                 d.redraw(self);
             });
         };
 
-        this.toggleDirectCosts = function() {
+        function toggleDirectCosts() {
 
-            if (this.settingsIndex == 0) {
-                this.settingsIndex = 2;
-            } else if (this.settingsIndex == 1) {
-                this.settingsIndex = 3;
-            } else if (this.settingsIndex == 2) {
-                this.settingsIndex = 0;
-            } else if (this.settingsIndex == 3) {
-                this.settingsIndex = 1;
+            var self = this;
+            if (settingsIndex == 0) {
+                settingsIndex = 2;
+            } else if (settingsIndex == 1) {
+                settingsIndex = 3;
+            } else if (settingsIndex == 2) {
+                settingsIndex = 0;
+            } else if (settingsIndex == 3) {
+                settingsIndex = 1;
             }
 
-            self.currentSetting = settings[this.settingsIndex].setup();
+            currentSettings = settings[settingsIndex].setup();
 
-            self.currentSetting.options.directCosts = !self.currentSetting.options.directCosts;
+            currentSettings.options.directCosts = !currentSettings.options.directCosts;
 
             components.forEach(function(d) {
                 d.redraw(self);
             });
         };
 
-        this.nextDataset = function() {
+        function nextDataset() {
+            var self = this;
+            settingsIndex = settingsIndex == 0 ? 1 : 0;
 
-            this.settingsIndex = this.settingsIndex == 0 ? 1 : 0;
-
-            self.currentSetting = settings[this.settingsIndex].setup();
-
-            components.forEach(function(d) {
-                d.redraw(self);
-            });
-
-        };
-
-        this.toggleBudgetFunding = function() {
-
-            this.settingsIndex = this.settingsIndex == 0 ? 1 : 0;
-
-            self.currentSetting = settings[this.settingsIndex].setup();
+            currentSettings = settings[settingsIndex].setup();
 
             components.forEach(function(d) {
                 d.redraw(self);
@@ -268,15 +261,29 @@ Graph = function() {
 
         };
 
-        this.isDataAvailable = function() {
-            return self.currentSetting.data.isDataAvailable;
+        function toggleBudgetFunding() {
+            var self = this;
+            settingsIndex = settingsIndex == 0 ? 1 : 0;
+
+            currentSettings = settings[settingsIndex].setup();
+
+            components.forEach(function(d) {
+                d.redraw(self);
+            });
+
         };
 
-        this.draw = function() {
-            var element = self.currentSetting.options.element;
-            var dimension = self.currentSetting.dimension;
+        function isDataAvailable() {
+            return currentSettings.data.isDataAvailable;
+        };
 
-            this.svg = d3.select(element)
+        function draw() {
+            var element = currentSettings.options.element;
+            var dimension = currentSettings.dimension;
+
+            var self = this;
+
+            svg = d3.select(element)
                 .append("svg")
                 .attr("class", "chart")
                 .attr("width", dimension.outerWidth)
@@ -290,12 +297,39 @@ Graph = function() {
 
         };
 
+        function getSettings() {
+            return currentSettings;
+        }
+
+        return {
+            getSettings: function() {
+                return currentSettings;
+            },
+            getSvg: function() {
+                return svg;
+            },
+            getIndex: function() {
+                return settingsIndex;
+            },
+            addComponent: addComponent,
+            clearComponents: clearComponents,
+            addSettings: addSettings,
+            toggleAggregate: toggleAggregate,
+            toggleDirectCosts: toggleDirectCosts,
+            nextDataset: nextDataset,
+            toggleBudgetFunding: toggleBudgetFunding,
+            isDataAvailable: isDataAvailable,
+            draw: draw
+        };
+
     };
 
     function XAxis() {
         function draw(chart) {
 
-            var settings = chart.currentSetting;
+            var svg = chart.getSvg();
+            var settings = chart.getSettings();
+
             var data = settings.data;
             var scale = settings.xScale;
             var dimension = settings.dimension;
@@ -303,8 +337,6 @@ Graph = function() {
 
             // This is serious magic.
             var translate = data.min < 0 ? dimension.height * (data.max / (data.max - data.min)) : dimension.height;
-
-            var svg = chart.svg;
 
             var axis = d3.svg.axis()
                 .scale(scale)
@@ -331,7 +363,9 @@ Graph = function() {
         };
 
         function redraw(chart) {
-            chart.svg.selectAll("g.axis.x").remove();
+            var svg = chart.getSvg();
+
+            svg.selectAll("g.axis.x").remove();
             draw(chart);
         };
 
@@ -344,10 +378,10 @@ Graph = function() {
     function YAxis() {
 
         function draw(chart) {
+            var svg = chart.getSvg();
+            var settings = chart.getSettings();
 
-            var settings = chart.currentSetting;
             var scale = settings.yScale;
-            var svg = chart.svg;
 
             var axis = d3.svg.axis()
                 .scale(scale)
@@ -366,7 +400,9 @@ Graph = function() {
         };
 
         function redraw(chart) {
-            chart.svg.selectAll("g.axis.y").remove();
+            var svg = chart.getSvg();
+
+            svg.selectAll("g.axis.y").remove();
             draw(chart);
         };
 
@@ -395,8 +431,9 @@ Graph = function() {
 
         function draw(chart) {
 
-            var svg = chart.svg;
-            var settings = chart.currentSetting;
+            var svg = chart.getSvg();
+            var settings = chart.getSettings();
+
             var xScale = settings.xScale;
             var yScale = settings.yScale;
 
@@ -420,7 +457,9 @@ Graph = function() {
         };
 
         function redraw(chart) {
-            chart.svg.selectAll("g.grid").remove();
+            var svg = chart.getSvg();
+
+            svg.selectAll("g.grid").remove();
             draw(chart);
         };
 
@@ -474,8 +513,9 @@ Graph = function() {
 
         function draw(chart) {
 
-            var settings = chart.currentSetting;
-            var svg = chart.svg;
+            var svg = chart.getSvg();
+            var settings = chart.getSettings();
+
             var data = settings.data;
             var dimension = settings.dimension;
             var xScale = settings.xScale;
@@ -516,7 +556,9 @@ Graph = function() {
         };
 
         function redraw(chart) {
-            chart.svg.selectAll("g.bars").remove();
+            var svg = chart.getSvg();
+
+            svg.selectAll("g.bars").remove();
             draw(chart);
         };
 
@@ -533,17 +575,17 @@ Graph = function() {
 
         function draw(chart) {
 
+            var svg = chart.getSvg();
+            var settings = chart.getSettings();
+
             var groupScaleDomain = [];
             var entries = [];
 
-            var settings = chart.currentSetting;
             var barSeries = settings.data.barSeries;
             var xScale = settings.xScale;
             var yScale = settings.yScale;
             var color = settings.color;
             var height = settings.dimension.height;
-
-            var svg = chart.svg;
 
             barSeries.map(function(bar) {
 
@@ -605,7 +647,9 @@ Graph = function() {
         };
 
         function redraw(chart) {
-            chart.svg.selectAll("g.bars").remove();
+            var svg = chart.getSvg();
+
+            svg.selectAll("g.bars").remove();
             draw(chart);
         };
 
@@ -620,8 +664,8 @@ Graph = function() {
 
         function draw(chart) {
 
-            var svg = chart.svg;
-            var settings = chart.currentSetting;
+            var svg = chart.getSvg();
+            var settings = chart.getSettings();
 
             var series = settings.data.lineSeries;
 
@@ -653,7 +697,9 @@ Graph = function() {
         };
 
         function redraw(chart) {
-            chart.svg.selectAll("g.lines").remove();
+            var svg = chart.getSvg();
+
+            svg.selectAll("g.lines").remove();
             draw(chart);
         };
 
@@ -668,9 +714,9 @@ Graph = function() {
 
         function draw(chart) {
 
-            var svg = chart.svg;
+            var svg = chart.getSvg();
+            var settings = chart.getSettings();
 
-            var settings = chart.currentSetting;
             var xScale = settings.xScale;
             var yScale = settings.yScale;
             var color = settings.color;
@@ -755,8 +801,10 @@ Graph = function() {
         };
 
         function redraw(chart) {
+            var svg = chart.getSvg();
+
             d3.select("div.tooltip").remove();
-            chart.svg.selectAll("g.lineDots").remove();
+            svg.selectAll("g.lineDots").remove();
             draw(chart);
         };
 
@@ -771,15 +819,14 @@ Graph = function() {
 
         function draw(chart) {
 
-            var settings = chart.currentSetting;
+            var svg = chart.getSvg();
+            var settings = chart.getSettings();
 
             var series = settings.data.series;
 
             var dimension = settings.dimension;
 
             var color = settings.color;
-
-            var svg = chart.svg;
 
             var legend = svg.append("g")
                 .attr("class", "legend")
@@ -798,8 +845,6 @@ Graph = function() {
                 .attr("width", 10)
                 .attr("height", 10)
                 .style("fill", function(d) {
-                    //console.log(d.name);
-                    //console.log(color(d.name));
                     return d.color || color.getColor(d.name);
                 });
 
@@ -818,7 +863,9 @@ Graph = function() {
         };
 
         function redraw(chart) {
-            chart.svg.selectAll("g.legend").remove();
+            var svg = chart.getSvg();
+
+            svg.selectAll("g.legend").remove();
             draw(chart);
         };
 
@@ -833,10 +880,11 @@ Graph = function() {
 
         function draw(chart) {
 
-            var width = chart.currentSetting.dimension.width;
-            var height = chart.currentSetting.dimension.height;
+            var svg = chart.getSvg();
+            var settings = chart.getSettings();
 
-            var svg = chart.svg;
+            var width = settings.dimension.width;
+            var height = settings.dimension.height;
 
             var noData = svg.append("g");
 
@@ -864,8 +912,8 @@ Graph = function() {
 
         function draw(chart) {
 
-            var svg = chart.svg;
-            var settings = chart.currentSetting;
+            var svg = chart.getSvg();
+            var settings = chart.getSettings();
 
             var control = svg.append("g")
                 .attr("class", "controls aggregationcontrol");
@@ -892,7 +940,9 @@ Graph = function() {
         };
 
         function redraw(chart) {
-            chart.svg.selectAll("g.aggregationcontrol").remove();
+            var svg = chart.getSvg();
+
+            svg.selectAll("g.aggregationcontrol").remove();
             draw(chart);
         };
 
@@ -907,11 +957,12 @@ Graph = function() {
 
         function draw(chart) {
 
-            var svg = chart.svg;
+            var svg = chart.getSvg();
 
-            var index = chart.settingsIndex;
+            var index = chart.getIndex();
 
             var text = "";
+
             var directCostsLabel = "";
 
             if (index == 0 || index == 2) {
@@ -970,7 +1021,9 @@ Graph = function() {
         };
 
         function redraw(chart) {
-            chart.svg.selectAll("g.budgetreportcontrol").remove();
+            var svg = chart.getSvg();
+
+            svg.selectAll("g.budgetreportcontrol").remove();
             draw(chart);
         };
 
@@ -985,9 +1038,8 @@ Graph = function() {
 
         function draw(chart) {
 
-            var svg = chart.svg;
-
-            var settings = chart.currentSetting;
+            var svg = chart.getSvg();
+            var settings = chart.getSettings();
 
             var category = settings.data.category;
 
@@ -1032,7 +1084,9 @@ Graph = function() {
         };
 
         function redraw(chart) {
-            chart.svg.selectAll("g.ActualPlanSeparator").remove();
+            var svg = chart.getSvg();
+
+            svg.selectAll("g.ActualPlanSeparator").remove();
             draw(chart);
         };
 
@@ -1055,7 +1109,6 @@ Graph = function() {
         chart.addComponent(new Line());
         chart.addComponent(new Legend());
         chart.addComponent(new AggregationControl());
-        chart.addComponent(new Color());
 
         function addData(data) {
 
@@ -1148,8 +1201,8 @@ Graph = function() {
     };
 
     return {
-        EffortChart: new EffortChart(),
-        BudgetChart: new BudgetChart()
+        EffortChart: EffortChart,
+        BudgetChart: BudgetChart
     };
 
 }();
