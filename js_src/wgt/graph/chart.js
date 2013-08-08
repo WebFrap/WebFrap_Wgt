@@ -176,7 +176,7 @@ Graph = function() {
         var palette = d3.scale.category10();
 
         return {
-            getColor: palette,
+            getColor: palette
         };
 
     }
