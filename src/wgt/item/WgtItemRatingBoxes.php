@@ -57,7 +57,7 @@ class WgtItemRatingBoxes extends WgtItemAbstract
     (
     array
     (
-    'name'      => $this->attributes['name'],
+    'name' => $this->attributes['name'],
     'type'      => 'radio',
     'value'     => '0',
     'title'      => 'noch keine Bewertung',
@@ -70,7 +70,7 @@ class WgtItemRatingBoxes extends WgtItemAbstract
     (
     array
     (
-    'name'      => $this->attributes['name'],
+    'name' => $this->attributes['name'],
     'type'      => 'radio',
     'value'     => '1',
     'title'      => 'Leistung is gut',
@@ -83,7 +83,7 @@ class WgtItemRatingBoxes extends WgtItemAbstract
     (
     array
     (
-    'name'      => $this->attributes['name'],
+    'name' => $this->attributes['name'],
     'type'      => 'radio',
     'value'     => '2',
     'title'      => 'Leistung is akzeptabel',
@@ -96,7 +96,7 @@ class WgtItemRatingBoxes extends WgtItemAbstract
     (
     array
     (
-    'name'      => $this->attributes['name'],
+    'name' => $this->attributes['name'],
     'type'      => 'radio',
     'value'     => '3',
     'title'      => 'Leistung ist nicht akzeptabel!',

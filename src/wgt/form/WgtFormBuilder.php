@@ -1411,9 +1411,9 @@ CODE;
 
     $selectBoxNode->addAttributes(
       array(
-        'name'      => $name,
-        'id'        => $id,
-        'class'     => 'asgd-'.$this->id,
+        'name' => $name,
+        'id' => $id,
+        'class' => 'asgd-'.$this->id,
       )
     );
     $selectBoxNode->setWidth('small');

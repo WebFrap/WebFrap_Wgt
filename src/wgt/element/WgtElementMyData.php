@@ -120,9 +120,9 @@ class WgtElementMyData extends WgtAbstract
 
     $slctLSw->addAttributes
     (array(
-      'name'      =>  'switch_language',
-      'id'        =>  'wgt-panel-switch_language',
-      'class'     =>  'medium',
+      'name' =>  'switch_language',
+      'id' =>  'wgt-panel-switch_language',
+      'class' =>  'medium',
       'onchange'  => '$R.redirect(\'index.php\',{c:\'Webfrap.Profile.change\',profile:$S(\'#wgt-panel-switch_language\').val()});'
     ));
     $codeSlctLSw = WgtForm::decorateElement('Language', 'wgt-panel-switch_language', $slctLSw);

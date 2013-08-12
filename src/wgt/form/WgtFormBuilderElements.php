@@ -633,9 +633,9 @@ HTML;
 
     $selectBoxNode->addAttributes(
       array(
-        'name'      => $name,
-        'id'        => $id,
-        'class'     => 'small asgd-'.$this->id,
+        'name' => $name,
+        'id' => $id,
+        'class' => 'small asgd-'.$this->id,
       )
     );
     $selectBoxNode->setWidth($pNode->size);
@@ -705,9 +705,9 @@ HTML;
 
     $selectBoxNode->addAttributes(
       array(
-        'name'      => $name,
-        'id'        => $id,
-        'class'     => 'medium asgd-'.$this->id,
+        'name' => $name,
+        'id' => $id,
+        'class' => 'medium asgd-'.$this->id,
       )
     );
     $selectBoxNode->setWidth('small');
