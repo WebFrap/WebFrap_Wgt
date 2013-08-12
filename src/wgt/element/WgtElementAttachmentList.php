@@ -666,7 +666,7 @@ HTML;
       //$fileName = str_replace('//', '/', $fileName) ;
 
       if($storageLink){
-      	$link = "<a href=\"{$storageLink}\" >{$storageName}: </a><a href=\"{$storageLink}{$fileName}\" target=\"wgt_dms\" rel=\"nofollow\" >{$fileName}</a>";
+      	$link = "<a href=\"{$storageLink}\" target=\"wgt_dms\" >{$storageName}: </a><a href=\"{$storageLink}{$fileName}\" target=\"wgt_dms\" rel=\"nofollow\" >{$fileName}</a>";
       } else {
       	$link = "<a href=\"{$storageLink}{$fileName}\" target=\"wgt_dms\" rel=\"nofollow\" >{$fileName}</a>";
       }
@@ -938,6 +938,12 @@ HTML;
         : '';
     }
 
+    if ('' != trim($entry['storage_link'])) {
+      $storageLink = 'file:\\\\\\'.trim($entry['storage_link']) ;
+    } else {
+      $storageLink = '#';
+    }
+    
     $codeEntr = <<<HTML
 
     <tr
@@ -947,7 +953,7 @@ HTML;
       <td class="pos" >{$counter}</td>
       <td>{$confidentialIcon}</td>
       <td>{$entry['storage_name']}</td>
-      <td>{$entry['storage_link']}</td>
+      <td><href="{$storageLink}" target=\"wgt_dms\" >{$entry['storage_link']}</a></td>
       <td>{$entry['type_name']}</td>
       <td class="no_oflw" >{$entry['storage_description']}</td>
       <td class="nav" >{$menuCode}</td>
