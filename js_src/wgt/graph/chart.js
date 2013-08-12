@@ -11,7 +11,7 @@ Graph = function() {
                 top: 40,
                 right: 40,
                 bottom: 40,
-                left: 60
+                left: 80
             }
         };
 
