@@ -1287,7 +1287,7 @@ abstract class LibTemplate extends BaseChild
     $AREA      = $this->area;
     $FUNC      = $this->funcs;
     $I18N      = $this->i18n;;
-    $USER      = $this->user;
+    $user  = $this->user;
 
     if (Log::$levelVerbose)
       Log::verbose("Loaded Body Template: $filename");
@@ -1349,7 +1349,7 @@ abstract class LibTemplate extends BaseChild
     $AREA      = $this->area;
     $FUNC      = $this->funcs;
     $I18N      = $this->i18n;
-    $USER      = $this->user;
+    $user  = $this->user;
     $CONF      = $this->getConf();
 
     if (Log::$levelVerbose)
@@ -1435,7 +1435,7 @@ abstract class LibTemplate extends BaseChild
     $AREA      = $this->area;
     $FUNC      = $this->funcs;
     $I18N      = $this->i18n;;
-    $USER      = $this->user;
+    $user  = $this->user;
 
     if (Log::$levelVerbose)
       Log::verbose("Include Template: $filename ");
@@ -1479,7 +1479,7 @@ abstract class LibTemplate extends BaseChild
     $AREA      = $this->area;
     $FUNC      = $this->funcs;
     $I18N      = $this->i18n;
-    $USER      = $this->user;
+    $user  = $this->user;
 
     ob_start();
     include $template;
@@ -1562,7 +1562,7 @@ abstract class LibTemplate extends BaseChild
     $AREA      = $this->area;
     $FUNC      = $this->funcs;
     $I18N      = $this->i18n;
-    $USER      = $this->user;
+    $user  = $this->user;
 
     include $filename;
 
@@ -1627,7 +1627,7 @@ abstract class LibTemplate extends BaseChild
       $CONTENT   = $this->assembledMainContent;
 
       $I18N      = $this->i18n;
-      $USER      = $this->user;
+      $user  = $this->user;
       $CONF      = $this->getConf();
 
       if (Log::$levelVerbose)
@@ -1674,7 +1674,7 @@ abstract class LibTemplate extends BaseChild
       $CONTENT   = $this->assembledMainContent;
 
       $I18N      = $this->i18n;
-      $USER      = $this->user;
+      $user  = $this->user;
       $CONF      = $this->getConf();
 
       if (Log::$levelVerbose)

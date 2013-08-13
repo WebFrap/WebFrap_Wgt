@@ -112,7 +112,7 @@ class LibTemplateService extends LibTemplate
       $CONDITION = $this->condition;
 
       $I18N      = $this->i18n;
-      $USER      = $this->user;
+      $user  = $this->user;
 
       if (Log::$levelVerbose)
         Log::verbose("Load Service Template: $filename ");
@@ -165,7 +165,7 @@ class LibTemplateService extends LibTemplate
       $FOOTER    = $this->footer;
 
       $I18N      = $this->i18n;
-      $USER      = $this->user;
+      $user  = $this->user;
       $URL       = $this->url;
 
       ob_start();

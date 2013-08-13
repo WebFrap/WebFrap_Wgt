@@ -178,7 +178,7 @@ class LibTemplateAjax extends LibTemplateHtml
     $ITEM      = $this->object;
 
     $I18N      = $this->i18n;
-    $USER      = $this->user;
+    $user  = $this->user;
 
     // Build the page hehe
     ob_start();
@@ -325,7 +325,7 @@ class LibTemplateAjax extends LibTemplateHtml
       $FOOTER    = $this->footer;
 
       $I18N      = $this->i18n;
-      $USER      = $this->user;
+      $user  = $this->user;
       $URL       = $this->url;
 
       ob_start();

@@ -809,7 +809,7 @@ class LibTemplateHtml extends LibTemplatePresenter
       }
 
       $I18N      = $this->i18n;
-      $USER      = $this->user;
+      $user  = $this->user;
       $CONF      = $this->getConf();
 
       if (Log::$levelVerbose)
