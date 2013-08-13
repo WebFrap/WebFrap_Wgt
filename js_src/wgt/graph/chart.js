@@ -93,6 +93,7 @@ Graph = function() {
 
         var min = 0;
         var max = 0;
+        var maxSum = 0;
 
         function mergeSeriesCategory() {
             _series.map(function(node) {
@@ -117,17 +118,15 @@ Graph = function() {
 
         function getSeriesMax(series) {
             var seriesMax = d3.max(series);
-
             var seriesMin = d3.min(series);
+            
+            maxSum += seriesMax;
 
             min += seriesMin < min ? seriesMin : 0;
 
-            if (_settings.aggregate) {
-                // Maximum Single Value
-                max += seriesMax > max ? seriesMax : 0;
-            } else {
-                max += seriesMax * 0.6;
-            }
+            max = seriesMax > max ? seriesMax : max;
+            
+            max = maxSum - max > max ? maxSum - max : max;
 
         };
 

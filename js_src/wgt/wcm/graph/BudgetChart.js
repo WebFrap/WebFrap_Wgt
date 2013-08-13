@@ -30,6 +30,8 @@ $R.addAction('project_budget_chart', function(jNode)
             height : innerHeight
     }
     
+    budget.description = "Budget [€]";
+    
     funding.options = {
             element : "#" + element.id
             };
@@ -38,6 +40,8 @@ $R.addAction('project_budget_chart', function(jNode)
             width : innerWidth,
             height : innerHeight
     }
+    
+    funding.description = "Funding [€]";
     
     directBudget.options = {
             element : "#" + element.id
@@ -48,6 +52,8 @@ $R.addAction('project_budget_chart', function(jNode)
             height : innerHeight
     }
     
+    directBudget.description = "Budget [€]";
+    
     directFunding.options = {
             element : "#" + element.id
             };
@@ -56,6 +62,8 @@ $R.addAction('project_budget_chart', function(jNode)
             width : innerWidth,
             height : innerHeight
     }
+    
+    directFunding.description = "Funding [€]";
     
     var budgetChart = new Graph.BudgetChart();
     
