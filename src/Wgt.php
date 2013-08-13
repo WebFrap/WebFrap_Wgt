@@ -100,6 +100,12 @@ class Wgt
   const ACTION_SEP = 9;
 
   /**
+   * Der Button schickt einen Delete Request mit einem Databody
+   * @var int
+   */
+  const ACTION_BUTTON_DELETE = 8;
+
+  /**
    * Der Button schickt einen POST Request mit einem Databody
    * @var int
    */
