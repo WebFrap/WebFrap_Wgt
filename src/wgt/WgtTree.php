@@ -49,7 +49,7 @@ abstract class WgtTree extends WgtAbstract
 
       $view->addElement($name,$this);
     } else {
-      $this->i18n     = I18n::getDefault();
+      $this->i18n = I18n::getDefault();
     }
 
   }//end public function __construct */

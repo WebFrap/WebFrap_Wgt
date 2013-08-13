@@ -117,7 +117,7 @@ class WgtTableMaintenanceDb extends WgtTable
       $navigation = $this->rowMenu($key, $row);
 
 /*
-'class'     => 'PostgresqlPersistent',
+'class' => 'PostgresqlPersistent',
 'dbhost'    => 'localhost',
 'dbport'    => '5432',
 //'dbname'    => 'webfrap_de',
