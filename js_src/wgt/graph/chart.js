@@ -94,11 +94,15 @@ Graph = function() {
         var min = 0;
         var max = 0;
         var maxSum = 0;
+        var maxValues = [];
+        var minValues = [];
 
         function mergeSeriesCategory() {
             _series.map(function(node) {
 
-                getSeriesMax(node.series);
+                //getSeriesMax(node.series);
+            	maxValues.push(d3.max(node.series));
+                minValues.push(d3.min(node.series));
 
                 node.series = node.series.map(function(d, i) {
                     return {
@@ -115,6 +119,22 @@ Graph = function() {
                 return format(d);
             });
         };
+        
+        function getMax() {
+        	var seriesMax = Math.ceil(d3.max(maxValues));
+        	
+        	var seriesSum = Math.ceil(d3.sum(maxValues));
+        	
+        	var seriesMean = Math.ceil(d3.mean(maxValues));
+        	
+        	return _settings.aggregate ? seriesMax : seriesSum - seriesMax;
+        };
+        
+        function getMin() {
+        	var seriesMin = Math.ceil(d3.min(minValues));
+        	
+        	return seriesMin < 0 ? seriesMin : 0;
+        }
 
         function getSeriesMax(series) {
             var seriesMax = d3.max(series);
@@ -157,8 +177,8 @@ Graph = function() {
                 return d.type != "hidden";
             }),
             category: _category,
-            min: Math.ceil(min),
-            max: Math.ceil(max),
+            min: getMin(),
+            max: getMax(),
             isDataAvailable: isDataAvailable,
             barSeries: _series.filter(function(d) {
                 return d.type == "bar";
