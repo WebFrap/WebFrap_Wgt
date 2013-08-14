@@ -232,8 +232,8 @@ HTML;
       $urlSwitchType = ucfirst($params->maskType);
     }
 
-    if ($params->mask) {
-      $appendToUrl   .= "&amp;mask={$params->mask}" ;
+    if ($params->targetMask) {
+      $appendToUrl   .= "&amp;target_mask={$params->targetMask}" ;
     }
 
     if ($params->ltype) {

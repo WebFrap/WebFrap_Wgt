@@ -943,7 +943,7 @@ class WgtCrudForm
 
     // target is a pointer to a js function that has to be called
     if ($param->targetMask)
-      $contextUrl .= '&amp;mask='.$param->targetMask;
+      $contextUrl .= '&amp;target_mask='.$param->targetMask;
 
     // which view type was used, important to close the ui element eg.
     if ($param->viewType)

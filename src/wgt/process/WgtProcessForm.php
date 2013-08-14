@@ -265,8 +265,8 @@ HTML;
       $urlSwitchType = ucfirst($params->maskType);
     }
 
-    if ($params->mask) {
-      $appendToUrl   .= "&amp;mask={$params->mask}" ;
+    if ($params->targetMask) {
+      $appendToUrl   .= "&amp;target_mask={$params->targetMask}" ;
     }
 
     if ($params->ltype) {
@@ -1030,7 +1030,7 @@ HTML;
 
     $stateUrl = "ajax.php?c={$process->processUrl}.changeStateListing"
       ."&process_id={$process->processId}"
-      ."&vid={$process->entity}&cntrl={$params->inputId}&mask={$params->mask}"
+      ."&vid={$process->entity}&cntrl={$params->inputId}&target_mask={$params->targetMask}"
       ."&objid={$process->activStatus}&dkey={$params->dkey}"
       ."&state=";
 
