@@ -37,7 +37,7 @@ class LibTemplateTest extends LibTemplateHtml
       $VAR       = $this->var;
       $ITEM      = $this->object;
       $LANG      = $this->getI18n();
-      $user  = $this->getUser();
+      $USER  = $this->getUser();
 
       ob_start();
       include $filename;
