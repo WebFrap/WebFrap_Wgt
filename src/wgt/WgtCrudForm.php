@@ -93,6 +93,12 @@ class WgtCrudForm
   public $contextUrl = null;
 
   /**
+   * Die Vollständige URL
+   * @var string
+   */
+  public $targetUrl = null;
+
+  /**
    * @var string
    */
   public $maskRoot = null;
@@ -994,8 +1000,31 @@ class WgtCrudForm
     $this->view->addVar('formId'.$subkey, $formId);
 
     $this->assignedForm = $formId;
+    $this->targetUrl = $formAction.$contextUrl;
 
   }//end public function setFormTarget */
+  
+  /**
+   * @param string $method 
+   *
+   */
+  public function formTag($method = 'post')
+  {
+    
+    $subRequest = '';
+    if (!$this->readOnly)
+      $subRequest = ' class="wgt-sub_reqest" flag="wgt-sub_reqest" ';
+    
+    return <<<CODE
+<form 
+  method="{$method}" 
+  action="{$this->targetUrl}" 
+  id="{$this->assignedForm}" 
+  {$subRequest}
+  accept-charset="utf-8" ></form>
+CODE;
+  
+  }//end public static function formTag */
 
 /*//////////////////////////////////////////////////////////////////////////////
 // Customizing der Daten
