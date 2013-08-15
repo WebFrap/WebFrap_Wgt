@@ -1287,7 +1287,7 @@ abstract class LibTemplate extends BaseChild
     $AREA      = $this->area;
     $FUNC      = $this->funcs;
     $I18N      = $this->i18n;;
-    $user  = $this->user;
+    $USER  = $this->user;
 
     if (Log::$levelVerbose)
       Log::verbose("Loaded Body Template: $filename");
@@ -1343,13 +1343,13 @@ abstract class LibTemplate extends BaseChild
 
     }
 
-    $VAR       = $this->var;
-    $ITEM      = $this->object;
-    $ELEMENT   = $this->object;
-    $AREA      = $this->area;
+    $VAR = $this->var;
+    $ITEM = $this->object;
+    $ELEMENT = $this->object;
+    $AREA = $this->area;
     $FUNC      = $this->funcs;
     $I18N      = $this->i18n;
-    $user  = $this->user;
+    $USER = $this->user;
     $CONF      = $this->getConf();
 
     if (Log::$levelVerbose)
@@ -1435,7 +1435,7 @@ abstract class LibTemplate extends BaseChild
     $AREA      = $this->area;
     $FUNC      = $this->funcs;
     $I18N      = $this->i18n;;
-    $user  = $this->user;
+    $USER  = $this->user;
 
     if (Log::$levelVerbose)
       Log::verbose("Include Template: $filename ");
@@ -1479,7 +1479,7 @@ abstract class LibTemplate extends BaseChild
     $AREA      = $this->area;
     $FUNC      = $this->funcs;
     $I18N      = $this->i18n;
-    $user  = $this->user;
+    $USER  = $this->user;
 
     ob_start();
     include $template;
@@ -1562,7 +1562,7 @@ abstract class LibTemplate extends BaseChild
     $AREA      = $this->area;
     $FUNC      = $this->funcs;
     $I18N      = $this->i18n;
-    $user  = $this->user;
+    $USER  = $this->user;
 
     include $filename;
 
@@ -1627,7 +1627,7 @@ abstract class LibTemplate extends BaseChild
       $CONTENT   = $this->assembledMainContent;
 
       $I18N      = $this->i18n;
-      $user  = $this->user;
+      $USER  = $this->user;
       $CONF      = $this->getConf();
 
       if (Log::$levelVerbose)
@@ -1674,7 +1674,7 @@ abstract class LibTemplate extends BaseChild
       $CONTENT   = $this->assembledMainContent;
 
       $I18N      = $this->i18n;
-      $user  = $this->user;
+      $USER  = $this->user;
       $CONF      = $this->getConf();
 
       if (Log::$levelVerbose)

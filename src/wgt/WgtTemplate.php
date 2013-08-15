@@ -323,7 +323,7 @@ abstract class WgtTemplate
       $ELEMENT   = $this->element;
 
       $I18N      = $this->getI18n();
-      $user  = $this->getUser();
+      $USER  = $this->getUser();
       $CONF      = $this->getConf();
 
       if (Log::$levelVerbose)

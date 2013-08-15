@@ -788,6 +788,7 @@ class LibTemplateHtml extends LibTemplatePresenter
       $AREA      = $this->area;
       $FUNC      = $this->funcs;
       $CONDITION = $this->condition;
+      $USER = $this->getUser();
 
       $MESSAGES  = $this->buildMessages();
       $TEMPLATE  = $this->template;

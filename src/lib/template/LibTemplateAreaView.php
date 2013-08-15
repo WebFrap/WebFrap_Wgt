@@ -272,7 +272,7 @@ class LibTemplateAreaView extends LibTemplateHtml
     $FUNC      = $this->funcs;
 
     $I18N      = $this->i18n;
-    $user  = $this->user;
+    $USER  = $this->user;
 
     ob_start();
     include $filename;
@@ -328,7 +328,7 @@ class LibTemplateAreaView extends LibTemplateHtml
       $ELEMENT   = $this->object;
       $FUNC      = $this->funcs;
       $I18N      = $this->i18n;
-      $user  = $this->user;
+      $USER  = $this->user;
 
       ob_start();
       include $filename;
