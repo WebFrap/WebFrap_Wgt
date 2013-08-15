@@ -132,7 +132,7 @@ Graph = function() {
         	
         	var seriesMean = Math.ceil(d3.mean(maxValues));
         	
-        	return seriesSum - seriesMax;
+        	return _settings.aggregate ? seriesMax :seriesSum - seriesMax;
         };
         
         function getMin() {
@@ -1058,13 +1058,16 @@ Graph = function() {
             
             var aggregate = chart.getSettings().options.aggregate;
                         
-            var headlineText = aggregate ? "Aggregated " + headline[index] : headline[index];
+            if(aggregate) {
+            	headlineText = "Aggregated " + headline[index];
+            } else {
+            	headlineText = headline[index][0].toUpperCase() + headline[index].slice(1);
+            }
             
             control.append("text")
-            .attr("class", "text")
             .attr("font-size", "30px")
             .attr("x", 100)
-            .attr("y", 40)
+            .attr("y", 30)
             .text(headlineText);
 
         };
@@ -1210,7 +1213,6 @@ Graph = function() {
         chart.addComponent(new AggregationControl());
         chart.addComponent(new BudgetReportControl());
         chart.addComponent(new ActualPlanSeparator());
-        chart.addComponent(new Tooltip());
 
         function addData(data) {
 
