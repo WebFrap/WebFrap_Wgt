@@ -1029,7 +1029,7 @@ Graph = function() {
                 });
 
             // Hide for Projectlead
-            if(data.barSeries.length >= 4) {
+            if(data.lineSeries.length > 0) {
             	control.append("circle")
                 .attr("r", 5)
                 .attr("cx", 320)
@@ -1048,7 +1048,7 @@ Graph = function() {
                 .on("click", function(d) {
                     chart.toggleDirectCosts();
                 });
-            }
+            };
             
             var aggregate = chart.getSettings().options.aggregate;
                         
