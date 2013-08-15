@@ -95,19 +95,14 @@ Graph = function() {
         var _settings = settings;
         var isDataAvailable = series.length > 0 && category.length > 0;
 
-        var min = 0;
-        var max = 0;
-        var maxSum = 0;
-        var maxValues = [];
+        var maxValuesBar = [];
+        var maxValuesLine = [];
         var minValues = [];
 
         function mergeSeriesCategory() {
             _series.map(function(node) {
 
-                //getSeriesMax(node.series);
-                
-                maxValues.push(d3.max(node.series));
-                minValues.push(d3.min(node.series));
+            	getSeriesMax(node);
 
                 node.series = node.series.map(function(d, i) {
                     return {
@@ -126,43 +121,37 @@ Graph = function() {
         };
         
         function getMax() {
-        	var seriesMax = Math.ceil(d3.max(maxValues));
+        	var seriesMaxBar = Math.ceil(d3.max(maxValuesBar));
         	
-        	var seriesSum = Math.ceil(d3.sum(maxValues));
+        	var seriesMaxLine = Math.ceil(d3.max(maxValuesLine));
         	
-        	var seriesMean = Math.ceil(d3.mean(maxValues));
+        	var seriesSumBar = Math.ceil(d3.sum(maxValuesBar));
         	
-        	return _settings.aggregate ? seriesMax :seriesSum - seriesMax;
+        	if(seriesMaxLine > seriesSumBar) {
+        		return seriesMaxLine * 1.05;
+        	} else {
+        		return seriesSumBar;
+        	}
         };
         
         function getMin() {
         	var seriesMin = Math.ceil(d3.min(minValues));
         	
         	return seriesMin < 0 ? seriesMin : 0;
-        }
+        };
 
-        function getSeriesMax(series) {
-            var seriesMax = d3.max(series);
-            var seriesMin = d3.min(series);
+        function getSeriesMax(node) {
+            var seriesMax = d3.max(node.series);
+            var seriesMin = d3.min(node.series);
             
-            maxSum += seriesMax;
-
-            min += seriesMin < min ? seriesMin : 0;
-
-            max = seriesMax > max ? seriesMax : max;
-            
-            if (_settings.aggregate) {
-                // Maximum Single Value
-                //max += seriesMax > max ? seriesMax : 0;
-                //max += seriesMax * 0.6;
-            } else {
-                //max += seriesMax * 0.6;
+            if(node.type == "bar") {
+            	maxValuesBar.push(seriesMax);
+            } else if (node.type == "line") {
+            	maxValuesLine.push(seriesMax);
             }
             
-            max = maxSum - max > max ? maxSum - max : max;
+            minValues.push(seriesMin);
             
-            
-
         };
 
         function aggregateSeries() {
