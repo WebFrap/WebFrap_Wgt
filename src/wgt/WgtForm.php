@@ -589,8 +589,8 @@ class WgtForm
   public function validateInsert($entity, $fields = array(), $keyName = null  )
   {
 
-    $fields   = $fields   ?: $this->fields;
-    $keyName  = $keyName  ?: $this->keyName;
+    $field = $fields ?: $this->fields;
+    $keyName = $keyName ?: $this->keyName;
 
     $orm      = $this->getOrm();
     $request  = $this->getRequest();
@@ -832,6 +832,20 @@ class WgtForm
     return $data;
 
   }//end public function validate */
+  
+  /**
+   * @param string $action
+   * @param string $id
+   * @param string $method
+   *
+   */
+  public function formTag($action, $id, $method = 'post')
+  {
+    return <<<CODE
+<form method="{$method}" action="{$action}" id="{$id}" accept-charset="utf-8" ></form>
+CODE;
+  
+  }//end public static function formTag */
 
 /*//////////////////////////////////////////////////////////////////////////////
 // Some Static help Methodes
@@ -846,7 +860,7 @@ class WgtForm
   public static function form($action, $id, $method = 'post')
   {
     return <<<CODE
-<form method="{$method}" action="{$action}" id="{$id}" ></form>
+<form method="{$method}" action="{$action}" id="{$id}" accept-charset="utf-8" ></form>
 CODE;
 
   }//end public static function form */
