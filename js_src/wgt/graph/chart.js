@@ -1,5 +1,9 @@
 Graph = function() {
 
+	/**
+	 * Collection for graph data and settings. There is exactly one Settings object for each chart.
+	 * Data and Settings can be manipulated until the setup method is called.
+	 */
     function Settings(args) {
 
         args.dimension = args.dimension || {};
@@ -101,7 +105,8 @@ Graph = function() {
             _series.map(function(node) {
 
                 //getSeriesMax(node.series);
-            	maxValues.push(d3.max(node.series));
+                
+                maxValues.push(d3.max(node.series));
                 minValues.push(d3.min(node.series));
 
                 node.series = node.series.map(function(d, i) {
@@ -127,7 +132,7 @@ Graph = function() {
         	
         	var seriesMean = Math.ceil(d3.mean(maxValues));
         	
-        	return _settings.aggregate ? seriesMax : seriesSum - seriesMax;
+        	return seriesSum - seriesMax;
         };
         
         function getMin() {
@@ -146,7 +151,17 @@ Graph = function() {
 
             max = seriesMax > max ? seriesMax : max;
             
+            if (_settings.aggregate) {
+                // Maximum Single Value
+                //max += seriesMax > max ? seriesMax : 0;
+                //max += seriesMax * 0.6;
+            } else {
+                //max += seriesMax * 0.6;
+            }
+            
             max = maxSum - max > max ? maxSum - max : max;
+            
+            
 
         };
 
@@ -177,6 +192,8 @@ Graph = function() {
                 return d.type != "hidden";
             }),
             category: _category,
+            //min: Math.ceil(min),
+            //max: Math.ceil(max),
             min: getMin(),
             max: getMax(),
             isDataAvailable: isDataAvailable,
@@ -983,6 +1000,8 @@ Graph = function() {
             var text = "";
 
             var directCostsLabel = "";
+            
+            var headline = ["costs / month", "claimable funding / month", "direct costs / month", "claimable direct funding"];
 
             if (index == 0 || index == 2) {
                 text = "Show funding";
@@ -1036,6 +1055,17 @@ Graph = function() {
                 .on("click", function(d) {
                     chart.toggleDirectCosts();
                 });
+            
+            var aggregate = chart.getSettings().options.aggregate;
+                        
+            var headlineText = aggregate ? "Aggregated " + headline[index] : headline[index];
+            
+            control.append("text")
+            .attr("class", "text")
+            .attr("font-size", "30px")
+            .attr("x", 100)
+            .attr("y", 40)
+            .text(headlineText);
 
         };
 
@@ -1180,6 +1210,7 @@ Graph = function() {
         chart.addComponent(new AggregationControl());
         chart.addComponent(new BudgetReportControl());
         chart.addComponent(new ActualPlanSeparator());
+        chart.addComponent(new Tooltip());
 
         function addData(data) {
 
