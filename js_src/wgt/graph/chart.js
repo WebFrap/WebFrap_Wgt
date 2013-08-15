@@ -130,7 +130,7 @@ Graph = function() {
         	if(seriesMaxLine > seriesSumBar) {
         		return seriesMaxLine * 1.05;
         	} else {
-        		return seriesSumBar;
+        		return seriesSumBar * 1.05;
         	}
         };
         
