@@ -427,7 +427,7 @@ class WgtMaintab extends LibTemplatePublisher
 
     $id       = $this->getId();
 
-    $content  = $this->includeTemplate($this->template   );
+    $content  = $this->includeTemplate($this->template);
 
     $jsCode   = '';
     if ($this->jsCode) {

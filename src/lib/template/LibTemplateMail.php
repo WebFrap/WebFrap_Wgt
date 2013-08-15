@@ -103,7 +103,7 @@ class LibTemplateMail extends LibTemplateHtml
     $FUNC      = $this->funcs;
 
     $I18N      = $this->i18n;
-    $user  = $this->user;
+    $USER  = $this->user;
 
     ob_start();
     include $filename;
