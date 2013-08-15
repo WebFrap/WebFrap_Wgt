@@ -985,6 +985,8 @@ Graph = function() {
             var svg = chart.getSvg();
 
             var index = chart.getIndex();
+            
+            var data = chart.getSettings().data;
 
             var text = "";
 
@@ -1026,7 +1028,9 @@ Graph = function() {
                     chart.toggleBudgetFunding();
                 });
 
-            control.append("circle")
+            // Hide for Projectlead
+            if(data.barSeries.length >= 4) {
+            	control.append("circle")
                 .attr("r", 5)
                 .attr("cx", 320)
                 .attr("cy", -20)
@@ -1044,6 +1048,7 @@ Graph = function() {
                 .on("click", function(d) {
                     chart.toggleDirectCosts();
                 });
+            }
             
             var aggregate = chart.getSettings().options.aggregate;
                         
