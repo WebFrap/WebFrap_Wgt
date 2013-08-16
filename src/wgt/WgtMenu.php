@@ -84,7 +84,7 @@ abstract class WgtMenu
    *
    * @var string
    */
-  protected $name     = null;
+  protected $name = null;
 
   /**
    * id of the Menu
