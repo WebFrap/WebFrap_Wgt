@@ -1059,10 +1059,10 @@ Graph = function() {
             }
             
             control.append("text")
-            .attr("font-size", "30px")
-            .attr("x", 100)
-            .attr("y", 30)
-            .text(headlineText);
+	            .style("font-size", "30px")
+	            .attr("x", 600)
+	            .attr("y", -10)
+	            .text(headlineText);
 
         };
 
